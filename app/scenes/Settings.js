@@ -8,9 +8,6 @@ const Settings = ({ navigation }) => (
 );
 
 Settings.navigationOptions = {
-  drawer: {
-    label: 'Settings',
-  },
   header: (navigation, defaultHeader) => ({
     ...defaultHeader,
     title: 'Settings',

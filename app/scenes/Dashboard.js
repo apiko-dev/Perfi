@@ -8,9 +8,6 @@ const Dashboard = ({ navigation }) => (
 );
 
 Dashboard.navigationOptions = {
-  drawer: {
-    label: 'Dashboard',
-  },
   header: (navigation, defaultHeader) => ({
     ...defaultHeader,
     title: 'Dashboard',
