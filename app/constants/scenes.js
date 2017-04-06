@@ -1,7 +1,8 @@
 export default {
-  Main: 'Main',
   Dashboard: 'Dashboard',
+  DashboardMain: 'DashboardMain',
   Settings: 'Settings',
+  SettingsMain: 'SettingsMain',
   DrawerOpen: 'DrawerOpen',
   DrawerClose: 'DrawerClose',
 };
