@@ -1,9 +1,14 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Button, Text, View } from 'react-native';
+import scenes from '../constants/scenes';
 
 const Dashboard = ({ navigation }) => (
   <View>
     <Text>Dashboard</Text>
+    <Button
+      title="Add transaction"
+      onPress={() => navigation.navigate(scenes.AddTransaction)}
+    />
   </View>
 );
 
