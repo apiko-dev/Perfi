@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, Platform, Text, View } from 'react-native';
 import scenes from '../constants/scenes';
+import { DrawerButton } from '../components';
 
 const Dashboard = ({ navigation }) => (
   <View>
@@ -16,6 +17,11 @@ Dashboard.navigationOptions = {
   header: (navigation, defaultHeader) => ({
     ...defaultHeader,
     title: 'Dashboard',
+    ...Platform.select({
+      android: {
+        left: <DrawerButton navigation={navigation} />,
+      },
+    }),
   }),
 };
 

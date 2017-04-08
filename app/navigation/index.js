@@ -1,5 +1,11 @@
 import { Platform } from 'react-native';
-import AndroidNavigator from './AndroidNavigator';
-import IOSNavigator from './IOSNavigator';
+import { DrawerNavigator, TabNavigator } from 'react-navigation';
+import Routes from './Routes';
 
-export default Platform.OS === 'android' ? AndroidNavigator : IOSNavigator;
+const Navigator = Platform.select({
+  android: DrawerNavigator,
+  ios: TabNavigator,
+});
+
+export default Navigator(Routes);
+

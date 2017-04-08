@@ -1,9 +1,9 @@
 export default {
   AddTransaction: 'AddTransaction',
+  DashboardRoot: 'DashboardRoot',
   Dashboard: 'Dashboard',
-  DashboardMain: 'DashboardMain',
+  SettingsRoot: 'SettingsRoot',
   Settings: 'Settings',
-  SettingsMain: 'SettingsMain',
   DrawerOpen: 'DrawerOpen',
   DrawerClose: 'DrawerClose',
 };
