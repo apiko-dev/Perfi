@@ -1,7 +1,9 @@
 import DrawerButton from './DrawerButton';
-import navIcon from './navIcon';
+import NavIcon from './NavIcon';
+import PropsProxyHOC from './PropsProxyHOC';
 
 export {
   DrawerButton,
-  navIcon,
+  NavIcon,
+  PropsProxyHOC,
 };

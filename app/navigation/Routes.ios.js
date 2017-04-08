@@ -1,6 +1,6 @@
 import { StackNavigator } from 'react-navigation';
 import { Dashboard, Settings, AddTransaction } from '../scenes';
-import { navIcon } from '../components';
+import { NavIcon, PropsProxyHOC } from '../components';
 import scenes from '../constants/scenes';
 
 const DashboardNavigator = StackNavigator({
@@ -14,7 +14,7 @@ const DashboardNavigator = StackNavigator({
   navigationOptions: {
     title: 'Dashboard',
     tabBar: {
-      icon: navIcon('chart-arc'),
+      icon: PropsProxyHOC(NavIcon, { name: 'chart-arc' }),
     },
   },
 });
@@ -27,7 +27,7 @@ const SettingsNavigator = StackNavigator({
   navigationOptions: {
     title: 'Settings',
     tabBar: {
-      icon: navIcon('settings'),
+      icon: PropsProxyHOC(NavIcon, { name: 'settings' }),
     },
   },
 });

@@ -1,5 +1,5 @@
 import { StackNavigator } from 'react-navigation';
-import { navIcon } from '../components';
+import { NavIcon, PropsProxyHOC } from '../components';
 import { AddTransaction, Dashboard, Settings } from '../scenes';
 import scenes from '../constants/scenes';
 
@@ -14,7 +14,7 @@ const DashboardNavigator = StackNavigator({
   navigationOptions: {
     title: 'Dashboard',
     drawer: {
-      icon: navIcon('chart-arc'),
+      icon: PropsProxyHOC(NavIcon, { name: 'chart-arc' }),
     },
   },
 });
@@ -27,7 +27,7 @@ const SettingsNavigator = StackNavigator({
   navigationOptions: {
     title: 'Settings',
     drawer: {
-      icon: navIcon('settings'),
+      icon: PropsProxyHOC(NavIcon, { name: 'settings' }),
     },
   },
 });

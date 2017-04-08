@@ -13,4 +13,4 @@ NavIcon.propTypes = {
   tintColor: PropTypes.string,
 };
 
-export default name => props => <NavIcon name={name} {...props} />;
+export default NavIcon;
