@@ -1,5 +1,5 @@
 import { StackNavigator } from 'react-navigation';
-import { AddTransaction, Dashboard } from '../../scenes';
+import { Dashboard, TransactionEditor } from '../../scenes';
 import scenes from '../../constants/scenes';
 import navOptions from '../../utils/navOptions';
 
@@ -7,8 +7,8 @@ const DashboardNavigator = StackNavigator({
   [scenes.Dashboard]: {
     screen: Dashboard,
   },
-  [scenes.AddTransaction]: {
-    screen: AddTransaction,
+  [scenes.TransactionEditor]: {
+    screen: TransactionEditor,
   },
 }, {
   ...navOptions({

@@ -1,7 +1,8 @@
 import scenes from '../../constants/scenes';
 import {
-  DashboardNavigator,
   AccountsNavigator,
+  CategoriesNavigator,
+  DashboardNavigator,
   SettingsNavigator,
 } from '../navigators';
 
@@ -11,6 +12,9 @@ const Routes = {
   },
   [scenes.AccountsRoot]: {
     screen: AccountsNavigator,
+  },
+  [scenes.CategoriesRoot]: {
+    screen: CategoriesNavigator,
   },
   [scenes.SettingsRoot]: {
     screen: SettingsNavigator,

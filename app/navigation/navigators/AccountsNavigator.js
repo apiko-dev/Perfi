@@ -1,5 +1,5 @@
 import { StackNavigator } from 'react-navigation';
-import { Accounts, AddAccount, EditAccount } from '../../scenes';
+import { Accounts, AccountEditor } from '../../scenes';
 import scenes from '../../constants/scenes';
 import navOptions from '../../utils/navOptions';
 
@@ -7,16 +7,13 @@ const AccountsNavigator = StackNavigator({
   [scenes.Accounts]: {
     screen: Accounts,
   },
-  [scenes.AddAccount]: {
-    screen: AddAccount,
-  },
-  [scenes.EditAccount]: {
-    screen: EditAccount,
+  [scenes.AccountEditor]: {
+    screen: AccountEditor,
   },
 }, {
   ...navOptions({
     title: 'Accounts',
-    icon: 'cards',
+    icon: 'credit-card-multiple',
   }),
 });
 

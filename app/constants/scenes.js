@@ -1,13 +1,19 @@
 export default {
-  AddTransaction: 'AddTransaction',
   DashboardRoot: 'DashboardRoot',
   Dashboard: 'Dashboard',
+  TransactionEditor: 'TransactionEditor',
+  
   AccountsRoot: 'AccountsRoot',
   Accounts: 'Accounts',
-  AddAccount: 'AddAccount',
-  EditAccount: 'EditAccount',
+  AccountEditor: 'AccountEditor',
+
+  CategoriesRoot: 'CategoriesRoot',
+  Categories: 'Categories',
+  CategoryEditor: 'CategoryEditor',
+  
   SettingsRoot: 'SettingsRoot',
   Settings: 'Settings',
+  
   DrawerOpen: 'DrawerOpen',
   DrawerClose: 'DrawerClose',
 };

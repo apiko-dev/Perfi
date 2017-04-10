@@ -8,7 +8,7 @@ const Dashboard = ({ navigation }) => (
     <Text>Dashboard</Text>
     <Button
       title="Add transaction"
-      onPress={() => navigation.navigate(scenes.AddTransaction)}
+      onPress={() => navigation.navigate(scenes.TransactionEditor)}
     />
   </View>
 );

@@ -18,6 +18,6 @@ const persistStoreConfig = {
   storage: AsyncStorage,
 };
 
-persistStore(store, persistStoreConfig);
+// persistStore(store, persistStoreConfig);
 
 export default store;

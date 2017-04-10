@@ -1,15 +1,17 @@
 import Accounts from './Accounts';
-import AddAccount from './AddAccount';
-import AddTransaction from './AddTransaction';
+import AccountEditor from './AccountEditor';
+import Categories from './Categories';
+import CategoryEditor from './CategoryEditor';
 import Dashboard from './Dashboard';
-import EditAccount from './EditAccount';
 import Settings from './Settings';
+import TransactionEditor from './TransactionEditor';
 
 export {
   Accounts,
-  AddAccount,
-  AddTransaction,
+  AccountEditor,
+  Categories,
+  CategoryEditor,
   Dashboard,
-  EditAccount,
   Settings,
+  TransactionEditor,
 };
