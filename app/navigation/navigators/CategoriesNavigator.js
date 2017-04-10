@@ -13,7 +13,7 @@ const CategoriesNavigator = StackNavigator({
 }, {
   ...navOptions({
     title: 'Categories',
-    icon: 'cards',
+    icon: 'cards-outline',
   }),
 });
 

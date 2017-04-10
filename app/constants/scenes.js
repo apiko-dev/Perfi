@@ -13,6 +13,9 @@ export default {
   
   SettingsRoot: 'SettingsRoot',
   Settings: 'Settings',
+
+  TrendsRoot: 'TrendsRoot',
+  Trends: 'Trends',
   
   DrawerOpen: 'DrawerOpen',
   DrawerClose: 'DrawerClose',

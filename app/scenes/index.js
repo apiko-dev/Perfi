@@ -5,6 +5,7 @@ import CategoryEditor from './CategoryEditor';
 import Dashboard from './Dashboard';
 import Settings from './Settings';
 import TransactionEditor from './TransactionEditor';
+import Trends from './Trends';
 
 export {
   Accounts,
@@ -14,4 +15,5 @@ export {
   Dashboard,
   Settings,
   TransactionEditor,
+  Trends,
 };

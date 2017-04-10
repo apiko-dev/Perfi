@@ -4,6 +4,7 @@ import {
   CategoriesNavigator,
   DashboardNavigator,
   SettingsNavigator,
+  TrendsNavigator,
 } from '../navigators';
 
 const Routes = {
@@ -15,6 +16,9 @@ const Routes = {
   },
   [scenes.CategoriesRoot]: {
     screen: CategoriesNavigator,
+  },
+  [scenes.TrendsRoot]: {
+    screen: TrendsNavigator,
   },
   [scenes.SettingsRoot]: {
     screen: SettingsNavigator,
