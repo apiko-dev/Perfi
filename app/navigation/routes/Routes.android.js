@@ -1,5 +1,5 @@
-import scenes from '../constants/scenes';
-import { DashboardNavigator, SettingsNavigator } from './navigators';
+import scenes from '../../constants/scenes';
+import { DashboardNavigator, SettingsNavigator } from '../navigators';
 
 const Routes = {
   [scenes.DashboardRoot]: {
