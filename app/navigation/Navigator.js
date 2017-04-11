@@ -1,6 +1,6 @@
 import { Platform } from 'react-native';
 import { DrawerNavigator, TabNavigator } from 'react-navigation';
-import Routes from './routes/Routes';
+import Routes from './routes/RootRoutes';
 
 const Navigator = Platform.select({
   android: DrawerNavigator,

@@ -1,16 +1,8 @@
 import { StackNavigator } from 'react-navigation';
-import { Categories, CategoryEditor } from '../../scenes';
-import scenes from '../../constants/scenes';
+import CategoriesRoutes from '../routes/CategoriesRoutes';
 import navOptions from '../../utils/navOptions';
 
-const CategoriesNavigator = StackNavigator({
-  [scenes.Categories]: {
-    screen: Categories,
-  },
-  [scenes.CategoryEditor]: {
-    screen: CategoryEditor,
-  },
-}, {
+const CategoriesNavigator = StackNavigator(CategoriesRoutes, {
   ...navOptions({
     title: 'Categories',
     icon: 'cards-outline',

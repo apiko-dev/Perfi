@@ -1,10 +1,23 @@
 import React from 'react';
-import { Platform, Text, View } from 'react-native';
+import { Button, Platform, Text, View } from 'react-native';
+import scenes from '../constants/scenes';
 import { DrawerButton } from '../components';
 
 const Settings = ({ navigation }) => (
   <View>
     <Text>Settings</Text>
+    {Platform.OS === 'ios' && (
+      <View>
+        <Button
+          title="Accounts"
+          onPress={() => navigation.navigate(scenes.Accounts)}
+        />
+        <Button
+          title="Categories"
+          onPress={() => navigation.navigate(scenes.Categories)}
+        />
+      </View>
+    )}
   </View>
 );
 
