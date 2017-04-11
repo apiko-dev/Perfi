@@ -1,6 +1,14 @@
 {
   "extends": "airbnb",
   "globals": { "fetch": false },
+  "plugins": ["react", "react-native"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".android.js", ".ios.js"]
+      }
+    }
+  },
   "rules": {
     "import/no-extraneous-dependencies": [
       "error",
@@ -15,6 +23,10 @@
     "no-underscore-dangle": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/forbid-prop-types": 0,
-    "react/require-default-props": 0
+    "react/require-default-props": 0,
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
   }
 }

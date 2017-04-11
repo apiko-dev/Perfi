@@ -9,17 +9,20 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-react-native": "^2.3.1",
     "jest-expo": "^0.3.0",
     "react-native-scripts": "0.0.26",
-    "react-test-renderer": "~15.4.1"
+    "react-test-renderer": "~15.4.1",
+    "remote-redux-devtools": "^0.5.7"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-native-scripts start",
+    "start": "react-native-scripts start ./app/App.js",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js --watch"
+    "test": "node node_modules/jest/bin/jest.js --watch",
+    "lint": "eslint --ignore-path .gitignore --format=node_modules/eslint-formatter-pretty ."
   },
   "jest": {
     "preset": "jest-expo"
@@ -30,6 +33,9 @@
     "react": "~15.4.0",
     "react-native": "0.42.3",
     "react-native-platform-stylesheet": "0.0.6",
-    "react-navigation": "^1.0.0-beta.7"
+    "react-navigation": "^1.0.0-beta.7",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-persist": "^4.6.0"
   }
 }

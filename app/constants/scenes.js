@@ -1,8 +1,22 @@
 export default {
+  DashboardRoot: 'DashboardRoot',
   Dashboard: 'Dashboard',
-  DashboardMain: 'DashboardMain',
+  TransactionEditor: 'TransactionEditor',
+  
+  AccountsRoot: 'AccountsRoot',
+  Accounts: 'Accounts',
+  AccountEditor: 'AccountEditor',
+
+  CategoriesRoot: 'CategoriesRoot',
+  Categories: 'Categories',
+  CategoryEditor: 'CategoryEditor',
+  
+  SettingsRoot: 'SettingsRoot',
   Settings: 'Settings',
-  SettingsMain: 'SettingsMain',
+
+  TrendsRoot: 'TrendsRoot',
+  Trends: 'Trends',
+  
   DrawerOpen: 'DrawerOpen',
   DrawerClose: 'DrawerClose',
 };

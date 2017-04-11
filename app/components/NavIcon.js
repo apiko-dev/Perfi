@@ -1,17 +1,16 @@
 import React, { PropTypes } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const TabIcon = ({ name, color }) => (
+const NavIcon = ({ tintColor, ...props }) => (
   <MaterialCommunityIcons
-    name={name}
     size={26}
-    style={{ color }}
+    style={{ color: tintColor }}
+    {...props}
   />
 );
 
-TabIcon.propTypes = {
-  name: PropTypes.string,
-  color: PropTypes.string,
+NavIcon.propTypes = {
+  tintColor: PropTypes.string,
 };
 
-export default TabIcon;
+export default NavIcon;

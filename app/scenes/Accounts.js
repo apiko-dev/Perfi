@@ -3,24 +3,28 @@ import { Button, Platform, Text, View } from 'react-native';
 import scenes from '../constants/scenes';
 import { DrawerButton } from '../components';
 
-const Dashboard = ({ navigation }) => (
+const Accounts = ({ navigation }) => (
   <View>
-    <Text>Dashboard</Text>
+    <Text>Accounts</Text>
     <Button
-      title="Add transaction"
-      onPress={() => navigation.navigate(scenes.TransactionEditor)}
+      title="Edit account"
+      onPress={() => navigation.navigate(scenes.AccountEditor, { title: 'Edit account' })}
+    />
+    <Button
+      title="Add account"
+      onPress={() => navigation.navigate(scenes.AccountEditor, { title: 'Add account' })}
     />
   </View>
 );
 
-Dashboard.propTypes = {
+Accounts.propTypes = {
   navigation: PropTypes.object,
 };
 
-Dashboard.navigationOptions = {
+Accounts.navigationOptions = {
   header: (navigation, defaultHeader) => ({
     ...defaultHeader,
-    title: 'Dashboard',
+    title: 'Accounts',
     ...Platform.select({
       android: {
         left: <DrawerButton navigation={navigation} />,
@@ -29,4 +33,4 @@ Dashboard.navigationOptions = {
   }),
 };
 
-export default Dashboard;
+export default Accounts;
