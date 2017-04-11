@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Button, Platform, Text, View } from 'react-native';
 import scenes from '../constants/scenes';
 import { DrawerButton } from '../components';
@@ -16,6 +16,10 @@ const Categories = ({ navigation }) => (
     />
   </View>
 );
+
+Categories.propTypes = {
+  navigation: PropTypes.object,
+};
 
 Categories.navigationOptions = {
   header: (navigation, defaultHeader) => ({

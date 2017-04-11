@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Button, Platform, Text, View } from 'react-native';
 import scenes from '../constants/scenes';
 import { DrawerButton } from '../components';
@@ -20,6 +20,10 @@ const Settings = ({ navigation }) => (
     )}
   </View>
 );
+
+Settings.propTypes = {
+  navigation: PropTypes.object,
+};
 
 Settings.navigationOptions = {
   header: (navigation, defaultHeader) => ({

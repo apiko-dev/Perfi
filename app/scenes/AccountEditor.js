@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const AccountEditor = ({ navigation }) => (
+const AccountEditor = () => (
   <View>
     <Text>Account Editor</Text>
   </View>

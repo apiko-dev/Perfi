@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform, Text, View } from 'react-native';
 import { DrawerButton } from '../components';
 
-const Trends = ({ navigation }) => (
+const Trends = () => (
   <View>
     <Text>Trends</Text>
   </View>
