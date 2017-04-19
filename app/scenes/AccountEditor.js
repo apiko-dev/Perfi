@@ -1,11 +1,20 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { PropTypes } from 'react';
+import { Text, View, TextInput } from 'react-native';
 
-const AccountEditor = () => (
-  <View>
-    <Text>Account Editor</Text>
-  </View>
-);
+const AccountEditor = ({ navigation }) => {
+  const { account, onSubmit } = navigation.state.params;
+  const { icon, date, currency, initialBalance, isValid } = account;
+
+  return (
+    <View>
+
+    </View>
+  );
+};
+
+AccountEditor.propTypes = {
+  navigation: PropTypes.object,
+};
 
 AccountEditor.navigationOptions = {
   header: (navigation, defaultHeader) => ({
