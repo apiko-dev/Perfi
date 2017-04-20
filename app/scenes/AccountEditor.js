@@ -1,13 +1,19 @@
 import React, { PropTypes } from 'react';
-import { Text, View, TextInput } from 'react-native';
+import { View } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { connect } from 'react-redux';
+import IconsPickerModal from '../components/IconsPickerModal';
 
-const AccountEditor = ({ navigation }) => {
-  const { account, onSubmit } = navigation.state.params;
-  const { icon, date, currency, initialBalance, isValid } = account;
+const AccountEditor = ({ navigation, account }) => {
+  const { id, onSubmit, onDataChange } = navigation.state.params;
+  const { icon, date, currency, initialBalance, isValid, isPickerVisible } = account;
 
   return (
     <View>
-
+      <View>
+        <MaterialIcons name={icon} size={32} />
+        <IconsPickerModal isVisible onIconPick={(name) => onDataChange({ icon: name })} />
+      </View>
     </View>
   );
 };
@@ -23,4 +29,20 @@ AccountEditor.navigationOptions = {
   }),
 };
 
-export default AccountEditor;
+const mapStateToProps = (state, props) => {
+  const accountId = props.navigation.state.params.id;
+
+  if (accountId) {
+    const account = state.accounts.filter(({ id }) => id === accountId)[0];
+
+    return {
+      account,
+    };
+  }
+
+  return {
+    account: state.account,
+  };
+};
+
+export default connect(mapStateToProps)(AccountEditor);

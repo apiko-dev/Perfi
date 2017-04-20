@@ -1,10 +1,11 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  icon: 'wallet',
+  icon: 'account-balance-wallet',
   currency: null,
   initialBalance: 0,
   date: new Date(),
+  isPickerVisible: false,
   isValid: false,
 };
 
