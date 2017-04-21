@@ -1,6 +1,7 @@
 import * as types from '../constants/actionTypes';
+import currencies from '../constants/currencies';
 
-const initialState = 'US Dollar';
+const initialState = currencies[0];
 
 const currencyReducer = (state = initialState, action) => {
   switch (action.type) {

@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react';
 import { View, ListView, TouchableOpacity } from 'react-native';
 import _ from 'lodash';
 import Modal from 'react-native-modal';
-import icons from 'react-native-vector-icons/glyphmaps/MaterialIcons.json';
 import { MaterialIcons } from '@expo/vector-icons';
 import styles from '../styles/IconsPickerStyles';
+import icons from '../constants/accountIcons';
 
-const chunkedIconsList = _.chunk(Object.keys(icons), 4);
+const chunkedIconsList = _.chunk(icons, 4);
 
 const IconsPickerModal = ({ isVisible, onIconPick }) => {
   const ds = new ListView.DataSource({
@@ -22,7 +22,7 @@ const IconsPickerModal = ({ isVisible, onIconPick }) => {
         style={styles.iconContainerStyle}
         onPress={() => onIconPick(name)}
       >
-        <MaterialIcons name={name} size={32}/>
+        <MaterialIcons name={name} size={26} />
       </TouchableOpacity>) }
   </View>);
 

@@ -5,7 +5,7 @@ const styles = create({
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
+    borderWidth: .5,
     borderColor: '#000',
     borderStyle: 'solid',
     paddingLeft: 10,
