@@ -1,6 +1,9 @@
 {
   "extends": "airbnb",
   "globals": { "fetch": false },
+  "env": {
+    "jest": true
+  },
   "plugins": ["react", "react-native"],
   "settings": {
     "import/resolver": {
