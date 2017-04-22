@@ -1,16 +1,16 @@
 import { handleActions } from 'redux-actions';
 import actionTypes from '../constants/actionTypes';
 import defaultCategories from '../constants/defaultCategories';
-import { newItem, addItem, updateItem, deleteItem } from '../utils/listHandler';
+import { insert, insertAll, update, remove } from '../utils/mapHelper';
 
 const createCategory = ({ name, icon, type }) => ({ name, icon, type });
 
-const initialState = defaultCategories.map(props => newItem(createCategory, props));
+const initialState = insertAll({}, defaultCategories);
 
 const categoriesReducer = handleActions({
-  [actionTypes.CREATE_CATEGORY]: (state, { payload }) => addItem(state, createCategory, payload),
-  [actionTypes.UPDATE_CATEGORY]: (state, { payload }) => updateItem(state, payload._id, payload),
-  [actionTypes.DELETE_CATEGORY]: (state, { payload }) => deleteItem(state, payload),
+  [actionTypes.CREATE_CATEGORY]: (state, { payload }) => insert(state, createCategory(payload)),
+  [actionTypes.UPDATE_CATEGORY]: (state, { payload }) => update(state, payload._id, payload),
+  [actionTypes.DELETE_CATEGORY]: (state, { payload }) => remove(state, payload),
 }, initialState);
 
 export default categoriesReducer;

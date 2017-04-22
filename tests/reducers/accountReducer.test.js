@@ -4,6 +4,7 @@ import actionTypes from '../../app/constants/actionTypes';
 
 describe('Accounts reducer', () => {
   const initialState = reducer(undefined, {});
+
   const testAccProps = {
     name: 'Test Account',
     icon: 'icon',
@@ -12,9 +13,11 @@ describe('Accounts reducer', () => {
     initialDate: new Date(),
   };
 
+  const getNewAccountId = (prevState, newState) => R.keys(R.omit(R.keys(prevState), newState))[0];
+
   it('should return the initial state', () => {
     expect(
-      R.map(R.omit(['_id', 'initialDate']), initialState),
+      R.map(R.omit(['_id', 'initialDate']), R.values(initialState)),
     ).toEqual([
       {
         name: 'Card',
@@ -37,8 +40,11 @@ describe('Accounts reducer', () => {
       payload: testAccProps,
     });
 
-    expect(state).toHaveLength(3);
-    expect(R.omit(['_id'], state[2])).toEqual(testAccProps);
+    expect(R.values(state)).toHaveLength(3);
+
+    const newAccountId = getNewAccountId(initialState, state);
+
+    expect(R.omit(['_id'], state[newAccountId])).toEqual(testAccProps);
   });
 
   it('should update the account', () => {
@@ -55,15 +61,15 @@ describe('Accounts reducer', () => {
       payload: testAccProps,
     });
 
-    const { _id } = R.last(state);
+    const newAccountId = getNewAccountId(initialState, state);
 
     const updatedState = reducer(state, {
       type: actionTypes.UPDATE_ACCOUNT,
-      payload: { _id, ...newAccProps },
+      payload: { _id: newAccountId, ...newAccProps },
     });
 
-    expect(updatedState).toHaveLength(3);
-    expect(R.omit(['_id'], updatedState[2])).toEqual(newAccProps);
+    expect(R.values(updatedState)).toHaveLength(3);
+    expect(R.omit(['_id'], updatedState[newAccountId])).toEqual(newAccProps);
   });
 
   it('should delete the account', () => {
@@ -72,14 +78,14 @@ describe('Accounts reducer', () => {
       payload: testAccProps,
     });
 
-    const newAcc = R.last(state);
+    const newAccountId = getNewAccountId(initialState, state);
 
     const updatedState = reducer(state, {
       type: actionTypes.DELETE_ACCOUNT,
-      payload: newAcc._id,
+      payload: newAccountId,
     });
 
-    expect(updatedState).toHaveLength(2);
-    expect(updatedState).not.toContain(newAcc);
+    expect(R.values(updatedState)).toHaveLength(2);
+    expect(R.keys(updatedState)).not.toContain(newAccountId);
   });
 });

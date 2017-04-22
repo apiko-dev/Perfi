@@ -5,15 +5,18 @@ import defaultCategories from '../../app/constants/defaultCategories';
 
 describe('Categories reducer', () => {
   const initialState = reducer(undefined, {});
+
   const testCategoryProps = {
     name: 'Test Category',
     icon: 'icon',
     type: 'testType',
   };
 
+  const getNewCategoryId = (prevState, newState) => R.keys(R.omit(R.keys(prevState), newState))[0];
+
   it('should return the initial state', () => {
     expect(
-      R.map(R.omit(['_id']), initialState),
+      R.map(R.omit(['_id', 'initialDate']), R.values(initialState)),
     ).toEqual(defaultCategories);
   });
 
@@ -23,8 +26,11 @@ describe('Categories reducer', () => {
       payload: testCategoryProps,
     });
 
-    expect(state).toHaveLength(3);
-    expect(R.omit(['_id'], state[2])).toEqual(testCategoryProps);
+    expect(R.values(state)).toHaveLength(3);
+
+    const newCategoryId = getNewCategoryId(initialState, state);
+
+    expect(R.omit(['_id'], state[newCategoryId])).toEqual(testCategoryProps);
   });
 
   it('should update the category', () => {
@@ -39,31 +45,31 @@ describe('Categories reducer', () => {
       payload: testCategoryProps,
     });
 
-    const { _id } = R.last(state);
+    const newCategoryId = getNewCategoryId(initialState, state);
 
     const updatedState = reducer(state, {
       type: actionTypes.UPDATE_CATEGORY,
-      payload: { _id, ...newCategoryProps },
+      payload: { _id: newCategoryId, ...newCategoryProps },
     });
 
-    expect(updatedState).toHaveLength(3);
-    expect(R.omit(['_id'], updatedState[2])).toEqual(newCategoryProps);
+    expect(R.values(updatedState)).toHaveLength(3);
+    expect(R.omit(['_id'], updatedState[newCategoryId])).toEqual(newCategoryProps);
   });
 
-  it('should delete the account', () => {
+  it('should delete the category', () => {
     const state = reducer(initialState, {
       type: actionTypes.CREATE_CATEGORY,
       payload: testCategoryProps,
     });
 
-    const newCategory = R.last(state);
+    const newCategoryId = getNewCategoryId(initialState, state);
 
     const updatedState = reducer(state, {
       type: actionTypes.DELETE_CATEGORY,
-      payload: newCategory._id,
+      payload: newCategoryId,
     });
 
-    expect(updatedState).toHaveLength(2);
-    expect(updatedState).not.toContain(newCategory);
+    expect(R.values(updatedState)).toHaveLength(2);
+    expect(R.keys(updatedState)).not.toContain(newCategoryId);
   });
 });
