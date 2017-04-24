@@ -5,7 +5,7 @@ const styles = create({
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: .5,
+    borderWidth: 0.5,
     borderColor: '#000',
     borderStyle: 'solid',
     paddingLeft: 10,
@@ -23,6 +23,9 @@ const styles = create({
   listStyle: {
     flex: 1,
     alignSelf: 'center',
+  },
+  pickedItemStyle: {
+    backgroundColor: '#e6e6e6',
   },
 });
 

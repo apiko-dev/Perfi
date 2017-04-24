@@ -32,6 +32,7 @@
     "expo": "^15.1.0",
     "faker": "^4.1.0",
     "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "react": "~15.4.0",
     "react-native": "0.42.3",
     "react-native-elements": "^0.11.1",

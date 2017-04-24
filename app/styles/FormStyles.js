@@ -7,7 +7,7 @@ const styles = create({
     padding: 5,
   },
   selectStyle: {
-    width: 150,
+    width: 170,
   },
 });
 

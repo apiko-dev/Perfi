@@ -1,7 +1,7 @@
 import { create } from 'react-native-platform-stylesheet';
 
 const styles = create({
-  lightRowStyle: {
+  rowStyle: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
@@ -9,12 +9,8 @@ const styles = create({
     paddingTop: 20,
     paddingBottom: 25,
   },
-  darkRowStyle: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    backgroundColor: '#cfcfcf',
+  rowStyle__dark: {
+    backgroundColor: '#ebebeb',
     paddingTop: 10,
     paddingBottom: 15,
   },
