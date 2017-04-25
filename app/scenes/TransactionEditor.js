@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import TransactionForm from '../containers/TransactionFormContainer';
 
 const AddTransaction = () => (
   <View>
-    <Text>Add Transaction</Text>
+    <TransactionForm />
   </View>
 );
 
