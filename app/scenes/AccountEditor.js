@@ -6,7 +6,7 @@ import IconsPickerModal from '../components/IconsPickerModal';
 import Button from '../components/common/Button';
 import TextFieldWithIcon from '../components/common/TextFieldWithIcon';
 import SceneContentWrapper from '../components/common/SceneContentWrapper';
-import styles from '../styles/AccountEditorStyles';
+import styles from '../styles/AccountsStyles';
 import * as currencyActions from '../actions/currencyActions';
 import * as accountActions from '../actions/accountActions';
 import * as accountListActions from '../actions/accountsListActions';
@@ -19,15 +19,17 @@ const { rowStyle, rowStyle__dark } = styles;
 
 const AccountEditor = ({ navigation, account, actions, defaultCurrency }) => {
   const {
-    id, icon, name, date, initialBalance,
+    icon, name, date, initialBalance,
     currency = defaultCurrency,
     isValid, isPickerVisible,
   } = account;
 
   const { createAccount, updateAccount, updateCurrency, updateData } = actions;
   const onSubmit = () => {
+    const { id, ...data } = account;
+
     if (id) {
-      updateAccount(account);
+      updateAccount(id, data);
     } else {
       createAccount(account);
       navigation.navigate(scenes.Accounts, {
@@ -47,12 +49,12 @@ const AccountEditor = ({ navigation, account, actions, defaultCurrency }) => {
     raised
   />);
 
-  const getSubmitButtons = isValid && <Button
+  const submitButton = (<FixedButtonsContainer><Button
     onPress={() => onSubmit(account)}
     icon="check"
     raised
     big
-  />;
+  /></FixedButtonsContainer>);
 
   return (
     <SceneContentWrapper>
@@ -82,9 +84,7 @@ const AccountEditor = ({ navigation, account, actions, defaultCurrency }) => {
         onIconPick={onDataInput('icon')}
         selectedIconName={icon}
       />
-      <FixedButtonsContainer>
-        { getSubmitButtons() }
-      </FixedButtonsContainer>
+      { isValid && submitButton }
     </SceneContentWrapper>
   );
 };

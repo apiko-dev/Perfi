@@ -14,6 +14,25 @@ const styles = create({
     paddingTop: 10,
     paddingBottom: 15,
   },
+  listItemStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#000000',
+    paddingBottom: 10,
+    paddingTop: 10,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  textStyle: {
+    flex: 1,
+    marginRight: 10,
+    marginLeft: 10,
+  },
+  listStyle: {
+    marginTop: 5,
+    flex: 1,
+  },
 });
 
 export default styles;

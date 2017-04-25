@@ -1,16 +1,40 @@
 import React, { PropTypes } from 'react';
-import { View, Text } from 'react-native';
+import { ListView } from 'react-native';
+import AccountsListItem from './AccountsListItem';
+import style from '../../styles/AccountsStyles';
+import scenes from '../../constants/scenes';
 
-const AccountsList = ({ accounts }) => {
-  const getListItems = () => accounts.map(item => (<Text key={item.id}>
-    { item.name }
-  </Text>));
+const AccountsList = ({ accounts, navigation, updateAccount }) => {
+  const ds = new ListView.DataSource({
+    rowHasChanged: (r1, r2) => r1 !== r2,
+  });
 
-  return (<View>{ getListItems() }</View>);
+  const dataSource = ds.cloneWithRows(accounts);
+  const onPress = item =>
+    () => {
+      updateAccount(item);
+      navigation.navigate(scenes.AccountEditor, {
+        title: `Edit ${item.name}`,
+      });
+    };
+
+  const renderRow = item => (<AccountsListItem
+    key={item.id}
+    onPress={onPress(item)}
+    {...item}
+  />);
+
+  return (<ListView
+    dataSource={dataSource}
+    renderRow={renderRow}
+    style={style.listStyle}
+  />);
 };
 
 AccountsList.propTypes = {
   accounts: PropTypes.array,
+  navigation: PropTypes.object,
+  updateAccount: PropTypes.func,
 };
 
 export default AccountsList;

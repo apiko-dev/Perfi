@@ -1,36 +1,46 @@
 import React, { PropTypes } from 'react';
-import { Button, Platform, Text, View } from 'react-native';
+import { Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as accountActions from '../actions/accountActions';
+import Button from '../components/common/Button';
 import scenes from '../constants/scenes';
 import { DrawerButton } from '../components';
 import AccountsList from '../components/accounts/AccountsList';
+import FixedButtonsContainer from '../components/common/FixedButtonsContainer';
+import SceneContentWrapper from '../components/common/SceneContentWrapper';
+import * as accountActions from '../actions/accountActions';
 
-const Accounts = ({ navigation, accounts }) => (
-  <View>
-    <AccountsList accounts={accounts} />
+const Accounts = ({ navigation, accounts, actions }) => {
+  const onAddButtonClick = () => {
+    actions.clearForm();
+    navigation.navigate(scenes.AccountEditor, {
+      title: 'Add account',
+    });
+  };
+  return (
+    <SceneContentWrapper>
+      <AccountsList
+        accounts={accounts}
+        navigation={navigation}
+        updateAccount={actions.updateData}
+      />
 
-    <Text>Accounts</Text>
-    <Button
-      title="Edit account"
-      onPress={() => navigation.navigate(scenes.AccountEditor, {
-        title: 'Edit account',
-      })}
-    />
-    <Button
-      title="Add account"
-      onPress={() => navigation.navigate(scenes.AccountEditor, {
-        title: 'Add account',
-      })}
-    />
-  </View>
-);
+      <FixedButtonsContainer>
+        <Button
+          icon="add"
+          onPress={onAddButtonClick}
+          raised
+          big
+        />
+      </FixedButtonsContainer>
+    </SceneContentWrapper>
+  );
+};
 
 Accounts.propTypes = {
   navigation: PropTypes.object,
-  actions: PropTypes.object,
   accounts: PropTypes.array,
+  actions: PropTypes.object,
 };
 
 Accounts.defaultProps = {
@@ -43,19 +53,18 @@ Accounts.navigationOptions = {
     title: 'Accounts',
     ...Platform.select({
       android: {
-        left: <DrawerButton navigation={navigation} />,
+        left: <DrawerButton navigation={navigation}/>,
       },
     }),
   }),
 };
 
-const mapStateToProps = ({ navigation, accounts }) => ({
-  navigation,
-  accounts,
-});
-
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(accountActions, dispatch),
+});
+
+const mapStateToProps = ({ accounts }) => ({
+  accounts,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Accounts);
