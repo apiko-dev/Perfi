@@ -3,30 +3,56 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import IconsPickerModal from '../components/IconsPickerModal';
-import Button from '../components/Button';
-import TextFieldWithIcon from '../components/TextFieldWithIcon';
-import SceneContentWrapper from '../components/SceneContentWrapper';
+import Button from '../components/common/Button';
+import TextFieldWithIcon from '../components/common/TextFieldWithIcon';
+import SceneContentWrapper from '../components/common/SceneContentWrapper';
 import styles from '../styles/AccountEditorStyles';
 import * as currencyActions from '../actions/currencyActions';
+import * as accountActions from '../actions/accountActions';
+import * as accountListActions from '../actions/accountsListActions';
 import CurrencyPicker from '../components/currencyPicker/CurrencyPicker';
 import DatePicker from '../components/datePicker/DatePicker';
+import FixedButtonsContainer from '../components/common/FixedButtonsContainer';
+import scenes from '../constants/scenes';
 
 const { rowStyle, rowStyle__dark } = styles;
 
-const AccountEditor = ({ navigation, account, actions }) => {
-  const { id, onSubmit, onDataChange } = navigation.state.params;
-  const { icon, name, date, currency, initialBalance, isValid, isPickerVisible } = account;
+const AccountEditor = ({ navigation, account, actions, defaultCurrency }) => {
+  const {
+    id, icon, name, date, initialBalance,
+    currency = defaultCurrency,
+    isValid, isPickerVisible,
+  } = account;
 
-  const showIconPicker = () => onDataChange({ isPickerVisible: true });
-  const onCurrencyChange = value => actions.updateCurrency(value);
+  const { createAccount, updateAccount, updateCurrency, updateData } = actions;
+  const onSubmit = () => {
+    if (id) {
+      updateAccount(account);
+    } else {
+      createAccount(account);
+      navigation.navigate(scenes.Accounts, {
+        title: `Edit ${name}`,
+      });
+    }
+  };
+
+  const showIconPicker = () => updateData({ isPickerVisible: true });
+  const onCurrencyChange = value => updateCurrency(value);
   const onDataInput = type =>
-    value => onDataChange({ [type]: value });
+    value => updateData({ [type]: value });
 
   const iconsPickerButton = (<Button
-    icon={icon}
     onPress={showIconPicker}
+    icon={icon}
     raised
   />);
+
+  const getSubmitButtons = isValid && <Button
+    onPress={() => onSubmit(account)}
+    icon="check"
+    raised
+    big
+  />;
 
   return (
     <SceneContentWrapper>
@@ -45,7 +71,7 @@ const AccountEditor = ({ navigation, account, actions }) => {
       <View style={[rowStyle, rowStyle__dark]}>
         <TextFieldWithIcon
           onChangeText={onDataInput('initialBalance')}
-          value={initialBalance}
+          value={initialBalance.toString()}
           label={'Initial balance'}
           keyboardType="numeric"
         />
@@ -56,6 +82,9 @@ const AccountEditor = ({ navigation, account, actions }) => {
         onIconPick={onDataInput('icon')}
         selectedIconName={icon}
       />
+      <FixedButtonsContainer>
+        { getSubmitButtons() }
+      </FixedButtonsContainer>
     </SceneContentWrapper>
   );
 };
@@ -67,10 +96,14 @@ AccountEditor.propTypes = {
     icon: PropTypes.string,
     date: PropTypes.date,
     currency: PropTypes.object,
-    initialBalance: PropTypes.string,
+    initialBalance: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
     isValid: PropTypes.bool,
     isPickerVisible: PropTypes.bool,
   }),
+  defaultCurrency: PropTypes.object,
 };
 
 AccountEditor.navigationOptions = {
@@ -80,28 +113,17 @@ AccountEditor.navigationOptions = {
   }),
 };
 
-const mapStateToProps = (state, props) => {
-  const accountId = props.navigation.state.params.id;
-
-  if (accountId) {
-    const account = state.accounts.filter(({ id }) => id === accountId)[0];
-
-    return {
-      account,
-    };
-  }
-
-  const account = Object.assign({}, state.account, {
-    currency: state.defaultCurrency,
-  });
-
-  return {
-    account,
-  };
-};
+const mapStateToProps = ({ defaultCurrency, account }) => ({
+  defaultCurrency,
+  account,
+});
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(currencyActions, dispatch),
+  actions: bindActionCreators({
+    ...currencyActions,
+    ...accountActions,
+    ...accountListActions,
+  }, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountEditor);

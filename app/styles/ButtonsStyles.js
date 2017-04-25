@@ -17,6 +17,18 @@ const styles = create({
     shadowColor: '#000',
     backgroundColor: '#ebebeb',
   },
+  buttonWrapper__big: {
+    width: 50,
+    height: 50,
+  },
+  fixedButtonContainer: {
+    position: 'absolute',
+    right: 0,
+    left: 0,
+    bottom: 0,
+    padding: 10,
+    alignItems: 'flex-end',
+  },
 });
 
 export default styles;

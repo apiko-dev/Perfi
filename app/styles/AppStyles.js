@@ -12,6 +12,7 @@ const styles = create({
     flex: 1,
     justifyContent: 'flex-start',
     backgroundColor: '#fff',
+    position: 'relative',
   },
 });
 

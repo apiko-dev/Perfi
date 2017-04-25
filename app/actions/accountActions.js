@@ -4,11 +4,11 @@ export function updateData(fieldObject) {
   return {
     type: types.UPDATE_ACCOUNT_FIELD,
     payload: fieldObject,
-  }
+  };
 }
 
-export function createSuccess() {
+export function clearForm() {
   return {
-    type: types.CREATE_ACCOUNT_SUCCESS,
-  }
+    type: types.CLEAR_ACCOUNT_FORM,
+  };
 }

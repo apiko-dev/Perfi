@@ -5,22 +5,22 @@ import { bindActionCreators } from 'redux';
 import * as accountActions from '../actions/accountActions';
 import scenes from '../constants/scenes';
 import { DrawerButton } from '../components';
+import AccountsList from '../components/accounts/AccountsList';
 
-const Accounts = ({ navigation, actions }) => (
+const Accounts = ({ navigation, accounts }) => (
   <View>
+    <AccountsList accounts={accounts} />
+
     <Text>Accounts</Text>
     <Button
       title="Edit account"
       onPress={() => navigation.navigate(scenes.AccountEditor, {
-        onDataChange: () => {},
         title: 'Edit account',
       })}
     />
     <Button
       title="Add account"
       onPress={() => navigation.navigate(scenes.AccountEditor, {
-        onDataChange: actions.updateData,
-        onSubmit: actions.createAccount,
         title: 'Add account',
       })}
     />
@@ -30,7 +30,11 @@ const Accounts = ({ navigation, actions }) => (
 Accounts.propTypes = {
   navigation: PropTypes.object,
   actions: PropTypes.object,
-  account: PropTypes.object,
+  accounts: PropTypes.array,
+};
+
+Accounts.defaultProps = {
+  accounts: [],
 };
 
 Accounts.navigationOptions = {
@@ -39,20 +43,19 @@ Accounts.navigationOptions = {
     title: 'Accounts',
     ...Platform.select({
       android: {
-        left: <DrawerButton navigation={navigation}/>,
+        left: <DrawerButton navigation={navigation} />,
       },
     }),
   }),
 };
 
-const mapStateToProps = ({ accounts, account }) => ({
+const mapStateToProps = ({ navigation, accounts }) => ({
+  navigation,
   accounts,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(accountActions, dispatch),
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(accountActions, dispatch),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Accounts);

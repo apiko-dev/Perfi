@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Text, View } from 'react-native';
-import styles from '../styles/TextFieldWithIconStyles';
-import InputField from '../components/InputField';
+import styles from '../../styles/TextFieldWithIconStyles';
+import InputField from './InputField';
 
 const { textFieldWrapper, labelTextStyle, iconWrapper } = styles;
 
@@ -24,8 +24,7 @@ TextFieldWithIcon.propTypes = {
 };
 
 TextFieldWithIcon.defaultProps = {
-  onPress: () => {
-  },
+  onPress: () => {},
 };
 
 export default TextFieldWithIcon;

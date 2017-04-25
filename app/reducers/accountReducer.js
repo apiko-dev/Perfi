@@ -13,13 +13,13 @@ const initialState = {
 const accountReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_ACCOUNT_FIELD: {
-      const { icon, currency, date, name } = state;
-      const isValid = icon && currency && date && name;
+      const currentState = { ...state, isPickerVisible: false, ...action.payload };
+      const isValid = !!currentState.name;
 
-      return { ...state, isPickerVisible: false, ...action.payload, isValid };
+      return { ...currentState, isValid };
     }
 
-    case types.CREATE_ACCOUNT_SUCCESS: {
+    case types.CLEAR_ACCOUNT_FORM: {
       return {
         ...initialState,
         currency: state.currency,
@@ -27,7 +27,7 @@ const accountReducer = (state = initialState, action) => {
     }
 
     default:
-      return state;
+      return { ...state, isValid: !!state.name };
   }
 };
 

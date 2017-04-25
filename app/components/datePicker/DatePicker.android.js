@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
 import { DatePickerAndroid } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import TextInputWithIcon from '../TextFieldWithIcon';
+import TextInputWithIcon from '../common/TextFieldWithIcon';
 import calendarDateFormat from '../../configs/calendarDateFormat';
+import Button from '../common/Button';
 
 const DatePicker = ({ value, onChange }) => {
   const showPicker = async () => {
@@ -15,7 +16,11 @@ const DatePicker = ({ value, onChange }) => {
     });
   };
 
-  const pickerIcon = (<Icon name={'calendar-blank'} size={26} onPress={showPicker} />);
+  const pickerIcon = (<Button
+    icon={'calendar-blank'}
+    IconsSet={Icon}
+    onPress={showPicker}
+  />);
 
   return (<TextInputWithIcon
     icon={pickerIcon}
