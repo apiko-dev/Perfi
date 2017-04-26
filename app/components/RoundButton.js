@@ -3,14 +3,14 @@ import { View } from 'react-native';
 import { Button } from 'react-native-elements';
 import styles from '../styles/AddButtonStyles';
 
-const AddButton = ({ style, color, ...props }) => (
+const RoundButton = ({ style, iconName, color, ...props }) => (
   <View style={style}>
     <Button
       raised
       {...props}
       buttonStyle={styles.buttonStyle}
       icon={{
-        name: 'add',
+        name: iconName,
         size: 32,
         style: {
           marginRight: 0,
@@ -21,9 +21,10 @@ const AddButton = ({ style, color, ...props }) => (
   </View>
 );
 
-AddButton.propTypes = {
+RoundButton.propTypes = {
   color: PropTypes.string,
+  iconName: PropTypes.string,
   style: View.propTypes.style,
 };
 
-export default AddButton;
+export default RoundButton;

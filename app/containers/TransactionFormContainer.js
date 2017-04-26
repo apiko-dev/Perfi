@@ -32,12 +32,14 @@ const enhance = compose(
     onToggleDatePicker: ({ toggleDatePicker, isDatePickerVisible }) => () => {
       toggleDatePicker(!isDatePickerVisible);
     },
-    onSubmit: ({ value, category, date, note, create }) => () => create({
-      value,
-      category: category || 'test category id',
-      date,
-      note: note || 'test note id',
-    }),
+    onSubmit: ({ value, category, date, note, create }) => () => {
+      create({
+        value,
+        category: category || 'test category id',
+        date,
+        note,
+      });
+    },
   }),
   defaultProps({
     value: '0',

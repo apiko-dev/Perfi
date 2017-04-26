@@ -3,7 +3,7 @@ import { TouchableHighlight, View } from 'react-native';
 import { FormInput } from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
-import { AddButton } from '../components';
+import { RoundButton } from '../components';
 
 const TransactionForm = ({
   value,
@@ -18,7 +18,7 @@ const TransactionForm = ({
   onSubmit,
   style,
 }) => (
-  <View>
+  <View style={style.rootStyle}>
     <FormInput
       value={value}
       onChangeText={onChangeValue}
@@ -41,10 +41,12 @@ const TransactionForm = ({
     <FormInput
       value={note}
       placeholder="Note"
+      multiline
       onChangeText={onUpdateNote}
     />
-    <AddButton
-      style={style.buttonStyle}
+    <RoundButton
+      style={style.submitButtonStyle}
+      iconName="check"
       onPress={onSubmit}
     />
     <DateTimePicker

@@ -9,7 +9,7 @@ import styles from './app/styles/AppStyles';
 
 class App extends Component {
   componentDidMount() {
-    persistStore(store, { storage: AsyncStorage }).purge();
+    persistStore(store, { storage: AsyncStorage });
   }
 
   render() {
