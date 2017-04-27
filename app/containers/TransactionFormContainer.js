@@ -1,11 +1,17 @@
 import { defaultProps, compose, mapProps, withHandlers, withState } from 'recompose';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import R from 'ramda';
 import { TransactionForm } from '../components';
-import { createTransaction } from '../actions';
+import { createTransaction, updateTransaction } from '../actions';
 import styles from '../styles/TransactionFormStyles';
 
+const transactionProp = propName => R.path(['transaction', propName]);
+
 const enhance = compose(
-  connect(null, { create: createTransaction }),
+  connect(null, (dispatch, ownProps) => bindActionCreators({
+    submit: ownProps.transaction ? updateTransaction : createTransaction,
+  }, dispatch)),
   mapProps(props => ({
     ...props,
     style: {
@@ -13,18 +19,14 @@ const enhance = compose(
       ...props.style,
     },
   })),
-  withState('value', 'setValue'),
-  withState('category', 'setCategory'),
-  withState('note', 'updateNote'),
-  withState('date', 'setDate'),
+  withState('value', 'setValue', transactionProp('value')),
+  withState('category', 'setCategory', transactionProp('category')),
+  withState('note', 'updateNote', transactionProp('note')),
+  withState('date', 'setDate', transactionProp('date')),
   withState('isDatePickerVisible', 'toggleDatePicker'),
   withHandlers({
-    onChangeValue: ({ setValue }) => (value) => {
-      setValue(value);
-    },
-    onUpdateNote: ({ updateNote }) => (text) => {
-      updateNote(text);
-    },
+    onChangeValue: ({ setValue }) => value => setValue(value),
+    onUpdateNote: ({ updateNote }) => text => updateNote(text),
     onSetDate: ({ setDate, toggleDatePicker }) => (date) => {
       setDate(date);
       toggleDatePicker(false);
@@ -32,17 +34,15 @@ const enhance = compose(
     onToggleDatePicker: ({ toggleDatePicker, isDatePickerVisible }) => () => {
       toggleDatePicker(!isDatePickerVisible);
     },
-    onSubmit: ({ value, category, date, note, create }) => () => {
-      create({
-        value,
-        category: category || 'test category id',
-        date,
-        note,
-      });
+    onSubmit: ({ submit, transaction, ...props }) => () => {
+      const editedProps = R.pick(['value', 'category', 'date', 'note'], props);
+      const propsToSubmit = transaction ? { _id: transaction._id, ...editedProps } : editedProps;
+
+      submit(propsToSubmit);
     },
   }),
   defaultProps({
-    value: '0',
+    value: 0,
     date: new Date(),
     isDatePickerVisible: false,
   }),

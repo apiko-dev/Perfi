@@ -20,7 +20,7 @@ const TransactionForm = ({
 }) => (
   <View style={style.rootStyle}>
     <FormInput
-      value={value}
+      value={value.toString()}
       onChangeText={onChangeValue}
     />
     <FormInput
@@ -58,7 +58,7 @@ const TransactionForm = ({
 );
 
 TransactionForm.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   category: PropTypes.string,
   date: PropTypes.object,
   note: PropTypes.string,
