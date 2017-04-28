@@ -26,6 +26,20 @@ const accountReducer = (state = initialState, action) => {
       };
     }
 
+    case types.HIDE_MODAL: {
+      return {
+        ...initialState,
+        isPickerVisible: false,
+      };
+    }
+
+    case types.SHOW_MODAL: {
+      return {
+        ...initialState,
+        isPickerVisible: true,
+      };
+    }
+
     default:
       return { ...state, isValid: !!state.name };
   }

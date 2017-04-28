@@ -9,7 +9,7 @@ import icons from '../constants/accountIcons';
 const chunkedIconsList = _.chunk(icons, 4);
 const { iconContainerStyle, pickedItemStyle, rowStyle, modalStyle, listStyle } = styles;
 
-const IconsPickerModal = ({ isVisible, onIconPick, selectedIconName }) => {
+const IconsPickerModal = ({ isVisible, onIconPick, hideModal, selectedIconName }) => {
   const ds = new ListView.DataSource({
     rowHasChanged: (r1, r2) => r1 !== r2,
   });
@@ -36,11 +36,12 @@ const IconsPickerModal = ({ isVisible, onIconPick, selectedIconName }) => {
   </View>);
 
   return (
-    <Modal isVisible={isVisible} hideOnBack style={modalStyle}>
+    <Modal isVisible={isVisible} onBackButtonPress={hideModal} style={modalStyle}>
       <ListView
         style={listStyle}
         dataSource={dataSource}
         renderRow={renderRow}
+        enableEmptySections
       />
     </Modal>
   );
@@ -50,6 +51,7 @@ IconsPickerModal.propTypes = {
   isVisible: PropTypes.bool,
   onIconPick: PropTypes.func,
   selectedIconName: PropTypes.string,
+  hideModal: PropTypes.func,
 };
 
 export default IconsPickerModal;

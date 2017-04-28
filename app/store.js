@@ -6,12 +6,12 @@ import appReducer from './reducers';
 
 const enhancer = compose(
   devToolsEnhancer({ realtime: true }),
-  applyMiddleware(thunk),
 );
 
 const store = createStore(
   appReducer,
   enhancer,
+  applyMiddleware(thunk),
   autoRehydrate(),
 );
 

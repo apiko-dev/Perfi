@@ -17,7 +17,10 @@ const styles = create({
   listItemStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 1,
+    borderBottomWidth: 0.5,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderTopWidth: 0.5,
     borderColor: '#000000',
     paddingBottom: 10,
     paddingTop: 10,

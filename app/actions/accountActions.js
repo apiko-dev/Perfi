@@ -7,6 +7,18 @@ export function updateData(fieldObject) {
   };
 }
 
+export function hideModal() {
+  return {
+    type: types.HIDE_MODAL,
+  };
+}
+
+export function showModal() {
+  return {
+    type: types.SHOW_MODAL,
+  };
+}
+
 export function clearForm() {
   return {
     type: types.CLEAR_ACCOUNT_FORM,

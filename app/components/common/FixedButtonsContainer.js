@@ -9,7 +9,10 @@ const FixedButtonsContainer = ({ children }) => (<View
 </View>);
 
 FixedButtonsContainer.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
 };
 
 export default FixedButtonsContainer;

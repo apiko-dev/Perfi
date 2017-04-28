@@ -28,6 +28,7 @@ const AccountsList = ({ accounts, navigation, updateAccount }) => {
     dataSource={dataSource}
     renderRow={renderRow}
     style={style.listStyle}
+    enableEmptySections
   />);
 };
 

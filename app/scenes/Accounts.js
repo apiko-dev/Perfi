@@ -53,7 +53,7 @@ Accounts.navigationOptions = {
     title: 'Accounts',
     ...Platform.select({
       android: {
-        left: <DrawerButton navigation={navigation}/>,
+        left: <DrawerButton navigation={navigation} />,
       },
     }),
   }),

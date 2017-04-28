@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import IconsPickerModal from '../components/IconsPickerModal';
@@ -14,6 +14,7 @@ import CurrencyPicker from '../components/currencyPicker/CurrencyPicker';
 import DatePicker from '../components/datePicker/DatePicker';
 import FixedButtonsContainer from '../components/common/FixedButtonsContainer';
 import scenes from '../constants/scenes';
+import DeleteAccountButton from '../components/navButtons/DeleteAccountButton';
 
 const { rowStyle, rowStyle__dark } = styles;
 
@@ -24,7 +25,14 @@ const AccountEditor = ({ navigation, account, actions, defaultCurrency }) => {
     isValid, isPickerVisible,
   } = account;
 
-  const { createAccount, updateAccount, updateCurrency, updateData } = actions;
+  const {
+    createAccount,
+    updateAccount,
+    updateCurrency,
+    updateData,
+    showModal,
+    hideModal,
+  } = actions;
   const onSubmit = () => {
     const { id, ...data } = account;
 
@@ -38,13 +46,12 @@ const AccountEditor = ({ navigation, account, actions, defaultCurrency }) => {
     }
   };
 
-  const showIconPicker = () => updateData({ isPickerVisible: true });
   const onCurrencyChange = value => updateCurrency(value);
   const onDataInput = type =>
     value => updateData({ [type]: value });
 
   const iconsPickerButton = (<Button
-    onPress={showIconPicker}
+    onPress={showModal}
     icon={icon}
     raised
   />);
@@ -77,12 +84,16 @@ const AccountEditor = ({ navigation, account, actions, defaultCurrency }) => {
           label={'Initial balance'}
           keyboardType="numeric"
         />
-        <DatePicker value={date} onChange={onDataInput('date')} />
+        <DatePicker
+          value={date}
+          onChange={onDataInput('date')}
+        />
       </View>
       <IconsPickerModal
         isVisible={isPickerVisible}
         onIconPick={onDataInput('icon')}
         selectedIconName={icon}
+        hideModal={hideModal}
       />
       { isValid && submitButton }
     </SceneContentWrapper>
@@ -110,6 +121,11 @@ AccountEditor.navigationOptions = {
   header: (navigation, defaultHeader) => ({
     ...defaultHeader,
     title: navigation.state.params.title,
+    ...Platform.select({
+      android: {
+        right: <DeleteAccountButton navigation={navigation} />,
+      },
+    }),
   }),
 };
 

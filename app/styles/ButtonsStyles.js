@@ -28,6 +28,16 @@ const styles = create({
     bottom: 0,
     padding: 10,
     alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  nuvButtonsContainerStyle: {
+    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    borderWidth: 1,
+    paddingLeft: 30,
+    paddingRight: 30,
   },
 });
 
