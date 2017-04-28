@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import { Button } from 'react-native-elements';
-import styles from '../styles/AddButtonStyles';
+import styles from '../styles/RoundButtonStyles';
 
 const RoundButton = ({ style, iconName, color, ...props }) => (
   <View style={style}>

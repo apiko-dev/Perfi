@@ -4,6 +4,8 @@ import scenes from '../constants/scenes';
 import { RoundButton, DrawerButton } from '../components';
 import styles from '../styles/DashboardStyles';
 
+import Calculator from '../containers/CalculatorContainer';
+
 const Dashboard = ({ navigation }) => (
   <View style={styles.rootStyle}>
     <Text>Dashboard</Text>
@@ -12,6 +14,7 @@ const Dashboard = ({ navigation }) => (
       iconName="add"
       onPress={() => navigation.navigate(scenes.TransactionEditor)}
     />
+    <Calculator expr="12" />
   </View>
 );
 
