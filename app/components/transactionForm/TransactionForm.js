@@ -3,7 +3,7 @@ import { TouchableHighlight, View } from 'react-native';
 import { FormInput } from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
-import { RoundButton } from '../components';
+import RoundButton from '../RoundButton';
 
 const TransactionForm = ({
   value,
