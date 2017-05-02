@@ -9,9 +9,11 @@ const backspaceIcon = {
 };
 
 const Calculator = ({
+  expr,
   onPressToken,
   onClear,
-  expr,
+  onBackspace,
+  onSubmit,
 }) => (
   <View>
     <View style={styles.expressionContainerStyle}>
@@ -21,7 +23,7 @@ const Calculator = ({
       <Button title="C" onPress={onClear} />
       <Button token="/" onPress={onPressToken} />
       <Button token="*" onPress={onPressToken} />
-      <Button icon={backspaceIcon} onPress={onClear} />
+      <Button icon={backspaceIcon} onPress={onBackspace} />
     </View>
     <View style={styles.keyboardRowStyle}>
       <Button token="7" onPress={onPressToken} />
@@ -52,7 +54,7 @@ const Calculator = ({
         containerStyle={styles.submitButtonContainerStyle}
         buttonStyle={styles.submitButtonStyle}
         title="="
-        onPress={() => {}}
+        onPress={onSubmit}
       />
     </View>
   </View>
@@ -62,6 +64,8 @@ Calculator.propTypes = {
   expr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onPressToken: PropTypes.func,
   onClear: PropTypes.func,
+  onBackspace: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default Calculator;
