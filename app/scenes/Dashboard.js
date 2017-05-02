@@ -4,7 +4,7 @@ import scenes from '../constants/scenes';
 import { RoundButton, DrawerButton } from '../components';
 import styles from '../styles/DashboardStyles';
 
-import Calculator from '../containers/CalculatorContainer';
+import { Calculator } from '../components';
 
 const Dashboard = ({ navigation }) => (
   <View style={styles.rootStyle}>
@@ -35,3 +35,5 @@ Dashboard.navigationOptions = {
 };
 
 export default Dashboard;
+
+

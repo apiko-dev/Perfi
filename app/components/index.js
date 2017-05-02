@@ -1,4 +1,4 @@
-import Calculator from './Calculator';
+import Calculator from './calculator';
 import DrawerButton from './DrawerButton';
 import NavIcon from './NavIcon';
 import PropsProxyHOC from './PropsProxyHOC';

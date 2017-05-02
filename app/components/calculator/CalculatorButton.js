@@ -1,27 +1,26 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import { Button } from 'react-native-elements';
-import styles from '../styles/CalculatorButtonStyles';
+import styles from '../../styles/CalculatorButtonStyles';
 
 const CalculatorButton = (props) => {
   const {
-    title,
     token,
-    onPressToken,
+    title,
     onPress,
     buttonStyle,
     containerStyle,
     ...options
   } = props;
 
-  const onPressButton = onPressToken ? () => onPressToken(token) : onPress;
+  const onPressButton = token ? () => onPress(token) : onPress;
 
   return (
     <View style={[styles.containerStyle, containerStyle]}>
       <Button
         {...options}
         buttonStyle={[styles.buttonStyle, buttonStyle]}
-        title={title || token}
+        title={token || title}
         onPress={onPressButton}
       />
     </View>
@@ -34,7 +33,6 @@ CalculatorButton.propTypes = {
   title: PropTypes.string,
   token: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onPress: PropTypes.func,
-  onPressToken: PropTypes.func,
 };
 
 export default CalculatorButton;
