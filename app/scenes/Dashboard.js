@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Platform, Text, View } from 'react-native';
 import scenes from '../constants/scenes';
-import { RoundButton, DrawerButton, Calculator } from '../components';
+import { RoundButton, DrawerButton } from '../components';
 import styles from '../styles/DashboardStyles';
 
 const Dashboard = ({ navigation }) => (
@@ -12,7 +12,6 @@ const Dashboard = ({ navigation }) => (
       iconName="add"
       onPress={() => navigation.navigate(scenes.TransactionEditor)}
     />
-    <Calculator onSubmit={result => alert(result)} />
   </View>
 );
 

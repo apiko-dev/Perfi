@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 15,
   },
+  calculatorModalStyle: {
+    justifyContent: 'flex-end',
+    margin: 0,
+  },
 });
 
 export default styles;

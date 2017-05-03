@@ -21,15 +21,24 @@ const enhance = compose(
   withState('note', 'updateNote', transactionProp('note')),
   withState('date', 'setDate', transactionProp('date')),
   withState('isDatePickerVisible', 'toggleDatePicker'),
+  withState('isCalculatorVisible', 'toggleCalculator'),
   withHandlers({
-    onChangeValue: ({ setValue }) => value => setValue(value),
-    onUpdateNote: ({ updateNote }) => text => updateNote(text),
+    onChangeValue: ({ setValue, toggleCalculator }) => (value) => {
+      setValue(value);
+      toggleCalculator(false);
+    },
+    onUpdateNote: ({ updateNote }) => (text) => {
+      updateNote(text);
+    },
     onSetDate: ({ setDate, toggleDatePicker }) => (date) => {
       setDate(date);
       toggleDatePicker(false);
     },
     onToggleDatePicker: ({ toggleDatePicker, isDatePickerVisible }) => () => {
       toggleDatePicker(!isDatePickerVisible);
+    },
+    onToggleCalculator: ({ toggleCalculator, isCalculatorVisible }) => () => {
+      toggleCalculator(!isCalculatorVisible);
     },
     onSubmit: ({ submit, transaction, ...props }) => () => {
       const editedProps = R.pick(['value', 'category', 'date', 'note'], props);
@@ -42,6 +51,7 @@ const enhance = compose(
     value: 0,
     date: new Date(),
     isDatePickerVisible: false,
+    isCalculatorVisible: false,
   }),
 );
 

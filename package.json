@@ -37,6 +37,7 @@
     "react": "~15.4.0",
     "react-native": "0.42.3",
     "react-native-elements": "^0.11.2",
+    "react-native-modal": "^2.3.2",
     "react-native-modal-datetime-picker": "^4.4.0",
     "react-native-platform-stylesheet": "0.0.6",
     "react-native-popup-menu": "^0.7.3",
