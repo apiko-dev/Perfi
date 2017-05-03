@@ -40,11 +40,12 @@ const enhance = compose(
     onToggleCalculator: ({ toggleCalculator, isCalculatorVisible }) => () => {
       toggleCalculator(!isCalculatorVisible);
     },
-    onSubmit: ({ submit, transaction, ...props }) => () => {
+    onSubmit: ({ submit, transaction, onClose, ...props }) => () => {
       const editedProps = R.pick(['value', 'category', 'date', 'note'], props);
       const propsToSubmit = transaction ? { _id: transaction._id, ...editedProps } : editedProps;
 
       submit(propsToSubmit);
+      onClose();
     },
   }),
   defaultProps({
