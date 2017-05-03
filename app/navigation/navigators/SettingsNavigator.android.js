@@ -1,10 +1,10 @@
 import { StackNavigator } from 'react-navigation';
-import { Settings } from '../../scenes';
-import scenes from '../../constants/scenes';
+import { Settings } from '../../screens';
+import screens from '../../constants/screens';
 import navOptions from '../../utils/navOptions';
 
 const SettingsNavigator = StackNavigator({
-  [scenes.Settings]: {
+  [screens.Settings]: {
     screen: Settings,
   },
 }, {

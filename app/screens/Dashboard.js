@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Platform, Text, View } from 'react-native';
-import scenes from '../constants/scenes';
+import screens from '../constants/screens';
 import { RoundButton, DrawerButton } from '../components';
 import styles from '../styles/DashboardStyles';
 
@@ -10,7 +10,7 @@ const Dashboard = ({ navigation }) => (
     <RoundButton
       style={styles.addButtonStyle}
       iconName="add"
-      onPress={() => navigation.navigate(scenes.TransactionEditor)}
+      onPress={() => navigation.navigate(screens.TransactionEditor)}
     />
   </View>
 );

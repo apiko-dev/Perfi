@@ -1,11 +1,11 @@
-import scenes from '../../constants/scenes';
-import { Accounts, AccountEditor } from '../../scenes';
+import screens from '../../constants/screens';
+import { Accounts, AccountEditor } from '../../screens';
 
 const Routes = {
-  [scenes.Accounts]: {
+  [screens.Accounts]: {
     screen: Accounts,
   },
-  [scenes.AccountEditor]: {
+  [screens.AccountEditor]: {
     screen: AccountEditor,
   },
 };

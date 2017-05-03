@@ -1,11 +1,11 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import scenes from '../constants/scenes';
+import screens from '../constants/screens';
 
 const DrawerButton = ({ navigation }) => (
   <TouchableOpacity
-    onPress={() => navigation.navigate(scenes.DrawerOpen)}
+    onPress={() => navigation.navigate(screens.DrawerOpen)}
   >
     <MaterialIcons name="menu" size={32} />
   </TouchableOpacity>

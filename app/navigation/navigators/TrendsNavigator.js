@@ -1,10 +1,10 @@
 import { StackNavigator } from 'react-navigation';
-import { Trends } from '../../scenes';
-import scenes from '../../constants/scenes';
+import { Trends } from '../../screens';
+import screens from '../../constants/screens';
 import navOptions from '../../utils/navOptions';
 
 const TrendsNavigator = StackNavigator({
-  [scenes.Trends]: {
+  [screens.Trends]: {
     screen: Trends,
   },
 }, {
