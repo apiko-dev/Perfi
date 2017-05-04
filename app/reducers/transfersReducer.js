@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import actionTypes from '../constants/actionTypes';
-import { insert, update, remove } from '../utils/mapHelper';
+import { insert, update, remove } from '../utils/stateHelper';
 
 const createTransfer = (props) => {
   const { value, from, to, date = new Date(), note } = props;

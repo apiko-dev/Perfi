@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 import actionTypes from '../constants/actionTypes';
 import defaultCategories from '../constants/defaultCategories';
-import { insert, insertAll, update, remove } from '../utils/mapHelper';
+import { insert, insertAll, update, remove } from '../utils/stateHelper';
 
 const createCategory = ({ name, icon, type }) => ({ name, icon, type });
 
