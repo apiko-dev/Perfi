@@ -17,7 +17,7 @@ const initialState = insertAll({}, defaultAccounts);
 
 const accountsReducer = handleActions({
   [actionTypes.CREATE_ACCOUNT]: (state, { payload }) => insert(state, createAccount(payload)),
-  [actionTypes.UPDATE_ACCOUNT]: (state, { payload }) => update(state, payload._id, payload),
+  [actionTypes.UPDATE_ACCOUNT]: (state, { payload }) => update(state, payload.id, payload),
   [actionTypes.DELETE_ACCOUNT]: (state, { payload }) => remove(state, payload),
 }, initialState);
 

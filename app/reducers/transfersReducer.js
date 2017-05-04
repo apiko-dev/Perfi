@@ -12,7 +12,7 @@ const initialState = {};
 
 const transfersReducer = handleActions({
   [actionTypes.CREATE_TRANSFER]: (state, { payload }) => insert(state, createTransfer(payload)),
-  [actionTypes.UPDATE_TRANSFER]: (state, { payload }) => update(state, payload._id, payload),
+  [actionTypes.UPDATE_TRANSFER]: (state, { payload }) => update(state, payload.id, payload),
   [actionTypes.DELETE_TRANSFER]: (state, { payload }) => remove(state, payload),
 }, initialState);
 

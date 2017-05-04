@@ -16,7 +16,7 @@ describe('Categories reducer', () => {
 
   it('should return the initial state', () => {
     expect(
-      R.map(R.omit(['_id', 'initialDate']), R.values(initialState)),
+      R.map(R.omit(['id', 'initialDate']), R.values(initialState)),
     ).toEqual(defaultCategories);
   });
 
@@ -30,7 +30,7 @@ describe('Categories reducer', () => {
 
     const newCategoryId = getNewCategoryId(initialState, state);
 
-    expect(R.omit(['_id'], state[newCategoryId])).toEqual(testCategoryProps);
+    expect(R.omit(['id'], state[newCategoryId])).toEqual(testCategoryProps);
   });
 
   it('should update the category', () => {
@@ -49,11 +49,11 @@ describe('Categories reducer', () => {
 
     const updatedState = reducer(state, {
       type: actionTypes.UPDATE_CATEGORY,
-      payload: { _id: newCategoryId, ...newCategoryProps },
+      payload: { id: newCategoryId, ...newCategoryProps },
     });
 
     expect(R.values(updatedState)).toHaveLength(3);
-    expect(R.omit(['_id'], updatedState[newCategoryId])).toEqual(newCategoryProps);
+    expect(R.omit(['id'], updatedState[newCategoryId])).toEqual(newCategoryProps);
   });
 
   it('should delete the category', () => {

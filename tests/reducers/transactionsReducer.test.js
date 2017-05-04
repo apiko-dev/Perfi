@@ -31,7 +31,7 @@ describe('Transactions reducer', () => {
 
     const newTransactionId = getNewTransactionId(initialState, state);
 
-    expect(R.omit(['_id'], state[newTransactionId])).toEqual(testTransactionProps);
+    expect(R.omit(['id'], state[newTransactionId])).toEqual(testTransactionProps);
   });
 
   it('should update the transaction', () => {
@@ -52,11 +52,11 @@ describe('Transactions reducer', () => {
 
     const updatedState = reducer(state, {
       type: actionTypes.UPDATE_TRANSACTION,
-      payload: { _id: newTransactionId, ...newTransactionProps },
+      payload: { id: newTransactionId, ...newTransactionProps },
     });
 
     expect(R.values(updatedState)).toHaveLength(1);
-    expect(R.omit(['_id'], updatedState[newTransactionId])).toEqual(newTransactionProps);
+    expect(R.omit(['id'], updatedState[newTransactionId])).toEqual(newTransactionProps);
   });
 
   it('should delete the transaction', () => {

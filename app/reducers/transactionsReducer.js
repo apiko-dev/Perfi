@@ -15,7 +15,7 @@ const transactionsReducer = handleActions({
     state,
     createTransaction(payload),
   ),
-  [actionTypes.UPDATE_TRANSACTION]: (state, { payload }) => update(state, payload._id, payload),
+  [actionTypes.UPDATE_TRANSACTION]: (state, { payload }) => update(state, payload.id, payload),
   [actionTypes.DELETE_TRANSACTION]: (state, { payload }) => remove(state, payload),
 }, initialState);
 
