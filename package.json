@@ -41,6 +41,7 @@
     "react-native-modal-datetime-picker": "^4.4.0",
     "react-native-platform-stylesheet": "0.0.6",
     "react-native-popup-menu": "^0.7.3",
+    "react-native-progress": "^3.2.1",
     "react-navigation": "1.0.0-beta.7",
     "react-redux": "^5.0.3",
     "recompose": "^0.23.1",
