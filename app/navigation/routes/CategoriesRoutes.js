@@ -1,11 +1,11 @@
-import scenes from '../../constants/scenes';
-import { Categories, CategoryEditor } from '../../scenes';
+import screens from '../../constants/screens';
+import { Categories, CategoryEditor } from '../../screens';
 
 const Routes = {
-  [scenes.Categories]: {
+  [screens.Categories]: {
     screen: Categories,
   },
-  [scenes.CategoryEditor]: {
+  [screens.CategoryEditor]: {
     screen: CategoryEditor,
   },
 };

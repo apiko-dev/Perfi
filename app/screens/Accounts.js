@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Button from '../components/common/Button';
-import scenes from '../constants/scenes';
+import screens from '../constants/screens';
 import { DrawerButton } from '../components';
 import AccountsList from '../components/accounts/AccountsList';
 import FixedButtonsContainer from '../components/common/FixedButtonsContainer';
@@ -13,10 +13,11 @@ import * as accountActions from '../actions/accountActions';
 const Accounts = ({ navigation, accounts, actions }) => {
   const onAddButtonClick = () => {
     actions.clearForm();
-    navigation.navigate(scenes.AccountEditor, {
+    navigation.navigate(screens.AccountEditor, {
       title: 'Add account',
     });
   };
+
   return (
     <SceneContentWrapper>
       <AccountsList

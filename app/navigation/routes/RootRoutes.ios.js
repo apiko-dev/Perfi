@@ -1,4 +1,4 @@
-import scenes from '../../constants/scenes';
+import screens from '../../constants/screens';
 import {
   DashboardNavigator,
   TrendsNavigator,
@@ -6,13 +6,13 @@ import {
 } from '../navigators';
 
 const Routes = {
-  [scenes.DashboardRoot]: {
+  [screens.DashboardRoot]: {
     screen: DashboardNavigator,
   },
-  [scenes.TrendsRoot]: {
+  [screens.TrendsRoot]: {
     screen: TrendsNavigator,
   },
-  [scenes.SettingsRoot]: {
+  [screens.SettingsRoot]: {
     screen: SettingsNavigator,
   },
 };

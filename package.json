@@ -7,6 +7,7 @@
     "eslint-config-airbnb": "^14.1.0",
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jest": "^19.0.1",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "eslint-plugin-react-native": "^2.3.1",
@@ -17,7 +18,7 @@
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-native-scripts start ./appnnpm/App.js",
+    "start": "react-native-scripts start ./app/App.js",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
@@ -34,17 +35,23 @@
     "faker": "^4.1.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
+    "expr-eval": "^1.0.0",
+    "ramda": "^0.23.0",
     "react": "~15.4.0",
     "react-native": "0.42.3",
     "react-native-elements": "^0.11.2",
     "react-native-modal": "^2.3.2",
+    "react-native-modal-datetime-picker": "^4.4.0",
     "react-native-platform-stylesheet": "0.0.6",
     "react-native-popup-menu": "^0.7.3",
     "react-native-vector-icons": "^4.0.1",
     "react-navigation": "1.0.0-beta.7",
     "react-redux": "^5.0.3",
+    "recompose": "^0.23.1",
     "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "redux-actions": "^2.0.2",
     "redux-persist": "^4.6.0",
-    "redux-thunk": "^2.2.0"
+    "uuid": "^3.0.1"
   }
 }

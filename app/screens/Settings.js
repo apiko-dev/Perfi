@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Button, Platform, Text, View } from 'react-native';
-import scenes from '../constants/scenes';
+import screens from '../constants/screens';
 import { DrawerButton } from '../components';
 
 const Settings = ({ navigation }) => (
@@ -10,11 +10,11 @@ const Settings = ({ navigation }) => (
       <View>
         <Button
           title="Accounts"
-          onPress={() => navigation.navigate(scenes.Accounts)}
+          onPress={() => navigation.navigate(screens.Accounts)}
         />
         <Button
           title="Categories"
-          onPress={() => navigation.navigate(scenes.Categories)}
+          onPress={() => navigation.navigate(screens.Categories)}
         />
       </View>
     )}

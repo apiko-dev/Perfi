@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { TouchableWithoutFeedback, Text, View } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from '../../styles/AccountsStyles';
 
 const { listItemStyle, textStyle } = styles;
@@ -8,7 +8,7 @@ const { listItemStyle, textStyle } = styles;
 const AccountsListItem = ({ name, icon, initialBalance, onPress }) => (
   <TouchableWithoutFeedback onPress={onPress}>
     <View style={listItemStyle}>
-      <MaterialIcons name={icon} size={26} />
+      <MaterialCommunityIcons name={icon} size={26} />
       <Text style={textStyle}>{ name }</Text>
       <Text>{ initialBalance }</Text>
     </View>

@@ -1,14 +1,20 @@
 import { combineReducers } from 'redux';
+import accounts from './accountsReducer';
+import categories from './categoriesReducer';
+import transactions from './transactionsReducer';
+import transfers from './transfersReducer';
 import navigator from './navigatorReducer';
 import account from './accountReducer';
-import accounts from './accountsReducer';
 import defaultCurrency from './currencyReducer';
 
 const appReducer = combineReducers({
-  defaultCurrency,
+  accounts,
+  categories,
+  transactions,
+  transfers,
   navigator,
   account,
-  accounts,
+  defaultCurrency,
 });
 
 export default appReducer;

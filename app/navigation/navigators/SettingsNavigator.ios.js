@@ -1,12 +1,12 @@
 import { StackNavigator } from 'react-navigation';
-import { Settings } from '../../scenes';
+import { Settings } from '../../screens';
 import AccountsRoutes from '../routes/AccountsRoutes';
 import CategoriesRoutes from '../routes/CategoriesRoutes';
-import scenes from '../../constants/scenes';
+import screens from '../../constants/screens';
 import navOptions from '../../utils/navOptions';
 
 const SettingsNavigator = StackNavigator({
-  [scenes.Settings]: {
+  [screens.Settings]: {
     screen: Settings,
   },
   ...AccountsRoutes,

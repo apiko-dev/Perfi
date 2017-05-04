@@ -1,14 +1,16 @@
 import React, { PropTypes } from 'react';
-import { Button, Platform, Text, View } from 'react-native';
-import scenes from '../constants/scenes';
-import { DrawerButton } from '../components';
+import { Platform, Text, View } from 'react-native';
+import screens from '../constants/screens';
+import { RoundButton, DrawerButton } from '../components';
+import styles from '../styles/DashboardStyles';
 
 const Dashboard = ({ navigation }) => (
-  <View>
+  <View style={styles.rootStyle}>
     <Text>Dashboard</Text>
-    <Button
-      title="Add transaction"
-      onPress={() => navigation.navigate(scenes.TransactionEditor)}
+    <RoundButton
+      style={styles.addButtonStyle}
+      iconName="add"
+      onPress={() => navigation.navigate(screens.TransactionEditor)}
     />
   </View>
 );

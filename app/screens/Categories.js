@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Button, Platform, Text, View } from 'react-native';
-import scenes from '../constants/scenes';
+import screens from '../constants/screens';
 import { DrawerButton } from '../components';
 
 const Categories = ({ navigation }) => (
@@ -8,11 +8,11 @@ const Categories = ({ navigation }) => (
     <Text>Categories</Text>
     <Button
       title="Edit category"
-      onPress={() => navigation.navigate(scenes.CategoryEditor, { title: 'Edit category' })}
+      onPress={() => navigation.navigate(screens.CategoryEditor, { title: 'Edit category' })}
     />
     <Button
       title="Add category"
-      onPress={() => navigation.navigate(scenes.CategoryEditor, { title: 'Add category' })}
+      onPress={() => navigation.navigate(screens.CategoryEditor, { title: 'Add category' })}
     />
   </View>
 );

@@ -1,18 +1,22 @@
+import { autoRehydrate, persistStore } from 'redux-persist';
 import { createStore, compose, applyMiddleware } from 'redux';
-import { autoRehydrate } from 'redux-persist';
 import thunk from 'redux-thunk';
 import devToolsEnhancer from 'remote-redux-devtools';
+import { AsyncStorage } from 'react-native';
 import appReducer from './reducers';
 
 const enhancer = compose(
   devToolsEnhancer({ realtime: true }),
+  autoRehydrate(),
+  applyMiddleware(thunk),
 );
 
 const store = createStore(
   appReducer,
+  undefined,
   enhancer,
-  applyMiddleware(thunk),
-  autoRehydrate(),
 );
+
+persistStore(store, { storage: AsyncStorage });
 
 export default store;
