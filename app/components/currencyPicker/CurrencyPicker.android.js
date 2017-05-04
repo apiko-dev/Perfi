@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Picker } from 'react-native';
 import currencies from '../../constants/currencies';
 import styles from '../../styles/FormStyles';

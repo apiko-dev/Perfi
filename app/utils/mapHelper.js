@@ -6,7 +6,7 @@ export const insert = (map, item) => {
 
   return {
     ...map,
-    [itemId]: { ...item, _id: itemId },
+    [itemId]: { ...item, id: itemId },
   };
 };
 

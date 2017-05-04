@@ -4,17 +4,17 @@ import AccountsListItem from './AccountsListItem';
 import style from '../../styles/AccountsStyles';
 import screens from '../../constants/screens';
 
-const AccountsList = ({ accounts, navigation, updateAccount }) => {
+const AccountsList = ({ accounts, navigation }) => {
   const ds = new ListView.DataSource({
     rowHasChanged: (r1, r2) => r1 !== r2,
   });
 
   const dataSource = ds.cloneWithRows(accounts);
-  const onPress = item =>
+  const onPress = account =>
     () => {
-      updateAccount(item);
       navigation.navigate(screens.AccountEditor, {
-        title: `Edit ${item.name}`,
+        title: `Edit ${account.name}`,
+        account: { ...account, isValid: true },
       });
     };
 
@@ -42,7 +42,6 @@ AccountsList.propTypes = {
     initialDate: PropTypes.instanceOf(Date),
   })),
   navigation: PropTypes.object,
-  updateAccount: PropTypes.func,
 };
 
 export default AccountsList;

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { DatePickerAndroid } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import TextInputWithIcon from '../common/TextFieldWithIcon';
 import calendarDateFormat from '../../configs/calendarDateFormat';
 import Button from '../common/Button';
@@ -18,7 +18,7 @@ const DatePicker = ({ value, onChange }) => {
 
   const pickerIcon = (<Button
     icon={'calendar-blank'}
-    IconsSet={Icon}
+    iconsSet={MaterialCommunityIcons}
     onPress={showPicker}
   />);
 

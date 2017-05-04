@@ -5,7 +5,7 @@ import styles from '../../styles/ButtonsStyles';
 
 const { buttonWrapper, buttonWrapper__raised, buttonWrapper__big } = styles;
 
-const Button = ({ icon, onPress, raised, big, IconsSet }) => (<TouchableOpacity
+const Button = ({ icon, onPress, raised, big, iconsSet: IconsSet }) => (<TouchableOpacity
   onPress={onPress}
   style={[
     buttonWrapper,
@@ -21,11 +21,11 @@ Button.propTypes = {
   onPress: PropTypes.func,
   raised: PropTypes.bool,
   big: PropTypes.bool,
-  IconsSet: PropTypes.func,
+  iconsSet: PropTypes.func,
 };
 
 Button.defaultProps = {
-  IconsSet: MaterialIcons,
+  iconsSet: MaterialIcons,
 };
 
 export default Button;

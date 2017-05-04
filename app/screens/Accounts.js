@@ -1,18 +1,14 @@
 import React, { PropTypes } from 'react';
 import { Platform } from 'react-native';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Button from '../components/common/Button';
 import screens from '../constants/screens';
 import { DrawerButton } from '../components';
-import AccountsList from '../components/accounts/AccountsList';
+import AccountsList from '../components/accountsList/AccountsList';
 import FixedButtonsContainer from '../components/common/FixedButtonsContainer';
 import SceneContentWrapper from '../components/common/SceneContentWrapper';
-import * as accountActions from '../actions/accountActions';
 
-const Accounts = ({ navigation, accounts, actions }) => {
+const Accounts = ({ navigation, accounts, updateAccount }) => {
   const onAddButtonClick = () => {
-    actions.clearForm();
     navigation.navigate(screens.AccountEditor, {
       title: 'Add account',
     });
@@ -23,7 +19,7 @@ const Accounts = ({ navigation, accounts, actions }) => {
       <AccountsList
         accounts={accounts}
         navigation={navigation}
-        updateAccount={actions.updateData}
+        updateAccount={updateAccount}
       />
 
       <FixedButtonsContainer>
@@ -40,12 +36,8 @@ const Accounts = ({ navigation, accounts, actions }) => {
 
 Accounts.propTypes = {
   navigation: PropTypes.object,
-  accounts: PropTypes.array,
-  actions: PropTypes.object,
-};
-
-Accounts.defaultProps = {
-  accounts: [],
+  accounts: PropTypes.object,
+  updateAccount: PropTypes.func,
 };
 
 Accounts.navigationOptions = {
@@ -60,12 +52,4 @@ Accounts.navigationOptions = {
   }),
 };
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(accountActions, dispatch),
-});
-
-const mapStateToProps = ({ accounts }) => ({
-  accounts,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Accounts);
+export default Accounts;

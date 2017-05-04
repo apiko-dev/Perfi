@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { View, ListView, TouchableOpacity } from 'react-native';
 import _ from 'lodash';
 import Modal from 'react-native-modal';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from '../styles/IconsPickerStyles';
 import icons from '../constants/accountIcons';
 
@@ -27,7 +27,7 @@ const IconsPickerModal = ({ isVisible, onIconPick, hideModal, selectedIconName }
         style={iconStyle}
         onPress={() => onIconPick(name)}
       >
-        <MaterialIcons
+        <MaterialCommunityIcons
           name={name}
           size={26}
         />
