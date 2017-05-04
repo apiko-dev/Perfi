@@ -42,7 +42,7 @@ const enhance = compose(
     },
     onSubmit: ({ submit, transaction, onClose, ...props }) => () => {
       const editedProps = R.pick(['value', 'category', 'date', 'note'], props);
-      const propsToSubmit = transaction ? { _id: transaction._id, ...editedProps } : editedProps;
+      const propsToSubmit = transaction ? { id: transaction.id, ...editedProps } : editedProps;
 
       submit(propsToSubmit);
       onClose();

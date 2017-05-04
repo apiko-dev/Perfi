@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import actionTypes from '../constants/actionTypes';
-import { insert, insertAll, update, remove } from '../utils/mapHelper';
+import { insert, insertAll, update, remove } from '../utils/stateHelper';
 
 const createAccount = (props) => {
   const { name, icon, balance = 0, initialBalance = 0, initialDate = new Date() } = props;
@@ -17,7 +17,7 @@ const initialState = insertAll({}, defaultAccounts);
 
 const accountsReducer = handleActions({
   [actionTypes.CREATE_ACCOUNT]: (state, { payload }) => insert(state, createAccount(payload)),
-  [actionTypes.UPDATE_ACCOUNT]: (state, { payload }) => update(state, payload._id, payload),
+  [actionTypes.UPDATE_ACCOUNT]: (state, { payload }) => update(state, payload.id, payload),
   [actionTypes.DELETE_ACCOUNT]: (state, { payload }) => remove(state, payload),
 }, initialState);
 

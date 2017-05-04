@@ -5,8 +5,8 @@ import { AsyncStorage } from 'react-native';
 import appReducer from './reducers';
 
 const enhancer = compose(
-  devToolsEnhancer({ realtime: true }),
   autoRehydrate(),
+  devToolsEnhancer({ realtime: true }),
 );
 
 const store = createStore(
