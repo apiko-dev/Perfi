@@ -17,7 +17,7 @@ const Accounts = ({ navigation, accounts, updateAccount }) => {
   return (
     <SceneContentWrapper>
       <AccountsList
-        accounts={accounts}
+        accounts={accounts.byId}
         navigation={navigation}
         updateAccount={updateAccount}
       />

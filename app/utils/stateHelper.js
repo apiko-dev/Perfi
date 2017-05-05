@@ -2,7 +2,7 @@ import R from 'ramda';
 
 export const insert = (state, item) => {
   const { byId = {}, ids = [] } = state;
-  const id = ids.length > 0 ? Math.max(...ids) + 1 : 0;
+  const id = `${ids.length > 0 ? Math.max(...ids) + 1 : 0}`;
 
   return {
     byId: {

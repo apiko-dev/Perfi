@@ -36,7 +36,7 @@ const AccountForm = (props) => {
   />);
 
   const submitButton = (<FixedButtonsContainer><Button
-    onPress={onSubmit}
+    onPress={() => onSubmit(props)}
     icon="check"
     raised
     big

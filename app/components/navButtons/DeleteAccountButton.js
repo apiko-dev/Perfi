@@ -8,7 +8,7 @@ const DeleteAccountButton = ({ account: { id } = {}, navigation, deleteAccount }
     navigation.dispatch(NavigationActions.back());
   };
 
-  if (id) {
+  if (id || id >= 0) {
     return (<Button
       icon="delete"
       onPress={onDeleteAccount}

@@ -34,12 +34,12 @@ const AccountsList = ({ accounts, navigation }) => {
 
 AccountsList.propTypes = {
   accounts: PropTypes.objectOf(PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     name: PropTypes.string,
     icon: PropTypes.string,
     balance: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     initialBalance: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    initialDate: PropTypes.instanceOf(Date),
+    initialDate: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
   })),
   navigation: PropTypes.object,
 };

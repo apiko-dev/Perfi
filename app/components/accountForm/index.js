@@ -41,11 +41,8 @@ const enhance = compose(
       setIsValid(!!value);
       setName(value);
     },
-    onSubmit: ({ submit, account, onClose, ...props }) => () => {
-      const editedProps = R.pick(
-        ['name', 'icon', 'currency', 'date', 'initialBalance', 'balance'],
-        props,
-      );
+    onSubmit: ({ submit, account, onClose }) => (props) => {
+      const editedProps = R.pick(['name', 'icon', 'currency', 'date', 'initialBalance', 'balance'], props);
 
       const propsToSubmit = account ? { id: account.id, ...editedProps } : editedProps;
 
