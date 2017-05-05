@@ -12,11 +12,12 @@ describe('Categories reducer', () => {
     type: 'testType',
   };
 
-  const getNewCategoryId = (prevState, newState) => R.keys(R.omit(R.keys(prevState), newState))[0];
+  const getNewCategoryId = (prevState, newState) =>
+    R.keys(R.omit(R.keys(prevState.byId), newState.byId))[0];
 
   it('should return the initial state', () => {
     expect(
-      R.map(R.omit(['id', 'initialDate']), R.values(initialState)),
+      R.map(R.omit(['id']), R.values(initialState.byId)),
     ).toEqual(defaultCategories);
   });
 
@@ -26,11 +27,12 @@ describe('Categories reducer', () => {
       payload: testCategoryProps,
     });
 
-    expect(R.values(state)).toHaveLength(3);
+    expect(R.values(state.byId)).toHaveLength(3);
+    expect(R.values(state.ids)).toHaveLength(3);
 
     const newCategoryId = getNewCategoryId(initialState, state);
 
-    expect(R.omit(['id'], state[newCategoryId])).toEqual(testCategoryProps);
+    expect(R.omit(['id'], state.byId[newCategoryId])).toEqual(testCategoryProps);
   });
 
   it('should update the category', () => {
@@ -52,8 +54,9 @@ describe('Categories reducer', () => {
       payload: { id: newCategoryId, ...newCategoryProps },
     });
 
-    expect(R.values(updatedState)).toHaveLength(3);
-    expect(R.omit(['id'], updatedState[newCategoryId])).toEqual(newCategoryProps);
+    expect(R.values(updatedState.byId)).toHaveLength(3);
+    expect(R.values(updatedState.ids)).toHaveLength(3);
+    expect(R.omit(['id'], updatedState.byId[newCategoryId])).toEqual(newCategoryProps);
   });
 
   it('should delete the category', () => {
@@ -69,7 +72,9 @@ describe('Categories reducer', () => {
       payload: newCategoryId,
     });
 
-    expect(R.values(updatedState)).toHaveLength(2);
-    expect(R.keys(updatedState)).not.toContain(newCategoryId);
+    expect(R.values(updatedState.byId)).toHaveLength(2);
+    expect(R.values(updatedState.ids)).toHaveLength(2);
+    expect(R.keys(updatedState.ids)).not.toContain(newCategoryId);
+    expect(updatedState.ids).not.toContain(newCategoryId);
   });
 });

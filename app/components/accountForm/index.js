@@ -43,7 +43,6 @@ const enhance = compose(
     },
     onSubmit: ({ submit, account, onClose }) => (props) => {
       const editedProps = R.pick(['name', 'icon', 'currency', 'date', 'initialBalance', 'balance'], props);
-
       const propsToSubmit = account ? { id: account.id, ...editedProps } : editedProps;
 
       submit(propsToSubmit);
@@ -51,7 +50,6 @@ const enhance = compose(
     },
   }),
   defaultProps({
-    value: 0,
     date: new Date(),
     icon: icons[0],
     initialBalance: 0,
