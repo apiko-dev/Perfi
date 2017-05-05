@@ -31,7 +31,7 @@ describe('Transfers reducer', () => {
 
     const newTransferId = getNewTransferId(initialState, state);
 
-    expect(R.omit(['_id'], state[newTransferId])).toEqual(testTransferProps);
+    expect(R.omit(['id'], state[newTransferId])).toEqual(testTransferProps);
   });
 
   it('should update the transfer', () => {
@@ -52,11 +52,11 @@ describe('Transfers reducer', () => {
 
     const updatedState = reducer(state, {
       type: actionTypes.UPDATE_TRANSFER,
-      payload: { _id: newTransferId, ...newTransferProps },
+      payload: { id: newTransferId, ...newTransferProps },
     });
 
     expect(R.values(updatedState)).toHaveLength(1);
-    expect(R.omit(['_id'], updatedState[newTransferId])).toEqual(newTransferProps);
+    expect(R.omit(['id'], updatedState[newTransferId])).toEqual(newTransferProps);
   });
 
   it('should delete the transfer', () => {

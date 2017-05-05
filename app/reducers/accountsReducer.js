@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import actionTypes from '../constants/actionTypes';
-import { insert, insertAll, update, remove } from '../utils/mapHelper';
+import { insert, insertAll, update, remove } from '../utils/stateHelper';
 
 const createAccount = (props) => {
   const { name, icon, balance = 0, initialBalance = 0, initialDate = new Date() } = props;

@@ -17,7 +17,7 @@ describe('Accounts reducer', () => {
 
   it('should return the initial state', () => {
     expect(
-      R.map(R.omit(['_id', 'initialDate']), R.values(initialState)),
+      R.map(R.omit(['id', 'initialDate']), R.values(initialState)),
     ).toEqual([
       {
         name: 'Card',
@@ -44,7 +44,7 @@ describe('Accounts reducer', () => {
 
     const newAccountId = getNewAccountId(initialState, state);
 
-    expect(R.omit(['_id'], state[newAccountId])).toEqual(testAccProps);
+    expect(R.omit(['id'], state[newAccountId])).toEqual(testAccProps);
   });
 
   it('should update the account', () => {
@@ -65,11 +65,11 @@ describe('Accounts reducer', () => {
 
     const updatedState = reducer(state, {
       type: actionTypes.UPDATE_ACCOUNT,
-      payload: { _id: newAccountId, ...newAccProps },
+      payload: { id: newAccountId, ...newAccProps },
     });
 
     expect(R.values(updatedState)).toHaveLength(3);
-    expect(R.omit(['_id'], updatedState[newAccountId])).toEqual(newAccProps);
+    expect(R.omit(['id'], updatedState[newAccountId])).toEqual(newAccProps);
   });
 
   it('should delete the account', () => {
