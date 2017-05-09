@@ -1,21 +1,21 @@
 import React, { PropTypes } from 'react';
-import { Button, Platform, Text, View } from 'react-native';
+import { Alert, Platform, View } from 'react-native';
 import screens from '../constants/screens';
 import { DrawerButton } from '../components';
+import { CategoriesListContainer } from '../containers';
 
-const Categories = ({ navigation }) => (
-  <View>
-    <Text>Categories</Text>
-    <Button
-      title="Edit category"
-      onPress={() => navigation.navigate(screens.CategoryEditor, { title: 'Edit category' })}
-    />
-    <Button
-      title="Add category"
-      onPress={() => navigation.navigate(screens.CategoryEditor, { title: 'Add category' })}
-    />
-  </View>
-);
+const Categories = ({ navigation }) => {
+  const currentRoute = navigation.state.routeName;
+
+  return (
+    <View>
+      <CategoriesListContainer
+        type={currentRoute.toLowerCase()}
+        onSelectCategory={id => Alert.alert(id)}
+      />
+    </View>
+  );
+}
 
 Categories.propTypes = {
   navigation: PropTypes.object,
