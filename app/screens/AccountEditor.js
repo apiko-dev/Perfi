@@ -1,16 +1,18 @@
 import React, { PropTypes } from 'react';
 import { Platform } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import SceneContentWrapper from '../components/common/SceneContentWrapper';
-import DeleteAccountButton from '../containers/DeleteButtonContainer';
+import { SceneContentWrapper } from '../components';
+import DeleteAccountButton from '../components/navButtons/DeleteButton';
 import AccountFrom from '../containers/AccountFormContainer';
 
-const AccountEditor = ({ navigation }) => <SceneContentWrapper>
-  <AccountFrom
-    account={navigation.state.params.account}
-    onClose={() => navigation.dispatch(NavigationActions.back())}
-  />
-</SceneContentWrapper>;
+const AccountEditor = ({ navigation }) => (
+  <SceneContentWrapper>
+    <AccountFrom
+      account={navigation.state.params.account}
+      onClose={() => navigation.dispatch(NavigationActions.back())}
+    />
+  </SceneContentWrapper>
+);
 
 AccountEditor.navigationOptions = {
   header: (navigation, defaultHeader) => ({
@@ -20,7 +22,8 @@ AccountEditor.navigationOptions = {
       android: {
         right: <DeleteAccountButton
           navigation={navigation}
-          account={navigation.state.params.account}
+          onDelete={navigation.state.params.onDelete}
+          id={navigation.state.params.account ? navigation.state.params.account.id : null}
         />,
       },
     }),

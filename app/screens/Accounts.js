@@ -1,13 +1,15 @@
 import React, { PropTypes } from 'react';
 import { Platform } from 'react-native';
-import Button from '../components/common/Button';
 import screens from '../constants/screens';
-import { DrawerButton } from '../components';
+import {
+  DrawerButton,
+  Button,
+  FixedButtonsContainer,
+  SceneContentWrapper,
+} from '../components';
 import AccountsList from '../components/accountsList/AccountsList';
-import FixedButtonsContainer from '../components/common/FixedButtonsContainer';
-import SceneContentWrapper from '../components/common/SceneContentWrapper';
 
-const Accounts = ({ navigation, accounts, updateAccount }) => {
+const Accounts = ({ navigation, accounts, deleteAccount }) => {
   const onAddButtonClick = () => {
     navigation.navigate(screens.AccountEditor, {
       title: 'Add account',
@@ -19,15 +21,15 @@ const Accounts = ({ navigation, accounts, updateAccount }) => {
       <AccountsList
         accounts={accounts.byId}
         navigation={navigation}
-        updateAccount={updateAccount}
+        deleteAccount={deleteAccount}
       />
 
       <FixedButtonsContainer>
         <Button
           icon="add"
           onPress={onAddButtonClick}
-          raised
-          big
+          isRaised
+          isBig
         />
       </FixedButtonsContainer>
     </SceneContentWrapper>
@@ -37,7 +39,7 @@ const Accounts = ({ navigation, accounts, updateAccount }) => {
 Accounts.propTypes = {
   navigation: PropTypes.object,
   accounts: PropTypes.object,
-  updateAccount: PropTypes.func,
+  deleteAccount: PropTypes.func,
 };
 
 Accounts.navigationOptions = {

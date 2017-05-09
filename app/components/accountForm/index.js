@@ -1,4 +1,4 @@
-import { defaultProps, compose, mapProps, withHandlers, withProps, withState } from 'recompose';
+import { defaultProps, compose, mapProps, withHandlers, withProps, withState, withPropsOnChange } from 'recompose';
 import R from 'ramda';
 import AccountForm from './AccountForm';
 import styles from '../../styles/AccountsStyles';
@@ -25,20 +25,29 @@ const enhance = compose(
   withState('date', 'setDate', accountProp('date')),
   withState('isPickerVisible', 'toggleIconPicker'),
   withState('isValid', 'setIsValid', accountProp('isValid')),
+  withPropsOnChange(['name', 'initialBalance', 'balance', 'date', 'currency', 'icon'], props => ({
+    ...props,
+    isValid: props.name && (props.initialBalance || 0) >= 0,
+  })),
   withHandlers({
-    onDateChange: ({ setDate }) => value => setDate(value),
+    onDateChange: ({ setDate }) => (value) => {
+      setDate(value);
+    },
     onCurrencyChange: ({ setCurrency }) => (value) => {
       setCurrency(value);
     },
-    onInitialBalanceChange: ({ setInitialBalance }) => value => setInitialBalance(value),
+    onInitialBalanceChange: ({ setInitialBalance }) => (value) => {
+      setInitialBalance(value);
+    },
     onTogglePicker: ({ toggleIconPicker, isPickerVisible }) =>
-      () => toggleIconPicker(!isPickerVisible),
+      () => {
+        toggleIconPicker(!isPickerVisible);
+      },
     onIconChange: ({ setIcon, toggleIconPicker }) => (value) => {
       toggleIconPicker(false);
       setIcon(value);
     },
-    onNameChange: ({ setName, setIsValid }) => (value) => {
-      setIsValid(!!value);
+    onNameChange: ({ setName }) => (value) => {
       setName(value);
     },
     onSubmit: ({ submit, account, onClose }) => (props) => {

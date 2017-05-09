@@ -4,7 +4,7 @@ import AccountsListItem from './AccountsListItem';
 import style from '../../styles/AccountsStyles';
 import screens from '../../constants/screens';
 
-const AccountsList = ({ accounts, navigation }) => {
+const AccountsList = ({ accounts, navigation, deleteAccount }) => {
   const ds = new ListView.DataSource({
     rowHasChanged: (r1, r2) => r1 !== r2,
   });
@@ -14,22 +14,27 @@ const AccountsList = ({ accounts, navigation }) => {
     () => {
       navigation.navigate(screens.AccountEditor, {
         title: `Edit ${account.name}`,
-        account: { ...account, isValid: true },
+        onDelete: deleteAccount,
+        account,
       });
     };
 
-  const renderRow = item => (<AccountsListItem
-    key={item.id}
-    onPress={onPress(item)}
-    {...item}
-  />);
+  const renderRow = item => (
+    <AccountsListItem
+      key={item.id}
+      onPress={onPress(item)}
+      {...item}
+    />
+  );
 
-  return (<ListView
-    dataSource={dataSource}
-    renderRow={renderRow}
-    style={style.listStyle}
-    enableEmptySections
-  />);
+  return (
+    <ListView
+      dataSource={dataSource}
+      renderRow={renderRow}
+      style={style.listStyle}
+      enableEmptySections
+    />
+  );
 };
 
 AccountsList.propTypes = {
@@ -42,6 +47,7 @@ AccountsList.propTypes = {
     initialDate: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
   })),
   navigation: PropTypes.object,
+  deleteAccount: PropTypes.func,
 };
 
 export default AccountsList;

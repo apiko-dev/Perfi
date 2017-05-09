@@ -1,4 +1,4 @@
 export default [
-  { name: 'Salary', icon: 'cash', type: 'income' },
-  { name: 'Bills', icon: 'tag', type: 'expense' },
+  { name: 'Salary', icon: 'credit-card', type: 'income' },
+  { name: 'Bills', icon: 'cash-multiple', type: 'expense' },
 ];

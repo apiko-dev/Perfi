@@ -1,14 +1,14 @@
 import { create } from 'react-native-platform-stylesheet';
 
 const styles = create({
-  buttonWrapper: {
+  buttonWrapperStyle: {
     width: 33,
     height: 33,
     borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  buttonWrapper__raised: {
+  buttonWrapperStyleRaised: {
     elevation: 3,
     shadowOffset: {
       width: 3,
@@ -17,7 +17,7 @@ const styles = create({
     shadowColor: '#000',
     backgroundColor: '#ebebeb',
   },
-  buttonWrapper__big: {
+  buttonWrapperStyleBig: {
     width: 50,
     height: 50,
   },

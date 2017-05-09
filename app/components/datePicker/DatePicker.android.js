@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 import { DatePickerAndroid } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import TextInputWithIcon from '../common/TextFieldWithIcon';
+import DateTimePicker from 'react-native-modal-datetime-picker';
+import TextInputWithIcon from '../TextFieldWithIcon';
 import calendarDateFormat from '../../configs/calendarDateFormat';
-import Button from '../common/Button';
+import Button from '../Button';
 
 const DatePicker = ({ value, onChange }) => {
   const showPicker = async () => {
@@ -16,21 +17,29 @@ const DatePicker = ({ value, onChange }) => {
     });
   };
 
-  const pickerIcon = (<Button
-    icon={'calendar-blank'}
-    iconsSet={MaterialCommunityIcons}
-    onPress={showPicker}
-  />);
+  const pickerIcon = (
+    <Button
+      icon={'calendar-blank'}
+      iconsSet={MaterialCommunityIcons}
+      onPress={showPicker}
+    />
+  );
 
-  return (<TextInputWithIcon
-    icon={pickerIcon}
-    value={calendarDateFormat(value)}
-    editable={false}
-  />);
+  return (
+    <TextInputWithIcon
+      icon={pickerIcon}
+      value={calendarDateFormat(value)}
+      editable={false}
+      onPress={showPicker}
+    />
+  );
 };
 
 DatePicker.propTypes = {
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(Date)],
+  ),
   onChange: PropTypes.func,
 };
 

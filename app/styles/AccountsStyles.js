@@ -9,7 +9,7 @@ const styles = create({
     paddingTop: 20,
     paddingBottom: 25,
   },
-  rowStyle__dark: {
+  rowStyleDark: {
     backgroundColor: '#ebebeb',
     paddingTop: 10,
     paddingBottom: 15,
