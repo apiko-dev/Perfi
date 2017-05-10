@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Platform } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import { SceneContentWrapper } from '../components';
-import DeleteAccountButton from '../components/navButtons/DeleteButton';
+import { SceneContentWrapper, DeleteButton } from '../components';
 import AccountFrom from '../containers/AccountFormContainer';
 
 const AccountEditor = ({ navigation }) => (
@@ -20,7 +19,7 @@ AccountEditor.navigationOptions = {
     title: navigation.state.params.title,
     ...Platform.select({
       android: {
-        right: <DeleteAccountButton
+        right: <DeleteButton
           navigation={navigation}
           onDelete={navigation.state.params.onDelete}
           id={navigation.state.params.account ? navigation.state.params.account.id : null}

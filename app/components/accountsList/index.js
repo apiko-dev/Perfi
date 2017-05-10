@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { ListView } from 'react-native';
 import AccountsListItem from './AccountsListItem';
-import style from '../../styles/AccountsStyles';
+import style from '../../styles/FormStyles';
 import screens from '../../constants/screens';
 
 const AccountsList = ({ accounts, navigation, deleteAccount }) => {

@@ -6,8 +6,8 @@ import {
   Button,
   FixedButtonsContainer,
   SceneContentWrapper,
+  AccountsList,
 } from '../components';
-import AccountsList from '../components/accountsList/AccountsList';
 
 const Accounts = ({ navigation, accounts, deleteAccount }) => {
   const onAddButtonClick = () => {

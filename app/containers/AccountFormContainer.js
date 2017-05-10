@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import AccountForm from '../components/accountForm';
+import { AccountForm } from '../components';
 import {
   createAccount,
   updateAccount,

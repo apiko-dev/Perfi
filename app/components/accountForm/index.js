@@ -1,7 +1,7 @@
 import { defaultProps, compose, mapProps, withHandlers, withProps, withState, withPropsOnChange } from 'recompose';
 import R from 'ramda';
 import AccountForm from './AccountForm';
-import styles from '../../styles/AccountsStyles';
+import styles from '../../styles/FormStyles';
 import icons from '../../constants/accountIcons';
 
 const accountProp = propName => R.path(['account', propName]);
@@ -17,38 +17,33 @@ const enhance = compose(
   withProps(({ account, createAccount, updateAccount }) => ({
     submit: account ? updateAccount : createAccount,
   })),
-  withState('name', 'setName', accountProp('name')),
+  withState('name', 'onNameChange', accountProp('name')),
   withState('icon', 'setIcon', accountProp('icon')),
-  withState('currency', 'setCurrency', accountProp('currency')),
-  withState('initialBalance', 'setInitialBalance', accountProp('initialBalance')),
+  withState('currency', 'onCurrencyChange', accountProp('currency')),
+  withState('initialBalance', 'onInitialBalanceChange', accountProp('initialBalance')),
   withState('balance', 'setBalance', accountProp('balance')),
   withState('date', 'setDate', accountProp('date')),
-  withState('isPickerVisible', 'toggleIconPicker'),
   withState('isValid', 'setIsValid', accountProp('isValid')),
-  withPropsOnChange(['name', 'initialBalance', 'balance', 'date', 'currency', 'icon'], props => ({
+  withState('isDatePickerVisible', 'setDatePickerState'),
+  withState('isPickerVisible', 'toggleIconPicker'),
+  withPropsOnChange(() => true, props => ({
     ...props,
-    isValid: props.name && (props.initialBalance || 0) >= 0,
+    isValid: props.name.length > 0 && (props.initialBalance || 0) >= 0,
   })),
   withHandlers({
-    onDateChange: ({ setDate }) => (value) => {
-      setDate(value);
+    onDateChange: ({ setDate, setDatePickerState }) => (date) => {
+      setDate(date);
+      setDatePickerState(false);
     },
-    onCurrencyChange: ({ setCurrency }) => (value) => {
-      setCurrency(value);
+    onTogglePicker: ({ toggleIconPicker, isPickerVisible }) => () => {
+      toggleIconPicker(!isPickerVisible);
     },
-    onInitialBalanceChange: ({ setInitialBalance }) => (value) => {
-      setInitialBalance(value);
-    },
-    onTogglePicker: ({ toggleIconPicker, isPickerVisible }) =>
-      () => {
-        toggleIconPicker(!isPickerVisible);
-      },
     onIconChange: ({ setIcon, toggleIconPicker }) => (value) => {
       toggleIconPicker(false);
       setIcon(value);
     },
-    onNameChange: ({ setName }) => (value) => {
-      setName(value);
+    onToggleDatePicker: ({ isDatePickerVisible, setDatePickerState }) => () => {
+      setDatePickerState(!isDatePickerVisible);
     },
     onSubmit: ({ submit, account, onClose }) => (props) => {
       const editedProps = R.pick(['name', 'icon', 'currency', 'date', 'initialBalance', 'balance'], props);
@@ -63,6 +58,7 @@ const enhance = compose(
     icon: icons[0],
     initialBalance: 0,
     isPickerVisible: false,
+    isDatePickerVisible: false,
     isValid: false,
   }),
 );

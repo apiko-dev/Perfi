@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { View, ListView, TouchableOpacity } from 'react-native';
+import { View, ListView, TouchableWithoutFeedback } from 'react-native';
 import R from 'ramda';
 import Modal from 'react-native-modal';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -24,30 +24,33 @@ const IconsPickerModal = ({ isVisible, onIconPick, hideModal, selectedIconName }
           iconContainerStyle;
 
         return (
-          <TouchableOpacity
+          <TouchableWithoutFeedback
             key={name}
-            style={iconStyle}
             onPress={() => onIconPick(name)}
           >
-            <MaterialCommunityIcons
-              name={name}
-              size={26}
-            />
-          </TouchableOpacity>
+            <View style={iconStyle}>
+              <MaterialCommunityIcons
+                name={name}
+                size={26}
+              />
+            </View>
+          </TouchableWithoutFeedback>
         );
       }) }
     </View>
   );
 
   return (
-    <Modal isVisible={isVisible} onBackButtonPress={hideModal} style={modalStyle}>
-      <ListView
-        style={listStyle}
-        dataSource={dataSource}
-        renderRow={renderRow}
-        enableEmptySections
-      />
-    </Modal>
+    <TouchableWithoutFeedback onPress={hideModal}>
+      <Modal isVisible={isVisible} onBackButtonPress={hideModal} style={modalStyle}>
+        <ListView
+          style={listStyle}
+          dataSource={dataSource}
+          renderRow={renderRow}
+          enableEmptySections
+        />
+      </Modal>
+    </TouchableWithoutFeedback>
   );
 };
 

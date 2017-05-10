@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { TouchableWithoutFeedback, Text, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import styles from '../../styles/AccountsStyles';
+import styles from '../../styles/FormStyles';
 
 const { listItemStyle, textStyle } = styles;
 

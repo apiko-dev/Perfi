@@ -1,17 +1,21 @@
 import React, { PropTypes } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { View } from 'react-native';
-import SceneContentWrapper from '../SceneContentWrapper';
-import { IconsPickerModal } from '../';
-import Button from '../Button';
-import TextFieldWithIcon from '../TextFieldWithIcon';
-import CurrencyPicker from '../currencyPicker/CurrencyPicker';
-import DatePicker from '../datePicker/DatePicker';
-import FixedButtonsContainer from '../FixedButtonsContainer';
+import { View, TouchableWithoutFeedback } from 'react-native';
+import { MenuContext } from 'react-native-popup-menu';
+import DateTimePicker from 'react-native-modal-datetime-picker';
+import {
+  IconsPickerModal,
+  TextFieldWithIcon,
+  Button,
+  FixedButtonsContainer,
+  SceneContentWrapper,
+} from '../';
+import CurrencyPicker from '../CurrencyPicker';
+import calendarDateFormat from '../../configs/calendarDateFormat';
 
 const AccountForm = (props) => {
   const {
-    style,
+    style: { blockStyleDark, blockStyle, rowStyle },
     name,
     icon,
     date,
@@ -26,6 +30,8 @@ const AccountForm = (props) => {
     onCurrencyChange,
     onInitialBalanceChange,
     onTogglePicker,
+    onToggleDatePicker,
+    isDatePickerVisible,
   } = props;
 
   const iconsPickerButton = (
@@ -34,6 +40,14 @@ const AccountForm = (props) => {
       iconsSet={MaterialCommunityIcons}
       icon={icon}
       raised
+    />
+  );
+
+  const pickerIcon = (
+    <Button
+      icon={'calendar-blank'}
+      iconsSet={MaterialCommunityIcons}
+      onPress={onToggleDatePicker}
     />
   );
 
@@ -49,39 +63,58 @@ const AccountForm = (props) => {
   );
 
   return (
-    <SceneContentWrapper>
-      <View style={style.rowStyle}>
-        <TextFieldWithIcon
-          icon={iconsPickerButton}
-          onChangeText={onNameChange}
-          value={name}
+    <MenuContext>
+      <SceneContentWrapper>
+        <View style={blockStyle}>
+          <View style={rowStyle}>
+            <TextFieldWithIcon
+              icon={iconsPickerButton}
+              onChangeText={onNameChange}
+              value={name}
+            />
+          </View>
+          <View style={rowStyle}>
+            <CurrencyPicker
+              selectedValue={currency}
+              onValueChange={onCurrencyChange}
+            />
+          </View>
+        </View>
+        <View style={[blockStyle, blockStyleDark]}>
+          <View style={rowStyle}>
+            <TextFieldWithIcon
+              onChangeText={onInitialBalanceChange}
+              value={initialBalance.toString()}
+              label={'Initial balance'}
+              keyboardType="numeric"
+            />
+          </View>
+          <View style={rowStyle}>
+            <TouchableWithoutFeedback onPress={onToggleDatePicker}>
+              <View>
+                <DateTimePicker
+                  isVisible={isDatePickerVisible}
+                  onConfirm={onDateChange}
+                  onCancel={onToggleDatePicker}
+                />
+                <TextFieldWithIcon
+                  icon={pickerIcon}
+                  value={calendarDateFormat(date)}
+                  editable={false}
+                />
+              </View>
+            </TouchableWithoutFeedback>
+          </View>
+        </View>
+        <IconsPickerModal
+          isVisible={isPickerVisible}
+          onIconPick={onIconChange}
+          selectedIconName={icon}
+          hideModal={onTogglePicker}
         />
-
-        <CurrencyPicker
-          selectedValue={currency}
-          onValueChange={onCurrencyChange}
-        />
-      </View>
-      <View style={[style.rowStyle, style.rowStyleDark]}>
-        <TextFieldWithIcon
-          onChangeText={onInitialBalanceChange}
-          value={initialBalance.toString()}
-          label={'Initial balance'}
-          keyboardType="numeric"
-        />
-        <DatePicker
-          value={date}
-          onChange={onDateChange}
-        />
-      </View>
-      <IconsPickerModal
-        isVisible={isPickerVisible}
-        onIconPick={onIconChange}
-        selectedIconName={icon}
-        hideModal={onTogglePicker}
-      />
-      { isValid && submitButton }
-    </SceneContentWrapper>
+        { isValid && submitButton }
+      </SceneContentWrapper>
+    </MenuContext>
   );
 };
 
@@ -100,6 +133,8 @@ AccountForm.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ]),
+  onToggleDatePicker: PropTypes.func,
+  isDatePickerVisible: PropTypes.bool,
   onNameChange: PropTypes.func,
   onIconChange: PropTypes.func,
   onDateChange: PropTypes.func,
