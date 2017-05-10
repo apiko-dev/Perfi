@@ -9,6 +9,8 @@ export default {
 
   CategoriesRoot: 'CategoriesRoot',
   Categories: 'Categories',
+  CategoriesIncome: 'Income',
+  CategoriesExpense: 'Expense',
   CategoryEditor: 'CategoryEditor',
   
   SettingsRoot: 'SettingsRoot',
