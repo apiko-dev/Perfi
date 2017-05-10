@@ -1,27 +1,27 @@
-import React, { PropTypes } from 'react';
+import { ListView } from 'react-native';
 import { compose, withProps } from 'recompose';
-import { List } from 'react-native-elements';
 import CategoryItem from './CategoryItem';
-import styles from '../../styles/CategoriesListStyles';
 
-const CategoriesList = ({ categories, onSelectCategory }) => {
-  const renderCategoryItem = compose(
+const withDataSource = withProps({
+  ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
+});
+
+const withClonedDataSource = withProps(({ ds, categories }) => ({
+  dataSource: ds.cloneWithRows(categories),
+}));
+
+const withCategoryItem = withProps(({ onSelectCategory }) => ({
+  renderRow: compose(
     withProps(({ id }) => ({
-      key: id,
       onPress: () => onSelectCategory(id),
     })),
-  )(CategoryItem);
+  )(CategoryItem),
+}));
 
-  return (
-    <List containerStyle={styles.rootStyle}>
-      {categories.map(renderCategoryItem)}
-    </List>
-  );
-};
-
-CategoriesList.propTypes = {
-  categories: PropTypes.array,
-  onSelectCategory: PropTypes.func,
-};
+const CategoriesList = compose(
+  withDataSource,
+  withClonedDataSource,
+  withCategoryItem,
+)(ListView);
 
 export default CategoriesList;
