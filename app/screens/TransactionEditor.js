@@ -6,7 +6,10 @@ import styles from '../styles/SceneStyles';
 
 const TransactionEditor = ({ navigation }) => (
   <View style={styles.rootStyle}>
-    <TransactionForm onClose={() => navigation.dispatch(NavigationActions.back())} />
+    <TransactionForm
+      onClose={() => navigation.dispatch(NavigationActions.back())}
+      navigation={navigation}
+    />
   </View>
 );
 

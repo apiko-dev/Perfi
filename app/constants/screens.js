@@ -1,8 +1,12 @@
 export default {
   DashboardRoot: 'DashboardRoot',
   Dashboard: 'Dashboard',
+
+  TransactionEditorRoot: 'TransactionEditorRoot',
   TransactionEditor: 'TransactionEditor',
-  
+  TransactionEditorSelectCategory: 'TransactionEditorSelectCategory',
+  TransactionEditorCreateCategory: 'TransactionEditorCreateCategory',
+
   AccountsRoot: 'AccountsRoot',
   Accounts: 'Accounts',
   AccountEditor: 'AccountEditor',

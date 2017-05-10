@@ -1,5 +1,6 @@
 import { defaultProps, compose, mapProps, withHandlers, withProps, withState } from 'recompose';
 import R from 'ramda';
+import screens from '../../constants/screens';
 import TransactionForm from './TransactionForm';
 import styles from '../../styles/TransactionFormStyles';
 
@@ -26,6 +27,9 @@ const enhance = compose(
     onChangeValue: ({ setValue, toggleCalculator }) => (value) => {
       setValue(value);
       toggleCalculator(false);
+    },
+    onChangeCategory: ({ navigation }) => () => {
+      navigation.navigate(screens.TransactionEditorSelectCategory);
     },
     onUpdateNote: ({ updateNote }) => (text) => {
       updateNote(text);

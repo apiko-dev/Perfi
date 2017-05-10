@@ -15,6 +15,7 @@ const TransactionForm = (props) => {
     isDatePickerVisible,
     isCalculatorVisible,
     onChangeValue,
+    onChangeCategory,
     onUpdateNote,
     onSetDate,
     onToggleDatePicker,
@@ -35,11 +36,17 @@ const TransactionForm = (props) => {
           />
         </View>
       </TouchableOpacity>
-      <FormInput
-        value={category}
-        placeholder="Category"
-        editable={false}
-      />
+      <TouchableOpacity
+        onPress={onChangeCategory}
+      >
+        <View>
+          <FormInput
+            value={category}
+            placeholder="Category"
+            editable={false}
+          />
+        </View>
+      </TouchableOpacity>
       <TouchableOpacity
         onPress={onToggleDatePicker}
       >
@@ -80,6 +87,7 @@ const TransactionForm = (props) => {
 };
 
 TransactionForm.propTypes = {
+  style: PropTypes.object,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   category: PropTypes.string,
   date: PropTypes.object,
@@ -87,13 +95,12 @@ TransactionForm.propTypes = {
   isDatePickerVisible: PropTypes.bool,
   isCalculatorVisible: PropTypes.bool,
   onChangeValue: PropTypes.func,
+  onChangeCategory: PropTypes.func,
   onUpdateNote: PropTypes.func,
   onSetDate: PropTypes.func,
   onToggleDatePicker: PropTypes.func,
   onToggleCalculator: PropTypes.func,
   onSubmit: PropTypes.func,
-  // onSelectCategory: PropTypes.func,
-  style: PropTypes.object,
 };
 
 export default TransactionForm;
