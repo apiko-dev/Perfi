@@ -4,8 +4,6 @@ export default {
 
   TransactionEditorRoot: 'TransactionEditorRoot',
   TransactionEditor: 'TransactionEditor',
-  TransactionEditorSelectCategory: 'TransactionEditorSelectCategory',
-  TransactionEditorCreateCategory: 'TransactionEditorCreateCategory',
 
   AccountsRoot: 'AccountsRoot',
   Accounts: 'Accounts',

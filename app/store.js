@@ -15,6 +15,6 @@ const store = createStore(
   enhancer,
 );
 
-persistStore(store, { storage: AsyncStorage }).purge();
+persistStore(store, { storage: AsyncStorage });
 
 export default store;

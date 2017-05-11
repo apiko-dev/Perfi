@@ -28,8 +28,13 @@ const enhance = compose(
       setValue(value);
       toggleCalculator(false);
     },
-    onChangeCategory: ({ navigation }) => () => {
-      navigation.navigate(screens.Categories);
+    onChangeCategory: ({ navigation, setCategory }) => () => {
+      navigation.navigate(screens.Categories, {
+        onSelectCategory: (category) => {
+          setCategory(category);
+          navigation.goBack(null);
+        },
+      });
     },
     onUpdateNote: ({ updateNote }) => (text) => {
       updateNote(text);

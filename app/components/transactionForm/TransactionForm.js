@@ -41,7 +41,7 @@ const TransactionForm = (props) => {
       >
         <View>
           <FormInput
-            value={category}
+            value={category && category.name}
             placeholder="Category"
             editable={false}
           />
@@ -89,7 +89,7 @@ const TransactionForm = (props) => {
 TransactionForm.propTypes = {
   style: PropTypes.object,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  category: PropTypes.string,
+  category: PropTypes.object,
   date: PropTypes.object,
   note: PropTypes.string,
   isDatePickerVisible: PropTypes.bool,
