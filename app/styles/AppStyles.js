@@ -8,6 +8,12 @@ const styles = create({
       marginTop: StatusBar.currentHeight,
     },
   },
+  sceneWrapperStyle: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    backgroundColor: '#fff',
+    position: 'relative',
+  },
 });
 
 export default styles;
