@@ -1,17 +1,17 @@
 import React, { PropTypes } from 'react';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Icon } from 'react-native-elements';
 import { View, TouchableWithoutFeedback } from 'react-native';
 import { MenuContext } from 'react-native-popup-menu';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import {
   IconsPickerModal,
   TextFieldWithIcon,
-  Button,
+  RoundButton,
   FixedButtonsContainer,
   SceneContentWrapper,
 } from '../';
 import CurrencyPicker from '../CurrencyPicker';
-import calendarDateFormat from '../../configs/calendarDateFormat';
+import calendarDateFormat from '../../utils/calendarDateFormat';
 
 const AccountForm = (props) => {
   const {
@@ -35,29 +35,26 @@ const AccountForm = (props) => {
   } = props;
 
   const iconsPickerButton = (
-    <Button
+    <Icon
       onPress={onTogglePicker}
-      iconsSet={MaterialCommunityIcons}
-      icon={icon}
-      raised
+      name={icon}
+      type="material-community"
     />
   );
 
   const pickerIcon = (
-    <Button
-      icon={'calendar-blank'}
-      iconsSet={MaterialCommunityIcons}
+    <Icon
+      name="calendar-blank"
       onPress={onToggleDatePicker}
+      type="material-community"
     />
   );
 
   const submitButton = (
     <FixedButtonsContainer>
-      <Button
-        onPress={() => onSubmit(props)}
-        icon="check"
-        isRaised
-        isBig
+      <RoundButton
+        onPress={onSubmit}
+        iconName="check"
       />
     </FixedButtonsContainer>
   );

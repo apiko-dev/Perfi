@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import screens from '../constants/screens';
 import {
   DrawerButton,
-  Button,
+  RoundButton,
   FixedButtonsContainer,
   SceneContentWrapper,
   AccountsList,
@@ -25,11 +25,9 @@ const Accounts = ({ navigation, accounts, deleteAccount }) => {
       />
 
       <FixedButtonsContainer>
-        <Button
-          icon="add"
+        <RoundButton
+          iconName="add"
           onPress={onAddButtonClick}
-          isRaised
-          isBig
         />
       </FixedButtonsContainer>
     </SceneContentWrapper>

@@ -2,12 +2,12 @@ import React, { PropTypes } from 'react';
 import { View, ListView, TouchableWithoutFeedback } from 'react-native';
 import R from 'ramda';
 import Modal from 'react-native-modal';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import styles from '../styles/IconsPickerStyles';
-import icons from '../constants/accountIcons';
+import styles from '../../styles/IconsPickerStyles';
+import icons from '../../constants/accountIcons';
+import IconsPickerItem from './IconsPickerItem';
 
 const chunkedIconsList = R.splitEvery(4, icons);
-const { iconContainerStyle, pickedItemStyle, rowStyle, modalStyle, listStyle } = styles;
+const { rowStyle, modalStyle, listStyle } = styles;
 
 const IconsPickerModal = ({ isVisible, onIconPick, hideModal, selectedIconName }) => {
   const ds = new ListView.DataSource({
@@ -16,27 +16,16 @@ const IconsPickerModal = ({ isVisible, onIconPick, hideModal, selectedIconName }
 
   const dataSource = ds.cloneWithRows(chunkedIconsList);
 
+  const renderRowItem = name => <IconsPickerItem
+    key={name}
+    onIconPress={onIconPick}
+    name={name}
+    isSelected={name === selectedIconName}
+  />;
+
   const renderRow = row => (
     <View style={rowStyle}>
-      { row.map((name) => {
-        const iconStyle = selectedIconName === name ?
-          [iconContainerStyle, pickedItemStyle] :
-          iconContainerStyle;
-
-        return (
-          <TouchableWithoutFeedback
-            key={name}
-            onPress={() => onIconPick(name)}
-          >
-            <View style={iconStyle}>
-              <MaterialCommunityIcons
-                name={name}
-                size={26}
-              />
-            </View>
-          </TouchableWithoutFeedback>
-        );
-      }) }
+      { row.map(renderRowItem) }
     </View>
   );
 

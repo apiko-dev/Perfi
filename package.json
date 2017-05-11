@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^4.0.0",
-    "@types/node": "^6.0.70",
     "expo": "^15.1.0",
     "expr-eval": "^1.0.0",
     "moment": "^2.18.1",

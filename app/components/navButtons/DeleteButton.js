@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { NavigationActions } from 'react-navigation';
-import Button from '../Button';
+import { Icon } from 'react-native-elements';
 
 const DeleteButton = ({ id, navigation, onDelete }) => {
   const onDeleteButtonPress = () => {
@@ -10,8 +10,8 @@ const DeleteButton = ({ id, navigation, onDelete }) => {
 
   if (id) {
     return (
-      <Button
-        icon="delete"
+      <Icon
+        name="delete"
         onPress={onDeleteButtonPress}
       />
     );

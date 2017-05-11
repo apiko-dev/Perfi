@@ -28,7 +28,7 @@ const enhance = compose(
   withState('isPickerVisible', 'toggleIconPicker'),
   withPropsOnChange(() => true, props => ({
     ...props,
-    isValid: props.name.length > 0 && (props.initialBalance || 0) >= 0,
+    isValid: !!props.name && props.name.length > 0 && (props.initialBalance || 0) >= 0,
   })),
   withHandlers({
     onDateChange: ({ setDate, setDatePickerState }) => (date) => {
@@ -45,7 +45,7 @@ const enhance = compose(
     onToggleDatePicker: ({ isDatePickerVisible, setDatePickerState }) => () => {
       setDatePickerState(!isDatePickerVisible);
     },
-    onSubmit: ({ submit, account, onClose }) => (props) => {
+    onSubmit: ({ submit, account, onClose, ...props }) => () => {
       const editedProps = R.pick(['name', 'icon', 'currency', 'date', 'initialBalance', 'balance'], props);
       const propsToSubmit = account ? { id: account.id, ...editedProps } : editedProps;
 

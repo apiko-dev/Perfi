@@ -8,9 +8,8 @@ import NavIcon from './NavIcon';
 import PropsProxyHOC from './PropsProxyHOC';
 import RoundButton from './RoundButton';
 import TransactionForm from './transactionForm';
-import Button from './Button';
 import FixedButtonsContainer from './FixedButtonsContainer';
-import IconsPickerModal from './IconsPickerModal';
+import IconsPickerModal from './iconsPicker';
 import InputField from './InputField';
 import SceneContentWrapper from './SceneContentWrapper';
 import TextFieldWithIcon from './TextFieldWithIcon';
@@ -28,7 +27,6 @@ export {
   PropsProxyHOC,
   RoundButton,
   TransactionForm,
-  Button,
   FixedButtonsContainer,
   IconsPickerModal,
   InputField,

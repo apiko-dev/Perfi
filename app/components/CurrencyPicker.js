@@ -11,13 +11,15 @@ import styles from '../styles/FormStyles';
 const CurrencyPicker = ({ onValueChange, selectedValue = currencies[0] }) => {
   const getLabel = ({ name, sign }) => `${name}(${sign})`;
 
-  const getCurrenciesListItems = () => currencies.map(value => (
+  const getListItem = value => (
     <MenuOption
       key={getLabel(value)}
       value={value}
       text={getLabel(value)}
     />
-  ));
+  );
+
+  const getCurrenciesListItems = () => currencies.map(getListItem);
 
   return (
     <Menu
