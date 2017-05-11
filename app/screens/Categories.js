@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import { Alert, Platform, View } from 'react-native';
+import { Alert, View } from 'react-native';
 import screens from '../constants/screens';
-import { DrawerButton, RoundButton } from '../components';
+import { RoundButton } from '../components';
 import { CategoriesListContainer } from '../containers';
 import styles from '../styles/CategoriesStyles';
 
@@ -21,22 +21,17 @@ const Categories = ({ navigation }) => {
       />
     </View>
   );
-}
-
-Categories.propTypes = {
-  navigation: PropTypes.object,
 };
 
 Categories.navigationOptions = {
   header: (navigation, defaultHeader) => ({
     ...defaultHeader,
     title: 'Categories',
-    ...Platform.select({
-      android: {
-        left: <DrawerButton navigation={navigation} />,
-      },
-    }),
   }),
+};
+
+Categories.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default Categories;

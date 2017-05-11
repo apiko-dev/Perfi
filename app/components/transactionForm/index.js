@@ -29,7 +29,7 @@ const enhance = compose(
       toggleCalculator(false);
     },
     onChangeCategory: ({ navigation }) => () => {
-      navigation.navigate(screens.TransactionEditorSelectCategory);
+      navigation.navigate(screens.Categories);
     },
     onUpdateNote: ({ updateNote }) => (text) => {
       updateNote(text);

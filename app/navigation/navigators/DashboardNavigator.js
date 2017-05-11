@@ -1,18 +1,8 @@
 import { StackNavigator } from 'react-navigation';
-import { Dashboard, TransactionEditor, Categories, CategoryEditor } from '../../screens';
+import { Dashboard, TransactionEditor } from '../../screens';
 import screens from '../../constants/screens';
 import navOptions from '../../utils/navOptions';
-import NestedTabNavigator from './NestedTabNavigator';
-
-
-const categoriesTabs = {
-  [screens.CategoriesIncome]: {
-    screen: Categories,
-  },
-  [screens.CategoriesExpense]: {
-    screen: Categories,
-  },
-};
+import CategoriesRoutes from '../routes/CategoriesRoutes';
 
 const DashboardNavigator = StackNavigator({
   [screens.Dashboard]: {
@@ -21,12 +11,7 @@ const DashboardNavigator = StackNavigator({
   [screens.TransactionEditor]: {
     screen: TransactionEditor,
   },
-  [screens.TransactionEditorSelectCategory]: {
-    screen: NestedTabNavigator(categoriesTabs),
-  },
-  [screens.TransactionEditorCreateCategory]: {
-    screen: CategoryEditor,
-  },
+  ...CategoriesRoutes,
 }, {
   ...navOptions({
     title: 'Dashboard',
