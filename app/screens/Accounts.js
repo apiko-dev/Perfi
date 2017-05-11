@@ -1,24 +1,43 @@
 import React, { PropTypes } from 'react';
-import { Button, Platform, Text, View } from 'react-native';
+import { Platform } from 'react-native';
+import Button from '../components/common/Button';
 import screens from '../constants/screens';
 import { DrawerButton } from '../components';
+import AccountsList from '../components/accountsList/AccountsList';
+import FixedButtonsContainer from '../components/common/FixedButtonsContainer';
+import SceneContentWrapper from '../components/common/SceneContentWrapper';
 
-const Accounts = ({ navigation }) => (
-  <View>
-    <Text>Accounts</Text>
-    <Button
-      title="Edit account"
-      onPress={() => navigation.navigate(screens.AccountEditor, { title: 'Edit account' })}
-    />
-    <Button
-      title="Add account"
-      onPress={() => navigation.navigate(screens.AccountEditor, { title: 'Add account' })}
-    />
-  </View>
-);
+const Accounts = ({ navigation, accounts, updateAccount }) => {
+  const onAddButtonClick = () => {
+    navigation.navigate(screens.AccountEditor, {
+      title: 'Add account',
+    });
+  };
+
+  return (
+    <SceneContentWrapper>
+      <AccountsList
+        accounts={accounts.byId}
+        navigation={navigation}
+        updateAccount={updateAccount}
+      />
+
+      <FixedButtonsContainer>
+        <Button
+          icon="add"
+          onPress={onAddButtonClick}
+          raised
+          big
+        />
+      </FixedButtonsContainer>
+    </SceneContentWrapper>
+  );
+};
 
 Accounts.propTypes = {
   navigation: PropTypes.object,
+  accounts: PropTypes.object,
+  updateAccount: PropTypes.func,
 };
 
 Accounts.navigationOptions = {
