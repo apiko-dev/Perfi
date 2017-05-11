@@ -1,6 +1,7 @@
 import Calculator from './calculator';
 import AccountForm from './accountForm';
 import AccountsList from './accountsList';
+import CategoriesList from './categoriesList';
 import DrawerButton from './DrawerButton';
 import Loading from './Loading';
 import NavIcon from './NavIcon';
@@ -17,6 +18,7 @@ import CurrencyPicker from './CurrencyPicker';
 import DeleteButton from './navButtons/DeleteButton';
 
 export {
+  CategoriesList,
   Calculator,
   AccountForm,
   AccountsList,
