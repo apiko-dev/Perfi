@@ -27,16 +27,13 @@ Categories.propTypes = {
   navigation: PropTypes.object,
 };
 
-Categories.navigationOptions = {
-  header: (navigation, defaultHeader) => ({
-    ...defaultHeader,
-    title: 'Categories',
-    ...Platform.select({
-      android: {
-        left: <DrawerButton navigation={navigation} />,
-      },
-    }),
+Categories.navigationOptions = ({ navigation }) => ({
+  title: 'Categories',
+  ...Platform.select({
+    android: {
+      headerLeft: <DrawerButton navigation={navigation} />,
+    },
   }),
-};
+});
 
 export default Categories;
