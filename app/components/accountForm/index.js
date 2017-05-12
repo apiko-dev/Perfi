@@ -4,7 +4,7 @@ import AccountForm from './AccountForm';
 import styles from '../../styles/FormStyles';
 import icons from '../../constants/accountIcons';
 
-const accountProp = propName => R.path(['account', propName]);
+const accountProp = (propName, def) => R.pathOr(def, ['account', propName]);
 
 const enhance = compose(
   mapProps(props => ({
@@ -18,11 +18,11 @@ const enhance = compose(
     submit: account ? updateAccount : createAccount,
   })),
   withState('name', 'onNameChange', accountProp('name')),
-  withState('icon', 'setIcon', accountProp('icon')),
+  withState('icon', 'setIcon', accountProp('icon', icons[0])),
   withState('currency', 'onCurrencyChange', accountProp('currency')),
-  withState('initialBalance', 'onInitialBalanceChange', accountProp('initialBalance')),
+  withState('initialBalance', 'onInitialBalanceChange', accountProp('initialBalance', 0)),
   withState('balance', 'setBalance', accountProp('balance')),
-  withState('date', 'setDate', accountProp('date')),
+  withState('date', 'setDate', accountProp('date', new Date())),
   withState('isValid', 'setIsValid', accountProp('isValid')),
   withState('isDatePickerVisible', 'setDatePickerState'),
   withState('isPickerVisible', 'toggleIconPicker'),
@@ -54,9 +54,6 @@ const enhance = compose(
     },
   }),
   defaultProps({
-    date: new Date(),
-    icon: icons[0],
-    initialBalance: 0,
     isPickerVisible: false,
     isDatePickerVisible: false,
     isValid: false,
