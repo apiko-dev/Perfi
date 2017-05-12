@@ -4,9 +4,10 @@ import { NavIcon, PropsProxyHOC } from '../components';
 const navOptions = ({ title, icon }) => ({
   navigationOptions: {
     title,
-    [Platform.select({ android: 'drawer', ios: 'tabBar' })]: {
-      icon: PropsProxyHOC(NavIcon, { name: icon }),
-    },
+    [Platform.select({
+      android: 'drawerIcon',
+      ios: 'tabBarIcon',
+    })]: PropsProxyHOC(NavIcon, { name: icon }),
   },
 });
 

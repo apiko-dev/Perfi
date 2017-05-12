@@ -14,7 +14,7 @@ describe('Transfers reducer', () => {
   };
 
   const getNewTransferId = (prevState, newState) => R.keys(
-    R.omit(R.keys(prevState), newState),
+    R.omit(R.keys(prevState.byId), newState.byId),
   )[0];
 
   it('should return the initial state', () => {
@@ -27,11 +27,11 @@ describe('Transfers reducer', () => {
       payload: testTransferProps,
     });
 
-    expect(R.values(state)).toHaveLength(1);
+    expect(R.values(state.byId)).toHaveLength(1);
+    expect(state.ids).toHaveLength(1);
 
     const newTransferId = getNewTransferId(initialState, state);
-
-    expect(R.omit(['id'], state[newTransferId])).toEqual(testTransferProps);
+    expect(R.omit(['id'], state.byId[newTransferId])).toEqual(testTransferProps);
   });
 
   it('should update the transfer', () => {
@@ -55,8 +55,10 @@ describe('Transfers reducer', () => {
       payload: { id: newTransferId, ...newTransferProps },
     });
 
-    expect(R.values(updatedState)).toHaveLength(1);
-    expect(R.omit(['id'], updatedState[newTransferId])).toEqual(newTransferProps);
+    expect(R.values(updatedState.byId)).toHaveLength(1);
+    expect(R.values(updatedState.ids)).toHaveLength(1);
+    expect(R.omit(['id'], updatedState.byId[newTransferId])).toEqual(newTransferProps);
+    expect(updatedState.ids).toContain(newTransferId);
   });
 
   it('should delete the transfer', () => {
@@ -72,7 +74,9 @@ describe('Transfers reducer', () => {
       payload: newTransferId,
     });
 
-    expect(R.values(updatedState)).toHaveLength(0);
-    expect(R.keys(updatedState)).not.toContain(newTransferId);
+    expect(R.values(updatedState.byId)).toHaveLength(0);
+    expect(R.values(updatedState.ids)).toHaveLength(0);
+    expect(R.keys(updatedState.byId)).not.toContain(newTransferId);
+    expect(updatedState.ids).not.toContain(newTransferId);
   });
 });

@@ -14,7 +14,7 @@ describe('Transactions reducer', () => {
   };
 
   const getNewTransactionId = (prevState, newState) => R.keys(
-    R.omit(R.keys(prevState), newState),
+    R.omit(R.keys(prevState.byId), newState.byId),
   )[0];
 
   it('should return the initial state', () => {
@@ -27,11 +27,13 @@ describe('Transactions reducer', () => {
       payload: testTransactionProps,
     });
 
-    expect(R.values(state)).toHaveLength(1);
+    expect(R.values(state.byId)).toHaveLength(1);
+    expect(R.values(state.ids)).toHaveLength(1);
 
     const newTransactionId = getNewTransactionId(initialState, state);
 
-    expect(R.omit(['id'], state[newTransactionId])).toEqual(testTransactionProps);
+    expect(R.omit(['id'], state.byId[newTransactionId])).toEqual(testTransactionProps);
+    expect(state.ids).toContain(newTransactionId);
   });
 
   it('should update the transaction', () => {
@@ -55,8 +57,10 @@ describe('Transactions reducer', () => {
       payload: { id: newTransactionId, ...newTransactionProps },
     });
 
-    expect(R.values(updatedState)).toHaveLength(1);
-    expect(R.omit(['id'], updatedState[newTransactionId])).toEqual(newTransactionProps);
+    expect(R.values(updatedState.byId)).toHaveLength(1);
+    expect(updatedState.ids).toHaveLength(1);
+    expect(R.omit(['id'], updatedState.byId[newTransactionId])).toEqual(newTransactionProps);
+    expect(updatedState.ids).toContain(newTransactionId);
   });
 
   it('should delete the transaction', () => {
@@ -72,7 +76,7 @@ describe('Transactions reducer', () => {
       payload: newTransactionId,
     });
 
-    expect(R.values(updatedState)).toHaveLength(0);
-    expect(R.keys(updatedState)).not.toContain(newTransactionId);
+    expect(R.values(updatedState.byId)).toHaveLength(0);
+    expect(updatedState.ids).not.toContain(newTransactionId);
   });
 });

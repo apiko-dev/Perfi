@@ -1,5 +1,5 @@
-import { createStore, compose } from 'redux';
 import { autoRehydrate, persistStore } from 'redux-persist';
+import { createStore, compose } from 'redux';
 import devToolsEnhancer from 'remote-redux-devtools';
 import { AsyncStorage } from 'react-native';
 import appReducer from './reducers';

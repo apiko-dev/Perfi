@@ -32,13 +32,6 @@ const Categories = ({ navigation }) => {
   );
 };
 
-Categories.navigationOptions = {
-  header: (navigation, defaultHeader) => ({
-    ...defaultHeader,
-    title: 'Categories',
-  }),
-};
-
 Categories.propTypes = {
   navigation: PropTypes.object,
 };

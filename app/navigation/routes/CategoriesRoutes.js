@@ -14,26 +14,24 @@ const categoriesTabs = {
   },
 };
 
-const getHeader = (navigation, defaultHeader) => {
+const getNavOptions = ({ navigation }) => {
   const isInitRoute = navigation.state.key === 'Init';
 
   return isInitRoute ? {
-    ...defaultHeader,
-    title: 'Categories',
     ...Platform.select({
       android: {
-        left: <DrawerButton navigation={navigation} />,
+        headerLeft: <DrawerButton navigation={navigation} />,
       },
     }),
-  } : defaultHeader;
+  } : {
+    title: 'Categories',
+  };
 };
 
 const Routes = {
   [screens.Categories]: {
     screen: NestedTabNavigator(categoriesTabs),
-    navigationOptions: {
-      header: getHeader,
-    },
+    navigationOptions: getNavOptions,
   },
   [screens.CategoryEditor]: {
     screen: CategoryEditor,
