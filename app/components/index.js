@@ -17,21 +17,30 @@ import CurrencyPicker from './CurrencyPicker';
 import DeleteButton from './navButtons/DeleteButton';
 
 export {
-  CategoriesList,
-  Calculator,
-  AccountForm,
+  // Screen components
   AccountsList,
-  DrawerButton,
-  Loading,
-  NavIcon,
-  PropsProxyHOC,
-  RoundButton,
+  AccountForm,
   TransactionForm,
-  FixedButtonsContainer,
-  IconsPickerModal,
-  InputField,
-  SceneContentWrapper,
-  TextFieldWithIcon,
+  CategoriesList,
+
+  // Pickers/Modals/Popups
+  Calculator,
   CurrencyPicker,
+  IconsPickerModal,
+
+  // Buttons
+  DrawerButton,
   DeleteButton,
+  RoundButton,
+  NavIcon,
+
+  // Form additional components
+  TextFieldWithIcon,
+  InputField,
+
+  // Global components(wrappers)
+  Loading,
+  PropsProxyHOC,
+  FixedButtonsContainer,
+  SceneContentWrapper,
 };
