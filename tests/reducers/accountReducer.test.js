@@ -13,25 +13,27 @@ describe('Accounts reducer', () => {
     initialDate: new Date(),
   };
 
-  const getNewAccountId = (prevState, newState) => R.keys(R.omit(R.keys(prevState), newState))[0];
+  const getNewAccountId = (prevState, newState) =>
+    R.keys(R.omit(R.keys(prevState.byId), newState.byId))[0];
 
   it('should return the initial state', () => {
-    expect(
-      R.map(R.omit(['id', 'initialDate']), R.values(initialState)),
-    ).toEqual([
-      {
+    expect({
+      ids: initialState.ids,
+      byId: R.map(R.omit(['id', 'initialDate']), R.values(initialState.byId)),
+    }).toEqual({
+      byId: [{
         name: 'Card',
         icon: 'credit-card',
         balance: 0,
         initialBalance: 0,
-      },
-      {
+      }, {
         name: 'Cash',
         icon: 'cash-multiple',
         balance: 0,
         initialBalance: 0,
-      },
-    ]);
+      }],
+      ids: ['0', '1'],
+    });
   });
 
   it('should add new account', () => {
@@ -40,11 +42,12 @@ describe('Accounts reducer', () => {
       payload: testAccProps,
     });
 
-    expect(R.values(state)).toHaveLength(3);
+    expect(state.ids).toHaveLength(3);
 
     const newAccountId = getNewAccountId(initialState, state);
 
-    expect(R.omit(['id'], state[newAccountId])).toEqual(testAccProps);
+    expect(R.omit(['id'], state.byId[newAccountId])).toEqual(testAccProps);
+    expect(state.ids).toContain(newAccountId);
   });
 
   it('should update the account', () => {
@@ -68,8 +71,10 @@ describe('Accounts reducer', () => {
       payload: { id: newAccountId, ...newAccProps },
     });
 
-    expect(R.values(updatedState)).toHaveLength(3);
-    expect(R.omit(['id'], updatedState[newAccountId])).toEqual(newAccProps);
+    expect(R.values(updatedState.byId)).toHaveLength(3);
+    expect(R.values(updatedState.ids)).toHaveLength(3);
+    expect(R.omit(['id'], updatedState.byId[newAccountId])).toEqual(newAccProps);
+    expect(updatedState.ids).toContain(newAccountId);
   });
 
   it('should delete the account', () => {
@@ -85,7 +90,9 @@ describe('Accounts reducer', () => {
       payload: newAccountId,
     });
 
-    expect(R.values(updatedState)).toHaveLength(2);
-    expect(R.keys(updatedState)).not.toContain(newAccountId);
+    expect(R.values(updatedState.byId)).toHaveLength(2);
+    expect(R.values(updatedState.ids)).toHaveLength(2);
+    expect(R.keys(updatedState.byId)).not.toContain(newAccountId);
+    expect(updatedState.ids).not.toContain(newAccountId);
   });
 });
