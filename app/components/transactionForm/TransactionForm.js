@@ -14,6 +14,7 @@ const TransactionForm = (props) => {
     note,
     isDatePickerVisible,
     isCalculatorVisible,
+    isReadyForSubmit,
     onChangeValue,
     onChangeCategory,
     onUpdateNote,
@@ -63,11 +64,13 @@ const TransactionForm = (props) => {
         multiline
         onChangeText={onUpdateNote}
       />
-      <RoundButton
-        style={style.submitButtonStyle}
-        iconName="check"
-        onPress={onSubmit}
-      />
+      {isReadyForSubmit && (
+        <RoundButton
+          style={style.submitButtonStyle}
+          iconName="check"
+          onPress={onSubmit}
+        />
+      )}
       <DateTimePicker
         isVisible={isDatePickerVisible}
         onConfirm={onSetDate}
@@ -94,6 +97,7 @@ TransactionForm.propTypes = {
   note: PropTypes.string,
   isDatePickerVisible: PropTypes.bool,
   isCalculatorVisible: PropTypes.bool,
+  isReadyForSubmit: PropTypes.bool,
   onChangeValue: PropTypes.func,
   onChangeCategory: PropTypes.func,
   onUpdateNote: PropTypes.func,
