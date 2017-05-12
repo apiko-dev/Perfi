@@ -21,7 +21,7 @@ const Categories = ({ navigation }) => {
       />
     </View>
   );
-}
+};
 
 Categories.propTypes = {
   navigation: PropTypes.object,
