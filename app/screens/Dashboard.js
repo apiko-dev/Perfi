@@ -19,16 +19,13 @@ Dashboard.propTypes = {
   navigation: PropTypes.object,
 };
 
-Dashboard.navigationOptions = {
-  header: (navigation, defaultHeader) => ({
-    ...defaultHeader,
-    title: 'Dashboard',
-    ...Platform.select({
-      android: {
-        left: <DrawerButton navigation={navigation} />,
-      },
-    }),
+Dashboard.navigationOptions = ({ navigation }) => ({
+  title: 'Dashboard',
+  ...Platform.select({
+    android: {
+      headerLeft: <DrawerButton navigation={navigation} />,
+    },
   }),
-};
+});
 
 export default Dashboard;

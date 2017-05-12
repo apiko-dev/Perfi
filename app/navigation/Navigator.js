@@ -8,4 +8,3 @@ const Navigator = Platform.select({
 });
 
 export default Navigator(Routes);
-

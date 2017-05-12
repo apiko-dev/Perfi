@@ -15,10 +15,7 @@ TransactionEditor.propTypes = {
 };
 
 TransactionEditor.navigationOptions = {
-  header: (navigation, defaultHeader) => ({
-    ...defaultHeader,
-    title: 'Add Transaction',
-  }),
+  title: 'Add Transaction',
 };
 
 export default TransactionEditor;
