@@ -8,12 +8,13 @@ const Trends = () => (
   </View>
 );
 
-Trends.navigationOptions = {
-  header: (navigation, defaultHeader) => ({
-    ...defaultHeader,
-    title: 'Trends',
-    left: Platform.OS === 'android' && <DrawerButton navigation={navigation} />,
+Trends.navigationOptions = ({ navigation }) => ({
+  title: 'Trends',
+  ...Platform.select({
+    android: {
+      headerLeft: <DrawerButton navigation={navigation} />,
+    },
   }),
-};
+});
 
 export default Trends;

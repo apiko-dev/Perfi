@@ -7,11 +7,8 @@ const CategoryEditor = () => (
   </View>
 );
 
-CategoryEditor.navigationOptions = {
-  header: (navigation, defaultHeader) => ({
-    ...defaultHeader,
-    title: navigation.state.params.title,
-  }),
-};
+CategoryEditor.navigationOptions = ({ navigation }) => ({
+  title: navigation.state.params.title,
+});
 
 export default CategoryEditor;
