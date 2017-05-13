@@ -6,6 +6,7 @@ import DeleteButton from './navButtons/DeleteButton';
 import CurrencyPicker from './CurrencyPicker';
 import DrawerButton from './DrawerButton';
 import FixedButtonsContainer from './FixedButtonsContainer';
+import FormInputWithIcon from './FormInputWithIcon';
 import IconsPickerModal from './IconsPicker';
 import InputField from './InputField';
 import Loading from './Loading';
@@ -26,6 +27,7 @@ export {
   DrawerButton,
   DeleteButton,
   FixedButtonsContainer,
+  FormInputWithIcon,
   IconsPickerModal,
   InputField,
   Loading,

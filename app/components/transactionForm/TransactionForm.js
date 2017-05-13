@@ -1,10 +1,9 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
-import { FormInput } from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import Modal from 'react-native-modal';
 import moment from 'moment';
-import { Calculator, RoundButton, TouchableFormInput } from '../index';
+import { Calculator, FormInputWithIcon, RoundButton, TouchableFormInput } from '../index';
 
 const TransactionForm = (props) => {
   const {
@@ -51,8 +50,9 @@ const TransactionForm = (props) => {
         icon="calendar"
         onPress={onToggleDatePicker}
       />
-      <FormInput
+      <FormInputWithIcon
         value={note}
+        icon="lead-pencil"
         placeholder="Note"
         multiline
         onChangeText={onUpdateNote}
