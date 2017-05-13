@@ -1,23 +1,32 @@
 import React, { PropTypes } from 'react';
-import { Alert, Platform, View } from 'react-native';
+import { View } from 'react-native';
 import screens from '../constants/screens';
-import { DrawerButton, RoundButton } from '../components';
+import { RoundButton } from '../components';
 import { CategoriesListContainer } from '../containers';
 import styles from '../styles/CategoriesStyles';
 
+const goToEditor = (navigation, params) => (category) => {
+  const isProxy = category && category.target;
+
+  navigation.navigate(screens.CategoryEditor, isProxy ? params : { ...params, category });
+};
+
 const Categories = ({ navigation }) => {
-  const currentRoute = navigation.state.routeName;
+  const { state: { routeName, params } } = navigation;
+  const goAddCategory = goToEditor(navigation, { title: 'Add category' });
+  const goEditCategory = goToEditor(navigation, { title: 'Edit category' });
+  const onSelectCategory = (params && params.onSelectCategory) || goEditCategory;
 
   return (
     <View style={styles.rootStyle}>
       <CategoriesListContainer
-        type={currentRoute.toLowerCase()}
-        onSelectCategory={id => Alert.alert(id)}
+        type={routeName.toLowerCase()}
+        onSelectCategory={onSelectCategory}
       />
       <RoundButton
         style={styles.addButtonStyle}
         iconName="add"
-        onPress={() => navigation.navigate(screens.CategoryEditor, { title: 'Add category' })}
+        onPress={goAddCategory}
       />
     </View>
   );
@@ -26,14 +35,5 @@ const Categories = ({ navigation }) => {
 Categories.propTypes = {
   navigation: PropTypes.object,
 };
-
-Categories.navigationOptions = ({ navigation }) => ({
-  title: 'Categories',
-  ...Platform.select({
-    android: {
-      headerLeft: <DrawerButton navigation={navigation} />,
-    },
-  }),
-});
 
 export default Categories;
