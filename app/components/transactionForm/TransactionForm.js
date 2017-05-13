@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import { FormInput } from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import Modal from 'react-native-modal';
 import moment from 'moment';
-import { Calculator, RoundButton } from '../index';
+import { Calculator, RoundButton, TouchableFormInput } from '../index';
 
 const TransactionForm = (props) => {
   const {
@@ -29,48 +29,24 @@ const TransactionForm = (props) => {
 
   return (
     <View style={style.rootStyle}>
-      <TouchableOpacity
+      <TouchableFormInput
+        value={value.toString()}
         onPress={onToggleCalculator}
-      >
-        <View>
-          <FormInput
-            value={value.toString()}
-            editable={false}
-          />
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity
+      />
+      <TouchableFormInput
+        value={account && account.name}
+        placeholder="Account"
         onPress={onChangeAccount}
-      >
-        <View>
-          <FormInput
-            value={account && account.name}
-            placeholder="Account"
-            editable={false}
-          />
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity
+      />
+      <TouchableFormInput
+        value={category && category.name}
+        placeholder="Category"
         onPress={onChangeCategory}
-      >
-        <View>
-          <FormInput
-            value={category && category.name}
-            placeholder="Category"
-            editable={false}
-          />
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity
+      />
+      <TouchableFormInput
+        value={moment(date).format('dddd, L')}
         onPress={onToggleDatePicker}
-      >
-        <View>
-          <FormInput
-            value={moment(date).format('dddd, L')}
-            editable={false}
-          />
-        </View>
-      </TouchableOpacity>
+      />
       <FormInput
         value={note}
         placeholder="Note"
