@@ -8,7 +8,9 @@ import { Calculator, RoundButton } from '../index';
 
 const TransactionForm = (props) => {
   const {
+    style,
     value,
+    account,
     category,
     date,
     note,
@@ -16,13 +18,13 @@ const TransactionForm = (props) => {
     isCalculatorVisible,
     isReadyForSubmit,
     onChangeValue,
+    onChangeAccount,
     onChangeCategory,
     onUpdateNote,
     onSetDate,
     onToggleDatePicker,
     onToggleCalculator,
     onSubmit,
-    style,
   } = props;
 
   return (
@@ -33,6 +35,17 @@ const TransactionForm = (props) => {
         <View>
           <FormInput
             value={value.toString()}
+            editable={false}
+          />
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={onChangeAccount}
+      >
+        <View>
+          <FormInput
+            value={account && account.name}
+            placeholder="Account"
             editable={false}
           />
         </View>
@@ -92,6 +105,7 @@ const TransactionForm = (props) => {
 TransactionForm.propTypes = {
   style: PropTypes.object,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  account: PropTypes.object,
   category: PropTypes.object,
   date: PropTypes.object,
   note: PropTypes.string,
@@ -99,6 +113,7 @@ TransactionForm.propTypes = {
   isCalculatorVisible: PropTypes.bool,
   isReadyForSubmit: PropTypes.bool,
   onChangeValue: PropTypes.func,
+  onChangeAccount: PropTypes.func,
   onChangeCategory: PropTypes.func,
   onUpdateNote: PropTypes.func,
   onSetDate: PropTypes.func,

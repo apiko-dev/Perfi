@@ -40,13 +40,13 @@ Accounts.propTypes = {
   deleteAccount: PropTypes.func,
 };
 
-Accounts.navigationOptions = ({ navigation }) => ({
-  title: 'Accounts',
-  ...Platform.select({
-    android: {
-      headerLeft: <DrawerButton navigation={navigation} />,
-    },
-  }),
-});
+// Accounts.navigationOptions = ({ navigation }) => ({
+//   title: 'Accounts',
+//   ...Platform.select({
+//     android: {
+//       headerLeft: <DrawerButton navigation={navigation} />,
+//     },
+//   }),
+// });
 
 export default Accounts;

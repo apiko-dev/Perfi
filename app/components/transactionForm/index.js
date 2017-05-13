@@ -24,6 +24,7 @@ const enhance = compose(
   })),
   withProps(props => ({ isReadyForSubmit: isFieldsFilled(props) })),
   withState('value', 'setValue', transactionProp('value', 0)),
+  withState('account', 'setAccount', transactionProp('account')),
   withState('category', 'setCategory', transactionProp('category')),
   withState('note', 'updateNote', transactionProp('note')),
   withState('date', 'setDate', transactionProp('date', new Date())),
@@ -34,6 +35,14 @@ const enhance = compose(
     onChangeValue: ({ setValue, toggleCalculator }) => (value) => {
       setValue(value);
       toggleCalculator(false);
+    },
+    onChangeAccount: ({ navigation, setAccount }) => () => {
+      navigation.navigate(screens.Accounts, {
+        onSelectAccount: (account) => {
+          setAccount(account);
+          navigation.goBack(null);
+        },
+      });
     },
     onChangeCategory: ({ navigation, setCategory, readyForSubmit }) => () => {
       navigation.navigate(screens.Categories, {

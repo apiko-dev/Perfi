@@ -1,9 +1,7 @@
-import React from 'react';
-import { Platform } from 'react-native';
 import screens from '../../constants/screens';
 import { Categories, CategoryEditor } from '../../screens';
 import NestedTabNavigator from '../navigators/NestedTabNavigator';
-import { DrawerButton } from '../../components';
+import headerOptions from '../../utils/stackHeaderOptions';
 
 const categoriesTabs = {
   [screens.CategoriesIncome]: {
@@ -14,24 +12,10 @@ const categoriesTabs = {
   },
 };
 
-const getNavOptions = ({ navigation }) => {
-  const isInitRoute = navigation.state.key === 'Init';
-
-  return isInitRoute ? {
-    ...Platform.select({
-      android: {
-        headerLeft: <DrawerButton navigation={navigation} />,
-      },
-    }),
-  } : {
-    title: 'Categories',
-  };
-};
-
 const Routes = {
   [screens.Categories]: {
     screen: NestedTabNavigator(categoriesTabs),
-    navigationOptions: getNavOptions,
+    navigationOptions: headerOptions({ title: 'Categories' }),
   },
   [screens.CategoryEditor]: {
     screen: CategoryEditor,
