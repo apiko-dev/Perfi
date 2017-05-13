@@ -30,21 +30,25 @@ const TransactionForm = (props) => {
   return (
     <View style={style.rootStyle}>
       <TouchableFormInput
+        icon="calculator"
         value={value.toString()}
         onPress={onToggleCalculator}
       />
       <TouchableFormInput
         value={account && account.name}
+        icon={account ? account.icon : 'help-circle'}
         placeholder="Account"
         onPress={onChangeAccount}
       />
       <TouchableFormInput
         value={category && category.name}
+        icon={category ? category.icon : 'help-circle'}
         placeholder="Category"
         onPress={onChangeCategory}
       />
       <TouchableFormInput
         value={moment(date).format('dddd, L')}
+        icon="calendar"
         onPress={onToggleDatePicker}
       />
       <FormInput
