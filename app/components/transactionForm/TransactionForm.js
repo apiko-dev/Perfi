@@ -1,66 +1,69 @@
 import React, { PropTypes } from 'react';
-import { TouchableOpacity, View } from 'react-native';
-import { FormInput } from 'react-native-elements';
+import { View } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import Modal from 'react-native-modal';
 import moment from 'moment';
-import { Calculator, RoundButton } from '../index';
+import { Calculator, FormInputWithIcon, RoundButton, TouchableFormInput } from '../index';
 
 const TransactionForm = (props) => {
   const {
+    style,
     value,
+    account,
     category,
     date,
     note,
     isDatePickerVisible,
     isCalculatorVisible,
+    isReadyForSubmit,
     onChangeValue,
+    onChangeAccount,
+    onChangeCategory,
     onUpdateNote,
     onSetDate,
     onToggleDatePicker,
     onToggleCalculator,
     onSubmit,
-    style,
   } = props;
 
   return (
     <View style={style.rootStyle}>
-      <TouchableOpacity
+      <TouchableFormInput
+        icon="calculator"
+        value={value.toString()}
         onPress={onToggleCalculator}
-      >
-        <View>
-          <FormInput
-            value={value.toString()}
-            editable={false}
-          />
-        </View>
-      </TouchableOpacity>
-      <FormInput
-        value={category}
-        placeholder="Category"
-        editable={false}
       />
-      <TouchableOpacity
+      <TouchableFormInput
+        value={account && account.name}
+        icon={account ? account.icon : 'help-circle'}
+        placeholder="Account"
+        onPress={onChangeAccount}
+      />
+      <TouchableFormInput
+        value={category && category.name}
+        icon={category ? category.icon : 'help-circle'}
+        placeholder="Category"
+        onPress={onChangeCategory}
+      />
+      <TouchableFormInput
+        value={moment(date).format('dddd, L')}
+        icon="calendar"
         onPress={onToggleDatePicker}
-      >
-        <View>
-          <FormInput
-            value={moment(date).format('dddd, L')}
-            editable={false}
-          />
-        </View>
-      </TouchableOpacity>
-      <FormInput
+      />
+      <FormInputWithIcon
         value={note}
+        icon="lead-pencil"
         placeholder="Note"
         multiline
         onChangeText={onUpdateNote}
       />
-      <RoundButton
-        style={style.submitButtonStyle}
-        iconName="check"
-        onPress={onSubmit}
-      />
+      {isReadyForSubmit && (
+        <RoundButton
+          style={style.submitButtonStyle}
+          iconName="check"
+          onPress={onSubmit}
+        />
+      )}
       <DateTimePicker
         isVisible={isDatePickerVisible}
         onConfirm={onSetDate}
@@ -80,20 +83,23 @@ const TransactionForm = (props) => {
 };
 
 TransactionForm.propTypes = {
+  style: PropTypes.object,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  category: PropTypes.string,
+  account: PropTypes.object,
+  category: PropTypes.object,
   date: PropTypes.object,
   note: PropTypes.string,
   isDatePickerVisible: PropTypes.bool,
   isCalculatorVisible: PropTypes.bool,
+  isReadyForSubmit: PropTypes.bool,
   onChangeValue: PropTypes.func,
+  onChangeAccount: PropTypes.func,
+  onChangeCategory: PropTypes.func,
   onUpdateNote: PropTypes.func,
   onSetDate: PropTypes.func,
   onToggleDatePicker: PropTypes.func,
   onToggleCalculator: PropTypes.func,
   onSubmit: PropTypes.func,
-  // onSelectCategory: PropTypes.func,
-  style: PropTypes.object,
 };
 
 export default TransactionForm;

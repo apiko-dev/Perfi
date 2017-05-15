@@ -1,8 +1,9 @@
 import { TabNavigator } from 'react-navigation';
 
 const NestedTabNavigator = routes => TabNavigator(routes, {
-  tabBarPosition: 'top',
+  backBehavior: 'none',
   swipeEnabled: true,
+  tabBarPosition: 'top',
   tabBarOptions: {
     labelStyle: {
       fontSize: 16,
