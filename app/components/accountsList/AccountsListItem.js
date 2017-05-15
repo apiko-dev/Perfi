@@ -1,28 +1,24 @@
 import React, { PropTypes } from 'react';
-import { TouchableWithoutFeedback, Text, View } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import styles from '../../styles/FormStyles';
+import { ListItem } from 'react-native-elements';
+import styles from '../../styles/CategoriesListItemStyles';
 
-const { listItemStyle, textStyle } = styles;
-
-const AccountsListItem = ({ name, icon, initialBalance, onPress }) => (
-  <TouchableWithoutFeedback onPress={onPress}>
-    <View style={listItemStyle}>
-      <MaterialCommunityIcons name={icon} size={26} />
-      <Text style={textStyle}>{ name }</Text>
-      <Text>{ initialBalance }</Text>
-    </View>
-  </TouchableWithoutFeedback>
+const AccountsListItem = ({ name, icon, style, ...props }) => (
+  <ListItem
+    containerStyle={[styles.rootStyle, style]}
+    {...props}
+    title={name}
+    leftIcon={{
+      name: icon,
+      type: 'material-community',
+    }}
+    hideChevron
+  />
 );
 
 AccountsListItem.propTypes = {
+  style: PropTypes.any,
   name: PropTypes.string,
   icon: PropTypes.string,
-  initialBalance: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
-  onPress: PropTypes.func,
 };
 
 export default AccountsListItem;
