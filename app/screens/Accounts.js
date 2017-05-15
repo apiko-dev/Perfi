@@ -1,18 +1,19 @@
 import React, { PropTypes } from 'react';
-import { Platform } from 'react-native';
+import styles from '../styles/ButtonsStyles';
 import screens from '../constants/screens';
 import {
-  DrawerButton,
   RoundButton,
-  FixedButtonsContainer,
   SceneContentWrapper,
   AccountsList,
 } from '../components';
 
-const Accounts = ({ navigation, accounts, deleteAccount }) => {
+const { fixedButtonContainer } = styles;
+
+const Accounts = ({ navigation, accounts, deleteAccount, updateAccount, createAccount }) => {
   const onAddButtonClick = () => {
     navigation.navigate(screens.AccountEditor, {
       title: 'Add account',
+      onSubmit: createAccount,
     });
   };
 
@@ -22,14 +23,14 @@ const Accounts = ({ navigation, accounts, deleteAccount }) => {
         accounts={accounts.byId}
         navigation={navigation}
         deleteAccount={deleteAccount}
+        updateAccount={updateAccount}
       />
 
-      <FixedButtonsContainer>
-        <RoundButton
-          iconName="add"
-          onPress={onAddButtonClick}
-        />
-      </FixedButtonsContainer>
+      <RoundButton
+        style={fixedButtonContainer}
+        iconName="add"
+        onPress={onAddButtonClick}
+      />
     </SceneContentWrapper>
   );
 };
@@ -38,6 +39,8 @@ Accounts.propTypes = {
   navigation: PropTypes.object,
   accounts: PropTypes.object,
   deleteAccount: PropTypes.func,
+  updateAccount: PropTypes.func,
+  createAccount: PropTypes.func,
 };
 
 export default Accounts;

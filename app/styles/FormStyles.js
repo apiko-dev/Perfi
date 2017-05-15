@@ -12,8 +12,7 @@ const styles = create({
   },
   rowStyle: {
     flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   listItemStyle: {
     flexDirection: 'row',

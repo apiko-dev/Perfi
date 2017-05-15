@@ -4,7 +4,7 @@ import AccountsListItem from './AccountsListItem';
 import style from '../../styles/FormStyles';
 import screens from '../../constants/screens';
 
-const AccountsList = ({ accounts, navigation, deleteAccount }) => {
+const AccountsList = ({ accounts, navigation, deleteAccount, updateAccount }) => {
   const ds = new ListView.DataSource({
     rowHasChanged: (r1, r2) => r1 !== r2,
   });
@@ -15,6 +15,7 @@ const AccountsList = ({ accounts, navigation, deleteAccount }) => {
       navigation.navigate(screens.AccountEditor, {
         title: `Edit ${account.name}`,
         onDelete: deleteAccount,
+        onSubmit: updateAccount,
         account,
       });
     };
@@ -48,6 +49,7 @@ AccountsList.propTypes = {
   })),
   navigation: PropTypes.object,
   deleteAccount: PropTypes.func,
+  updateAccount: PropTypes.func,
 };
 
 export default AccountsList;
