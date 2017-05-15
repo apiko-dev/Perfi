@@ -12,8 +12,8 @@ const withClonedDataSource = withProps(({ ds, categories }) => ({
 
 const withCategoryItem = withProps(({ onSelectCategory }) => ({
   renderRow: compose(
-    withProps(({ id }) => ({
-      onPress: () => onSelectCategory(id),
+    withProps(props => ({
+      onPress: () => onSelectCategory(props),
     })),
   )(CategoryItem),
 }));

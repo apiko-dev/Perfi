@@ -1,4 +1,4 @@
-import { defaultProps, compose, mapProps, withHandlers, withProps, withState, withPropsOnChange } from 'recompose';
+import { defaultProps, compose, mapProps, withHandlers, withState, withPropsOnChange } from 'recompose';
 import R from 'ramda';
 import AccountForm from './AccountForm';
 import styles from '../../styles/FormStyles';
@@ -13,9 +13,6 @@ const enhance = compose(
       ...styles,
       ...props.style,
     },
-  })),
-  withProps(({ account, createAccount, updateAccount }) => ({
-    submit: account ? updateAccount : createAccount,
   })),
   withState('name', 'onNameChange', accountProp('name')),
   withState('icon', 'setIcon', accountProp('icon', icons[0])),

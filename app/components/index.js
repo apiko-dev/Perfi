@@ -1,20 +1,19 @@
-import Calculator from './calculator';
 import AccountForm from './accountForm';
 import AccountsList from './accountsList';
+import Calculator from './calculator';
 import CategoriesList from './categoriesList';
+import DeleteButton from './navButtons/DeleteButton';
+import CurrencyPicker from './CurrencyPicker';
 import DrawerButton from './DrawerButton';
+import FormInputWithIcon from './FormInputWithIcon';
+import IconsPickerModal from './IconsPicker';
 import Loading from './Loading';
 import NavIcon from './NavIcon';
 import PropsProxyHOC from './PropsProxyHOC';
 import RoundButton from './RoundButton';
-import TransactionForm from './transactionForm';
-import FixedButtonsContainer from './FixedButtonsContainer';
-import IconsPickerModal from './IconsPicker';
-import InputField from './InputField';
 import SceneContentWrapper from './SceneContentWrapper';
-import TextFieldWithIcon from './TextFieldWithIcon';
-import CurrencyPicker from './CurrencyPicker';
-import DeleteButton from './navButtons/DeleteButton';
+import TransactionForm from './transactionForm';
+import TouchableFormInput from './TouchableFormInput';
 
 export {
   AccountsList,
@@ -24,14 +23,13 @@ export {
   CurrencyPicker,
   DrawerButton,
   DeleteButton,
-  FixedButtonsContainer,
+  FormInputWithIcon,
+  IconsPickerModal,
   Loading,
   NavIcon,
   PropsProxyHOC,
   RoundButton,
   SceneContentWrapper,
-  IconsPickerModal,
-  InputField,
   TransactionForm,
-  TextFieldWithIcon,
+  TouchableFormInput,
 };
