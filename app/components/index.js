@@ -16,6 +16,7 @@ import RoundButton from './RoundButton';
 import SceneContentWrapper from './SceneContentWrapper';
 import TransactionForm from './transactionForm';
 import TextFieldWithIcon from './TextFieldWithIcon';
+import TransactionsList from './transactionsList';
 import TouchableFormInput from './TouchableFormInput';
 
 export {
@@ -35,7 +36,8 @@ export {
   PropsProxyHOC,
   RoundButton,
   SceneContentWrapper,
-  TransactionForm,
   TextFieldWithIcon,
+  TransactionForm,
+  TransactionsList,
   TouchableFormInput,
 };

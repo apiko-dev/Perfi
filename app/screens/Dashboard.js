@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react';
-import { Platform, Text, View } from 'react-native';
+import { Platform, View } from 'react-native';
 import screens from '../constants/screens';
 import { RoundButton, DrawerButton } from '../components';
+import { TransactionsListContainer } from '../containers';
 import styles from '../styles/DashboardStyles';
 
 const Dashboard = ({ navigation }) => (
   <View style={styles.rootStyle}>
-    <Text>Dashboard</Text>
+    <TransactionsListContainer />
     <RoundButton
       style={styles.addButtonStyle}
       iconName="add"

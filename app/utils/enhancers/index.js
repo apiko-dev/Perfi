@@ -1,7 +1,7 @@
-import nonOptimalStates from './nonOptimalStates';
+import withNonOptimalStates from './withNonOptimalStates';
 import withStyle from './withStyle';
 
 export {
-  nonOptimalStates,
+  withNonOptimalStates,
   withStyle,
 };
