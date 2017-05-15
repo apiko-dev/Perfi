@@ -1,17 +1,22 @@
 import React, { PropTypes } from 'react';
 import { Icon } from 'react-native-elements';
-import { View, TouchableWithoutFeedback } from 'react-native';
+import { View, Text } from 'react-native';
 import { MenuContext } from 'react-native-popup-menu';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import {
   IconsPickerModal,
-  TextFieldWithIcon,
+  TouchableFormInput,
+  FormInputWithIcon,
   RoundButton,
-  FixedButtonsContainer,
   SceneContentWrapper,
 } from '../';
 import CurrencyPicker from '../CurrencyPicker';
 import calendarDateFormat from '../../utils/calendarDateFormat';
+import buttonsStyles from '../../styles/ButtonsStyles';
+import inputStyles from '../../styles/FormInputWithIconStyles';
+
+const { fixedButtonContainer } = buttonsStyles;
+const { iconStyle } = inputStyles;
 
 const AccountForm = (props) => {
   const {
@@ -34,73 +39,49 @@ const AccountForm = (props) => {
     isDatePickerVisible,
   } = props;
 
-  const iconsPickerButton = (
-    <Icon
-      onPress={onTogglePicker}
-      name={icon}
-      type="material-community"
-    />
-  );
-
-  const pickerIcon = (
-    <Icon
-      name="calendar-blank"
-      onPress={onToggleDatePicker}
-      type="material-community"
-    />
-  );
-
-  const submitButton = (
-    <FixedButtonsContainer>
-      <RoundButton
-        onPress={onSubmit}
-        iconName="check"
-      />
-    </FixedButtonsContainer>
-  );
-
   return (
     <MenuContext>
       <SceneContentWrapper>
         <View style={blockStyle}>
           <View style={rowStyle}>
-            <TextFieldWithIcon
-              icon={iconsPickerButton}
+            <Icon
+              onPress={onTogglePicker}
+              name={icon}
+              type="material-community"
+              iconStyle={iconStyle}
+              size={16}
+              raised
+            />
+            <FormInputWithIcon
               onChangeText={onNameChange}
               value={name}
             />
           </View>
-          <View style={rowStyle}>
-            <CurrencyPicker
-              selectedValue={currency}
-              onValueChange={onCurrencyChange}
-            />
-          </View>
+          <CurrencyPicker
+            selectedValue={currency}
+            onValueChange={onCurrencyChange}
+          />
         </View>
         <View style={[blockStyle, blockStyleDark]}>
-          <View style={rowStyle}>
-            <TextFieldWithIcon
+          <View>
+            <Text>Initial balance</Text>
+            <FormInputWithIcon
               onChangeText={onInitialBalanceChange}
               value={initialBalance.toString()}
-              label={'Initial balance'}
               keyboardType="numeric"
             />
           </View>
-          <View style={rowStyle}>
-            <TouchableWithoutFeedback onPress={onToggleDatePicker}>
-              <View>
-                <DateTimePicker
-                  isVisible={isDatePickerVisible}
-                  onConfirm={onDateChange}
-                  onCancel={onToggleDatePicker}
-                />
-                <TextFieldWithIcon
-                  icon={pickerIcon}
-                  value={calendarDateFormat(date)}
-                  editable={false}
-                />
-              </View>
-            </TouchableWithoutFeedback>
+          <View>
+            <DateTimePicker
+              isVisible={isDatePickerVisible}
+              onConfirm={onDateChange}
+              onCancel={onToggleDatePicker}
+            />
+            <TouchableFormInput
+              icon="calendar-blank"
+              onPress={onToggleDatePicker}
+              value={calendarDateFormat(date)}
+            />
           </View>
         </View>
         <IconsPickerModal
@@ -109,7 +90,13 @@ const AccountForm = (props) => {
           selectedIconName={icon}
           hideModal={onTogglePicker}
         />
-        { isValid && submitButton }
+        {isValid && (
+          <RoundButton
+            style={fixedButtonContainer}
+            onPress={onSubmit}
+            iconName="check"
+          />
+        )}
       </SceneContentWrapper>
     </MenuContext>
   );
