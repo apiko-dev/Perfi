@@ -66,9 +66,10 @@ const enhance = compose(
     onToggleCalculator: ({ toggleCalculator, isCalculatorVisible }) => () => {
       toggleCalculator(!isCalculatorVisible);
     },
-    onSubmit: ({ submit, transaction, onClose, category, ...props }) => () => {
+    onSubmit: ({ submit, transaction, account, category, onClose, ...props }) => () => {
       const editedProps = {
         ...R.pick(['value', 'date', 'note'], props),
+        account: account && account.id,
         category: category && category.id,
       };
       const propsToSubmit = transaction ? { id: transaction.id, ...editedProps } : editedProps;
