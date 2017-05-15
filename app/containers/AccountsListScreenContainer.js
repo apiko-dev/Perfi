@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Accounts from '../screens/Accounts';
-import { deleteAccount } from '../actions/accountsActions';
+import { deleteAccount, createAccount, updateAccount } from '../actions/accountsActions';
 
 const mapStateToProps = ({ accounts }) => ({
   accounts,
@@ -8,4 +8,6 @@ const mapStateToProps = ({ accounts }) => ({
 
 export default connect(mapStateToProps, {
   deleteAccount,
+  createAccount,
+  updateAccount,
 })(Accounts);
