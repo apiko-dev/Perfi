@@ -6,7 +6,7 @@ import {
   RoundButton,
   SceneContentWrapper,
   AccountsList,
-  TransfersButton,
+  NavButton,
 } from '../components';
 
 const { fixedButtonContainer } = styles;
@@ -15,6 +15,12 @@ const goToEditor = (navigation, props) => (account) => {
   const accountName = account && account.name;
 
   navigation.navigate(screens.AccountEditor, accountName ? { ...props, account } : props);
+};
+
+const goToTransfers = navigation => () => {
+  navigation.navigate(screens.TransferEditor, {
+    title: 'Add transfer',
+  });
 };
 
 const Accounts = ({ navigation, accounts, deleteAccount, updateAccount, createAccount }) => {
@@ -53,7 +59,13 @@ const Accounts = ({ navigation, accounts, deleteAccount, updateAccount, createAc
 Accounts.navigationOptions = ({ navigation }) => ({
   ...Platform.select({
     android: {
-      headerRight: <TransfersButton navigation={navigation} />,
+      headerRight: <NavButton
+        isVisible
+        iconName="exchange"
+        iconType="font-awesome"
+        navigation={navigation}
+        action={goToTransfers(navigation)}
+      />,
     },
   }),
 });
