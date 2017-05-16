@@ -1,7 +1,7 @@
 import R from 'ramda';
 import reducer from '../../app/reducers/categoriesReducer';
 import actionTypes from '../../app/constants/actionTypes';
-import defaultCategories from '../../app/constants/defaultCategories';
+import defaultCategories from '../../app/constants/categories';
 
 describe('Categories reducer', () => {
   const initialState = reducer(undefined, {});
