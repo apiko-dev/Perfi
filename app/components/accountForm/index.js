@@ -3,8 +3,10 @@ import R from 'ramda';
 import AccountForm from './AccountForm';
 import styles from '../../styles/FormStyles';
 import icons from '../../constants/accountIcons';
+import transactionFormStyle from '../../styles/TransactionFormStyles';
 
 const accountProp = (propName, def) => R.pathOr(def, ['account', propName]);
+const { calculatorModalStyle } = transactionFormStyle;
 
 const enhance = compose(
   mapProps(props => ({
@@ -12,6 +14,7 @@ const enhance = compose(
     style: {
       ...styles,
       ...props.style,
+      calculatorModalStyle,
     },
   })),
   withState('name', 'onNameChange', accountProp('name')),
@@ -21,11 +24,12 @@ const enhance = compose(
   withState('balance', 'setBalance', accountProp('balance')),
   withState('date', 'setDate', accountProp('date', new Date())),
   withState('isValid', 'setIsValid', accountProp('isValid')),
-  withState('isDatePickerVisible', 'setDatePickerState'),
+  withState('isDatePickerVisible', 'toggleDatePickerState'),
   withState('isPickerVisible', 'toggleIconPicker'),
+  withState('isCalculatorVisible', 'toggleCalculator'),
   withPropsOnChange(() => true, props => ({
     ...props,
-    isValid: !!props.name && props.name.length > 0 && (props.initialBalance || 0) >= 0,
+    isValid: !!props.name && props.name.length > 0 && props.initialBalance >= 0,
   })),
   withHandlers({
     onDateChange: ({ setDate, setDatePickerState }) => (date) => {
@@ -39,8 +43,15 @@ const enhance = compose(
       toggleIconPicker(false);
       setIcon(value);
     },
-    onToggleDatePicker: ({ isDatePickerVisible, setDatePickerState }) => () => {
-      setDatePickerState(!isDatePickerVisible);
+    onToggleDatePicker: ({ isDatePickerVisible, toggleDatePickerState }) => () => {
+      toggleDatePickerState(!isDatePickerVisible);
+    },
+    onChangeBalance: ({ toggleCalculator, onInitialBalanceChange }) => (value) => {
+      onInitialBalanceChange(value);
+      toggleCalculator(false);
+    },
+    onToggleCalculator: ({ toggleCalculator, isCalculatorVisible }) => () => {
+      toggleCalculator(!isCalculatorVisible);
     },
     onSubmit: ({ submit, account, onClose, ...props }) => () => {
       const editedProps = R.pick(['name', 'icon', 'currency', 'date', 'initialBalance', 'balance'], props);

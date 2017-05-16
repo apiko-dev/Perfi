@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Icon } from 'react-native-elements';
 import { View, Text } from 'react-native';
+import Modal from 'react-native-modal';
 import { MenuContext } from 'react-native-popup-menu';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import {
@@ -9,6 +10,7 @@ import {
   FormInputWithIcon,
   RoundButton,
   SceneContentWrapper,
+  Calculator,
 } from '../';
 import CurrencyPicker from '../CurrencyPicker';
 import calendarDateFormat from '../../utils/calendarDateFormat';
@@ -20,7 +22,7 @@ const { iconStyle } = inputStyles;
 
 const AccountForm = (props) => {
   const {
-    style: { blockStyleDark, blockStyle, rowStyle },
+    style: { blockStyleDark, blockStyle, rowStyle, calculatorModalStyle },
     name,
     icon,
     date,
@@ -32,11 +34,13 @@ const AccountForm = (props) => {
     onIconChange,
     onDateChange,
     isPickerVisible,
+    onChangeBalance,
     onCurrencyChange,
-    onInitialBalanceChange,
+    onToggleCalculator,
     onTogglePicker,
     onToggleDatePicker,
     isDatePickerVisible,
+    isCalculatorVisible,
   } = props;
 
   return (
@@ -65,9 +69,9 @@ const AccountForm = (props) => {
         <View style={[blockStyle, blockStyleDark]}>
           <View>
             <Text>Initial balance</Text>
-            <FormInputWithIcon
-              onChangeText={onInitialBalanceChange}
+            <TouchableFormInput
               value={initialBalance.toString()}
+              onPress={onToggleCalculator}
               keyboardType="numeric"
             />
           </View>
@@ -97,6 +101,15 @@ const AccountForm = (props) => {
             iconName="check"
           />
         )}
+        <Modal
+          style={calculatorModalStyle}
+          isVisible={isCalculatorVisible}
+        >
+          <Calculator
+            value={initialBalance}
+            onSubmit={onChangeBalance}
+          />
+        </Modal>
       </SceneContentWrapper>
     </MenuContext>
   );
@@ -119,12 +132,14 @@ AccountForm.propTypes = {
   ]),
   onToggleDatePicker: PropTypes.func,
   isDatePickerVisible: PropTypes.bool,
+  isCalculatorVisible: PropTypes.bool,
   onNameChange: PropTypes.func,
+  onChangeBalance: PropTypes.func,
   onIconChange: PropTypes.func,
   onDateChange: PropTypes.func,
   onCurrencyChange: PropTypes.func,
+  onToggleCalculator: PropTypes.func,
   onTogglePicker: PropTypes.func,
-  onInitialBalanceChange: PropTypes.func,
   onSubmit: PropTypes.func,
 };
 
