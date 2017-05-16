@@ -9,27 +9,40 @@ import {
 
 const { fixedButtonContainer } = styles;
 
+const goToEditor = (navigation, props) => (account) => {
+  const accountName = account && account.name;
+
+  navigation.navigate(screens.AccountEditor, accountName ? { ...props, account } : props);
+};
+
 const Accounts = ({ navigation, accounts, deleteAccount, updateAccount, createAccount }) => {
-  const onAddButtonClick = () => {
-    navigation.navigate(screens.AccountEditor, {
-      title: 'Add account',
-      onSubmit: createAccount,
-    });
-  };
+  const { state: { params } } = navigation;
+
+  const goAddAccount = goToEditor(navigation, {
+    title: 'Add account',
+    onSubmit: createAccount,
+  });
+
+  const goEditAccount = goToEditor(navigation, {
+    onDelete: deleteAccount,
+    onSubmit: updateAccount,
+    title: 'Edit account',
+  });
+
+  const onSelectAccount = (params && params.onSelectAccount) || goEditAccount;
 
   return (
     <SceneContentWrapper>
       <AccountsList
         accounts={accounts.byId}
         navigation={navigation}
-        deleteAccount={deleteAccount}
-        updateAccount={updateAccount}
+        onSelectAccount={onSelectAccount}
       />
 
       <RoundButton
         style={fixedButtonContainer}
         iconName="add"
-        onPress={onAddButtonClick}
+        onPress={goAddAccount}
       />
     </SceneContentWrapper>
   );
