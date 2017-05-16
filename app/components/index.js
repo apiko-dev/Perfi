@@ -3,6 +3,7 @@ import AccountsList from './accountsList';
 import Calculator from './calculator';
 import CategoriesList from './categoriesList';
 import DeleteButton from './navButtons/DeleteButton';
+import TransfersButton from './navButtons/TransfersButton';
 import CurrencyPicker from './CurrencyPicker';
 import DrawerButton from './DrawerButton';
 import FormInputWithIcon from './FormInputWithIcon';
@@ -31,5 +32,6 @@ export {
   RoundButton,
   SceneContentWrapper,
   TransactionForm,
+  TransfersButton,
   TouchableFormInput,
 };

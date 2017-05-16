@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react';
+import { Platform } from 'react-native';
 import styles from '../styles/ButtonsStyles';
 import screens from '../constants/screens';
 import {
   RoundButton,
   SceneContentWrapper,
   AccountsList,
+  TransfersButton,
 } from '../components';
 
 const { fixedButtonContainer } = styles;
@@ -47,6 +49,14 @@ const Accounts = ({ navigation, accounts, deleteAccount, updateAccount, createAc
     </SceneContentWrapper>
   );
 };
+
+Accounts.navigationOptions = ({ navigation }) => ({
+  ...Platform.select({
+    android: {
+      headerRight: <TransfersButton navigation={navigation} />,
+    },
+  }),
+});
 
 Accounts.propTypes = {
   navigation: PropTypes.object,

@@ -8,6 +8,7 @@ export default {
   AccountsRoot: 'AccountsRoot',
   Accounts: 'Accounts',
   AccountEditor: 'AccountEditor',
+  TransferEditor: 'TransferEditor',
 
   CategoriesRoot: 'CategoriesRoot',
   Categories: 'Categories',
