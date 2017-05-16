@@ -7,7 +7,12 @@ import styles from '../styles/DashboardStyles';
 
 const Dashboard = ({ navigation }) => (
   <View style={styles.rootStyle}>
-    <TransactionsListContainer />
+    <TransactionsListContainer
+      onSelectTransaction={transaction => navigation.navigate(
+        screens.TransactionEditor,
+        { transaction },
+      )}
+    />
     <RoundButton
       style={styles.addButtonStyle}
       iconName="add"
