@@ -8,7 +8,7 @@ const withDataSource = withProps({
 });
 
 const withClonedDataSource = withProps(({ ds, transactions }) => ({
-  dataSource: ds.cloneWithRows(transactions),
+  dataSource: ds.cloneWithRows(transactions || []),
 }));
 
 const withTransactionItem = withProps(({ onSelectTransaction }) => ({

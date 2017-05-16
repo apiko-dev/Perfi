@@ -2,13 +2,14 @@ import React, { PropTypes } from 'react';
 import { Platform } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { SceneContentWrapper, DeleteButton } from '../components';
-import AccountFrom from '../containers/AccountFormContainer';
+import AccountFrom from '../components/accountForm';
 
 const AccountEditor = ({ navigation }) => (
   <SceneContentWrapper>
     <AccountFrom
       account={navigation.state.params.account}
       onClose={() => navigation.dispatch(NavigationActions.back())}
+      submit={navigation.state.params.onSubmit}
     />
   </SceneContentWrapper>
 );
