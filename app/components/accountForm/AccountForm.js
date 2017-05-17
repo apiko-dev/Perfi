@@ -12,13 +12,15 @@ import {
   SceneContentWrapper,
   Calculator,
 } from '../';
-import CurrencyPicker from '../CurrencyPicker';
+import SelectBox from '../SelectBox';
 import calendarDateFormat from '../../utils/calendarDateFormat';
 import buttonsStyles from '../../styles/ButtonsStyles';
 import inputStyles from '../../styles/FormInputWithIconStyles';
 
 const { fixedButtonContainer } = buttonsStyles;
 const { iconStyle } = inputStyles;
+
+const getLabel = ({ name, sign }) => `${name}(${sign})`;
 
 const AccountForm = (props) => {
   const {
@@ -29,6 +31,7 @@ const AccountForm = (props) => {
     currency,
     onSubmit,
     isValid,
+    currencies,
     initialBalance,
     onNameChange,
     onIconChange,
@@ -61,8 +64,10 @@ const AccountForm = (props) => {
               value={name}
             />
           </View>
-          <CurrencyPicker
+          <SelectBox
+            getLabel={getLabel}
             selectedValue={currency}
+            items={currencies}
             onValueChange={onCurrencyChange}
           />
         </View>
@@ -72,7 +77,6 @@ const AccountForm = (props) => {
             <TouchableFormInput
               value={initialBalance.toString()}
               onPress={onToggleCalculator}
-              keyboardType="numeric"
             />
           </View>
           <View>
@@ -130,6 +134,10 @@ AccountForm.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ]),
+  currencies: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    sign: PropTypes.string,
+  })),
   onToggleDatePicker: PropTypes.func,
   isDatePickerVisible: PropTypes.bool,
   isCalculatorVisible: PropTypes.bool,

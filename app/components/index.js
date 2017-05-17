@@ -2,8 +2,9 @@ import AccountForm from './accountForm';
 import AccountsList from './accountsList';
 import Calculator from './calculator';
 import CategoriesList from './categoriesList';
+import TransferForm from './transferForm';
 import NavButton from './NavButton';
-import CurrencyPicker from './CurrencyPicker';
+import SelectBox from './SelectBox';
 import DrawerButton from './DrawerButton';
 import FormInputWithIcon from './FormInputWithIcon';
 import IconsPickerModal from './IconsPicker';
@@ -20,7 +21,7 @@ export {
   AccountForm,
   CategoriesList,
   Calculator,
-  CurrencyPicker,
+  SelectBox,
   DrawerButton,
   NavButton,
   FormInputWithIcon,
@@ -31,5 +32,6 @@ export {
   RoundButton,
   SceneContentWrapper,
   TransactionForm,
+  TransferForm,
   TouchableFormInput,
 };
