@@ -1,4 +1,5 @@
 import { create } from 'react-native-platform-stylesheet';
+import colors from '../constants/colors';
 
 const styles = create({
   blockStyle: {
@@ -6,7 +7,7 @@ const styles = create({
     paddingBottom: 25,
   },
   blockStyleDark: {
-    backgroundColor: '#ebebeb',
+    backgroundColor: colors.lightGray,
     paddingTop: 10,
     paddingBottom: 15,
   },
