@@ -21,4 +21,5 @@ export default {
   lightGray: '#F5F5F5',
   lightShadow: 'rgba(0, 0, 0, 0.05)',
   darkShadow: 'rgba(0, 0, 0, 0.4)',
+  border: '#ededed',
 };

@@ -2,7 +2,6 @@ import AccountForm from './accountForm';
 import AccountsList from './accountsList';
 import Calculator from './calculator';
 import CategoriesList from './categoriesList';
-import Collapse from './transactionsList/Collapse';
 import CurrencyPicker from './CurrencyPicker';
 import DeleteButton from './navButtons/DeleteButton';
 import DrawerButton from './DrawerButton';
@@ -22,7 +21,6 @@ export {
   AccountForm,
   Calculator,
   CategoriesList,
-  Collapse,
   CurrencyPicker,
   DrawerButton,
   DeleteButton,

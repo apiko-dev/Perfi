@@ -7,7 +7,7 @@ const CategoryItem = ({ style, value, date, ...props }) => (
   <ListItem
     containerStyle={[styles.rootStyle, style]}
     {...props}
-    title={moment(date).format('dddd, L')}
+    title={moment(date).format('dd, L')}
     rightTitle={value && value.toString()}
     hideChevron
   />
