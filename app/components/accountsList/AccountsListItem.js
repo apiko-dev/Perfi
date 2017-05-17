@@ -6,14 +6,14 @@ import accountsListStyle from '../../styles/FormStyles';
 
 const { listItemStyle, textStyle } = accountsListStyle;
 
-const AccountsListItem = ({ name, icon, initialBalance, style, ...props }) => (
+const AccountsListItem = ({ name, icon, balance, style, ...props }) => (
   <ListItem
     containerStyle={[styles.rootStyle, style]}
     {...props}
     title={
       <View style={listItemStyle}>
         <Text style={textStyle}>{ name }</Text>
-        <Text>{ initialBalance }</Text>
+        <Text>{ balance }</Text>
       </View>
     }
     leftIcon={{
@@ -28,7 +28,7 @@ AccountsListItem.propTypes = {
   style: PropTypes.any,
   name: PropTypes.string,
   icon: PropTypes.string,
-  initialBalance: PropTypes.oneOfType([
+  balance: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
   ]),

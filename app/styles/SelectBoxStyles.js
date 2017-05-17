@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   itemWrapperStyle: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   itemTextStyle: {
