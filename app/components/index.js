@@ -2,8 +2,9 @@ import AccountForm from './accountForm';
 import AccountsList from './accountsList';
 import Calculator from './calculator';
 import CategoriesList from './categoriesList';
-import DeleteButton from './navButtons/DeleteButton';
+import Collapse from './transactionsList/Collapse';
 import CurrencyPicker from './CurrencyPicker';
+import DeleteButton from './navButtons/DeleteButton';
 import DrawerButton from './DrawerButton';
 import FormInputWithIcon from './FormInputWithIcon';
 import IconsPickerModal from './IconsPicker';
@@ -19,8 +20,9 @@ import TouchableFormInput from './TouchableFormInput';
 export {
   AccountsList,
   AccountForm,
-  CategoriesList,
   Calculator,
+  CategoriesList,
+  Collapse,
   CurrencyPicker,
   DrawerButton,
   DeleteButton,
