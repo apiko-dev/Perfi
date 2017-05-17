@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { TransferForm } from '../components';
-import { createTransfer } from '../actions';
+import { createTransfer, performTransfer } from '../actions';
 
 const mapStateToProps = ({ accounts }) => ({
   accounts,
@@ -8,4 +8,5 @@ const mapStateToProps = ({ accounts }) => ({
 
 export default connect(mapStateToProps, {
   createTransfer,
+  performTransfer,
 })(TransferForm);

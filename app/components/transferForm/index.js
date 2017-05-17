@@ -51,10 +51,12 @@ const enhance = compose(
     onToggleDatePicker: ({ isDatePickerVisible, setDatePickerVisible }) => () => {
       setDatePickerVisible(!isDatePickerVisible);
     },
-    onSubmit: ({ navigation, createTransfer, ...props }) => () => {
+    onSubmit: ({ navigation, createTransfer, performTransfer, ...props }) => () => {
       const transferProps = R.pick(['accountFrom', 'accountTo', 'value', 'date', 'notes'], props);
+      const { accountFrom, accountTo, value } = props;
 
       createTransfer(transferProps);
+      performTransfer({ accountFrom, accountTo, value });
       navigation.dispatch(NavigationActions.back());
     },
   }),

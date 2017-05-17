@@ -10,16 +10,16 @@ import { Icon } from 'react-native-elements';
 import styles from '../styles/FormStyles';
 import selectStyles from '../styles/SelectBoxStyles';
 
-const { itemWrapperStyle, itemTextStyle } = selectStyles;
+const { itemWrapperStyle, itemTextStyle, containerStyle } = selectStyles;
 
 const SelectBox = ({ onValueChange, selectedValue, getLabel, items, withIcon, getIcon, style }) => {
   const getItem = (value) => {
     const label = getLabel(value);
-    const icon = getIcon(value);
+    const icon = withIcon && getIcon(value);
 
     return (
       <View style={itemWrapperStyle}>
-        {withIcon && icon && <Icon
+        {icon && <Icon
           name={icon}
           type="material-community"
         />}
@@ -42,8 +42,12 @@ const SelectBox = ({ onValueChange, selectedValue, getLabel, items, withIcon, ge
       onSelect={onValueChange}
       style={styles.dropDownMenuStyle}
     >
-      <MenuTrigger style={style}>
-        { getItem(selectedValue) }
+      <MenuTrigger style={[containerStyle, style]}>
+        { getItem(selectedValue, true) }
+        <Icon
+          name="arrow-drop-down"
+          type="material"
+        />
       </MenuTrigger>
       <MenuOptions>
         { items.map(getListItem) }

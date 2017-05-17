@@ -7,7 +7,7 @@ const styles = create({
     paddingBottom: 25,
   },
   blockStyleDark: {
-    backgroundColor: colors.gray,
+    backgroundColor: colors.lightGray,
     paddingTop: 10,
     paddingBottom: 15,
   },

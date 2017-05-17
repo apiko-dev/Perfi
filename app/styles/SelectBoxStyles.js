@@ -2,7 +2,11 @@ import { StyleSheet } from 'react-native';
 import colors from '../constants/colors';
 
 const styles = StyleSheet.create({
+  containerStyle: {
+    flexDirection: 'row',
+  },
   itemWrapperStyle: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
