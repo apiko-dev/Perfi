@@ -4,9 +4,7 @@ const styles = create({
   fixedButtonContainer: {
     position: 'absolute',
     right: 0,
-    left: 0,
-    bottom: 0,
-    padding: 10,
+    bottom: 15,
     alignItems: 'flex-end',
     flexDirection: 'row',
     justifyContent: 'flex-end',
