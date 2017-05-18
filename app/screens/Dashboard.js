@@ -1,8 +1,11 @@
 import React, { PropTypes } from 'react';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 import screens from '../constants/screens';
-import { RoundButton, DrawerButton } from '../components';
-import { TransactionsListContainer } from '../containers';
+import { RoundButton } from '../components';
+import {
+  TransactionsHeaderContainer,
+  TransactionsListContainer,
+} from '../containers';
 import styles from '../styles/DashboardStyles';
 
 const Dashboard = ({ navigation }) => (
@@ -27,11 +30,12 @@ Dashboard.propTypes = {
 
 Dashboard.navigationOptions = ({ navigation }) => ({
   title: 'Dashboard',
-  ...Platform.select({
-    android: {
-      headerLeft: <DrawerButton navigation={navigation} />,
-    },
-  }),
+  header: (
+    <TransactionsHeaderContainer
+      navigation={navigation}
+      onSelectAccount={(account) => alert(account && account.id) }
+    />
+  ),
 });
 
 export default Dashboard;
