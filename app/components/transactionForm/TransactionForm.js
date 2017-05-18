@@ -3,7 +3,10 @@ import { View } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import Modal from 'react-native-modal';
 import moment from 'moment';
+import R from 'ramda';
 import { Calculator, FormInputWithIcon, RoundButton, TouchableFormInput } from '../index';
+
+const defaultIcon = R.propOr('help-circle', 'icon');
 
 const TransactionForm = (props) => {
   const {
@@ -35,13 +38,13 @@ const TransactionForm = (props) => {
       />
       <TouchableFormInput
         value={account && account.name}
-        icon={account ? account.icon : 'help-circle'}
+        icon={defaultIcon(account)}
         placeholder="Account"
         onPress={onChangeAccount}
       />
       <TouchableFormInput
         value={category && category.name}
-        icon={category ? category.icon : 'help-circle'}
+        icon={defaultIcon(category)}
         placeholder="Category"
         onPress={onChangeCategory}
       />

@@ -14,14 +14,14 @@ import PropsProxyHOC from './PropsProxyHOC';
 import RoundButton from './RoundButton';
 import SceneContentWrapper from './SceneContentWrapper';
 import TransactionForm from './transactionForm';
+import TransactionsList from './transactionsList';
 import TouchableFormInput from './TouchableFormInput';
 
 export {
   AccountsList,
   AccountForm,
-  CategoriesList,
   Calculator,
-  SelectBox,
+  CategoriesList,
   DrawerButton,
   NavButton,
   FormInputWithIcon,
@@ -31,7 +31,9 @@ export {
   PropsProxyHOC,
   RoundButton,
   SceneContentWrapper,
+  SelectBox,
   TransactionForm,
   TransferForm,
+  TransactionsList,
   TouchableFormInput,
 };
