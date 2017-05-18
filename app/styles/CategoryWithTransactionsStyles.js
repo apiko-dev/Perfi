@@ -20,6 +20,9 @@ const styles = StyleSheet.create({
   iconContainerStyle: {
     marginRight: 10,
   },
+  badgeContainerStyle: {
+    backgroundColor: colors.secondaryText,
+  },
   leftTitleStyle: {
     flex: 0.25,
     textAlign: 'right',

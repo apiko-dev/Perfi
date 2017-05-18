@@ -25,7 +25,7 @@ const Touchable = Platform.select({
 });
 
 const CategoryWithTransactions = (props) => {
-  const { category, transactions, onSelectTransaction, isOn, toggle } = props;
+  const { category, transactions, transactionsSum, onSelectTransaction, isOn, toggle } = props;
 
   return (
     <View style={styles.rootStyle}>
@@ -38,7 +38,7 @@ const CategoryWithTransactions = (props) => {
             containerStyle={styles.badgeContainerStyle}
             value={transactions.length}
           />
-          <Text style={styles.leftTitleStyle}>{getTransactionsSum(transactions)}</Text>
+          <Text style={styles.leftTitleStyle}>{transactionsSum}</Text>
         </View>
       </Touchable>
       {isOn && (
@@ -54,9 +54,14 @@ const CategoryWithTransactions = (props) => {
 CategoryWithTransactions.propTypes = {
   category: PropTypes.object,
   transactions: PropTypes.array,
+  transactionsSum: PropTypes.number,
   onSelectTransaction: PropTypes.func,
   isOn: PropTypes.bool,
   toggle: PropTypes.func,
 };
 
-export default withToggle(CategoryWithTransactions);
+const withTransactionsSum = withProps(({ category, transactions }) => ({
+  transactionsSum: getTransactionsSum(transactions) * (category.type === 'income' ? 1 : -1),
+}));
+
+export default compose(withTransactionsSum, withToggle)(CategoryWithTransactions);
