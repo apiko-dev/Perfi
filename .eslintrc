@@ -13,6 +13,7 @@
     }
   },
   "rules": {
+    "max-len": [2, 100, 2],
     "import/no-extraneous-dependencies": [
       "error",
       {

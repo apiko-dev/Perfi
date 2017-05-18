@@ -1,7 +1,8 @@
-import { compose, mapProps, withHandlers, withProps, withState } from 'recompose';
+import { compose, withHandlers, withProps, withState } from 'recompose';
 import R from 'ramda';
 import screens from '../../constants/screens';
 import TransactionForm from './TransactionForm';
+import { withStyle } from '../../utils/enhancers';
 import styles from '../../styles/TransactionFormStyles';
 
 const transactionProp = (propName, def) => R.pathOr(def, ['transaction', propName]);
@@ -12,13 +13,7 @@ const isFieldsFilled = R.pipe(
 );
 
 const enhance = compose(
-  mapProps(props => ({
-    ...props,
-    style: {
-      ...styles,
-      ...props.style,
-    },
-  })),
+  withStyle(styles),
   withProps(({ transaction, createTransaction, updateTransaction }) => ({
     submit: transaction ? updateTransaction : createTransaction,
   })),
@@ -66,9 +61,10 @@ const enhance = compose(
     onToggleCalculator: ({ toggleCalculator, isCalculatorVisible }) => () => {
       toggleCalculator(!isCalculatorVisible);
     },
-    onSubmit: ({ submit, transaction, onClose, category, ...props }) => () => {
+    onSubmit: ({ submit, transaction, account, category, onClose, ...props }) => () => {
       const editedProps = {
         ...R.pick(['value', 'date', 'note'], props),
+        account: account && account.id,
         category: category && category.id,
       };
       const propsToSubmit = transaction ? { id: transaction.id, ...editedProps } : editedProps;
