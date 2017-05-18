@@ -14,6 +14,10 @@ const styles = create({
     backgroundColor: '#fff',
     position: 'relative',
   },
+  headerStyle: {
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
 });
 
 export default styles;

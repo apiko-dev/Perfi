@@ -11,7 +11,7 @@ const transferProp = (propName, def) => R.pathOr(def, ['transfer', propName]);
 const { calculatorModalStyle } = transactionFormStyle;
 const { fixedButtonContainer } = buttonsStyles;
 const { selectWithBorderStyle } = selectStyles;
-const { blockStyle } = formStyles;
+const { blockStyle, rowStyle } = formStyles;
 
 const enhance = compose(
   mapProps(({ style, accounts, ...props }) => ({
@@ -23,6 +23,7 @@ const enhance = compose(
       selectWithBorderStyle,
       fixedButtonContainer,
       blockStyle,
+      rowStyle,
     },
   })),
   withState('accountFrom', 'setAccountFrom', transferProp('accountFrom', {})),
@@ -51,12 +52,21 @@ const enhance = compose(
     onToggleDatePicker: ({ isDatePickerVisible, setDatePickerVisible }) => () => {
       setDatePickerVisible(!isDatePickerVisible);
     },
-    onSubmit: ({ navigation, createTransfer, performTransfer, ...props }) => () => {
+    onSubmit: ({ navigation, createTransfer, updateAccount, ...props }) => () => {
       const transferProps = R.pick(['accountFrom', 'accountTo', 'value', 'date', 'notes'], props);
       const { accountFrom, accountTo, value } = props;
 
       createTransfer(transferProps);
-      performTransfer({ accountFrom, accountTo, value });
+      updateAccount({
+        ...accountFrom,
+        balance: accountFrom.balance - value,
+      });
+
+      updateAccount({
+        ...accountTo,
+        balance: +accountTo.balance + +value,
+      });
+
       navigation.dispatch(NavigationActions.back());
     },
   }),

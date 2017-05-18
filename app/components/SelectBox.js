@@ -7,7 +7,6 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu';
 import { Icon } from 'react-native-elements';
-import styles from '../styles/FormStyles';
 import selectStyles from '../styles/SelectBoxStyles';
 
 const { itemWrapperStyle, itemTextStyle, containerStyle } = selectStyles;
@@ -40,10 +39,9 @@ const SelectBox = ({ onValueChange, selectedValue, getLabel, items, withIcon, ge
   return (
     <Menu
       onSelect={onValueChange}
-      style={styles.dropDownMenuStyle}
     >
       <MenuTrigger style={[containerStyle, style]}>
-        { getItem(selectedValue, true) }
+        { getItem(selectedValue) }
         <Icon
           name="arrow-drop-down"
           type="material"

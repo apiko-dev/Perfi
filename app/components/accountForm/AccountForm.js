@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { Icon } from 'react-native-elements';
 import { View, Text } from 'react-native';
 import Modal from 'react-native-modal';
-import { MenuContext } from 'react-native-popup-menu';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import {
   IconsPickerModal,
@@ -47,75 +46,73 @@ const AccountForm = (props) => {
   } = props;
 
   return (
-    <MenuContext>
-      <SceneContentWrapper>
-        <View style={blockStyle}>
-          <View style={rowStyle}>
-            <Icon
-              onPress={onTogglePicker}
-              name={icon}
-              type="material-community"
-              iconStyle={iconStyle}
-              size={16}
-              raised
-            />
-            <FormInputWithIcon
-              onChangeText={onNameChange}
-              value={name}
-            />
-          </View>
-          <SelectBox
-            getLabel={getLabel}
-            selectedValue={currency}
-            items={currencies}
-            onValueChange={onCurrencyChange}
+    <SceneContentWrapper>
+      <View style={blockStyle}>
+        <View style={rowStyle}>
+          <Icon
+            onPress={onTogglePicker}
+            name={icon}
+            type="material-community"
+            iconStyle={iconStyle}
+            size={16}
+            raised
+          />
+          <FormInputWithIcon
+            onChangeText={onNameChange}
+            value={name}
           />
         </View>
-        <View style={[blockStyle, blockStyleDark]}>
-          <View>
-            <Text>Initial balance</Text>
-            <TouchableFormInput
-              value={initialBalance.toString()}
-              onPress={onToggleCalculator}
-            />
-          </View>
-          <View>
-            <DateTimePicker
-              isVisible={isDatePickerVisible}
-              onConfirm={onDateChange}
-              onCancel={onToggleDatePicker}
-            />
-            <TouchableFormInput
-              icon="calendar-blank"
-              onPress={onToggleDatePicker}
-              value={calendarDateFormat(date)}
-            />
-          </View>
-        </View>
-        <IconsPickerModal
-          isVisible={isPickerVisible}
-          onIconPick={onIconChange}
-          selectedIconName={icon}
-          hideModal={onTogglePicker}
+        <SelectBox
+          getLabel={getLabel}
+          selectedValue={currency}
+          items={currencies}
+          onValueChange={onCurrencyChange}
         />
-        {isValid && (
-          <RoundButton
-            style={fixedButtonContainer}
-            onPress={onSubmit}
-            iconName="check"
+      </View>
+      <View style={[blockStyle, blockStyleDark]}>
+        <View>
+          <Text>Initial balance</Text>
+          <TouchableFormInput
+            value={initialBalance.toString()}
+            onPress={onToggleCalculator}
           />
-        )}
-        <Modal
-          style={calculatorModalStyle}
-          isVisible={isCalculatorVisible}
-        >
-          <Calculator
-            value={initialBalance}
-            onSubmit={onChangeBalance}
+        </View>
+        <View>
+          <DateTimePicker
+            isVisible={isDatePickerVisible}
+            onConfirm={onDateChange}
+            onCancel={onToggleDatePicker}
           />
-        </Modal>
-      </SceneContentWrapper>
-    </MenuContext>
+          <TouchableFormInput
+            icon="calendar-blank"
+            onPress={onToggleDatePicker}
+            value={calendarDateFormat(date)}
+          />
+        </View>
+      </View>
+      <IconsPickerModal
+        isVisible={isPickerVisible}
+        onIconPick={onIconChange}
+        selectedIconName={icon}
+        hideModal={onTogglePicker}
+      />
+      {isValid && (
+        <RoundButton
+          style={fixedButtonContainer}
+          onPress={onSubmit}
+          iconName="check"
+        />
+      )}
+      <Modal
+        style={calculatorModalStyle}
+        isVisible={isCalculatorVisible}
+      >
+        <Calculator
+          value={initialBalance}
+          onSubmit={onChangeBalance}
+        />
+      </Modal>
+    </SceneContentWrapper>
   );
 };
 

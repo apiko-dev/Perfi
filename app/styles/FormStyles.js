@@ -4,6 +4,8 @@ import colors from '../constants/colors';
 const styles = create({
   blockStyle: {
     paddingTop: 20,
+    paddingLeft: 15,
+    paddingRight: 15,
     paddingBottom: 25,
   },
   blockStyleDark: {
@@ -23,9 +25,6 @@ const styles = create({
     flex: 1,
     marginRight: 10,
     marginLeft: 10,
-  },
-  dropDownMenuStyle: {
-    height: 36,
   },
 });
 

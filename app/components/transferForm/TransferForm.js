@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import Modal from 'react-native-modal';
 import { Icon } from 'react-native-elements';
-import { MenuContext } from 'react-native-popup-menu';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import calendarDateFormat from '../../utils/calendarDateFormat';
 import {
@@ -36,20 +35,26 @@ const TransferForm = (props) => {
     isCalculatorVisible,
     isValid,
     onSubmit,
-    style: { fixedButtonContainer, calculatorModalStyle, selectWithBorderStyle, blockStyle },
+    style: {
+      fixedButtonContainer,
+      calculatorModalStyle,
+      selectWithBorderStyle,
+      blockStyle,
+      rowStyle,
+    },
   } = props;
 
   return (
     <SceneContentWrapper>
-      <MenuContext>
-        <View>
+      <View style={blockStyle}>
+        <View style={rowStyle}>
           <TouchableFormInput
             value={value.toString()}
             onPress={toggleCalculator}
             keyboardType="numeric"
           />
         </View>
-        <View style={blockStyle}>
+        <View>
           <SelectBox
             getLabel={getLabel}
             getIcon={getIcon}
@@ -62,7 +67,6 @@ const TransferForm = (props) => {
           <Icon
             type="material-community"
             name="arrow-down"
-            containerStyle={blockStyle}
           />
           <SelectBox
             getLabel={getLabel}
@@ -95,21 +99,21 @@ const TransferForm = (props) => {
             multiline
           />
         </View>
-        {isValid && <RoundButton
-          style={fixedButtonContainer}
-          onPress={onSubmit}
-          iconName="check"
-        />}
-        <Modal
-          style={calculatorModalStyle}
-          isVisible={isCalculatorVisible}
-        >
-          <Calculator
-            value={value}
-            onSubmit={onValueChange}
-          />
-        </Modal>
-      </MenuContext>
+      </View>
+      {isValid && <RoundButton
+        style={fixedButtonContainer}
+        onPress={onSubmit}
+        iconName="check"
+      />}
+      <Modal
+        style={calculatorModalStyle}
+        isVisible={isCalculatorVisible}
+      >
+        <Calculator
+          value={value}
+          onSubmit={onValueChange}
+        />
+      </Modal>
     </SceneContentWrapper>
   );
 };

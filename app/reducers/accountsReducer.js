@@ -22,17 +22,6 @@ const accountsReducer = handleActions({
   })),
   [actionTypes.UPDATE_ACCOUNT]: (state, { payload }) => update(state, payload.id, payload),
   [actionTypes.DELETE_ACCOUNT]: (state, { payload }) => remove(state, payload),
-  [actionTypes.PERFORM_TRANSFER]: (state, { payload: { accountFrom, accountTo, value } }) => {
-    const withAccountFromUpdated = update(state, accountFrom.id, {
-      ...accountFrom,
-      balance: accountFrom.balance - value,
-    });
-
-    return update(withAccountFromUpdated, accountTo.id, {
-      ...accountTo,
-      balance: +accountTo.balance + +value,
-    });
-  },
 }, initialState);
 
 export default accountsReducer;

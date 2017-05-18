@@ -3,6 +3,7 @@ import { compose, withProps } from 'recompose';
 import AccountsListItem from './AccountsListItem';
 
 const withDataSource = withProps({
+  removeClippedSubviews: false,
   ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
 });
 
