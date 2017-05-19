@@ -39,6 +39,9 @@ const enhance = compose(
     ...props,
     isValid: !!props.name && props.name.length > 0 && !!props.type,
   })),
+  withProps(({ category, createCategory, updateCategory }) => ({
+    submit: category ? updateCategory : createCategory,
+  })),
   withHandlers({
     onChangeIcon: ({ setPickerVisible, setIcon }) => (value) => {
       setIcon(value);

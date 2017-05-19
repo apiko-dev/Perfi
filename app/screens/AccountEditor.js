@@ -16,9 +16,7 @@ const AccountEditor = ({ navigation }) => (
 AccountEditor.navigationOptions = ({ navigation }) => {
   const { state: { params: { title, onDelete, account } } } = navigation;
   const action = () => {
-    if (account && account.id) {
-      onDelete(account.id);
-    }
+    onDelete(account.id);
   };
 
   return ({
@@ -30,7 +28,6 @@ AccountEditor.navigationOptions = ({ navigation }) => {
           iconType="material-community"
           navigation={navigation}
           action={action}
-          onDelete={onDelete}
           isVisible={!!account}
           backOnSuccess
         />,

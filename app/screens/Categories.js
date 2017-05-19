@@ -11,10 +11,10 @@ const goToEditor = (navigation, params) => (category) => {
   navigation.navigate(screens.CategoryEditor, isProxy ? params : { ...params, category });
 };
 
-const Categories = ({ navigation }) => {
+const Categories = ({ navigation, deleteCategory }) => {
   const { state: { routeName, params } } = navigation;
   const goAddCategory = goToEditor(navigation, { title: 'Add category' });
-  const goEditCategory = goToEditor(navigation, { title: 'Edit category' });
+  const goEditCategory = goToEditor(navigation, { title: 'Edit category', deleteCategory });
   const onSelectCategory = (params && params.onSelectCategory) || goEditCategory;
 
   return (
@@ -34,6 +34,7 @@ const Categories = ({ navigation }) => {
 
 Categories.propTypes = {
   navigation: PropTypes.object,
+  deleteCategory: PropTypes.func,
 };
 
 export default Categories;
