@@ -1,10 +1,9 @@
 import {
   compose,
-  withPropsOnChange,
+  withProps,
   mapProps,
   withState,
   withHandlers,
-  defaultProps,
 } from 'recompose';
 import R from 'ramda';
 import TransferForm from './TransferForm';
@@ -37,9 +36,9 @@ const enhance = compose(
   withState('value', 'setValue', transferProp('value', 1)),
   withState('date', 'setDate', transferProp('date', new Date())),
   withState('notes', 'setNotes', transferProp('notes')),
-  withState('isCalculatorVisible', 'setCalculatorVisible'),
-  withState('isDatePickerVisible', 'setDatePickerVisible'),
-  withPropsOnChange(() => true, props => ({
+  withState('isCalculatorVisible', 'setCalculatorVisible', false),
+  withState('isDatePickerVisible', 'setDatePickerVisible', false),
+  withProps(props => ({
     ...props,
     isValid: !!(props.accountFrom.id && props.accountTo.id && props.value >= 1 && props.date),
   })),
@@ -75,10 +74,6 @@ const enhance = compose(
 
       onClose();
     },
-  }),
-  defaultProps({
-    isValid: false,
-    isDatePickerVisible: false,
   }),
 );
 

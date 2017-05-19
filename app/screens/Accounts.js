@@ -23,20 +23,11 @@ const goToTransfers = navigation => () => {
   });
 };
 
-const Accounts = ({ navigation, accounts, deleteAccount, updateAccount, createAccount }) => {
+const Accounts = ({ navigation, accounts, deleteAccount }) => {
   const { state: { params } } = navigation;
 
-  const goAddAccount = goToEditor(navigation, {
-    title: 'Add account',
-    onSubmit: createAccount,
-  });
-
-  const goEditAccount = goToEditor(navigation, {
-    onDelete: deleteAccount,
-    onSubmit: updateAccount,
-    title: 'Edit account',
-  });
-
+  const goAddAccount = goToEditor(navigation, { title: 'Add account' });
+  const goEditAccount = goToEditor(navigation, { onDelete: deleteAccount, title: 'Edit account' });
   const onSelectAccount = (params && params.onSelectAccount) || goEditAccount;
 
   return (
@@ -74,8 +65,6 @@ Accounts.propTypes = {
   navigation: PropTypes.object,
   accounts: PropTypes.object,
   deleteAccount: PropTypes.func,
-  updateAccount: PropTypes.func,
-  createAccount: PropTypes.func,
 };
 
 export default Accounts;

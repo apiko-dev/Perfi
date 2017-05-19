@@ -13,17 +13,11 @@ import {
 } from '../';
 import SelectBox from '../SelectBox';
 import calendarDateFormat from '../../utils/calendarDateFormat';
-import buttonsStyles from '../../styles/ButtonsStyles';
-import inputStyles from '../../styles/FormInputWithIconStyles';
-
-const { fixedButtonContainer } = buttonsStyles;
-const { iconStyle } = inputStyles;
 
 const getLabel = ({ name, sign }) => `${name}(${sign})`;
 
 const AccountForm = (props) => {
   const {
-    style: { blockStyleDark, blockStyle, rowStyle, calculatorModalStyle },
     name,
     icon,
     icons,
@@ -44,6 +38,14 @@ const AccountForm = (props) => {
     onToggleDatePicker,
     isDatePickerVisible,
     isCalculatorVisible,
+    style: {
+      blockStyleDark,
+      blockStyle,
+      rowStyle,
+      calculatorModalStyle,
+      fixedButtonContainer,
+      iconStyle,
+    },
   } = props;
 
   return (

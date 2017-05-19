@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Platform } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import { SceneContentWrapper, NavButton, AccountForm } from '../components';
+import { SceneContentWrapper, NavButton } from '../components';
+import AccountForm from '../containers/AccountFormContainer';
 
 const AccountEditor = ({ navigation }) => (
   <SceneContentWrapper>

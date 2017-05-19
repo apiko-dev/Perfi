@@ -12,6 +12,7 @@ import buttonsStyles from '../../styles/ButtonsStyles';
 import inputStyles from '../../styles/FormInputWithIconStyles';
 import icons from '../../constants/categoryIcons';
 import formStyles from '../../styles/FormStyles';
+import { withStyle } from '../../utils/enhancers';
 
 const { fixedButtonContainer } = buttonsStyles;
 const { iconStyle } = inputStyles;
@@ -19,17 +20,16 @@ const { rowStyle, blockStyle } = formStyles;
 const accountProp = (propName, def) => R.pathOr(def, ['category', propName]);
 
 const enhance = compose(
-  mapProps(({ style, ...props }) => ({
+  withStyle({
+    fixedButtonContainer,
+    iconStyle,
+    blockStyle,
+    rowStyle,
+  }),
+  mapProps(props => ({
     ...props,
     icons,
     types: R.values(categoriesTypes),
-    style: {
-      ...style,
-      fixedButtonContainer,
-      iconStyle,
-      blockStyle,
-      rowStyle,
-    },
   })),
   withState('icon', 'setIcon', accountProp('icon', icons[0])),
   withState('name', 'setName', accountProp('name')),
