@@ -1,4 +1,11 @@
-import { defaultProps, compose, mapProps, withHandlers, withState, withPropsOnChange } from 'recompose';
+import {
+  defaultProps,
+  compose,
+  mapProps,
+  withHandlers,
+  withState,
+  withPropsOnChange,
+} from 'recompose';
 import R from 'ramda';
 import AccountForm from './AccountForm';
 import styles from '../../styles/FormStyles';
@@ -13,6 +20,7 @@ const enhance = compose(
   mapProps(props => ({
     ...props,
     currencies,
+    icons,
     style: {
       ...styles,
       ...props.style,
@@ -56,7 +64,8 @@ const enhance = compose(
       toggleCalculator(!isCalculatorVisible);
     },
     onSubmit: ({ submit, account, onClose, ...props }) => () => {
-      const editedProps = R.pick(['name', 'icon', 'currency', 'date', 'initialBalance', 'balance'], props);
+      const editedProps =
+        R.pick(['name', 'icon', 'currency', 'date', 'initialBalance', 'balance'], props);
       const propsToSubmit = account ? { id: account.id, ...editedProps } : editedProps;
 
       submit(propsToSubmit);

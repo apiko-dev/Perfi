@@ -1,15 +1,12 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet } from 'react-native';
 import { addNavigationHelpers } from 'react-navigation';
-import { MenuContext } from 'react-native-popup-menu';
 import { Loading } from '../components';
 import Navigator from './Navigator';
 
 const NavigatorView = ({ dispatch, navigator, isReady }) => (
   isReady ? (
-    <MenuContext>
-      <Navigator navigation={addNavigationHelpers({ dispatch, state: navigator })} />
-    </MenuContext>
+    <Navigator navigation={addNavigationHelpers({ dispatch, state: navigator })} />
   ) : (
     <Loading
       containerStyle={StyleSheet.absoluteFill}

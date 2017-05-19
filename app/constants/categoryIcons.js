@@ -1,0 +1,17 @@
+export default [
+  'cash',
+  'coin',
+  'castle',
+  'tag',
+  'car',
+  'phone',
+  'silverware',
+  'martini',
+  'food',
+  'gift',
+  'heart-pulse',
+  'home-variant',
+  'cat',
+  'dumbbell',
+  'taxi',
+];

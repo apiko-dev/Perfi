@@ -56,7 +56,7 @@ const SelectBox = ({ onValueChange, selectedValue, getLabel, items, withIcon, ge
 
 SelectBox.propTypes = {
   onValueChange: PropTypes.func,
-  selectedValue: PropTypes.object,
+  selectedValue: PropTypes.any,
   getLabel: PropTypes.func,
   items: PropTypes.array,
   withIcon: PropTypes.bool,

@@ -26,6 +26,7 @@ const AccountForm = (props) => {
     style: { blockStyleDark, blockStyle, rowStyle, calculatorModalStyle },
     name,
     icon,
+    icons,
     date,
     currency,
     onSubmit,
@@ -93,6 +94,7 @@ const AccountForm = (props) => {
       <IconsPickerModal
         isVisible={isPickerVisible}
         onIconPick={onIconChange}
+        icons={icons}
         selectedIconName={icon}
         hideModal={onTogglePicker}
       />
@@ -123,6 +125,7 @@ AccountForm.propTypes = {
     PropTypes.object,
     View.propTypes.style,
   ]),
+  icons: PropTypes.arrayOf(PropTypes.string),
   name: PropTypes.string,
   icon: PropTypes.string,
   date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),

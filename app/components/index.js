@@ -16,12 +16,14 @@ import SceneContentWrapper from './SceneContentWrapper';
 import TransactionForm from './transactionForm';
 import TransactionsList from './transactionsList';
 import TouchableFormInput from './TouchableFormInput';
+import CategoryForm from './categoryForm';
 
 export {
   AccountsList,
   AccountForm,
   Calculator,
   CategoriesList,
+  CategoryForm,
   DrawerButton,
   NavButton,
   FormInputWithIcon,

@@ -1,11 +1,18 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { PropTypes } from 'react';
+import { NavigationActions } from 'react-navigation';
+import { CategoryForm, SceneContentWrapper } from '../components';
 
-const CategoryEditor = () => (
-  <View>
-    <Text>Category Editor</Text>
-  </View>
+const CategoryEditor = ({ navigation }) => (
+  <SceneContentWrapper>
+    <CategoryForm
+      onClose={() => navigation.dispatch(NavigationActions.back())}
+    />
+  </SceneContentWrapper>
 );
+
+CategoryEditor.propTypes = {
+  navigation: PropTypes.object,
+};
 
 CategoryEditor.navigationOptions = ({ navigation }) => ({
   title: navigation.state.params.title,

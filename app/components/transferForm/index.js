@@ -1,6 +1,12 @@
-import { compose, withPropsOnChange, mapProps, withState, withHandlers, defaultProps } from 'recompose';
+import {
+  compose,
+  withPropsOnChange,
+  mapProps,
+  withState,
+  withHandlers,
+  defaultProps,
+} from 'recompose';
 import R from 'ramda';
-import { NavigationActions } from 'react-navigation';
 import TransferForm from './TransferForm';
 import transactionFormStyle from '../../styles/TransactionFormStyles';
 import buttonsStyles from '../../styles/ButtonsStyles';
@@ -52,7 +58,7 @@ const enhance = compose(
     onToggleDatePicker: ({ isDatePickerVisible, setDatePickerVisible }) => () => {
       setDatePickerVisible(!isDatePickerVisible);
     },
-    onSubmit: ({ navigation, createTransfer, updateAccount, ...props }) => () => {
+    onSubmit: ({ navigation, createTransfer, updateAccount, onClose, ...props }) => () => {
       const transferProps = R.pick(['accountFrom', 'accountTo', 'value', 'date', 'notes'], props);
       const { accountFrom, accountTo, value } = props;
 
@@ -67,7 +73,7 @@ const enhance = compose(
         balance: +accountTo.balance + +value,
       });
 
-      navigation.dispatch(NavigationActions.back());
+      onClose();
     },
   }),
   defaultProps({
