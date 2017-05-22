@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Platform } from 'react-native';
 import styles from '../styles/ButtonsStyles';
 import screens from '../constants/screens';
 import {
@@ -48,17 +47,13 @@ const Accounts = ({ navigation, accounts, deleteAccount }) => {
 };
 
 Accounts.navigationOptions = ({ navigation }) => ({
-  ...Platform.select({
-    android: {
-      headerRight: <NavButton
-        isVisible
-        iconName="exchange"
-        iconType="font-awesome"
-        navigation={navigation}
-        action={goToTransfers(navigation)}
-      />,
-    },
-  }),
+  headerRight: <NavButton
+    isVisible
+    iconName="exchange"
+    iconType="font-awesome"
+    navigation={navigation}
+    action={goToTransfers(navigation)}
+  />,
 });
 
 Accounts.propTypes = {

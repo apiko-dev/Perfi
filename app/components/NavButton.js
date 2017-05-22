@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { NavigationActions } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-const NuvButton = ({
+const NavButton = ({
  iconName,
  iconType,
  isVisible,
@@ -31,7 +31,7 @@ const NuvButton = ({
   return null;
 };
 
-NuvButton.propTypes = {
+NavButton.propTypes = {
   navigation: PropTypes.object,
   action: PropTypes.func,
   backOnSuccess: PropTypes.bool,
@@ -40,4 +40,4 @@ NuvButton.propTypes = {
   iconName: PropTypes.string,
 };
 
-export default NuvButton;
+export default NavButton;

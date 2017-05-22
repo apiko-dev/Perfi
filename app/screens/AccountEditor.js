@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Platform } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { SceneContentWrapper, NavButton } from '../components';
 import AccountForm from '../containers/AccountFormContainer';
@@ -22,18 +21,14 @@ AccountEditor.navigationOptions = ({ navigation }) => {
 
   return ({
     title,
-    ...Platform.select({
-      android: {
-        headerRight: <NavButton
-          iconName="delete"
-          iconType="material-community"
-          navigation={navigation}
-          action={action}
-          isVisible={!!account}
-          backOnSuccess
-        />,
-      },
-    }),
+    headerRight: <NavButton
+      iconName="delete"
+      iconType="material-community"
+      navigation={navigation}
+      action={action}
+      isVisible={!!account}
+      backOnSuccess
+    />,
   });
 };
 
