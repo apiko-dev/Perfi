@@ -2,8 +2,9 @@ import AccountForm from './accountForm';
 import AccountsList from './accountsList';
 import Calculator from './calculator';
 import CategoriesList from './categoriesList';
-import CurrencyPicker from './CurrencyPicker';
-import DeleteButton from './navButtons/DeleteButton';
+import TransferForm from './transferForm';
+import NavButton from './NavButton';
+import SelectBox from './SelectBox';
 import DrawerButton from './DrawerButton';
 import FormInputWithIcon from './FormInputWithIcon';
 import IconsPickerModal from './IconsPicker';
@@ -21,9 +22,8 @@ export {
   AccountForm,
   Calculator,
   CategoriesList,
-  CurrencyPicker,
   DrawerButton,
-  DeleteButton,
+  NavButton,
   FormInputWithIcon,
   IconsPickerModal,
   Loading,
@@ -31,7 +31,9 @@ export {
   PropsProxyHOC,
   RoundButton,
   SceneContentWrapper,
+  SelectBox,
   TransactionForm,
+  TransferForm,
   TransactionsList,
   TouchableFormInput,
 };

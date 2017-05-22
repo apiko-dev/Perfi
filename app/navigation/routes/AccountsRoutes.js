@@ -1,6 +1,7 @@
 import screens from '../../constants/screens';
 import AccountEditor from '../../screens/AccountEditor';
 import Accounts from '../../containers/AccountsListScreenContainer';
+import TransferEditor from '../../screens/TransferEditor';
 import headerOptions from '../../utils/stackHeaderOptions';
 
 const Routes = {
@@ -10,6 +11,9 @@ const Routes = {
   },
   [screens.AccountEditor]: {
     screen: AccountEditor,
+  },
+  [screens.TransferEditor]: {
+    screen: TransferEditor,
   },
 };
 

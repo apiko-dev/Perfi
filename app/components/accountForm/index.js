@@ -4,6 +4,7 @@ import AccountForm from './AccountForm';
 import styles from '../../styles/FormStyles';
 import icons from '../../constants/accountIcons';
 import transactionFormStyle from '../../styles/TransactionFormStyles';
+import currencies from '../../constants/currencies';
 
 const accountProp = (propName, def) => R.pathOr(def, ['account', propName]);
 const { calculatorModalStyle } = transactionFormStyle;
@@ -11,6 +12,7 @@ const { calculatorModalStyle } = transactionFormStyle;
 const enhance = compose(
   mapProps(props => ({
     ...props,
+    currencies,
     style: {
       ...styles,
       ...props.style,
@@ -19,7 +21,7 @@ const enhance = compose(
   })),
   withState('name', 'onNameChange', accountProp('name')),
   withState('icon', 'setIcon', accountProp('icon', icons[0])),
-  withState('currency', 'onCurrencyChange', accountProp('currency')),
+  withState('currency', 'onCurrencyChange', accountProp('currency', currencies[0])),
   withState('initialBalance', 'onInitialBalanceChange', accountProp('initialBalance', 0)),
   withState('balance', 'setBalance', accountProp('balance')),
   withState('date', 'setDate', accountProp('date', new Date())),

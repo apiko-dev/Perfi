@@ -1,4 +1,5 @@
 import { create } from 'react-native-platform-stylesheet';
+import colors from '../constants/colors';
 
 const styles = create({
   iconContainerStyle: {
@@ -6,13 +7,13 @@ const styles = create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 0.5,
-    borderColor: '#000',
+    borderColor: colors.black,
     borderStyle: 'solid',
     paddingLeft: 10,
     paddingRight: 10,
     paddingTop: 5,
     paddingBottom: 5,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
   },
   rowStyle: {
     flexDirection: 'row',
@@ -25,7 +26,7 @@ const styles = create({
     alignSelf: 'center',
   },
   pickedItemStyle: {
-    backgroundColor: '#e6e6e6',
+    backgroundColor: colors.lightGray,
   },
 });
 
