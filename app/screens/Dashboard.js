@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
+import R from 'ramda';
 import screens from '../constants/screens';
 import { RoundButton } from '../components';
 import {
@@ -8,6 +9,8 @@ import {
 } from '../containers';
 import styles from '../styles/DashboardStyles';
 
+const getCurrentAccount = R.path(['state', 'params', 'account']);
+
 const Dashboard = ({ navigation }) => (
   <View style={styles.rootStyle}>
     <TransactionsListContainer
@@ -15,6 +18,7 @@ const Dashboard = ({ navigation }) => (
         screens.TransactionEditor,
         { transaction },
       )}
+      account={getCurrentAccount(navigation)}
     />
     <RoundButton
       style={styles.addButtonStyle}
@@ -33,7 +37,8 @@ Dashboard.navigationOptions = ({ navigation }) => ({
   header: (
     <TransactionsHeaderContainer
       navigation={navigation}
-      onSelectAccount={(account) => alert(account && account.id) }
+      currentAccount={getCurrentAccount(navigation)}
+      onSelectAccount={(account) => navigation.setParams({ account }) }
     />
   ),
 });
