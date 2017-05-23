@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import R from 'ramda';
 import { View } from 'react-native';
 import Modal from 'react-native-modal';
 import { Icon } from 'react-native-elements';
@@ -43,6 +44,7 @@ const TransferForm = (props) => {
       rowStyle,
     },
   } = props;
+  const accountsById = R.values(accounts.byId);
 
   return (
     <SceneContentWrapper>
@@ -51,7 +53,6 @@ const TransferForm = (props) => {
           <TouchableFormInput
             value={value.toString()}
             onPress={toggleCalculator}
-            keyboardType="numeric"
           />
         </View>
         <View>
@@ -60,7 +61,7 @@ const TransferForm = (props) => {
             getIcon={getIcon}
             withIcon
             selectedValue={accountFrom}
-            items={accounts}
+            items={accountsById}
             style={selectWithBorderStyle}
             onValueChange={setAccountFrom}
           />
@@ -73,7 +74,7 @@ const TransferForm = (props) => {
             getIcon={getIcon}
             withIcon
             selectedValue={accountTo}
-            items={accounts}
+            items={accountsById}
             style={selectWithBorderStyle}
             onValueChange={setAccountTo}
           />

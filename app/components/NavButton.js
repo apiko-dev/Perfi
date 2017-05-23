@@ -40,4 +40,9 @@ NavButton.propTypes = {
   iconName: PropTypes.string,
 };
 
+NavButton.defaultProps = {
+  iconName: 'comment-question-outline',
+  iconType: 'material-community',
+};
+
 export default NavButton;

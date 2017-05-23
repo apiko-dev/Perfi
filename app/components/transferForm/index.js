@@ -1,7 +1,6 @@
 import {
   compose,
   withProps,
-  mapProps,
   withState,
   withHandlers,
 } from 'recompose';
@@ -11,6 +10,7 @@ import transactionFormStyle from '../../styles/TransactionFormStyles';
 import buttonsStyles from '../../styles/ButtonsStyles';
 import selectStyles from '../../styles/SelectBoxStyles';
 import formStyles from '../../styles/FormStyles';
+import { withStyle } from '../../utils/enhancers';
 
 const transferProp = (propName, def) => R.pathOr(def, ['transfer', propName]);
 const { calculatorModalStyle } = transactionFormStyle;
@@ -19,18 +19,13 @@ const { selectWithBorderStyle } = selectStyles;
 const { blockStyle, rowStyle } = formStyles;
 
 const enhance = compose(
-  mapProps(({ style, accounts, ...props }) => ({
-    ...props,
-    accounts: R.values(accounts.byId),
-    style: {
-      ...style,
-      calculatorModalStyle,
-      selectWithBorderStyle,
-      fixedButtonContainer,
-      blockStyle,
-      rowStyle,
-    },
-  })),
+  withStyle({
+    calculatorModalStyle,
+    selectWithBorderStyle,
+    fixedButtonContainer,
+    blockStyle,
+    rowStyle,
+  }),
   withState('accountFrom', 'setAccountFrom', transferProp('accountFrom', {})),
   withState('accountTo', 'setAccountTo', transferProp('accountTo', {})),
   withState('value', 'setValue', transferProp('value', 1)),
