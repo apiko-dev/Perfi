@@ -3,14 +3,20 @@ import { Platform, View } from 'react-native';
 import { DrawerButton, TrendsForm } from '../components/index';
 import AccountsSelectBox from '../containers/AccountsSelectBoxContainer';
 
-const Trends = ({ transactions }) => (
+const Trends = ({ transactions, categories, navigation }) => (
   <View>
-    <TrendsForm transactions={transactions} />
+    <TrendsForm
+      transactions={transactions}
+      categories={categories}
+      selectedAccount={navigation.state.params.selectedAccount}
+    />
   </View>
 );
 
 Trends.propTypes = {
   transactions: PropTypes.object,
+  categories: PropTypes.object,
+  navigation: PropTypes.object,
 };
 
 Trends.navigationOptions = ({ navigation }) => ({

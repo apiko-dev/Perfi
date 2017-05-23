@@ -1,6 +1,4 @@
 import React, { PropTypes } from 'react';
-import R from 'ramda';
-import moment from 'moment';
 import { View } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import {
@@ -12,7 +10,7 @@ const TrendsForm = (props) => {
   const {
     style: { rootStyle, rowStyle, blockStyle },
     dateFrom,
-    transactions,
+    formattedTransactions,
     dateTo,
     onChangeDateFrom,
     onChangeDateTo,
@@ -21,11 +19,6 @@ const TrendsForm = (props) => {
     toggleDateFromPicker,
     toggleDateToPicker,
   } = props;
-
-  const filteredTransactions = R.pipe(
-    R.values,
-    R.filter(({ date }) => moment(date).isBetween(dateFrom, dateTo, null, '[]')),
-  )(transactions);
 
   return (
     <View style={blockStyle}>
@@ -71,7 +64,7 @@ TrendsForm.propTypes = {
     PropTypes.string,
     PropTypes.instanceOf(Date),
   ]),
-  transactions: PropTypes.object,
+  formattedTransactions: PropTypes.object,
   onChangeDateFrom: PropTypes.func,
   onChangeDateTo: PropTypes.func,
   isDateFromPickerVisible: PropTypes.bool,
