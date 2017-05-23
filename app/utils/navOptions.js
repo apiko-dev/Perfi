@@ -1,5 +1,6 @@
 import { Platform } from 'react-native';
 import { NavIcon, PropsProxyHOC } from '../components';
+import styles from '../styles/AppStyles';
 
 const navOptions = ({ title, icon }) => ({
   navigationOptions: {
@@ -8,6 +9,7 @@ const navOptions = ({ title, icon }) => ({
       android: 'drawerIcon',
       ios: 'tabBarIcon',
     })]: PropsProxyHOC(NavIcon, { name: icon }),
+    headerStyle: styles.headerStyle,
   },
 });
 

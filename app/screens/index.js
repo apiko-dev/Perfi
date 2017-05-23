@@ -6,6 +6,7 @@ import Dashboard from './Dashboard';
 import Settings from './Settings';
 import TransactionEditor from './TransactionEditor';
 import Trends from './Trends';
+import TransferEditor from './TransferEditor';
 
 export {
   Accounts,
@@ -15,5 +16,6 @@ export {
   Dashboard,
   Settings,
   TransactionEditor,
+  TransferEditor,
   Trends,
 };

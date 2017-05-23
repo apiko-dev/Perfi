@@ -1,12 +1,11 @@
 import React, { PropTypes } from 'react';
-import { Platform } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import { SceneContentWrapper, DeleteButton } from '../components';
-import AccountFrom from '../components/accountForm';
+import { SceneContentWrapper, NavButton } from '../components';
+import AccountForm from '../containers/AccountFormContainer';
 
 const AccountEditor = ({ navigation }) => (
   <SceneContentWrapper>
-    <AccountFrom
+    <AccountForm
       account={navigation.state.params.account}
       onClose={() => navigation.dispatch(NavigationActions.back())}
       submit={navigation.state.params.onSubmit}
@@ -14,18 +13,24 @@ const AccountEditor = ({ navigation }) => (
   </SceneContentWrapper>
 );
 
-AccountEditor.navigationOptions = ({ navigation }) => ({
-  title: navigation.state.params.title,
-  ...Platform.select({
-    android: {
-      headerRight: <DeleteButton
-        navigation={navigation}
-        onDelete={navigation.state.params.onDelete}
-        id={navigation.state.params.account ? navigation.state.params.account.id : null}
-      />,
-    },
-  }),
-});
+AccountEditor.navigationOptions = ({ navigation }) => {
+  const { state: { params: { title, onDelete, account } } } = navigation;
+  const action = () => {
+    onDelete(account.id);
+  };
+
+  return ({
+    title,
+    headerRight: <NavButton
+      iconName="delete"
+      iconType="material-community"
+      navigation={navigation}
+      action={action}
+      isVisible={!!account}
+      backOnSuccess
+    />,
+  });
+};
 
 AccountEditor.propTypes = {
   navigation: PropTypes.object,

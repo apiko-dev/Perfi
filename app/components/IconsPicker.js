@@ -6,11 +6,12 @@ import IconsPickerList from './iconsList/index';
 
 const { modalStyle, listStyle } = styles;
 
-const IconsPickerModal = ({ isVisible, onIconPick, hideModal, selectedIconName }) => (
+const IconsPickerModal = ({ isVisible, onIconPick, hideModal, icons, selectedIconName }) => (
   <TouchableWithoutFeedback onPress={hideModal}>
     <Modal isVisible={isVisible} onBackButtonPress={hideModal} style={modalStyle}>
       <IconsPickerList
         style={listStyle}
+        icons={icons}
         onIconPick={onIconPick}
         selectedIconName={selectedIconName}
         enableEmptySections
@@ -20,6 +21,7 @@ const IconsPickerModal = ({ isVisible, onIconPick, hideModal, selectedIconName }
 );
 
 IconsPickerModal.propTypes = {
+  icons: PropTypes.arrayOf(PropTypes.string),
   isVisible: PropTypes.bool,
   onIconPick: PropTypes.func,
   selectedIconName: PropTypes.string,

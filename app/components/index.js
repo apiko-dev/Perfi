@@ -2,8 +2,9 @@ import AccountForm from './accountForm';
 import AccountsList from './accountsList';
 import Calculator from './calculator';
 import CategoriesList from './categoriesList';
-import CurrencyPicker from './CurrencyPicker';
-import DeleteButton from './navButtons/DeleteButton';
+import TransferForm from './transferForm';
+import NavButton from './NavButton';
+import SelectBox from './SelectBox';
 import DrawerButton from './DrawerButton';
 import FormInputWithIcon from './FormInputWithIcon';
 import IconsPickerModal from './IconsPicker';
@@ -15,15 +16,16 @@ import SceneContentWrapper from './SceneContentWrapper';
 import TransactionForm from './transactionForm';
 import TransactionsList from './transactionsList';
 import TouchableFormInput from './TouchableFormInput';
+import CategoryForm from './categoryForm';
 
 export {
   AccountsList,
   AccountForm,
   Calculator,
   CategoriesList,
-  CurrencyPicker,
+  CategoryForm,
   DrawerButton,
-  DeleteButton,
+  NavButton,
   FormInputWithIcon,
   IconsPickerModal,
   Loading,
@@ -31,7 +33,9 @@ export {
   PropsProxyHOC,
   RoundButton,
   SceneContentWrapper,
+  SelectBox,
   TransactionForm,
+  TransferForm,
   TransactionsList,
   TouchableFormInput,
 };
