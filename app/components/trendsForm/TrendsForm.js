@@ -3,8 +3,13 @@ import { View } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import {
   TouchableFormInput,
+  TrendsList,
 } from '../';
 import calendarDateFormat from '../../utils/calendarDateFormat';
+import TrendsListItem from '../trendsList/TrendsListItem';
+import styles from '../../styles/TrendsStyles';
+
+const { headerContainerStyle, headerLabelTextStyle } = styles;
 
 const TrendsForm = (props) => {
   const {
@@ -19,6 +24,8 @@ const TrendsForm = (props) => {
     toggleDateFromPicker,
     toggleDateToPicker,
   } = props;
+
+  const { byMonth, average: { income, expense } } = formattedTransactions;
 
   return (
     <View style={blockStyle}>
@@ -49,6 +56,17 @@ const TrendsForm = (props) => {
             value={calendarDateFormat(dateTo)}
           />
         </View>
+      </View>
+      <View style={headerContainerStyle}>
+        <TrendsListItem
+          label="Average"
+          income={income}
+          expense={expense}
+          labelStyle={headerLabelTextStyle}
+        />
+      </View>
+      <View style={rowStyle}>
+        <TrendsList transactions={byMonth} />
       </View>
     </View>
   );

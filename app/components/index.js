@@ -19,6 +19,7 @@ import TouchableFormInput from './TouchableFormInput';
 import CategoryForm from './categoryForm';
 import AccountsSelectBox from './AccountsSelectBox';
 import TrendsForm from './trendsForm';
+import TrendsList from './trendsList';
 
 export {
   AccountsList,
@@ -41,5 +42,6 @@ export {
   TransferForm,
   TransactionsList,
   TrendsForm,
+  TrendsList,
   TouchableFormInput,
 };
