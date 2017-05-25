@@ -26,17 +26,26 @@ const enhance = compose(
     blockStyle,
     rowStyle,
   }),
-  withState('accountFrom', 'setAccountFrom', transferProp('accountFrom', {})),
-  withState('accountTo', 'setAccountTo', transferProp('accountTo', {})),
-  withState('value', 'setValue', transferProp('value', 1)),
+  withState('accountFrom', 'setAccountFrom', transferProp('accountFrom')),
+  withState('accountTo', 'setAccountTo', transferProp('accountTo')),
+  withState('value', 'setValue', transferProp('value', 0)),
   withState('date', 'setDate', transferProp('date', new Date())),
   withState('notes', 'setNotes', transferProp('notes')),
   withState('isCalculatorVisible', 'setCalculatorVisible', false),
   withState('isDatePickerVisible', 'setDatePickerVisible', false),
-  withProps(props => ({
-    ...props,
-    isValid: !!(props.accountFrom.id && props.accountTo.id && props.value >= 1 && props.date),
-  })),
+  withProps(({ accounts, accountFrom, accountTo, ...props }) => {
+    const accountsById = R.values(accounts.byId);
+    const accountFromOrDefault = accountFrom || accountsById[0] || {};
+    const accountToOrDefault = accountTo || accountsById[1] || accountsById[0] || {};
+
+    return ({
+      ...props,
+      accountsById: R.values(accounts.byId),
+      accountTo: accountToOrDefault,
+      accountFrom: accountFromOrDefault,
+      isValid: !!(accountToOrDefault && accountFromOrDefault && props.value >= 1 && props.date),
+    });
+  }),
   withHandlers({
     toggleCalculator: ({ setCalculatorVisible, isCalculatorVisible }) => () => {
       setCalculatorVisible(!isCalculatorVisible);

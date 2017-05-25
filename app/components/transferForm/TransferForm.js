@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import R from 'ramda';
 import { View } from 'react-native';
 import Modal from 'react-native-modal';
 import { Icon } from 'react-native-elements';
@@ -22,7 +21,7 @@ const TransferForm = (props) => {
     value,
     notes,
     date,
-    accounts,
+    accountsById,
     accountTo,
     accountFrom,
     setAccountFrom,
@@ -44,7 +43,6 @@ const TransferForm = (props) => {
       rowStyle,
     },
   } = props;
-  const accountsById = R.values(accounts.byId);
 
   return (
     <SceneContentWrapper>
@@ -130,7 +128,7 @@ TransferForm.propTypes = {
   ]),
   onSubmit: PropTypes.func,
   setAccountFrom: PropTypes.func,
-  accounts: PropTypes.array,
+  accountsById: PropTypes.array,
   notes: PropTypes.string,
   setNotes: PropTypes.func,
   onDateChange: PropTypes.func,
