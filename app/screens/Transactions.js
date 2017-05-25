@@ -1,60 +1,92 @@
-import R from 'ramda';
-import React, { PureComponent } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
+import React, { Component } from 'react';
+import {
+  Text,
+  View,
+  StyleSheet,
+} from 'react-native';
+import SwipeableViews from 'react-swipeable-views-native';
+import { virtualize } from 'react-swipeable-views-utils';
 
-const FirstRoute = (index) => <View style={[ styles.container, { backgroundColor: '#FFEB3B' } ]}>
-  <Text>{index}</Text>
-</View>;
-// const SecondRoute = () => <View style={[ styles.container, { backgroundColor: '#FFC107' } ]} />;
-// const ThirdRoute = () => <View style={[ styles.container, { backgroundColor: '#FF9800' } ]} />;
+const mod = (n, m) => {
+  const q = n % m;
+  return q < 0 ? (q + m) : q;
+};
 
-export default class TabViewExample extends PureComponent {
+const VirtualizeSwipeableViews = virtualize(SwipeableViews);
+
+const styles = StyleSheet.create({
+  slide: {
+    padding: 15,
+    height: 100,
+  },
+  slide1: {
+    backgroundColor: '#FEA900',
+  },
+  slide2: {
+    backgroundColor: '#B3DC4A',
+  },
+  slide3: {
+    backgroundColor: '#6AC0FF',
+  },
+  text: {
+    color: '#fff',
+    fontSize: 16,
+  },
+});
+
+function slideRenderer(params) {
+  const {
+    index,
+    key,
+  } = params;
+  let style;
+
+  switch (mod (index, 3)) {
+    case 0:
+      style = styles.slide1;
+      break;
+
+    case 1:
+      style = styles.slide2;
+      break;
+
+    case 2:
+      style = styles.slide3;
+      break;
+
+    default:
+      break;
+  }
+
+  return (
+    <View style={[styles.slide, style]} key={key}>
+      <Text style={styles.text}>
+        {`slide n°${index + 1}`}
+      </Text>
+    </View>
+  );
+}
+
+class DemoVirtualize extends Component {
   state = {
-    index: 1,
-    routes: [
-      { key: '0', title: '0' },
-      { key: '1', title: '1' },
-      { key: '2', title: '2' },
-    ],
+    index: 0,
   };
 
-  _handleChangeTab = index => {
-    const routes = this.state.routes;
-
-    console.log({ index });
-
+  handleChangeIndex = (index) => {
     this.setState({
-      routes: index > 1
-        ? R.map(route => ({ ...route, title: `${+route.title + 1}`}), routes)
-        : R.map(route => ({ ...route, title: `${+route.title - 1}`}), routes),
+      index,
     });
-  };
-
-  _renderHeader = props => <TabBar {...props} />;
-
-  _renderScene = ({ route: { title, boo } }) => {
-    console.log({ boo });
-
-    return FirstRoute(title);
   };
 
   render() {
     return (
-      <TabViewAnimated
-        style={styles.container}
-        navigationState={this.state}
-        renderScene={this._renderScene}
-        renderHeader={this._renderHeader}
-        onRequestChangeTab={this._handleChangeTab}
-        lazy
+      <VirtualizeSwipeableViews
+        slideRenderer={slideRenderer}
+        index={this.state.index}
+        onChangeIndex={this.handleChangeIndex}
       />
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+export default DemoVirtualize;
