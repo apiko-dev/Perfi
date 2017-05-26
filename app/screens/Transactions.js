@@ -6,6 +6,8 @@ import {
 } from 'react-native';
 import SwipeableScenes from '../components/swipeableTabBar';
 
+import moment from 'moment';
+
 const mod = (n, m) => {
   const q = n % m;
   return q < 0 ? (q + m) : q;
@@ -32,6 +34,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+const getDate = index => moment().add(index, 'days').format('L');
 
 function slideRenderer(params) {
   const {
@@ -60,14 +64,14 @@ function slideRenderer(params) {
   return (
     <View style={[styles.slide, style]} key={key}>
       <Text style={styles.text}>
-        {`slide n°${index}`}
+        {getDate(index)}
       </Text>
     </View>
   );
 }
 
 const Demo = () => (
-  <SwipeableScenes slideRenderer={slideRenderer} />
+  <SwipeableScenes slideRenderer={slideRenderer} setTitle={getDate} />
 );
 
 export default Demo;

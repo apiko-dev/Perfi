@@ -9,11 +9,14 @@ const Slides = virtualize(SwipeableViews);
 
 const SlidesWithTabs = (props) => {
   const {
-    setNextSlide,
-    setPrevSlide,
-    onChangeSlide,
-    slideRenderer,
     index,
+    slideRenderer,
+    prevSlideTitle,
+    currentSlideTitle,
+    nextSlideTitle,
+    setPrevSlide,
+    setNextSlide,
+    onChangeSlide,
   } = props;
 
   return (
@@ -21,16 +24,16 @@ const SlidesWithTabs = (props) => {
       <View style={styles.tabsContainerStyle}>
         <Button
           buttonStyle={styles.tabStyle}
-          title={`${index - 1}`}
+          title={prevSlideTitle}
           onPress={setPrevSlide}
         />
         <Button
           buttonStyle={styles.tabStyle}
-          title={`${index}`}
+          title={currentSlideTitle}
         />
         <Button
           buttonStyle={styles.tabStyle}
-          title={`${index + 1}`}
+          title={nextSlideTitle}
           onPress={setNextSlide}
         />
       </View>
