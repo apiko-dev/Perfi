@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import R from 'ramda';
 import screens from '../constants/screens';
-import { RoundButton } from '../components';
+import { RoundButton, SlidesWithTabs } from '../components';
 import {
   TransactionsHeaderContainer,
   TransactionsListContainer,
@@ -11,14 +11,21 @@ import styles from '../styles/DashboardStyles';
 
 const getCurrentAccount = R.path(['state', 'params', 'account']);
 
+const TransactionsList = navigation => ({ index, key }) => (
+  <TransactionsListContainer
+    key={key}
+    onSelectTransaction={transaction => navigation.navigate(
+      screens.TransactionEditor,
+      { transaction },
+    )}
+    account={getCurrentAccount(navigation)}
+  />
+);
+
 const Dashboard = ({ navigation }) => (
   <View style={styles.rootStyle}>
-    <TransactionsListContainer
-      onSelectTransaction={transaction => navigation.navigate(
-        screens.TransactionEditor,
-        { transaction },
-      )}
-      account={getCurrentAccount(navigation)}
+    <SlidesWithTabs
+      slideRenderer={TransactionsList(navigation)}
     />
     <RoundButton
       style={styles.addButtonStyle}
@@ -38,7 +45,7 @@ Dashboard.navigationOptions = ({ navigation }) => ({
     <TransactionsHeaderContainer
       navigation={navigation}
       currentAccount={getCurrentAccount(navigation)}
-      onSelectAccount={(account) => navigation.setParams({ account }) }
+      onSelectAccount={account => navigation.setParams({ account })}
     />
   ),
 });

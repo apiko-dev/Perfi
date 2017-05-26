@@ -7,7 +7,7 @@ import CategoriesRoutes from '../routes/CategoriesRoutes';
 
 const DashboardNavigator = StackNavigator({
   [screens.Dashboard]: {
-    screen: Transactions,
+    screen: Dashboard,
   },
   [screens.TransactionEditor]: {
     screen: TransactionEditor,

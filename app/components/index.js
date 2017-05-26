@@ -14,6 +14,7 @@ import NavIcon from './NavIcon';
 import PropsProxyHOC from './PropsProxyHOC';
 import RoundButton from './RoundButton';
 import SceneContentWrapper from './SceneContentWrapper';
+import SlidesWithTabs from './slidesWithTabs';
 import TransactionForm from './transactionForm';
 import TransactionsList from './transactionsList';
 import TouchableFormInput from './TouchableFormInput';
@@ -35,6 +36,7 @@ export {
   PropsProxyHOC,
   RoundButton,
   SceneContentWrapper,
+  SlidesWithTabs,
   TransactionForm,
   TransactionsList,
   TouchableFormInput,

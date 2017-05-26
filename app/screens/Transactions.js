@@ -4,7 +4,7 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import SwipeableScenes from '../components/swipeableTabBar';
+import { SlidesWithTabs } from '../components';
 
 import moment from 'moment';
 
@@ -71,7 +71,7 @@ function slideRenderer(params) {
 }
 
 const Demo = () => (
-  <SwipeableScenes slideRenderer={slideRenderer} setTitle={getDate} />
+  <SlidesWithTabs slideRenderer={slideRenderer} setTitle={getDate} />
 );
 
 export default Demo;
