@@ -41,6 +41,8 @@ const SlidesWithTabs = (props) => {
         index={index}
         slideRenderer={slideRenderer}
         onChangeIndex={onChangeSlide}
+        overscanSlideAfter={1}
+        overscanSlideBefore={1}
       />
     </View>
   );
