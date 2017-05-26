@@ -4,20 +4,19 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import SwipeableViews from 'react-swipeable-views-native';
-import { virtualize } from 'react-swipeable-views-utils';
+import SwipeableScenes from '../components/swipeableTabBar';
 
 const mod = (n, m) => {
   const q = n % m;
   return q < 0 ? (q + m) : q;
 };
 
-const VirtualizeSwipeableViews = virtualize(SwipeableViews);
 
 const styles = StyleSheet.create({
   slide: {
+    flex: 1,
     padding: 15,
-    height: 100,
+    // height: 100,
   },
   slide1: {
     backgroundColor: '#FEA900',
@@ -61,32 +60,14 @@ function slideRenderer(params) {
   return (
     <View style={[styles.slide, style]} key={key}>
       <Text style={styles.text}>
-        {`slide n°${index + 1}`}
+        {`slide n°${index}`}
       </Text>
     </View>
   );
 }
 
-class DemoVirtualize extends Component {
-  state = {
-    index: 0,
-  };
+const Demo = () => (
+  <SwipeableScenes slideRenderer={slideRenderer} />
+);
 
-  handleChangeIndex = (index) => {
-    this.setState({
-      index,
-    });
-  };
-
-  render() {
-    return (
-      <VirtualizeSwipeableViews
-        slideRenderer={slideRenderer}
-        index={this.state.index}
-        onChangeIndex={this.handleChangeIndex}
-      />
-    );
-  }
-}
-
-export default DemoVirtualize;
+export default Demo;
