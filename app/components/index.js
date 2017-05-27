@@ -14,6 +14,7 @@ import NavIcon from './NavIcon';
 import PropsProxyHOC from './PropsProxyHOC';
 import RoundButton from './RoundButton';
 import SceneContentWrapper from './SceneContentWrapper';
+import Selector from './Selector';
 import SlidesWithTabs from './slidesWithTabs';
 import TransactionForm from './transactionForm';
 import TransactionsList from './transactionsList';
@@ -36,6 +37,7 @@ export {
   PropsProxyHOC,
   RoundButton,
   SceneContentWrapper,
+  Selector,
   SlidesWithTabs,
   TransactionForm,
   TransactionsList,
