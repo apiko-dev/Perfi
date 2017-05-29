@@ -1,18 +1,14 @@
-export default [
-  { value: 10, account: 0, category: 0, note: 'test note' },
-  { value: 20, account: 0, category: 1, note: 'test note' },
-  { value: 30, account: 0, category: 0, note: 'test note' },
-  { value: 10, account: 0, category: 1, note: 'test note' },
-  { value: 30, account: 0, category: 4, note: 'test note' },
-  { value: 10, account: 0, category: 4, note: 'test note' },
-  { value: 20, account: 0, category: 0, note: 'test note' },
-  { value: 30, account: 0, category: 1, note: 'test note' },
-  { value: 10, account: 0, category: 0, note: 'test note' },
-  { value: 20, account: 0, category: 1, note: 'test note' },
-  { value: 30, account: 0, category: 0, note: 'test note' },
-  { value: 10, account: 0, category: 1, note: 'test note' },
-  { value: 20, account: 0, category: 0, note: 'test note' },
-  { value: 30, account: 0, category: 1, note: 'test note' },
-  { value: 20, account: 0, category: 4, note: 'test note' },
-  { value: 30, account: 0, category: 4, note: 'test note' },
-];
+const randomNumberBetween = (start, end) => Math.floor((Math.random() * end) + start);
+
+const randomDateBetween = (start, end) =>
+  new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+
+const createTransaction = () => ({
+  value: randomNumberBetween(0, 100),
+  account: `${randomNumberBetween(0, 2)}`,
+  category: `${randomNumberBetween(0, 15)}`,
+  date: randomDateBetween(new Date(2017, 3, 1), new Date()),
+  note: 'test note',
+});
+
+export default new Array(100).fill(1).map(createTransaction);
