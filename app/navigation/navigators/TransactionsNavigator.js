@@ -1,13 +1,13 @@
 import { StackNavigator } from 'react-navigation';
-import { Dashboard, TransactionEditor, Transactions } from '../../screens';
+import { TransactionEditor, Transactions } from '../../screens';
 import screens from '../../constants/screens';
 import navOptions from '../../utils/navOptions';
 import AccountsRoutes from '../routes/AccountsRoutes';
 import CategoriesRoutes from '../routes/CategoriesRoutes';
 
-const DashboardNavigator = StackNavigator({
-  [screens.Dashboard]: {
-    screen: Dashboard,
+const TransactionsNavigator = StackNavigator({
+  [screens.Transactions]: {
+    screen: Transactions,
   },
   [screens.TransactionEditor]: {
     screen: TransactionEditor,
@@ -16,9 +16,9 @@ const DashboardNavigator = StackNavigator({
   ...CategoriesRoutes,
 }, {
   ...navOptions({
-    title: 'Dashboard',
+    title: 'Transactions',
     icon: 'chart-arc',
   }),
 });
 
-export default DashboardNavigator;
+export default TransactionsNavigator;

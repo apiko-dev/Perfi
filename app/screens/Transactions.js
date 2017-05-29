@@ -1,77 +1,88 @@
-import React, { Component } from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-} from 'react-native';
-import { SlidesWithTabs } from '../components';
-
+import React, { PropTypes } from 'react';
+import { View } from 'react-native';
+import R from 'ramda';
 import moment from 'moment';
+import screens from '../constants/screens';
+import { RoundButton, SlidesWithTabs } from '../components';
+import {
+  TransactionsHeaderContainer,
+  TransactionsListContainer,
+} from '../containers';
+import styles from '../styles/DashboardStyles';
 
-const mod = (n, m) => {
-  const q = n % m;
-  return q < 0 ? (q + m) : q;
-};
+const getNavParameter = (name, def) => R.pathOr(def, ['state', 'params', name]);
 
+const getAccount = getNavParameter('account');
 
-const styles = StyleSheet.create({
-  slide: {
-    flex: 1,
-    padding: 15,
-    // height: 100,
-  },
-  slide1: {
-    backgroundColor: '#FEA900',
-  },
-  slide2: {
-    backgroundColor: '#B3DC4A',
-  },
-  slide3: {
-    backgroundColor: '#6AC0FF',
-  },
-  text: {
-    color: '#fff',
-    fontSize: 16,
-  },
+const getInterval = getNavParameter('interval', 'day');
+
+const getTime = (index, interval = 'day') => moment().add(index, `${interval}s`);
+
+const getPeriod = (index, interval = 'day') => ({
+  from: getTime(index, interval).startOf(interval).toDate(),
+  to: getTime(index, interval).endOf(interval).toDate(),
 });
 
-const getDate = index => moment().add(index, 'days').format('L');
+const getPeriodName = interval => index => {
+  const time = getTime(index, interval);
+  const timeFormats = {
+    day: 'll',
+    month: 'MMM YYYY',
+    year: 'YYYY',
+  };
+  let name = time.format(timeFormats[interval]);
 
-function slideRenderer(params) {
-  const {
-    index,
-    key,
-  } = params;
-  let style;
-
-  switch (mod (index, 3)) {
-    case 0:
-      style = styles.slide1;
-      break;
-
-    case 1:
-      style = styles.slide2;
-      break;
-
-    case 2:
-      style = styles.slide3;
-      break;
-
-    default:
-      break;
+  if (interval === 'week') {
+    const startOfWeek = `${time.format('MMM')} ${time.startOf(interval).date()}`;
+    const endOfWeek = time.endOf(interval).format('D, YYYY');
+    name = `${startOfWeek}-${endOfWeek}`;
   }
 
-  return (
-    <View style={[styles.slide, style]} key={key}>
-      <Text style={styles.text}>
-        {getDate(index)}
-      </Text>
-    </View>
-  );
-}
+  return name;
+};
 
-const Demo = () => (
-  <SlidesWithTabs slideRenderer={slideRenderer} setTitle={getDate} />
+const TransactionsList = navigation => ({ index, key }) => (
+  <TransactionsListContainer
+    key={key}
+    onSelectTransaction={transaction => navigation.navigate(
+      screens.TransactionEditor,
+      { transaction },
+    )}
+    account={getAccount(navigation)}
+    period={getPeriod(index, getInterval(navigation))}
+  />
 );
 
-export default Demo;
+const Transactions = ({ navigation }) => (
+  <View style={styles.rootStyle}>
+    <SlidesWithTabs
+      slideRenderer={TransactionsList(navigation)}
+      setTitle={getPeriodName(getInterval(navigation))}
+    />
+    <RoundButton
+      style={styles.addButtonStyle}
+      iconName="add"
+      onPress={() => navigation.navigate(screens.TransactionEditor)}
+    />
+  </View>
+);
+
+Transactions.propTypes = {
+  navigation: PropTypes.object,
+};
+
+Transactions.navigationOptions = ({ navigation }) => ({
+  title: 'Transactions',
+  header: (
+    <TransactionsHeaderContainer
+      navigation={navigation}
+      currentAccount={getAccount(navigation)}
+      onSelectAccount={account => navigation.setParams({ account })}
+      intervals={['day', 'week', 'month', 'year']}
+      currentInterval={getInterval(navigation)}
+      onSelectInterval={interval => navigation.setParams({ interval })}
+    />
+  ),
+});
+
+export default Transactions;

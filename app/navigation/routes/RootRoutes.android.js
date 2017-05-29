@@ -2,14 +2,14 @@ import screens from '../../constants/screens';
 import {
   AccountsNavigator,
   CategoriesNavigator,
-  DashboardNavigator,
   SettingsNavigator,
+  TransactionsNavigator,
   TrendsNavigator,
 } from '../navigators';
 
 const Routes = {
-  [screens.DashboardRoot]: {
-    screen: DashboardNavigator,
+  [screens.TransactionsRoot]: {
+    screen: TransactionsNavigator,
   },
   [screens.AccountsRoot]: {
     screen: AccountsNavigator,
