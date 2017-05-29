@@ -2,13 +2,11 @@ import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import R from 'ramda';
 import moment from 'moment';
-import screens from '../constants/screens';
-import { RoundButton, SlidesWithTabs } from '../components';
-import {
-  TransactionsHeaderContainer,
-  TransactionsListContainer,
-} from '../containers';
-import styles from '../styles/DashboardStyles';
+import screens from '../../constants/screens';
+import { RoundButton, SlidesWithTabs } from '../../components';
+import { TransactionsListContainer } from '../../containers';
+import TransactionsHeaderContainer from './screenHeader/TransactionsHeaderContainer';
+import styles from '../../styles/DashboardStyles';
 
 const getNavParameter = (name, def) => R.pathOr(def, ['state', 'params', name]);
 
@@ -74,16 +72,7 @@ Transactions.propTypes = {
 
 Transactions.navigationOptions = ({ navigation }) => ({
   title: 'Transactions',
-  header: (
-    <TransactionsHeaderContainer
-      navigation={navigation}
-      currentAccount={getAccount(navigation)}
-      onSelectAccount={account => navigation.setParams({ account })}
-      intervals={['day', 'week', 'month', 'year']}
-      currentInterval={getInterval(navigation)}
-      onSelectInterval={interval => navigation.setParams({ interval })}
-    />
-  ),
+  header: <TransactionsHeaderContainer navigation={navigation} />,
 });
 
 export default Transactions;

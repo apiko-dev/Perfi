@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Platform, Text, View } from 'react-native';
-import DrawerButton from '../DrawerButton';
-import Selector from '../Selector';
-import ItemWithIcon from '../ItemWithIcon';
-import styles from '../../styles/TransactionsHeaderStyles';
+import DrawerButton from '../../../components/DrawerButton';
+import Selector from '../../../components/Selector';
+import ItemWithIcon from '../../../components/ItemWithIcon';
+import styles from './styles';
 
 const AccountItem = ({ name, icon }) => <ItemWithIcon title={name} icon={icon} />;
+
+AccountItem.propTypes = {
+  name: PropTypes.string,
+  icon: PropTypes.string,
+};
 
 const IntervalItem = name => <Text>{name}</Text>;
 
@@ -42,7 +47,13 @@ const TransactionsHeader = (props) => {
 };
 
 TransactionsHeader.propTypes = {
-  navigation: React.PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+  accounts: PropTypes.array,
+  currentAccount: PropTypes.object,
+  onSelectAccount: PropTypes.func,
+  intervals: PropTypes.array,
+  currentInterval: PropTypes.string,
+  onSelectInterval: PropTypes.func,
 };
 
 export default TransactionsHeader;

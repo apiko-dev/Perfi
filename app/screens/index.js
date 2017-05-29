@@ -4,7 +4,7 @@ import Categories from './Categories';
 import CategoryEditor from './CategoryEditor';
 import Settings from './Settings';
 import TransactionEditor from './TransactionEditor';
-import Transactions from './Transactions';
+import Transactions from './transactions/Transactions';
 import Trends from './Trends';
 import TransferEditor from './TransferEditor';
 

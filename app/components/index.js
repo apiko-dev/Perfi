@@ -2,7 +2,6 @@ import AccountForm from './accountForm';
 import AccountsList from './accountsList';
 import Calculator from './calculator';
 import CategoriesList from './categoriesList';
-import TransactionsHeader from './transactionsHeader';
 import TransferForm from './transferForm';
 import NavButton from './NavButton';
 import SelectBox from './SelectBox';
@@ -46,7 +45,6 @@ export {
   SlidesWithTabs,
   SelectBox,
   TransactionForm,
-  TransactionsHeader,
   TransactionsList,
   TransferForm,
   TrendsForm,
