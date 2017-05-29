@@ -26,15 +26,16 @@ const getPeriod = (index, interval = 'day') => ({
 const getPeriodName = interval => index => {
   const time = getTime(index, interval);
   const timeFormats = {
-    day: 'll',
-    month: 'MMM YYYY',
+    day: 'L',
+    dayOfMonth: 'MM/DD',
+    month: 'MM/YYYY',
     year: 'YYYY',
   };
   let name = time.format(timeFormats[interval]);
 
   if (interval === 'week') {
-    const startOfWeek = `${time.format('MMM')} ${time.startOf(interval).date()}`;
-    const endOfWeek = time.endOf(interval).format('D, YYYY');
+    const startOfWeek = time.startOf(interval).format(timeFormats.dayOfMonth);
+    const endOfWeek = time.endOf(interval).format(timeFormats.dayOfMonth);
     name = `${startOfWeek}-${endOfWeek}`;
   }
 
