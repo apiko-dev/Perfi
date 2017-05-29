@@ -3,7 +3,7 @@ import { Platform, Text, View } from 'react-native';
 import DrawerButton from '../../../components/DrawerButton';
 import Selector from '../../../components/Selector';
 import ItemWithIcon from '../../../components/ItemWithIcon';
-import styles from './styles';
+import styles from './TransactionsHeaderStyles';
 
 const AccountItem = ({ name, icon }) => <ItemWithIcon title={name} icon={icon} />;
 

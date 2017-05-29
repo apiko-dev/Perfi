@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import colors from '../constants/colors';
-import normalize from '../utils/normalizeText';
+import colors from '../../../constants/colors';
+import normalize from '../../../utils/normalizeText';
 
 const styles = StyleSheet.create({
   rootStyle: {

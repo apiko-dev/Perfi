@@ -17,7 +17,6 @@ import SceneContentWrapper from './SceneContentWrapper';
 import Selector from './Selector';
 import SlidesWithTabs from './slidesWithTabs';
 import TransactionForm from './transactionForm';
-import TransactionsList from './transactionsList';
 import TouchableFormInput from './TouchableFormInput';
 import CategoryForm from './categoryForm';
 import AccountsSelectBox from './AccountsSelectBox';
@@ -45,7 +44,6 @@ export {
   SlidesWithTabs,
   SelectBox,
   TransactionForm,
-  TransactionsList,
   TransferForm,
   TrendsForm,
   TrendsList,

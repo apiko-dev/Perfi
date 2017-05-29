@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import R from 'ramda';
-import { TransactionsList } from '../components';
+import TransactionsListView from './TransactionsListView';
 
 const isRightAccount = accountId => R.propEq('account', accountId);
 
@@ -23,7 +23,7 @@ const groupAndFilter = R.pipe(filterByAccountAndDate, groupByCategories);
 
 const pickCategories = (transactionsMap, categories) => R.pick(
   R.keys(transactionsMap),
-  categories.byId
+  categories.byId,
 );
 
 const mapStateToProps = (state, ownProps) => {
@@ -38,6 +38,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const TransactionsListContainer = connect(mapStateToProps)(TransactionsList);
-
-export default TransactionsListContainer;
+export default connect(mapStateToProps)(TransactionsListView);

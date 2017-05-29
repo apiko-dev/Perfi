@@ -3,10 +3,10 @@ import { Platform, Text, TouchableOpacity, TouchableNativeFeedback, View } from 
 import { Badge, Icon } from 'react-native-elements';
 import R from 'ramda';
 import { compose, withProps } from 'recompose';
-import { withToggle } from '../../utils/enhancers';
+import { withToggle } from '../../../utils/enhancers';
 import TransactionsList from './TransactionsList';
-import colors from '../../constants/colors';
-import styles from '../../styles/CategoryWithTransactionsStyles';
+import colors from '../../../constants/colors';
+import styles from './CategoryWithTransactionsStyles';
 
 const getTransactionsSum = R.pipe(
   R.map(R.prop('value')),
