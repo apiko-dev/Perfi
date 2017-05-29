@@ -21,7 +21,7 @@ const TransferForm = (props) => {
     value,
     notes,
     date,
-    accounts,
+    accountsById,
     accountTo,
     accountFrom,
     setAccountFrom,
@@ -51,7 +51,6 @@ const TransferForm = (props) => {
           <TouchableFormInput
             value={value.toString()}
             onPress={toggleCalculator}
-            keyboardType="numeric"
           />
         </View>
         <View>
@@ -60,7 +59,7 @@ const TransferForm = (props) => {
             getIcon={getIcon}
             withIcon
             selectedValue={accountFrom}
-            items={accounts}
+            items={accountsById}
             style={selectWithBorderStyle}
             onValueChange={setAccountFrom}
           />
@@ -73,7 +72,7 @@ const TransferForm = (props) => {
             getIcon={getIcon}
             withIcon
             selectedValue={accountTo}
-            items={accounts}
+            items={accountsById}
             style={selectWithBorderStyle}
             onValueChange={setAccountTo}
           />
@@ -129,7 +128,7 @@ TransferForm.propTypes = {
   ]),
   onSubmit: PropTypes.func,
   setAccountFrom: PropTypes.func,
-  accounts: PropTypes.array,
+  accountsById: PropTypes.array,
   notes: PropTypes.string,
   setNotes: PropTypes.func,
   onDateChange: PropTypes.func,
