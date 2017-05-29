@@ -2,25 +2,35 @@ import { connect } from 'react-redux';
 import R from 'ramda';
 import { TransactionsList } from '../components';
 
+const isRightAccount = accountId => R.propEq('account', accountId);
+
+const inDateRange = period => ({ date }) => R.and(
+  R.gte(date.getTime(), period.from.getTime()),
+  R.lt(date.getTime(), period.to.getTime()),
+);
+
 const filterByAccountAndDate = (transactions, accountId, period) => {
-  const isRightAccount = R.propEq('account', accountId);
-  const isRightDate = () => true;
-  const filterFn = period ? R.both(isRightAccount, isRightDate) : isRightAccount;
+  const check = period
+    ? R.both(isRightAccount(accountId), inDateRange(period))
+    : isRightAccount(accountId);
 
-  return R.filter(filterFn, R.values(transactions.byId));
+  return R.filter(check, R.values(transactions.byId));
 };
-
 
 const groupByCategories = R.groupBy(R.prop('category'));
 
-const handleTransactions = R.pipe(filterByAccountAndDate, groupByCategories);
+const groupAndFilter = R.pipe(filterByAccountAndDate, groupByCategories);
 
-const pickCategories = (transactionsMap, categories) =>
-  R.pick(R.keys(transactionsMap), categories.byId);
+const pickCategories = (transactionsMap, categories) => R.pick(
+  R.keys(transactionsMap),
+  categories.byId
+);
 
-const mapStateToProps = ({ accounts, categories, transactions }, { account, period }) => {
-  const currentAccount = account || accounts.byId[0];
-  const transactionsByCategories = handleTransactions(transactions, currentAccount.id, period);
+const mapStateToProps = (state, ownProps) => {
+  const { accounts, categories, transactions } = state;
+  const { account = accounts.byId[0], period } = ownProps;
+
+  const transactionsByCategories = groupAndFilter(transactions, account.id, period);
 
   return {
     categories: pickCategories(transactionsByCategories, categories),
