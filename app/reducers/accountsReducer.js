@@ -16,7 +16,10 @@ const defaultAccounts = [
 const initialState = insertAll({}, defaultAccounts);
 
 const accountsReducer = handleActions({
-  [actionTypes.CREATE_ACCOUNT]: (state, { payload }) => insert(state, createAccount(payload)),
+  [actionTypes.CREATE_ACCOUNT]: (state, { payload }) => insert(state, createAccount({
+    ...payload,
+    balance: payload.initialBalance,
+  })),
   [actionTypes.UPDATE_ACCOUNT]: (state, { payload }) => update(state, payload.id, payload),
   [actionTypes.DELETE_ACCOUNT]: (state, { payload }) => remove(state, payload),
 }, initialState);

@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 
 ## Available Scripts
 
+[![Join the chat at https://gitter.im/JSSolutions/Perfi](https://badges.gitter.im/JSSolutions/Perfi.svg)](https://gitter.im/JSSolutions/Perfi?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ### `npm start`
 
 Runs the app in development mode.

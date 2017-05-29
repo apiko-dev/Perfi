@@ -1,5 +1,6 @@
 import screens from '../../constants/screens';
-import { Categories, CategoryEditor } from '../../screens';
+import { CategoryEditor } from '../../screens';
+import Categories from '../../containers/CategoriesScreenContainer';
 import NestedTabNavigator from '../navigators/NestedTabNavigator';
 import headerOptions from '../../utils/stackHeaderOptions';
 

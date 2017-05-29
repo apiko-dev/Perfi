@@ -1,5 +1,5 @@
 import { StackNavigator } from 'react-navigation';
-import { Trends } from '../../screens';
+import Trends from '../../containers/TrendsScreenContainer';
 import screens from '../../constants/screens';
 import navOptions from '../../utils/navOptions';
 

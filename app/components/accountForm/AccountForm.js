@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { Icon } from 'react-native-elements';
 import { View, Text } from 'react-native';
 import Modal from 'react-native-modal';
-import { MenuContext } from 'react-native-popup-menu';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import {
   IconsPickerModal,
@@ -12,23 +11,21 @@ import {
   SceneContentWrapper,
   Calculator,
 } from '../';
-import CurrencyPicker from '../CurrencyPicker';
+import SelectBox from '../SelectBox';
 import calendarDateFormat from '../../utils/calendarDateFormat';
-import buttonsStyles from '../../styles/ButtonsStyles';
-import inputStyles from '../../styles/FormInputWithIconStyles';
 
-const { fixedButtonContainer } = buttonsStyles;
-const { iconStyle } = inputStyles;
+const getLabel = ({ name, sign }) => `${name}(${sign})`;
 
 const AccountForm = (props) => {
   const {
-    style: { blockStyleDark, blockStyle, rowStyle, calculatorModalStyle },
     name,
     icon,
+    icons,
     date,
     currency,
     onSubmit,
     isValid,
+    currencies,
     initialBalance,
     onNameChange,
     onIconChange,
@@ -41,77 +38,85 @@ const AccountForm = (props) => {
     onToggleDatePicker,
     isDatePickerVisible,
     isCalculatorVisible,
+    style: {
+      blockStyleDark,
+      blockStyle,
+      rowStyle,
+      calculatorModalStyle,
+      fixedButtonContainer,
+      iconStyle,
+    },
   } = props;
 
   return (
-    <MenuContext>
-      <SceneContentWrapper>
-        <View style={blockStyle}>
-          <View style={rowStyle}>
-            <Icon
-              onPress={onTogglePicker}
-              name={icon}
-              type="material-community"
-              iconStyle={iconStyle}
-              size={16}
-              raised
-            />
-            <FormInputWithIcon
-              onChangeText={onNameChange}
-              value={name}
-            />
-          </View>
-          <CurrencyPicker
-            selectedValue={currency}
-            onValueChange={onCurrencyChange}
+    <SceneContentWrapper>
+      <View style={blockStyle}>
+        <View style={rowStyle}>
+          <Icon
+            onPress={onTogglePicker}
+            name={icon}
+            type="material-community"
+            iconStyle={iconStyle}
+            size={16}
+            raised
+          />
+          <FormInputWithIcon
+            onChangeText={onNameChange}
+            value={name}
           />
         </View>
-        <View style={[blockStyle, blockStyleDark]}>
-          <View>
-            <Text>Initial balance</Text>
-            <TouchableFormInput
-              value={initialBalance.toString()}
-              onPress={onToggleCalculator}
-              keyboardType="numeric"
-            />
-          </View>
-          <View>
-            <DateTimePicker
-              isVisible={isDatePickerVisible}
-              onConfirm={onDateChange}
-              onCancel={onToggleDatePicker}
-            />
-            <TouchableFormInput
-              icon="calendar-blank"
-              onPress={onToggleDatePicker}
-              value={calendarDateFormat(date)}
-            />
-          </View>
-        </View>
-        <IconsPickerModal
-          isVisible={isPickerVisible}
-          onIconPick={onIconChange}
-          selectedIconName={icon}
-          hideModal={onTogglePicker}
+        <SelectBox
+          getLabel={getLabel}
+          selectedValue={currency}
+          items={currencies}
+          onValueChange={onCurrencyChange}
         />
-        {isValid && (
-          <RoundButton
-            style={fixedButtonContainer}
-            onPress={onSubmit}
-            iconName="check"
+      </View>
+      <View style={[blockStyle, blockStyleDark]}>
+        <View>
+          <Text>Initial balance</Text>
+          <TouchableFormInput
+            value={initialBalance.toString()}
+            onPress={onToggleCalculator}
           />
-        )}
-        <Modal
-          style={calculatorModalStyle}
-          isVisible={isCalculatorVisible}
-        >
-          <Calculator
-            value={initialBalance}
-            onSubmit={onChangeBalance}
+        </View>
+        <View>
+          <DateTimePicker
+            isVisible={isDatePickerVisible}
+            onConfirm={onDateChange}
+            onCancel={onToggleDatePicker}
           />
-        </Modal>
-      </SceneContentWrapper>
-    </MenuContext>
+          <TouchableFormInput
+            icon="calendar-blank"
+            onPress={onToggleDatePicker}
+            value={calendarDateFormat(date)}
+          />
+        </View>
+      </View>
+      <IconsPickerModal
+        isVisible={isPickerVisible}
+        onIconPick={onIconChange}
+        icons={icons}
+        selectedIconName={icon}
+        hideModal={onTogglePicker}
+      />
+      {isValid && (
+        <RoundButton
+          style={fixedButtonContainer}
+          onPress={onSubmit}
+          iconName="check"
+        />
+      )}
+      <Modal
+        style={calculatorModalStyle}
+        isVisible={isCalculatorVisible}
+      >
+        <Calculator
+          value={initialBalance}
+          onSubmit={onChangeBalance}
+        />
+      </Modal>
+    </SceneContentWrapper>
   );
 };
 
@@ -122,6 +127,7 @@ AccountForm.propTypes = {
     PropTypes.object,
     View.propTypes.style,
   ]),
+  icons: PropTypes.arrayOf(PropTypes.string),
   name: PropTypes.string,
   icon: PropTypes.string,
   date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
@@ -130,6 +136,10 @@ AccountForm.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ]),
+  currencies: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    sign: PropTypes.string,
+  })),
   onToggleDatePicker: PropTypes.func,
   isDatePickerVisible: PropTypes.bool,
   isCalculatorVisible: PropTypes.bool,
