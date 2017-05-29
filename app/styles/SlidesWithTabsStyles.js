@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
+
+const { width: windowWidth } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   rootStyle: {
@@ -6,9 +8,10 @@ const styles = StyleSheet.create({
   },
   tabsContainerStyle: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   tabStyle: {
-    flex: 1,
+    width: 0.34 * windowWidth,
     marginLeft: 0,
     marginRight: 0,
   },
