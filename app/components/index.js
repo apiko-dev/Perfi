@@ -2,9 +2,10 @@ import AccountForm from './accountForm';
 import AccountsList from './accountsList';
 import Calculator from './calculator';
 import CategoriesList from './categoriesList';
-import CurrencyPicker from './CurrencyPicker';
 import TransactionsHeader from './transactionsHeader';
-import DeleteButton from './navButtons/DeleteButton';
+import TransferForm from './transferForm';
+import NavButton from './NavButton';
+import SelectBox from './SelectBox';
 import DrawerButton from './DrawerButton';
 import FormInputWithIcon from './FormInputWithIcon';
 import IconsPickerModal from './IconsPicker';
@@ -19,16 +20,20 @@ import SlidesWithTabs from './slidesWithTabs';
 import TransactionForm from './transactionForm';
 import TransactionsList from './transactionsList';
 import TouchableFormInput from './TouchableFormInput';
+import CategoryForm from './categoryForm';
+import AccountsSelectBox from './AccountsSelectBox';
+import TrendsForm from './trendsForm';
+import TrendsList from './trendsList';
 
 export {
   AccountsList,
   AccountForm,
+  AccountsSelectBox,
   Calculator,
   CategoriesList,
-  CurrencyPicker,
-  TransactionsHeader,
+  CategoryForm,
   DrawerButton,
-  DeleteButton,
+  NavButton,
   FormInputWithIcon,
   IconsPickerModal,
   ItemWithIcon,
@@ -39,7 +44,12 @@ export {
   SceneContentWrapper,
   Selector,
   SlidesWithTabs,
+  SelectBox,
   TransactionForm,
+  TransactionsHeader,
   TransactionsList,
+  TransferForm,
+  TrendsForm,
+  TrendsList,
   TouchableFormInput,
 };

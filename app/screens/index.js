@@ -7,6 +7,7 @@ import Settings from './Settings';
 import TransactionEditor from './TransactionEditor';
 import Transactions from './Transactions';
 import Trends from './Trends';
+import TransferEditor from './TransferEditor';
 
 export {
   Accounts,
@@ -17,5 +18,6 @@ export {
   Settings,
   TransactionEditor,
   Transactions,
+  TransferEditor,
   Trends,
 };

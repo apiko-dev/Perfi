@@ -1,12 +1,15 @@
 import { create } from 'react-native-platform-stylesheet';
+import colors from '../constants/colors';
 
 const styles = create({
   blockStyle: {
     paddingTop: 20,
+    paddingLeft: 15,
+    paddingRight: 15,
     paddingBottom: 25,
   },
   blockStyleDark: {
-    backgroundColor: '#ebebeb',
+    backgroundColor: colors.lightGray,
     paddingTop: 10,
     paddingBottom: 15,
   },
@@ -22,9 +25,6 @@ const styles = create({
     flex: 1,
     marginRight: 10,
     marginLeft: 10,
-  },
-  dropDownMenuStyle: {
-    height: 36,
   },
 });
 

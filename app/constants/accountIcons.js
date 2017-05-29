@@ -9,7 +9,6 @@ export default [
   'account-multiple-outline',
   'account-multiple-plus',
   'cash-multiple',
-  'account-star-variant',
   'account-star',
   'airplane',
   'alert',
