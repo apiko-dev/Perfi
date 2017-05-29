@@ -7,7 +7,7 @@ import {
   IconsPickerModal,
   TouchableFormInput,
   FormInputWithIcon,
-  RoundButton,
+  ActionButton,
   SceneContentWrapper,
   Calculator,
 } from '../';
@@ -101,7 +101,7 @@ const AccountForm = (props) => {
         hideModal={onTogglePicker}
       />
       {isValid && (
-        <RoundButton
+        <ActionButton
           style={fixedButtonContainer}
           onPress={onSubmit}
           iconName="check"

@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import styles from '../styles/ButtonsStyles';
 import screens from '../constants/screens';
 import {
-  RoundButton,
+  ActionButton,
   SceneContentWrapper,
   AccountsList,
   NavButton,
@@ -37,7 +37,7 @@ const Accounts = ({ navigation, accounts, deleteAccount }) => {
         onSelectAccount={onSelectAccount}
       />
 
-      <RoundButton
+      <ActionButton
         style={fixedButtonContainer}
         iconName="add"
         onPress={goAddAccount}

@@ -4,7 +4,7 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import Modal from 'react-native-modal';
 import moment from 'moment';
 import R from 'ramda';
-import { Calculator, FormInputWithIcon, RoundButton, TouchableFormInput } from '../index';
+import { Calculator, FormInputWithIcon, ActionButton, TouchableFormInput } from '../index';
 
 const defaultIcon = R.propOr('help-circle', 'icon');
 
@@ -61,7 +61,7 @@ const TransactionForm = (props) => {
         onChangeText={onUpdateNote}
       />
       {isReadyForSubmit && (
-        <RoundButton
+        <ActionButton
           style={style.submitButtonStyle}
           iconName="check"
           onPress={onSubmit}

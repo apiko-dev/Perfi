@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import {
   FormInputWithIcon,
   IconsPickerModal,
-  RoundButton,
+  ActionButton,
   SceneContentWrapper,
   SelectBox,
 } from '../';
@@ -52,7 +52,7 @@ const CategoryForm = (props) => {
       />
     </View>
     {isValid && (
-      <RoundButton
+      <ActionButton
         style={fixedButtonContainer}
         onPress={onSubmit}
         iconName="check"

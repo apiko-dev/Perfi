@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import screens from '../constants/screens';
-import { RoundButton } from '../components';
+import { ActionButton } from '../components';
 import { CategoriesListContainer } from '../containers';
 import styles from '../styles/CategoriesStyles';
 
@@ -23,7 +23,7 @@ const Categories = ({ navigation, deleteCategory }) => {
         type={routeName.toLowerCase()}
         onSelectCategory={onSelectCategory}
       />
-      <RoundButton
+      <ActionButton
         style={styles.addButtonStyle}
         iconName="add"
         onPress={goAddCategory}

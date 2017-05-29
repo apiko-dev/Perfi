@@ -6,7 +6,7 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import calendarDateFormat from '../../utils/calendarDateFormat';
 import {
   SceneContentWrapper,
-  RoundButton,
+  ActionButton,
   SelectBox,
   Calculator,
   FormInputWithIcon,
@@ -99,7 +99,7 @@ const TransferForm = (props) => {
           />
         </View>
       </View>
-      {isValid && <RoundButton
+      {isValid && <ActionButton
         style={fixedButtonContainer}
         onPress={onSubmit}
         iconName="check"

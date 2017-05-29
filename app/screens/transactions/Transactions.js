@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import screens from '../../constants/screens';
-import { RoundButton } from '../../components';
+import { ActionButton } from '../../components';
 import TransactionsHeaderContainer from './screenHeader/TransactionsHeaderContainer';
 import TransactionsSlider from './TransactionsSlider';
 import styles from '../../styles/DashboardStyles';
@@ -9,7 +9,7 @@ import styles from '../../styles/DashboardStyles';
 const Transactions = ({ navigation }) => (
   <View style={styles.rootStyle}>
     <TransactionsSlider navigation={navigation} />
-    <RoundButton
+    <ActionButton
       style={styles.addButtonStyle}
       iconName="add"
       onPress={() => navigation.navigate(screens.TransactionEditor)}

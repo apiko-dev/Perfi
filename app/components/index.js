@@ -12,7 +12,7 @@ import ItemWithIcon from './ItemWithIcon';
 import Loading from './Loading';
 import NavIcon from './NavIcon';
 import PropsProxyHOC from './PropsProxyHOC';
-import RoundButton from './RoundButton';
+import ActionButton from './ActionButton';
 import SceneContentWrapper from './SceneContentWrapper';
 import Selector from './Selector';
 import SlidesWithTabs from './slidesWithTabs';
@@ -27,6 +27,7 @@ export {
   AccountsList,
   AccountForm,
   AccountsSelectBox,
+  ActionButton,
   Calculator,
   CategoriesList,
   CategoryForm,
@@ -38,7 +39,6 @@ export {
   Loading,
   NavIcon,
   PropsProxyHOC,
-  RoundButton,
   SceneContentWrapper,
   Selector,
   SlidesWithTabs,
