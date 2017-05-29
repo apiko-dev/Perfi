@@ -6,7 +6,7 @@ import {
 } from 'recompose';
 import R from 'ramda';
 import TransferForm from './TransferForm';
-import transactionFormStyle from '../../styles/TransactionFormStyles';
+import transactionFormStyle from '../../screens/transactionEditor/transactionForm/TransactionFormStyles';
 import buttonsStyles from '../../styles/ButtonsStyles';
 import selectStyles from '../../styles/SelectBoxStyles';
 import formStyles from '../../styles/FormStyles';

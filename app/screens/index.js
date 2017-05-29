@@ -3,7 +3,7 @@ import AccountEditor from './AccountEditor';
 import Categories from './Categories';
 import CategoryEditor from './CategoryEditor';
 import Settings from './Settings';
-import TransactionEditor from './TransactionEditor';
+import TransactionEditor from './transactionEditor/TransactionEditor';
 import Transactions from './transactions/Transactions';
 import Trends from './Trends';
 import TransferEditor from './TransferEditor';

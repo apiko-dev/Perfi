@@ -4,7 +4,12 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import Modal from 'react-native-modal';
 import moment from 'moment';
 import R from 'ramda';
-import { Calculator, FormInputWithIcon, ActionButton, TouchableFormInput } from '../index';
+import {
+  ActionButton,
+  Calculator,
+  FormInputWithIcon,
+  TouchableFormInput
+} from '../../../components';
 
 const defaultIcon = R.propOr('help-circle', 'icon');
 

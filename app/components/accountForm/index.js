@@ -9,7 +9,7 @@ import R from 'ramda';
 import AccountForm from './AccountForm';
 import styles from '../../styles/FormStyles';
 import icons from '../../constants/accountIcons';
-import transactionFormStyle from '../../styles/TransactionFormStyles';
+import transactionFormStyle from '../../screens/transactionEditor/transactionForm/TransactionFormStyles';
 import buttonsStyles from '../../styles/ButtonsStyles';
 import inputStyles from '../../styles/FormInputWithIconStyles';
 import currencies from '../../constants/currencies';
