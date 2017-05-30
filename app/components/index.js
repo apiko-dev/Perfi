@@ -1,7 +1,7 @@
 import AccountForm from './accountForm';
-import AccountsList from './accountsList';
 import Calculator from './calculator';
 import CategoriesList from './categoriesList';
+import CustomListItem from './CustomListItem';
 import TransferForm from './transferForm';
 import NavButton from './NavButton';
 import SelectBox from './SelectBox';
@@ -23,13 +23,13 @@ import TrendsForm from './trendsForm';
 import TrendsList from './trendsList';
 
 export {
-  AccountsList,
   AccountForm,
   AccountsSelectBox,
   ActionButton,
   Calculator,
   CategoriesList,
   CategoryForm,
+  CustomListItem,
   DrawerButton,
   NavButton,
   FormInputWithIcon,
