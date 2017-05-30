@@ -1,19 +1,18 @@
 import React, { PropTypes } from 'react';
-import { View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import R from 'ramda';
+import { ScreenWrapper } from '../../components';
 import TransactionFormContainer from './transactionForm/TransactionFormContainer';
-import styles from '../../styles/SceneStyles';
 
 const getTransaction = R.path(['state', 'params', 'transaction']);
 
 const TransactionEditor = ({ navigation }) => (
-  <View style={styles.rootStyle}>
+  <ScreenWrapper>
     <TransactionFormContainer
       navigation={navigation}
       onClose={() => navigation.dispatch(NavigationActions.back())}
     />
-  </View>
+  </ScreenWrapper>
 );
 
 TransactionEditor.propTypes = {

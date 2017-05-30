@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react';
 import { NavigationActions } from 'react-navigation';
-import { SceneContentWrapper } from '../components';
+import { ScreenWrapper } from '../components';
 import TransferForm from '../containers/TransfersFormContainer';
 
 const TransferEditor = ({ navigation }) => (
-  <SceneContentWrapper>
+  <ScreenWrapper>
     <TransferForm
       navigation={navigation}
       onClose={() => navigation.dispatch(NavigationActions.back())}
     />
-  </SceneContentWrapper>
+  </ScreenWrapper>
 );
 
 TransferEditor.navigationOptions = ({ navigation }) => ({

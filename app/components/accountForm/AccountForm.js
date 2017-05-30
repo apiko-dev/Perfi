@@ -8,7 +8,7 @@ import {
   TouchableFormInput,
   FormInputWithIcon,
   ActionButton,
-  SceneContentWrapper,
+  ScreenWrapper,
   Calculator,
 } from '../';
 import SelectBox from '../SelectBox';
@@ -49,7 +49,7 @@ const AccountForm = (props) => {
   } = props;
 
   return (
-    <SceneContentWrapper>
+    <ScreenWrapper>
       <View style={blockStyle}>
         <View style={rowStyle}>
           <Icon
@@ -116,7 +116,7 @@ const AccountForm = (props) => {
           onSubmit={onChangeBalance}
         />
       </Modal>
-    </SceneContentWrapper>
+    </ScreenWrapper>
   );
 };
 

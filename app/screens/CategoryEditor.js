@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { NavigationActions } from 'react-navigation';
-import { SceneContentWrapper, NavButton } from '../components';
+import { ScreenWrapper, NavButton } from '../components';
 import CategoryForm from '../containers/CategoryFormContainer';
 
 const CategoryEditor = ({ navigation, updateCategory, createCategory }) => (
-  <SceneContentWrapper>
+  <ScreenWrapper>
     <CategoryForm
       category={navigation.state.params.category}
       navigation={navigation}
@@ -12,7 +12,7 @@ const CategoryEditor = ({ navigation, updateCategory, createCategory }) => (
       createCategory={createCategory}
       onClose={() => navigation.dispatch(NavigationActions.back())}
     />
-  </SceneContentWrapper>
+  </ScreenWrapper>
 );
 
 CategoryEditor.propTypes = {

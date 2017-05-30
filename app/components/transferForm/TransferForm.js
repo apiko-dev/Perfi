@@ -5,7 +5,7 @@ import { Icon } from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import calendarDateFormat from '../../utils/calendarDateFormat';
 import {
-  SceneContentWrapper,
+  ScreenWrapper,
   ActionButton,
   SelectBox,
   Calculator,
@@ -45,7 +45,7 @@ const TransferForm = (props) => {
   } = props;
 
   return (
-    <SceneContentWrapper>
+    <ScreenWrapper>
       <View style={blockStyle}>
         <View style={rowStyle}>
           <TouchableFormInput
@@ -113,7 +113,7 @@ const TransferForm = (props) => {
           onSubmit={onValueChange}
         />
       </Modal>
-    </SceneContentWrapper>
+    </ScreenWrapper>
   );
 };
 

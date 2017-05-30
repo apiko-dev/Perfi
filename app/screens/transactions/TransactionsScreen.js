@@ -1,20 +1,19 @@
 import React, { PropTypes } from 'react';
-import { View } from 'react-native';
 import screens from '../../constants/screens';
-import { ActionButton } from '../../components';
+import { ActionButton, ScreenWrapper } from '../../components';
 import TransactionsHeaderContainer from './screenHeader/TransactionsHeaderContainer';
 import TransactionsSlider from './TransactionsSlider';
 import styles from '../../styles/DashboardStyles';
 
 const Transactions = ({ navigation }) => (
-  <View style={styles.rootStyle}>
+  <ScreenWrapper>
     <TransactionsSlider navigation={navigation} />
     <ActionButton
       style={styles.addButtonStyle}
       iconName="add"
       onPress={() => navigation.navigate(screens.TransactionEditor)}
     />
-  </View>
+  </ScreenWrapper>
 );
 
 Transactions.propTypes = {

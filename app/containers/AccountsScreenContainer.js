@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Accounts from '../screens/Accounts';
+import Accounts from '../screens/accounts/AccountsScreen';
 import { deleteAccount } from '../actions/accountsActions';
 
 const mapStateToProps = ({ accounts }) => ({

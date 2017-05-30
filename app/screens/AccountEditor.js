@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react';
 import { NavigationActions } from 'react-navigation';
-import { SceneContentWrapper, NavButton } from '../components';
+import { ScreenWrapper, NavButton } from '../components';
 import AccountForm from '../containers/AccountFormContainer';
 
 const AccountEditor = ({ navigation }) => (
-  <SceneContentWrapper>
+  <ScreenWrapper>
     <AccountForm
       account={navigation.state.params.account}
       onClose={() => navigation.dispatch(NavigationActions.back())}
       submit={navigation.state.params.onSubmit}
     />
-  </SceneContentWrapper>
+  </ScreenWrapper>
 );
 
 AccountEditor.navigationOptions = ({ navigation }) => {

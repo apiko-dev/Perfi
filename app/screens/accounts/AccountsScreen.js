@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
-import styles from '../styles/ButtonsStyles';
-import screens from '../constants/screens';
+import styles from '../../styles/ButtonsStyles';
+import screens from '../../constants/screens';
 import {
   ActionButton,
-  SceneContentWrapper,
+  ScreenWrapper,
   AccountsList,
   NavButton,
-} from '../components';
+} from '../../components';
 
 const { fixedButtonContainer } = styles;
 
@@ -30,7 +30,7 @@ const Accounts = ({ navigation, accounts, deleteAccount }) => {
   const onSelectAccount = (params && params.onSelectAccount) || goEditAccount;
 
   return (
-    <SceneContentWrapper>
+    <ScreenWrapper>
       <AccountsList
         accounts={accounts.byId}
         navigation={navigation}
@@ -42,7 +42,7 @@ const Accounts = ({ navigation, accounts, deleteAccount }) => {
         iconName="add"
         onPress={goAddAccount}
       />
-    </SceneContentWrapper>
+    </ScreenWrapper>
   );
 };
 

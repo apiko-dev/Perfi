@@ -13,7 +13,7 @@ import Loading from './Loading';
 import NavIcon from './NavIcon';
 import PropsProxyHOC from './PropsProxyHOC';
 import ActionButton from './ActionButton';
-import SceneContentWrapper from './SceneContentWrapper';
+import ScreenWrapper from './ScreenWrapper';
 import Selector from './Selector';
 import SlidesWithTabs from './slidesWithTabs';
 import TouchableFormInput from './TouchableFormInput';
@@ -38,7 +38,7 @@ export {
   Loading,
   NavIcon,
   PropsProxyHOC,
-  SceneContentWrapper,
+  ScreenWrapper,
   Selector,
   SlidesWithTabs,
   SelectBox,

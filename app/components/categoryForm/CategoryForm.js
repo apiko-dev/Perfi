@@ -5,7 +5,7 @@ import {
   FormInputWithIcon,
   IconsPickerModal,
   ActionButton,
-  SceneContentWrapper,
+  ScreenWrapper,
   SelectBox,
 } from '../';
 
@@ -28,7 +28,7 @@ const CategoryForm = (props) => {
     style: { fixedButtonContainer, iconStyle, rowStyle, blockStyle },
   } = props;
 
-  return (<SceneContentWrapper>
+  return (<ScreenWrapper>
     <View style={blockStyle}>
       <View style={rowStyle}>
         <Icon
@@ -64,7 +64,7 @@ const CategoryForm = (props) => {
       isVisible={isPickerVisible}
       hideModal={togglePicker}
     />
-  </SceneContentWrapper>);
+  </ScreenWrapper>);
 };
 
 CategoryForm.propTypes = {
