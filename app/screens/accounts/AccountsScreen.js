@@ -7,30 +7,27 @@ import {
 } from '../../components';
 import AccountsListContainer from './accountsList/AccountsListContainer';
 
-const goToTransfers = navigation => () => {
-  navigation.navigate(screens.TransferEditor, {
-    title: 'Add transfer',
-  });
-};
+const onNavigate = (nav, screen, params) => () => nav.navigate(screen, params);
 
 const Accounts = ({ navigation }) => (
   <ScreenWrapper>
     <AccountsListContainer navigation={navigation} />
     <ActionButton
       iconName="add"
-      onPress={() => navigation.navigate(screens.AccountEditor, { title: 'Add account' })}
+      onPress={onNavigate(navigation, screens.AccountEditor, { title: 'Add account' })}
     />
   </ScreenWrapper>
 );
 
 Accounts.navigationOptions = ({ navigation }) => ({
-  headerRight: <NavButton
-    isVisible
-    iconName="exchange"
-    iconType="font-awesome"
-    navigation={navigation}
-    action={goToTransfers(navigation)}
-  />,
+  headerRight: (
+    <NavButton
+      iconName="exchange"
+      iconType="font-awesome"
+      navigation={navigation}
+      action={onNavigate(navigation, screens.TransferEditor, { title: 'Add transfer' })}
+    />
+  ),
 });
 
 Accounts.propTypes = {

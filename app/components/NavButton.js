@@ -5,7 +5,7 @@ import { Icon } from 'react-native-elements';
 const NavButton = ({
  iconName,
  iconType,
- isVisible,
+ isVisible = true,
  backOnSuccess,
  navigation,
  action,
@@ -13,7 +13,7 @@ const NavButton = ({
 }) => {
   const onPress = () => {
     action(props);
-    if (backOnSuccess) {
+    if (navigation && backOnSuccess) {
       navigation.dispatch(NavigationActions.back());
     }
   };
