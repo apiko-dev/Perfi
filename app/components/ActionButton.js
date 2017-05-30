@@ -3,6 +3,11 @@ import { StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-elements';
 
 const styles = StyleSheet.create({
+  rootStyle: {
+    position: 'absolute',
+    right: 0,
+    bottom: 15,
+  },
   buttonStyle: {
     width: 48,
     height: 48,
@@ -12,7 +17,7 @@ const styles = StyleSheet.create({
 });
 
 const ActionButton = ({ style, iconName, color, ...props }) => (
-  <View style={style}>
+  <View style={style || styles.rootStyle}>
     <Button
       raised
       {...props}
