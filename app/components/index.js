@@ -1,4 +1,3 @@
-import AccountForm from './accountForm';
 import Calculator from './calculator';
 import CategoriesList from './categoriesList';
 import CustomListItem from './CustomListItem';
@@ -23,7 +22,6 @@ import TrendsForm from './trendsForm';
 import TrendsList from './trendsList';
 
 export {
-  AccountForm,
   AccountsSelectBox,
   ActionButton,
   Calculator,

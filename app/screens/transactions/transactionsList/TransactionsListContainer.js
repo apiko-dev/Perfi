@@ -28,9 +28,11 @@ const pickCategories = (transactionsMap, categories) => R.pick(
 
 const mapStateToProps = (state, ownProps) => {
   const { accounts, categories, transactions } = state;
-  const { account = accounts.byId[0], period } = ownProps;
+  const { account = accounts.byId[accounts.ids[0]], period } = ownProps;
 
-  const transactionsByCategories = groupAndFilter(transactions, account.id, period);
+  const transactionsByCategories = account
+    ? groupAndFilter(transactions, account.id, period)
+    : null;
 
   return {
     categories: pickCategories(transactionsByCategories, categories),

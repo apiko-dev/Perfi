@@ -10,9 +10,9 @@ import {
   ActionButton,
   ScreenWrapper,
   Calculator,
-} from '../';
-import SelectBox from '../SelectBox';
-import calendarDateFormat from '../../utils/calendarDateFormat';
+  SelectBox,
+} from '../../../components';
+import calendarDateFormat from '../../../utils/calendarDateFormat';
 
 const getLabel = ({ name, sign }) => `${name}(${sign})`;
 

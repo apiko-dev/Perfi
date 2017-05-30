@@ -1,5 +1,5 @@
 import Accounts from './accounts/AccountsScreen';
-import AccountEditor from './AccountEditor';
+import AccountEditor from './accountEditor/AccountEditorScreen';
 import Categories from './Categories';
 import CategoryEditor from './CategoryEditor';
 import Settings from './Settings';
