@@ -1,40 +1,38 @@
 import React, { PropTypes } from 'react';
-import { View } from 'react-native';
 import screens from '../../constants/screens';
-import { ActionButton } from '../../components';
-import CategoriesListContainer from './categoriesList/CategoriesListContainer';
-import styles from '../../styles/CategoriesStyles';
+import { ActionButton, ScreenWrapper } from '../../components';
+import { getParam } from '../../utils/navHelpers';
+import CategoriesSlider from './CategoriesSlider';
 
-const goToEditor = (navigation, params) => (category) => {
-  const isProxy = category && category.target;
-
-  navigation.navigate(screens.CategoryEditor, isProxy ? params : { ...params, category });
+const goEditCategory = navigation => (category) => {
+  navigation.navigate(screens.CategoryEditor, {
+    title: 'Edit category',
+    category,
+  });
 };
 
-const Categories = ({ navigation, deleteCategory }) => {
-  const { state: { routeName, params } } = navigation;
-  const goAddCategory = goToEditor(navigation, { title: 'Add category' });
-  const goEditCategory = goToEditor(navigation, { title: 'Edit category', deleteCategory });
-  const onSelectCategory = (params && params.onSelectCategory) || goEditCategory;
+const goAddCategory = navigation => () => {
+  navigation.navigate(screens.CategoryEditor, {
+    title: 'Add category',
+  });
+};
+
+const Categories = ({ navigation }) => {
+  const onSelectCategory = getParam('onSelectCategory')(navigation) || goEditCategory(navigation);
 
   return (
-    <View style={styles.rootStyle}>
-      <CategoriesListContainer
-        type={routeName.toLowerCase()}
-        onSelectCategory={onSelectCategory}
-      />
+    <ScreenWrapper>
+      <CategoriesSlider onSelectCategory={onSelectCategory} />
       <ActionButton
-        style={styles.addButtonStyle}
         iconName="add"
-        onPress={goAddCategory}
+        onPress={goAddCategory(navigation)}
       />
-    </View>
+    </ScreenWrapper>
   );
 };
 
 Categories.propTypes = {
   navigation: PropTypes.object,
-  deleteCategory: PropTypes.func,
 };
 
 export default Categories;
