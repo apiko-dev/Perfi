@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import R from 'ramda';
-import { CategoriesList } from '../components';
+import CategoriesListView from './CategoriesListView';
 
 const mapStateToProps = ({ categories }, { type }) => {
   const hasSpecifiedType = R.propEq('type', type);
@@ -14,6 +14,6 @@ const mapStateToProps = ({ categories }, { type }) => {
   };
 };
 
-const CategoriesListContainer = connect(mapStateToProps)(CategoriesList);
+const CategoriesListContainer = connect(mapStateToProps)(CategoriesListView);
 
 export default CategoriesListContainer;

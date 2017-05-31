@@ -1,6 +1,6 @@
 import Accounts from './accounts/AccountsScreen';
 import AccountEditor from './accountEditor/AccountEditorScreen';
-import Categories from './Categories';
+import Categories from './categories/CategoriesScreen';
 import CategoryEditor from './CategoryEditor';
 import Settings from './Settings';
 import TransactionEditor from './transactionEditor/TransactionEditorScreen';

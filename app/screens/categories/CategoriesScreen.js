@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
-import screens from '../constants/screens';
-import { ActionButton } from '../components';
-import { CategoriesListContainer } from '../containers';
-import styles from '../styles/CategoriesStyles';
+import screens from '../../constants/screens';
+import { ActionButton } from '../../components';
+import CategoriesListContainer from './categoriesList/CategoriesListContainer';
+import styles from '../../styles/CategoriesStyles';
 
 const goToEditor = (navigation, params) => (category) => {
   const isProxy = category && category.target;

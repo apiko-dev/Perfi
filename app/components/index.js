@@ -1,5 +1,4 @@
 import Calculator from './calculator';
-import CategoriesList from './categoriesList';
 import CustomListItem from './CustomListItem';
 import TransferForm from './transferForm';
 import NavButton from './NavButton';
@@ -25,7 +24,6 @@ export {
   AccountsSelectBox,
   ActionButton,
   Calculator,
-  CategoriesList,
   CategoryForm,
   CustomListItem,
   DrawerButton,

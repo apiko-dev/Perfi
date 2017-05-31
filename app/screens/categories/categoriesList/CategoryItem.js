@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import CustomListItem from '../CustomListItem';
+import { CustomListItem } from '../../../components';
 
 const CategoryItem = ({ name, icon, ...props }) => (
   <CustomListItem
