@@ -7,7 +7,7 @@ import {
   ActionButton,
   ScreenWrapper,
   SelectBox,
-} from '../';
+} from '../../../components';
 
 const getLabel = value => value;
 
@@ -28,43 +28,45 @@ const CategoryForm = (props) => {
     style: { fixedButtonContainer, iconStyle, rowStyle, blockStyle },
   } = props;
 
-  return (<ScreenWrapper>
-    <View style={blockStyle}>
-      <View style={rowStyle}>
-        <Icon
-          name={icon}
-          onPress={togglePicker}
-          iconStyle={iconStyle}
-          size={16}
-          type="material-community"
-          raised
-        />
-        <FormInputWithIcon
-          value={name}
-          onChangeText={setName}
+  return (
+    <ScreenWrapper>
+      <View style={blockStyle}>
+        <View style={rowStyle}>
+          <Icon
+            name={icon}
+            onPress={togglePicker}
+            iconStyle={iconStyle}
+            size={16}
+            type="material-community"
+            raised
+          />
+          <FormInputWithIcon
+            value={name}
+            onChangeText={setName}
+          />
+        </View>
+        <SelectBox
+          items={types}
+          selectedValue={type}
+          onValueChange={setType}
+          getLabel={getLabel}
         />
       </View>
-      <SelectBox
-        items={types}
-        selectedValue={type}
-        onValueChange={setType}
-        getLabel={getLabel}
+      {isValid && (
+        <ActionButton
+          style={fixedButtonContainer}
+          onPress={onSubmit}
+          iconName="check"
+        />
+      )}
+      <IconsPickerModal
+        icons={icons}
+        onIconPick={onChangeIcon}
+        isVisible={isPickerVisible}
+        hideModal={togglePicker}
       />
-    </View>
-    {isValid && (
-      <ActionButton
-        style={fixedButtonContainer}
-        onPress={onSubmit}
-        iconName="check"
-      />
-    )}
-    <IconsPickerModal
-      icons={icons}
-      onIconPick={onChangeIcon}
-      isVisible={isPickerVisible}
-      hideModal={togglePicker}
-    />
-  </ScreenWrapper>);
+    </ScreenWrapper>
+  );
 };
 
 CategoryForm.propTypes = {
