@@ -6,11 +6,12 @@ import {
 } from 'recompose';
 import R from 'ramda';
 import TransferForm from './TransferForm';
-import transactionFormStyle from '../../screens/transactionEditor/transactionForm/TransactionFormStyles';
-import buttonsStyles from '../../styles/ButtonsStyles';
-import selectStyles from '../../styles/SelectBoxStyles';
-import formStyles from '../../styles/FormStyles';
-import { withStyle } from '../../utils/enhancers';
+import transactionFormStyle from
+  '../../../screens/transactionEditor/transactionForm/TransactionFormStyles';
+import buttonsStyles from '../../../styles/ButtonsStyles';
+import selectStyles from '../../../styles/SelectBoxStyles';
+import formStyles from '../../../styles/FormStyles';
+import { withStyle } from '../../../utils/enhancers';
 
 const transferProp = (propName, def) => R.pathOr(def, ['transfer', propName]);
 const { calculatorModalStyle } = transactionFormStyle;

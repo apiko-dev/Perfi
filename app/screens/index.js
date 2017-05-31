@@ -6,7 +6,7 @@ import Settings from './Settings';
 import TransactionEditor from './transactionEditor/TransactionEditorScreen';
 import Transactions from './transactions/TransactionsScreen';
 import Trends from './Trends';
-import TransferEditor from './TransferEditor';
+import TransferEditor from './transferEditor/TransferEditorScreen';
 
 export {
   Accounts,

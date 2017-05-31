@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import Modal from 'react-native-modal';
 import { Icon } from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import calendarDateFormat from '../../utils/calendarDateFormat';
+import calendarDateFormat from '../../../utils/calendarDateFormat';
 import {
   ScreenWrapper,
   ActionButton,
@@ -11,7 +11,7 @@ import {
   Calculator,
   FormInputWithIcon,
   TouchableFormInput,
-} from '../';
+} from '../../../components';
 
 const getLabel = ({ name }) => name;
 const getIcon = ({ icon }) => icon;

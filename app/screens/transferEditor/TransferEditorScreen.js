@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
 import { NavigationActions } from 'react-navigation';
-import { ScreenWrapper } from '../components';
-import TransferForm from '../containers/TransfersFormContainer';
+import { ScreenWrapper } from '../../components';
+import TransferFormContainer from './transferForm/TransferFormContainer';
 
 const TransferEditor = ({ navigation }) => (
   <ScreenWrapper>
-    <TransferForm
+    <TransferFormContainer
       navigation={navigation}
       onClose={() => navigation.dispatch(NavigationActions.back())}
     />

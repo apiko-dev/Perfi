@@ -1,6 +1,5 @@
 import Calculator from './calculator';
 import CustomListItem from './CustomListItem';
-import TransferForm from './transferForm';
 import NavButton from './NavButton';
 import SelectBox from './SelectBox';
 import DrawerButton from './DrawerButton';
@@ -36,7 +35,6 @@ export {
   Selector,
   SlidesWithTabs,
   SelectBox,
-  TransferForm,
   TrendsForm,
   TrendsList,
   TouchableFormInput,
