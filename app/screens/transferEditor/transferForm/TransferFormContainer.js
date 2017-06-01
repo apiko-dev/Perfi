@@ -1,10 +1,8 @@
 import { connect } from 'react-redux';
-import { createTransfer, updateAccount } from '../../../actions';
+import R from 'ramda';
+import { createTransfer } from '../../../actions';
 import TransferFormView from './TransferFormView';
 
-const mapStateToProps = ({ accounts }) => ({ accounts });
+const mapStateToProps = ({ accounts }) => ({ accounts: R.values(accounts.byId) });
 
-export default connect(mapStateToProps, {
-  createTransfer,
-  updateAccount,
-})(TransferFormView);
+export default connect(mapStateToProps, { createTransfer })(TransferFormView);

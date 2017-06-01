@@ -5,107 +5,88 @@ import { Icon } from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import calendarDateFormat from '../../../utils/calendarDateFormat';
 import {
-  ScreenWrapper,
+  AccountItem,
+  AccountTrigger,
   ActionButton,
-  SelectBox,
   Calculator,
   FormInputWithIcon,
+  Selector,
   TouchableFormInput,
 } from '../../../components';
-
-const getLabel = ({ name }) => name;
-const getIcon = ({ icon }) => icon;
+import styles from './TransferFormStyles';
 
 const TransferForm = (props) => {
   const {
     value,
     notes,
     date,
-    accountsById,
-    accountTo,
+    accounts,
     accountFrom,
+    accountTo,
     setAccountFrom,
     setAccountTo,
-    toggleCalculator,
-    onDateChange,
-    onToggleDatePicker,
-    isDatePickerVisible,
-    onValueChange,
     setNotes,
-    isCalculatorVisible,
-    isValid,
+    onDateChange,
     onSubmit,
-    style: {
-      fixedButtonContainer,
-      calculatorModalStyle,
-      selectWithBorderStyle,
-      blockStyle,
-      rowStyle,
-    },
+    onToggleCalculator,
+    onToggleDatePicker,
+    onValueChange,
+    isCalculatorVisible,
+    isDatePickerVisible,
+    isValid,
   } = props;
 
   return (
-    <ScreenWrapper>
-      <View style={blockStyle}>
-        <View style={rowStyle}>
-          <TouchableFormInput
-            value={value.toString()}
-            onPress={toggleCalculator}
-          />
-        </View>
-        <View>
-          <SelectBox
-            getLabel={getLabel}
-            getIcon={getIcon}
-            withIcon
-            selectedValue={accountFrom}
-            items={accountsById}
-            style={selectWithBorderStyle}
-            onValueChange={setAccountFrom}
-          />
-          <Icon
-            type="material-community"
-            name="arrow-down"
-          />
-          <SelectBox
-            getLabel={getLabel}
-            getIcon={getIcon}
-            withIcon
-            selectedValue={accountTo}
-            items={accountsById}
-            style={selectWithBorderStyle}
-            onValueChange={setAccountTo}
-          />
-        </View>
-        <View>
-          <DateTimePicker
-            isVisible={isDatePickerVisible}
-            onConfirm={onDateChange}
-            onCancel={onToggleDatePicker}
-          />
-          <TouchableFormInput
-            icon="calendar-blank"
-            onPress={onToggleDatePicker}
-            value={calendarDateFormat(date)}
-          />
-        </View>
-        <View>
-          <FormInputWithIcon
-            icon="pen"
-            value={notes}
-            onChangeText={setNotes}
-            placeholder="Notes"
-            multiline
-          />
-        </View>
-      </View>
-      {isValid && <ActionButton
-        style={fixedButtonContainer}
-        onPress={onSubmit}
-        iconName="check"
-      />}
+    <View style={styles.rootStyle}>
+      <TouchableFormInput
+        icon="calculator"
+        value={value.toString()}
+        onPress={onToggleCalculator}
+      />
+      <Selector
+        options={accounts}
+        currentOption={accountFrom}
+        optionRenderer={AccountItem}
+        triggerRenderer={AccountTrigger}
+        onSelect={setAccountFrom}
+      />
+      <Icon
+        containerStyle={styles.iconContainerStyle}
+        type="material-community"
+        name="arrow-down"
+      />
+      <Selector
+        options={accounts}
+        currentOption={accountTo}
+        optionRenderer={AccountItem}
+        triggerRenderer={AccountTrigger}
+        onSelect={setAccountTo}
+      />
+      <DateTimePicker
+        isVisible={isDatePickerVisible}
+        onConfirm={onDateChange}
+        onCancel={onToggleDatePicker}
+      />
+      <TouchableFormInput
+        icon="calendar"
+        onPress={onToggleDatePicker}
+        value={calendarDateFormat(date)}
+      />
+      <FormInputWithIcon
+        icon="pen"
+        value={notes}
+        onChangeText={setNotes}
+        placeholder="Notes"
+        multiline
+      />
+      {isValid && (
+        <ActionButton
+          onPress={onSubmit}
+          iconName="check"
+        />
+      )}
       <Modal
-        style={calculatorModalStyle}
+        style={styles.calculatorModalStyle}
         isVisible={isCalculatorVisible}
       >
         <Calculator
@@ -113,7 +94,7 @@ const TransferForm = (props) => {
           onSubmit={onValueChange}
         />
       </Modal>
-    </ScreenWrapper>
+    </View>
   );
 };
 
@@ -122,21 +103,17 @@ TransferForm.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
-  date: PropTypes.oneOfType([
-    PropTypes.instanceOf(Date),
-    PropTypes.string,
-  ]),
+  date: PropTypes.instanceOf(Date),
   onSubmit: PropTypes.func,
   setAccountFrom: PropTypes.func,
-  accountsById: PropTypes.array,
+  accounts: PropTypes.array,
   notes: PropTypes.string,
   setNotes: PropTypes.func,
   onDateChange: PropTypes.func,
-  toggleCalculator: PropTypes.func,
+  onToggleCalculator: PropTypes.func,
   setAccountTo: PropTypes.func,
   onToggleDatePicker: PropTypes.func,
   onValueChange: PropTypes.func,
-  style: PropTypes.object,
   accountFrom: PropTypes.object,
   accountTo: PropTypes.object,
   isDatePickerVisible: PropTypes.bool,

@@ -4,10 +4,14 @@ import TransactionsListView from './TransactionsListView';
 
 const isRightAccount = accountId => R.propEq('account', accountId);
 
-const inDateRange = period => ({ date }) => R.and(
-  R.gte(date.getTime(), period.from.getTime()),
-  R.lt(date.getTime(), period.to.getTime()),
-);
+const inDateRange = period => ({ date }) => {
+  const dt = new Date(date);
+
+  return R.and(
+    R.gte(dt.getTime(), period.from.getTime()),
+    R.lt(dt.getTime(), period.to.getTime()),
+  );
+};
 
 const filterByAccountAndDate = (transactions, accountId, period) => {
   const check = period

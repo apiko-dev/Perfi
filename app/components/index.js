@@ -1,3 +1,5 @@
+import AccountItem from './AccountItem';
+import AccountTrigger from './AccountTrigger';
 import Calculator from './calculator';
 import CustomListItem from './CustomListItem';
 import NavButton from './NavButton';
@@ -19,6 +21,8 @@ import TrendsForm from './trendsForm';
 import TrendsList from './trendsList';
 
 export {
+  AccountItem,
+  AccountTrigger,
   AccountsSelectBox,
   ActionButton,
   Calculator,

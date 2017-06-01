@@ -2,15 +2,8 @@ import React, { PropTypes } from 'react';
 import { Platform, Text, View } from 'react-native';
 import DrawerButton from '../../../components/DrawerButton';
 import Selector from '../../../components/Selector';
-import ItemWithIcon from '../../../components/ItemWithIcon';
+import { AccountItem } from '../../../components';
 import styles from './TransactionsHeaderStyles';
-
-const AccountItem = ({ name, icon }) => <ItemWithIcon title={name} icon={icon} />;
-
-AccountItem.propTypes = {
-  name: PropTypes.string,
-  icon: PropTypes.string,
-};
 
 const IntervalItem = name => <Text>{name}</Text>;
 
