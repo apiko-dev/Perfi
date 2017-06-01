@@ -2,7 +2,7 @@ import React from 'react';
 import { compose, withProps } from 'recompose';
 import R from 'ramda';
 import { ListView } from 'react-native';
-import { categoriesTypes } from '../../constants/categories';
+import { categoriesTypes } from '../../../constants/categories';
 import TrendsListItem from './TrendsListItem';
 
 const withDataSource = withProps({

@@ -1,20 +1,20 @@
 import React, { PropTypes } from 'react';
-import { Platform, View } from 'react-native';
-import { DrawerButton, TrendsForm } from '../components/index';
-import AccountsSelectBox from '../containers/AccountsSelectBoxContainer';
+import { ScreenWrapper } from '../../components';
+import TrendsFormView from './trendsForm/TrendsFormView'
+import AccountsSelectBox from './AccountsSelectBoxContainer';
 
 const Trends = ({ transactions, categories, navigation }) => {
   const { state: { params } } = navigation;
   const selectedAccount = (params && params.selectedAccount) || {};
 
   return (
-    <View>
-      <TrendsForm
+    <ScreenWrapper>
+      <TrendsFormView
         transactions={transactions}
         categories={categories}
         selectedAccount={selectedAccount}
       />
-    </View>
+    </ScreenWrapper>
   );
 };
 
@@ -26,11 +26,6 @@ Trends.propTypes = {
 
 Trends.navigationOptions = ({ navigation }) => ({
   title: 'Trends',
-  ...Platform.select({
-    android: {
-      headerLeft: <DrawerButton navigation={navigation} />,
-    },
-  }),
   headerRight: <AccountsSelectBox
     selectedAccount={navigation.state.params && navigation.state.params.selectedAccount}
     onSelect={account => navigation.setParams({ selectedAccount: account })}

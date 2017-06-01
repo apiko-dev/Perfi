@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { AccountsSelectBox } from '../components';
+import { AccountsSelectBox } from '../../components/index';
 
 const mapStateToProps = ({ accounts }) => ({ accounts });
 

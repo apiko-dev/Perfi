@@ -1,11 +1,11 @@
 import { compose, withState, withProps, withHandlers } from 'recompose';
 import R from 'ramda';
 import moment from 'moment';
-import formStyles from '../../styles/FormStyles';
+import formStyles from '../../../styles/FormStyles';
 import TrendsForm from './TrendsForm';
-import { withStyle } from '../../utils/enhancers';
-import sceneStyles from '../../styles/SceneStyles';
-import { categoriesTypes } from '../../constants/categories';
+import { withStyle } from '../../../utils/enhancers/index';
+import sceneStyles from '../../../styles/SceneStyles';
+import { categoriesTypes } from '../../../constants/categories';
 
 const { rowStyle, blockStyle } = formStyles;
 const { rootStyle } = sceneStyles;

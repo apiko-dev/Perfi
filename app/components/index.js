@@ -17,8 +17,6 @@ import Selector from './Selector';
 import SlidesWithTabs from './slidesWithTabs';
 import TouchableFormInput from './TouchableFormInput';
 import AccountsSelectBox from './AccountsSelectBox';
-import TrendsForm from './trendsForm';
-import TrendsList from './trendsList';
 
 export {
   AccountItem,
@@ -39,7 +37,5 @@ export {
   Selector,
   SlidesWithTabs,
   SelectBox,
-  TrendsForm,
-  TrendsList,
   TouchableFormInput,
 };

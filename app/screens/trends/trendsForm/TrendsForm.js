@@ -1,13 +1,11 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import {
-  TouchableFormInput,
-  TrendsList,
-} from '../';
-import calendarDateFormat from '../../utils/calendarDateFormat';
+import { TouchableFormInput } from '../../../components/index';
+import calendarDateFormat from '../../../utils/calendarDateFormat';
+import TrendsList from '../trendsList';
 import TrendsListItem from '../trendsList/TrendsListItem';
-import styles from '../../styles/TrendsStyles';
+import styles from '../../../styles/TrendsStyles';
 
 const { headerContainerStyle, headerLabelTextStyle } = styles;
 

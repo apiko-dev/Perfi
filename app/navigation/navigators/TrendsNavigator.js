@@ -1,5 +1,5 @@
 import { StackNavigator } from 'react-navigation';
-import Trends from '../../containers/TrendsScreenContainer';
+import Trends from '../../screens/trends/TrendsScreenContainer';
 import screens from '../../constants/screens';
 import navOptions from '../../utils/navOptions';
 import headerOptions from '../../utils/stackHeaderOptions';
