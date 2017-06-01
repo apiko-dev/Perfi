@@ -5,6 +5,7 @@ import {
   MenuOption,
   MenuTrigger,
 } from 'react-native-popup-menu';
+import R from 'ramda';
 
 const Option = (optionRenderer, onSelect) => (option, key) => (
   <MenuOption
@@ -15,10 +16,10 @@ const Option = (optionRenderer, onSelect) => (option, key) => (
   </MenuOption>
 );
 
-const Selector = ({ options, currentOption, optionRenderer, onSelect }) => (
+const Selector = ({ options, currentOption, optionRenderer, triggerRenderer, onSelect }) => (
   <Menu>
-    <MenuTrigger style={{ marginLeft: 10, marginRight: 10 }}>
-      {optionRenderer(currentOption)}
+    <MenuTrigger>
+      {R.call(triggerRenderer || optionRenderer, currentOption)}
     </MenuTrigger>
     <MenuOptions>
       {options.map(Option(optionRenderer, onSelect))}
@@ -29,7 +30,8 @@ const Selector = ({ options, currentOption, optionRenderer, onSelect }) => (
 Selector.propTypes = {
   options: PropTypes.array,
   currentOption: PropTypes.oneOfType(PropTypes.object, PropTypes.string),
-  optionRenderer: PropTypes.func,
+  optionRenderer: PropTypes.func.isRequired,
+  triggerRenderer: PropTypes.func,
   onSelect: PropTypes.func,
 };
 
