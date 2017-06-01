@@ -74,7 +74,6 @@ const enhance = compose(
   }),
   withProps({ currencies, icons }),
   withAccount,
-  withValidation,
   withSubmitEvent,
   withState('name', 'onNameChange', accountProp('name')),
   withState('icon', 'setIcon', accountProp('icon', icons[0])),
@@ -94,6 +93,7 @@ const enhance = compose(
     onToggleCalculator,
     onSubmit,
   }),
+  withValidation,
 );
 
 export default enhance(AccountForm);

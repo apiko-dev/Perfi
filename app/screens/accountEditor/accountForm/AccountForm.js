@@ -10,11 +10,8 @@ import {
   ActionButton,
   ScreenWrapper,
   Calculator,
-  SelectBox,
 } from '../../../components';
 import calendarDateFormat from '../../../utils/calendarDateFormat';
-
-const getLabel = ({ name, sign }) => `${name}(${sign})`;
 
 const AccountForm = (props) => {
   const {
@@ -22,17 +19,14 @@ const AccountForm = (props) => {
     icon,
     icons,
     date,
-    currency,
     onSubmit,
     isValid,
-    currencies,
     initialBalance,
     onNameChange,
     onIconChange,
     onDateChange,
     isPickerVisible,
     onChangeBalance,
-    onCurrencyChange,
     onToggleCalculator,
     onTogglePicker,
     onToggleDatePicker,
@@ -65,12 +59,6 @@ const AccountForm = (props) => {
             value={name}
           />
         </View>
-        <SelectBox
-          getLabel={getLabel}
-          selectedValue={currency}
-          items={currencies}
-          onValueChange={onCurrencyChange}
-        />
       </View>
       <View style={[blockStyle, blockStyleDark]}>
         <View>
@@ -130,16 +118,11 @@ AccountForm.propTypes = {
   icons: PropTypes.arrayOf(PropTypes.string),
   name: PropTypes.string,
   icon: PropTypes.string,
-  date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
-  currency: PropTypes.object,
+  date: PropTypes.instanceOf(Date),
   initialBalance: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
   ]),
-  currencies: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    sign: PropTypes.string,
-  })),
   onToggleDatePicker: PropTypes.func,
   isDatePickerVisible: PropTypes.bool,
   isCalculatorVisible: PropTypes.bool,
