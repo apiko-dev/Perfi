@@ -99,10 +99,7 @@ const TransferForm = (props) => {
 };
 
 TransferForm.propTypes = {
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  value: PropTypes.number,
   date: PropTypes.instanceOf(Date),
   onSubmit: PropTypes.func,
   setAccountFrom: PropTypes.func,

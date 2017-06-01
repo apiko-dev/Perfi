@@ -14,10 +14,7 @@ AccountsListItem.propTypes = {
   style: PropTypes.any,
   name: PropTypes.string,
   icon: PropTypes.string,
-  balance: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  balance: PropTypes.number,
 };
 
 export default AccountsListItem;
