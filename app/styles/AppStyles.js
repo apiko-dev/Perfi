@@ -19,6 +19,7 @@ const styles = create({
   headerStyle: {
     paddingLeft: 10,
     paddingRight: 10,
+    backgroundColor: colors.defaultPrimary,
   },
   containerStyle: {
     paddingLeft: 20,
