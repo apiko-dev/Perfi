@@ -10,8 +10,9 @@ const styles = create({
   rootContainerStyle: {
     ...fillAll,
     android: {
-      marginTop: StatusBar.currentHeight,
+      paddingTop: StatusBar.currentHeight,
     },
+    backgroundColor: colors.defaultPrimary,
   },
   rootStyle: {
     ...fillAll,

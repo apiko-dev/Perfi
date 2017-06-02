@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { CircleSnail } from 'react-native-progress';
+import colors from '../styles/colors';
 
 const styles = StyleSheet.create({
   rootStyle: {
@@ -10,7 +11,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Loading = ({ size, color, thickness, containerStyle }) => (
+const Loading = ({ size, color = colors.defaultPrimary, thickness, containerStyle }) => (
   <View style={[styles.rootStyle, containerStyle]}>
     <CircleSnail
       size={size}

@@ -4,6 +4,7 @@ import DrawerButton from '../../../components/DrawerButton';
 import Selector from '../../../components/Selector';
 import { AccountItem } from '../../../components';
 import styles from './TransactionsHeaderStyles';
+import appStyles from '../../../styles/AppStyles';
 
 const IntervalItem = name => <Text>{name}</Text>;
 
@@ -19,7 +20,7 @@ const TransactionsHeader = (props) => {
   } = props;
 
   return (
-    <View style={styles.rootStyle}>
+    <View style={[styles.rootStyle, appStyles.headerStyle]}>
       {Platform.OS === 'android' && (
         <DrawerButton navigation={navigation} />
       )}
