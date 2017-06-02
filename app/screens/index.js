@@ -1,20 +1,18 @@
-import Accounts from './Accounts';
-import AccountEditor from './AccountEditor';
-import Categories from './Categories';
-import CategoryEditor from './CategoryEditor';
-import Dashboard from './Dashboard';
+import Accounts from './accounts/AccountsScreen';
+import AccountEditor from './accountEditor/AccountEditorScreen';
+import Categories from './categories/CategoriesScreen';
+import CategoryEditor from './categoryEditor/CategoryEditor';
 import Settings from './Settings';
-import TransactionEditor from './TransactionEditor';
-import Transactions from './Transactions';
-import Trends from './Trends';
-import TransferEditor from './TransferEditor';
+import TransactionEditor from './transactionEditor/TransactionEditorScreen';
+import Transactions from './transactions/TransactionsScreen';
+import Trends from './trends/TrendsScreen';
+import TransferEditor from './transferEditor/TransferEditorScreen';
 
 export {
   Accounts,
   AccountEditor,
   Categories,
   CategoryEditor,
-  Dashboard,
   Settings,
   TransactionEditor,
   Transactions,

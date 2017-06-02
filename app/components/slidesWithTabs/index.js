@@ -7,10 +7,10 @@ const ifFunc = (fn, value, def) => R.is(Function, fn) ? fn(value) : def;
 
 const enhance = compose(
   withState('index', 'changeIndex', 0),
-  withProps(({ setTitle, index }) => ({
-    prevSlideTitle: ifFunc(setTitle, index - 1, 'PREV'),
-    currentSlideTitle: ifFunc(setTitle, index, 'CURRENT'),
-    nextSlideTitle: ifFunc(setTitle, index + 1, 'NEXT'),
+  withProps(({ title, index }) => ({
+    prevSlideTitle: ifFunc(title, index - 1, 'PREV'),
+    currentSlideTitle: ifFunc(title, index, 'CURRENT'),
+    nextSlideTitle: ifFunc(title, index + 1, 'NEXT'),
   })),
   withHandlers({
     setNextSlide: ({ index, changeIndex }) => () => changeIndex(index + 1),

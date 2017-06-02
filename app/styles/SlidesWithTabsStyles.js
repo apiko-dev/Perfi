@@ -12,6 +12,8 @@ const styles = StyleSheet.create({
   },
   tabStyle: {
     width: 0.34 * windowWidth,
+    paddingLeft: 0,
+    paddingRight: 0,
     marginLeft: 0,
     marginRight: 0,
   },

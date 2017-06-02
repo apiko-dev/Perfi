@@ -3,9 +3,9 @@ import actionTypes from '../constants/actionTypes';
 import { insert, insertAll, update, remove } from '../utils/stateHelper';
 
 const createAccount = (props) => {
-  const { name, icon, balance = 0, initialBalance = 0, initialDate = new Date() } = props;
+  const { name, icon, initialBalance = 0, initialDate = new Date() } = props;
 
-  return { name, icon, balance, initialBalance, initialDate };
+  return { name, icon, initialBalance, initialDate };
 };
 
 const defaultAccounts = [
