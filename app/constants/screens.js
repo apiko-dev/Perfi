@@ -1,6 +1,6 @@
 export default {
-  DashboardRoot: 'DashboardRoot',
-  Dashboard: 'Dashboard',
+  TransactionsRoot: 'TransactionsRoot',
+  Transactions: 'Transactions',
 
   TransactionEditorRoot: 'TransactionEditorRoot',
   TransactionEditor: 'TransactionEditor',

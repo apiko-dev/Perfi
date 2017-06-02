@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { MenuContext } from 'react-native-popup-menu';
 import { Provider } from 'react-redux';
 import store from './app/store';
-import Navigator from './app/containers/NavigatorContainer';
+import Navigator from './app/navigation/NavigatorContainer';
 import styles from './app/styles/AppStyles';
 
 const App = () => (

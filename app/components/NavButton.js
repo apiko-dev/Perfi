@@ -4,8 +4,8 @@ import { Icon } from 'react-native-elements';
 
 const NavButton = ({
  iconName,
- iconType,
- isVisible,
+ iconType = 'material-community',
+ isVisible = true,
  backOnSuccess,
  navigation,
  action,
@@ -13,22 +13,14 @@ const NavButton = ({
 }) => {
   const onPress = () => {
     action(props);
-    if (backOnSuccess) {
+    if (navigation && backOnSuccess) {
       navigation.dispatch(NavigationActions.back());
     }
   };
 
-  if (isVisible) {
-    return (
-      <Icon
-        name={iconName}
-        type={iconType}
-        onPress={onPress}
-      />
-    );
-  }
+  const icon = <Icon name={iconName} type={iconType} onPress={onPress} />;
 
-  return null;
+  return isVisible ? icon : null;
 };
 
 NavButton.propTypes = {

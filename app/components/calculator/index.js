@@ -58,7 +58,7 @@ const enhance = compose(
       updateExpr(newExpr);
     },
     onSubmit: ({ expr, onSubmitResult }) => () => {
-      onSubmitResult(expr);
+      onSubmitResult(+expr);
     },
   }),
 );
