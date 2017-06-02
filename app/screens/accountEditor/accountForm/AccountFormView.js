@@ -5,15 +5,13 @@ import styles from '../../../styles/FormStyles';
 import icons from '../../../constants/accountIcons';
 import transactionFormStyle from
   '../../../screens/transactionEditor/transactionForm/TransactionFormStyles';
-import buttonsStyles from '../../../styles/ButtonsStyles';
-import inputStyles from '../../../styles/FormInputWithIconStyles';
+import appStyles from '../../../styles/AppStyles';
 import currencies from '../../../constants/currencies';
 import { withStyle } from '../../../utils/enhancers';
 import { getParam } from '../../../utils/navHelpers';
 
 const { calculatorModalStyle } = transactionFormStyle;
-const { fixedButtonContainer } = buttonsStyles;
-const { iconStyle } = inputStyles;
+const { iconStyle } = appStyles;
 
 const accountProp = (propName, def) => R.pathOr(def, ['account', propName]);
 
@@ -69,7 +67,6 @@ const enhance = compose(
   withStyle({
     ...styles,
     calculatorModalStyle,
-    fixedButtonContainer,
     iconStyle,
   }),
   withProps({ currencies, icons }),

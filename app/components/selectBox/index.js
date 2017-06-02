@@ -7,7 +7,7 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu';
 import { Icon } from 'react-native-elements';
-import selectStyles from '../styles/SelectBoxStyles';
+import selectStyles from './SelectBoxStyles';
 
 const { itemWrapperStyle, itemTextStyle, containerStyle } = selectStyles;
 

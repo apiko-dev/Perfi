@@ -1,7 +1,17 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { PropTypes } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements';
-import styles from '../styles/ItemWithIconStyles';
+
+const styles = StyleSheet.create({
+  rootStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  iconStyle: {
+    marginLeft: 5,
+    marginRight: 5,
+  },
+});
 
 const ItemWithIcon = ({ icon, iconStyle, title, titleStyle }) => (
   <View style={styles.rootStyle}>
@@ -10,8 +20,17 @@ const ItemWithIcon = ({ icon, iconStyle, title, titleStyle }) => (
       iconStyle={[styles.iconStyle, iconStyle]}
       type="material-community"
     />
-    <Text>{title}</Text>
+    <Text style={titleStyle}>
+      {title}
+    </Text>
   </View>
 );
+
+ItemWithIcon.propTypes = {
+  icon: PropTypes.string,
+  iconStyle: View.propTypes.style,
+  title: PropTypes.string,
+  titleStyle: Text.propTypes.style,
+};
 
 export default ItemWithIcon;

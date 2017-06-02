@@ -37,7 +37,6 @@ const AccountForm = (props) => {
       blockStyle,
       rowStyle,
       calculatorModalStyle,
-      fixedButtonContainer,
       iconStyle,
     },
   } = props;
@@ -90,7 +89,6 @@ const AccountForm = (props) => {
       />
       {isValid && (
         <ActionButton
-          style={fixedButtonContainer}
           onPress={onSubmit}
           iconName="check"
         />

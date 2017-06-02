@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import { Button } from 'react-native-elements';
-import styles from '../../styles/CalculatorButtonStyles';
+import styles from './CalculatorButtonStyles';
 
 const CalculatorButton = (props) => {
   const {

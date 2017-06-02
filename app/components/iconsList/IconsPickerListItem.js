@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { View, TouchableWithoutFeedback } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import styles from '../../styles/IconsPickerStyles';
+import styles from '../iconsPicker/IconsPickerStyles';
 
 const { iconContainerStyle, pickedItemStyle } = styles;
 

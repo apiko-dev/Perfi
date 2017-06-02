@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Button } from 'react-native-elements';
 import SwipeableViews from 'react-swipeable-views-native';
 import { virtualize } from 'react-swipeable-views-utils';
-import styles from '../../styles/SlidesWithTabsStyles';
+import styles from './SlidesWithTabsStyles';
 
 const Slides = virtualize(SwipeableViews);
 

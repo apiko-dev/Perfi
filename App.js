@@ -8,7 +8,7 @@ import styles from './app/styles/AppStyles';
 
 const App = () => (
   <MenuContext>
-    <View style={styles.containerStyle}>
+    <View style={styles.rootContainerStyle}>
       <Provider store={store}>
         <Navigator />
       </Provider>

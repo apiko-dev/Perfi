@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { TouchableWithoutFeedback } from 'react-native';
 import Modal from 'react-native-modal';
-import styles from '../styles/IconsPickerStyles';
-import IconsPickerList from './iconsList/index';
+import styles from './IconsPickerStyles';
+import IconsPickerList from '../iconsList/index';
 
 const { modalStyle, listStyle } = styles;
 

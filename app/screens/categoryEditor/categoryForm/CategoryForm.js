@@ -25,7 +25,7 @@ const CategoryForm = (props) => {
     togglePicker,
     setType,
     isPickerVisible,
-    style: { fixedButtonContainer, iconStyle, rowStyle, blockStyle },
+    style: { iconStyle, rowStyle, blockStyle },
   } = props;
 
   return (
@@ -54,7 +54,6 @@ const CategoryForm = (props) => {
       </View>
       {isValid && (
         <ActionButton
-          style={fixedButtonContainer}
           onPress={onSubmit}
           iconName="check"
         />

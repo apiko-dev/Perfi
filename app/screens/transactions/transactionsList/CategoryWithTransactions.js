@@ -5,7 +5,7 @@ import R from 'ramda';
 import { compose, withProps } from 'recompose';
 import { withToggle } from '../../../utils/enhancers';
 import TransactionsList from './TransactionsList';
-import colors from '../../../constants/colors';
+import colors from '../../../styles/colors';
 import styles from './CategoryWithTransactionsStyles';
 
 const getTransactionsSum = R.pipe(

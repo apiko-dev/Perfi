@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Text, View } from 'react-native';
 import Button from './CalculatorButton';
-import styles from '../../styles/CalculatorStyles';
+import styles from './CalculatorStyles';
 
 const getIcon = name => ({
   name,
