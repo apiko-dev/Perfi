@@ -1,12 +1,25 @@
 import React, { PropTypes } from 'react';
 import { Platform, Text, View } from 'react-native';
+import { Icon } from 'react-native-elements';
 import DrawerButton from '../../../components/DrawerButton';
 import Selector from '../../../components/Selector';
-import { AccountItem } from '../../../components';
+import { AccountHeaderTrigger, AccountItem, NavIcon, TextWithIcons } from '../../../components';
 import styles from './TransactionsHeaderStyles';
 import appStyles from '../../../styles/AppStyles';
 
-const IntervalItem = name => <Text>{name}</Text>;
+const capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1);
+
+const IntervalItem = name => <Text>{capitalizeFirstLetter(name)}</Text>;
+
+const IntervalTrigger = (name) => (
+  <TextWithIcons
+    containerStyle={{ marginRight: 10 }}
+    text={capitalizeFirstLetter(name)}
+    textStyle={{ fontSize: 16 }}
+    rightIcon="menu-down"
+    color="white"
+  />
+);
 
 const TransactionsHeader = (props) => {
   const {
@@ -28,13 +41,20 @@ const TransactionsHeader = (props) => {
         options={accounts}
         currentOption={currentAccount}
         optionRenderer={AccountItem}
+        triggerRenderer={AccountHeaderTrigger}
         onSelect={onSelectAccount}
       />
       <Selector
         options={intervals}
         currentOption={currentInterval}
         optionRenderer={IntervalItem}
+        triggerRenderer={IntervalTrigger}
         onSelect={onSelectInterval}
+      />
+      <Icon
+        name="chart-arc"
+        type="material-community"
+        color="white"
       />
     </View>
   );

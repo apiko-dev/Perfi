@@ -16,6 +16,7 @@ const styles = create({
   },
   rootStyle: {
     ...fillAll,
+    backgroundColor: colors.white,
   },
   headerStyle: {
     paddingLeft: 10,

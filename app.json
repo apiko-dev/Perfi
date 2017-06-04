@@ -3,6 +3,16 @@
     "sdkVersion": "15.0.0",
     "packagerOpts": {
       "assetExts": ["ttf"]
+    },
+    "primaryColor": "#009688",
+    "androidStatusBarColor": "#00796B",
+    "androidStatusBar": {
+      "backgroundColor": "#00796B",
+      "barStyle": "light-content"
+    },
+    "loading": {
+      "backgroundColor": "#009688",
+      "hideExponentText": true
     }
   }
 }

@@ -1,4 +1,5 @@
 import AccountItem from './AccountItem';
+import AccountHeaderTrigger from './AccountHeaderTrigger';
 import AccountTrigger from './AccountTrigger';
 import Calculator from './calculator';
 import CustomListItem from './CustomListItem';
@@ -16,9 +17,11 @@ import ScreenWrapper from './ScreenWrapper';
 import Selector from './Selector';
 import SlidesWithTabs from './slidesWithTabs';
 import TouchableFormInput from './TouchableFormInput';
+import TextWithIcons from './TextWithIcons';
 import AccountsSelectBox from './AccountsSelectBox';
 
 export {
+  AccountHeaderTrigger,
   AccountItem,
   AccountTrigger,
   AccountsSelectBox,
@@ -37,5 +40,6 @@ export {
   Selector,
   SlidesWithTabs,
   SelectBox,
+  TextWithIcons,
   TouchableFormInput,
 };

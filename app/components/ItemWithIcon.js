@@ -13,14 +13,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const ItemWithIcon = ({ icon, iconStyle, title, titleStyle }) => (
+const ItemWithIcon = ({ icon, iconStyle, title, titleStyle, color }) => (
   <View style={styles.rootStyle}>
     <Icon
       name={icon}
       iconStyle={[styles.iconStyle, iconStyle]}
       type="material-community"
+      color={color}
     />
-    <Text style={titleStyle}>
+    <Text style={[titleStyle, { color }]}>
       {title}
     </Text>
   </View>
