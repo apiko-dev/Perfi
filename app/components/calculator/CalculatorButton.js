@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import { Button } from 'react-native-elements';
+import colors from '../../styles/colors';
 import styles from './CalculatorButtonStyles';
 
 const CalculatorButton = (props) => {
@@ -21,6 +22,8 @@ const CalculatorButton = (props) => {
         {...options}
         buttonStyle={[styles.buttonStyle, buttonStyle]}
         title={token || title}
+        fontSize={18}
+        color={colors.primaryText}
         onPress={onPressButton}
       />
     </View>
