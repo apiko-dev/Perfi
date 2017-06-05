@@ -1,4 +1,3 @@
-import { StatusBar } from 'react-native';
 import { create } from 'react-native-platform-stylesheet';
 import colors from './colors';
 
@@ -9,9 +8,6 @@ const fillAll = {
 const styles = create({
   rootContainerStyle: {
     ...fillAll,
-    android: {
-      paddingTop: StatusBar.currentHeight,
-    },
     backgroundColor: colors.defaultPrimary,
   },
   rootStyle: {

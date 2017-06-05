@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import screens from '../../constants/screens';
 import { ActionButton, ScreenWrapper } from '../../components';
 import { getParam } from '../../utils/navHelpers';
-import CategoriesSlider from './CategoriesSlider';
+import CategoriesSlider from './categoriesSlider/CategoriesSlider';
 
 const goEditCategory = navigation => (category) => {
   navigation.navigate(screens.CategoryEditor, {
