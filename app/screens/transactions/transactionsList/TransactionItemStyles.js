@@ -3,7 +3,10 @@ import colors from '../../../styles/colors';
 
 const styles = StyleSheet.create({
   rootStyle: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.lightGray,
+  },
+  rightTitleStyle: {
+    color: colors.primaryText,
   },
 });
 

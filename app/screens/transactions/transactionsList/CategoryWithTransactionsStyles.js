@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   badgeContainerStyle: {
-    backgroundColor: colors.secondaryText,
+    backgroundColor: colors.gray,
   },
   leftTitleStyle: {
     flex: 0.25,

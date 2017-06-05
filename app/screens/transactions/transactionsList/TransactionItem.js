@@ -9,6 +9,7 @@ const CategoryItem = ({ style, value, date, ...props }) => (
     {...props}
     title={moment(date).format('dd, L')}
     rightTitle={value && value.toString()}
+    rightTitleStyle={styles.rightTitleStyle}
     hideChevron
   />
 );
