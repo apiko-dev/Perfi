@@ -4,10 +4,10 @@
     "packagerOpts": {
       "assetExts": ["ttf"]
     },
-    "primaryColor": "#009688",
-    "androidStatusBarColor": "#00796B",
+    "primaryColor": "#8BC34A",
+    "androidStatusBarColor": "#689F38",
     "androidStatusBar": {
-      "backgroundColor": "#00796B",
+      "backgroundColor": "#689F38",
       "barStyle": "light-content"
     },
     "loading": {
