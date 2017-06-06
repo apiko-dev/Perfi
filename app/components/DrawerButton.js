@@ -1,19 +1,14 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Icon } from 'react-native-elements';
 import screens from '../constants/screens';
-import colors from '../styles/colors';
+import styles from '../styles/AppStyles';
 
 const DrawerButton = ({ navigation }) => (
-  <TouchableOpacity
+  <Icon
+    iconStyle={styles.headerIconStyle}
+    name="menu"
     onPress={() => navigation.navigate(screens.DrawerOpen)}
-  >
-    <MaterialIcons
-      name="menu"
-      size={32}
-      color={colors.textPrimary}
-    />
-  </TouchableOpacity>
+  />
 );
 
 DrawerButton.propTypes = {

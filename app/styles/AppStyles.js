@@ -19,6 +19,11 @@ const styles = create({
     paddingRight: 10,
     backgroundColor: colors.defaultPrimary,
   },
+  headerIconStyle: {
+    marginLeft: 16,
+    marginRight: 16,
+    color: colors.textPrimary,
+  },
   containerStyle: {
     paddingLeft: 20,
     paddingRight: 20,

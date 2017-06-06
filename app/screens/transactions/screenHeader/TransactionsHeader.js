@@ -3,7 +3,7 @@ import { Platform, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import DrawerButton from '../../../components/DrawerButton';
 import Selector from '../../../components/Selector';
-import { AccountHeaderTrigger, AccountItem, NavIcon, TextWithIcons } from '../../../components';
+import { AccountHeaderTrigger, AccountItem, TextWithIcons } from '../../../components';
 import styles from './TransactionsHeaderStyles';
 import appStyles from '../../../styles/AppStyles';
 
@@ -52,9 +52,9 @@ const TransactionsHeader = (props) => {
         onSelect={onSelectInterval}
       />
       <Icon
+        iconStyle={appStyles.headerIconStyle}
         name="chart-arc"
         type="material-community"
-        color="white"
       />
     </View>
   );
