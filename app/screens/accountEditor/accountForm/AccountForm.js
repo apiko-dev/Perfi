@@ -10,11 +10,7 @@ import {
   TouchableFormInput,
 } from '../../../components';
 import calendarDateFormat from '../../../utils/calendarDateFormat';
-import transactionFormStyle from
-  '../../../screens/transactionEditor/transactionForm/TransactionFormStyles';
 import appStyles from '../../../styles/AppStyles';
-
-const { calculatorModalStyle } = transactionFormStyle;
 
 const AccountForm = (props) => {
   const {

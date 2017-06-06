@@ -1,9 +1,7 @@
 import { compose, withHandlers, withState, withProps } from 'recompose';
 import R from 'ramda';
 import AccountForm from './AccountForm';
-import styles from '../../../styles/FormStyles';
 import icons from '../../../constants/accountIcons';
-import { withStyle } from '../../../utils/enhancers';
 import { getParam } from '../../../utils/navHelpers';
 
 const accountProp = (propName, def) => R.pathOr(def, ['account', propName]);
@@ -59,6 +57,7 @@ const onSubmit = ({ submit, account, onClose, ...props }) => () => {
 const enhance = compose(
   withAccount,
   withSubmitEvent,
+  withProps({ icons }),
   withState('name', 'onNameChange', accountProp('name')),
   withState('icon', 'setIcon', accountProp('icon', icons[0])),
   withState('initialBalance', 'onInitialBalanceChange', accountProp('initialBalance', 0)),

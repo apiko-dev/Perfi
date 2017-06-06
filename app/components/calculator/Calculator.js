@@ -23,7 +23,7 @@ const Calculator = (props) => {
   } = props;
 
   const submitButtonOptions = isReadyForSubmit ? {
-    icon: getIcon('done', colors.darkPrimary),
+    icon: getIcon('done', colors.defaultPrimary),
     onPress: onSubmit,
   } : {
     title: '=',
