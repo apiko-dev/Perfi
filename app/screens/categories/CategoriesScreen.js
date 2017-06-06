@@ -13,7 +13,7 @@ const goEditCategory = navigation => (category) => {
 
 const goAddCategory = navigation => () => {
   navigation.navigate(screens.CategoryEditor, {
-    title: 'Add category',
+    title: 'New category',
   });
 };
 
