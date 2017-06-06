@@ -9,7 +9,7 @@ import colors from './app/styles/colors';
 
 const App = () => (
   <MenuContext>
-    <View style={styles.rootContainerStyle}>
+    <View style={styles.rootStyle}>
       <StatusBar
         statusBarStyle="light-content"
         backgroundColor={colors.darkPrimary}

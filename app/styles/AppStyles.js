@@ -1,36 +1,56 @@
-import { create } from 'react-native-platform-stylesheet';
+import { Platform, StyleSheet } from 'react-native';
 import colors from './colors';
 
-const fillAll = {
-  flex: 1,
-};
+const indent = 10;
+const doubleIndent = indent * 2;
+const iconMargin = Platform.OS === 'android' ? 16 : 10;
 
-const styles = create({
-  rootContainerStyle: {
-    ...fillAll,
-    backgroundColor: colors.defaultPrimary,
-  },
-  rootStyle: {
-    ...fillAll,
+const styles = StyleSheet.create({
+  blockStyle: {
     backgroundColor: colors.white,
   },
-  headerStyle: {
-    paddingLeft: 10,
-    paddingRight: 10,
-    backgroundColor: colors.defaultPrimary,
+  containerStyle: {
+    paddingLeft: doubleIndent,
+    paddingRight: doubleIndent,
+  },
+  formInputStyle: {
+    color: colors.primaryText,
   },
   headerIconStyle: {
-    marginLeft: 16,
-    marginRight: 16,
+    marginLeft: iconMargin,
+    marginRight: iconMargin,
+    fontSize: 26,
     color: colors.textPrimary,
   },
-  containerStyle: {
-    paddingLeft: 20,
-    paddingRight: 20,
+  headerStyle: {
+    paddingLeft: indent,
+    paddingRight: indent,
+    backgroundColor: colors.defaultPrimary,
   },
   iconStyle: {
     fontSize: 24,
-    color: colors.gray,
+    color: colors.secondaryText,
+  },
+  rootStyle: {
+    flex: 1,
+  },
+  rowStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  withMarginBottom: {
+    marginBottom: indent,
+  },
+  withMarginTop: {
+    marginTop: indent,
+  },
+  withVerticalMargin: {
+    marginTop: indent,
+    marginBottom: indent,
+  },
+  withVerticalPadding: {
+    paddingTop: indent,
+    paddingBottom: indent,
   },
 });
 

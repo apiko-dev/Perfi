@@ -27,6 +27,7 @@ const FormInputWithIcon = (props) => {
       )}
       <FormInput
         containerStyle={[icon && styles.inputWithIconStyle, inputStyle]}
+        inputStyle={appStyles.formInputStyle}
         {...inputProps}
       />
     </View>

@@ -22,8 +22,8 @@ const Accounts = ({ navigation }) => (
 Accounts.navigationOptions = ({ navigation }) => ({
   headerRight: (
     <NavButton
-      iconName="exchange"
-      iconType="font-awesome"
+      iconName="compare-arrows"
+      iconType="material"
       navigation={navigation}
       action={onNavigate(navigation, screens.TransferEditor, { title: 'Add transfer' })}
     />

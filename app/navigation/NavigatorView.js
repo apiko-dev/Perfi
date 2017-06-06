@@ -13,7 +13,7 @@ const NavigatorView = ({ dispatch, navigator, isReady }) => (
       containerStyle={StyleSheet.absoluteFill}
       size={60}
       thickness={5}
-      color={colors.white}
+      color={colors.defaultPrimary}
     />
   )
 );

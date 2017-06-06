@@ -15,6 +15,7 @@ import PropsProxyHOC from './PropsProxyHOC';
 import ActionButton from './ActionButton';
 import ScreenWrapper from './ScreenWrapper';
 import Selector from './Selector';
+import SecondaryText from './SecondaryText';
 import SlidesWithTabs from './slidesWithTabs';
 import TouchableFormInput from './TouchableFormInput';
 import TextWithIcons from './TextWithIcons';
@@ -38,6 +39,7 @@ export {
   PropsProxyHOC,
   ScreenWrapper,
   Selector,
+  SecondaryText,
   SlidesWithTabs,
   SelectBox,
   TextWithIcons,
