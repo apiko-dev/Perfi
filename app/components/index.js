@@ -2,6 +2,7 @@ import AccountItem from './AccountItem';
 import AccountHeaderTrigger from './AccountHeaderTrigger';
 import AccountTrigger from './AccountTrigger';
 import Calculator from './calculator';
+import CalculatorModal from './CalculatorModal';
 import CustomListItem from './CustomListItem';
 import NavButton from './NavButton';
 import SelectBox from './selectBox';
@@ -28,6 +29,7 @@ export {
   AccountsSelectBox,
   ActionButton,
   Calculator,
+  CalculatorModal,
   CustomListItem,
   DrawerButton,
   NavButton,

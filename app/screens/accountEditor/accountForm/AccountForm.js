@@ -1,11 +1,10 @@
 import React, { PropTypes } from 'react';
 import { FormInput, Icon } from 'react-native-elements';
 import { View } from 'react-native';
-import Modal from 'react-native-modal';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import {
   ActionButton,
-  Calculator,
+  CalculatorModal,
   IconsPickerModal,
   SecondaryText,
   TouchableFormInput,
@@ -91,15 +90,11 @@ const AccountForm = (props) => {
         selectedIconName={icon}
         hideModal={onTogglePicker}
       />
-      <Modal
-        style={calculatorModalStyle}
+      <CalculatorModal
+        value={initialBalance}
+        onSubmit={onChangeBalance}
         isVisible={isCalculatorVisible}
-      >
-        <Calculator
-          value={initialBalance}
-          onSubmit={onChangeBalance}
-        />
-      </Modal>
+      />
     </View>
   );
 };

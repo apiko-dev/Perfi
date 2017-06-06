@@ -11,7 +11,7 @@
       "barStyle": "light-content"
     },
     "loading": {
-      "backgroundColor": "#009688",
+      "backgroundColor": "#689F38",
       "hideExponentText": true
     }
   }
