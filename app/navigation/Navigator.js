@@ -1,5 +1,6 @@
 import { Platform } from 'react-native';
 import { DrawerNavigator, TabNavigator } from 'react-navigation';
+import { Drawer } from '../components';
 import Routes from './routes/RootRoutes';
 import screens from '../constants/screens';
 import colors from '../styles/colors';
@@ -14,8 +15,9 @@ const navColors = {
   inactiveTintColor: colors.secondaryText,
 };
 
-const navOptions = Platform.select({
+const config = Platform.select({
   android: {
+    contentComponent: Drawer,
     contentOptions: {
       ...navColors,
     },
@@ -28,4 +30,4 @@ const navOptions = Platform.select({
   },
 });
 
-export default Navigator(Routes, navOptions);
+export default Navigator(Routes, config);

@@ -6,6 +6,7 @@ import CalculatorModal from './CalculatorModal';
 import CustomListItem from './CustomListItem';
 import NavButton from './NavButton';
 import SelectBox from './selectBox';
+import Drawer from './Drawer';
 import DrawerButton from './DrawerButton';
 import FormInputWithIcon from './FormInputWithIcon';
 import IconsPickerModal from './iconsPicker';
@@ -31,6 +32,7 @@ export {
   Calculator,
   CalculatorModal,
   CustomListItem,
+  Drawer,
   DrawerButton,
   NavButton,
   FormInputWithIcon,
