@@ -11,7 +11,7 @@ const capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1);
 
 const IntervalItem = name => <Text>{capitalizeFirstLetter(name)}</Text>;
 
-const IntervalTrigger = (name) => (
+const IntervalTrigger = name => (
   <TextWithIcons
     containerStyle={{ marginRight: 10 }}
     text={capitalizeFirstLetter(name)}

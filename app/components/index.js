@@ -3,6 +3,7 @@ import AccountHeaderTrigger from './AccountHeaderTrigger';
 import AccountTrigger from './AccountTrigger';
 import Calculator from './calculator';
 import CalculatorModal from './CalculatorModal';
+import CategoryTypeSelector from './CategoryTypeSelector';
 import CustomListItem from './CustomListItem';
 import NavButton from './NavButton';
 import SelectBox from './selectBox';
@@ -20,6 +21,7 @@ import Selector from './Selector';
 import SecondaryText from './SecondaryText';
 import SlidesWithTabs from './slidesWithTabs';
 import TouchableFormInput from './TouchableFormInput';
+import TextItem from './TextItem';
 import TextWithIcons from './TextWithIcons';
 import AccountsSelectBox from './AccountsSelectBox';
 
@@ -31,6 +33,7 @@ export {
   ActionButton,
   Calculator,
   CalculatorModal,
+  CategoryTypeSelector,
   CustomListItem,
   Drawer,
   DrawerButton,
@@ -46,6 +49,7 @@ export {
   SecondaryText,
   SlidesWithTabs,
   SelectBox,
+  TextItem,
   TextWithIcons,
   TouchableFormInput,
 };

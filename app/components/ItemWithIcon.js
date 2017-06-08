@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements';
+import colors from '../styles/colors';
 
 const styles = StyleSheet.create({
   rootStyle: {
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ItemWithIcon = ({ icon, iconStyle, title, titleStyle, color }) => (
+const ItemWithIcon = ({ icon, iconStyle, title, titleStyle, color = 'pink' }) => (
   <View style={styles.rootStyle}>
     <Icon
       name={icon}
@@ -28,6 +29,7 @@ const ItemWithIcon = ({ icon, iconStyle, title, titleStyle, color }) => (
 );
 
 ItemWithIcon.propTypes = {
+  color: PropTypes.string,
   icon: PropTypes.string,
   iconStyle: View.propTypes.style,
   title: PropTypes.string,

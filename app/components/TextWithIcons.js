@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements';
+import colors from '../styles/colors';
 
 const styles = StyleSheet.create({
   rootStyle: {
@@ -22,6 +23,12 @@ const CustomIcon = ({ name, style, color }) => (
   />
 );
 
+CustomIcon.propTypes = {
+  name: PropTypes.string,
+  style: Icon.propTypes.iconStyle,
+  color: PropTypes.string,
+};
+
 const TextWithIcons = (props) => {
   const {
     leftIcon,
@@ -30,7 +37,7 @@ const TextWithIcons = (props) => {
     rightIconStyle,
     text,
     textStyle,
-    color,
+    color = colors.primaryText,
     containerStyle,
   } = props;
   

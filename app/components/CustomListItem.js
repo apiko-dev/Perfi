@@ -21,6 +21,7 @@ const CustomListItem = ({ icon, style, rightTitle, ...props }) => (
     leftIcon={{
       name: icon,
       type: 'material-community',
+      color: colors.secondaryText,
     }}
     hideChevron
   />

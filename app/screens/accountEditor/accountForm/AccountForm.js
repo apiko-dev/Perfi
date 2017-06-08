@@ -35,22 +35,20 @@ const AccountForm = (props) => {
 
   return (
     <View style={[appStyles.rootStyle, appStyles.withMarginTop]}>
-      <View style={[appStyles.containerStyle, appStyles.withMarginBottom]}>
-        <View style={appStyles.rowStyle}>
-          <Icon
-            onPress={onTogglePicker}
-            name={icon}
-            type="material-community"
-            iconStyle={appStyles.iconStyle}
-            size={16}
-            raised
-          />
-          <FormInput
-            inputStyle={appStyles.formInputStyle}
-            value={name}
-            onChangeText={onNameChange}
-          />
-        </View>
+      <View style={[appStyles.rowStyle, appStyles.containerStyle, appStyles.withMarginBottom]}>
+        <Icon
+          onPress={onTogglePicker}
+          name={icon}
+          type="material-community"
+          iconStyle={appStyles.iconStyle}
+          size={16}
+          raised
+        />
+        <FormInput
+          inputStyle={appStyles.formInputStyle}
+          value={name}
+          onChangeText={onNameChange}
+        />
       </View>
       <View
         style={[appStyles.containerStyle, appStyles.blockStyle, appStyles.withVerticalPadding]}
