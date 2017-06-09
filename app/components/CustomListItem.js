@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet } from 'react-native';
 import { ListItem } from 'react-native-elements';
-import colors from '../constants/colors';
+import colors from '../styles/colors';
 
 const styles = StyleSheet.create({
   rootStyle: {
@@ -21,6 +21,7 @@ const CustomListItem = ({ icon, style, rightTitle, ...props }) => (
     leftIcon={{
       name: icon,
       type: 'material-community',
+      color: colors.secondaryText,
     }}
     hideChevron
   />

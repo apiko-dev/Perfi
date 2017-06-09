@@ -1,5 +1,5 @@
 import { create } from 'react-native-platform-stylesheet';
-import colors from '../constants/colors';
+import colors from './colors';
 
 const styles = create({
   blockStyle: {

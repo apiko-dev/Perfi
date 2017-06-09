@@ -5,7 +5,7 @@ import { TouchableFormInput } from '../../../components/index';
 import calendarDateFormat from '../../../utils/calendarDateFormat';
 import TrendsList from '../trendsList';
 import TrendsListItem from '../trendsList/TrendsListItem';
-import styles from '../../../styles/TrendsStyles';
+import styles from './TrendsFormStyles';
 
 const { headerContainerStyle, headerLabelTextStyle } = styles;
 

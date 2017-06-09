@@ -1,8 +1,18 @@
 import React, { PropTypes } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { FormInput } from 'react-native-elements';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import styles from '../styles/FormInputWithIconStyles';
+import appStyles from '../styles/AppStyles';
+
+const styles = StyleSheet.create({
+  containerWithIconStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  inputWithIconStyle: {
+    marginLeft: 10,
+  },
+});
 
 const FormInputWithIcon = (props) => {
   const { containerStyle, icon, iconStyle, inputStyle, ...inputProps } = props;
@@ -11,12 +21,13 @@ const FormInputWithIcon = (props) => {
     <View style={[containerStyle, icon && styles.containerWithIconStyle]}>
       {icon && (
         <MaterialCommunityIcons
-          style={[styles.iconStyle, iconStyle]}
+          style={[appStyles.iconStyle, iconStyle]}
           name={icon}
         />
       )}
       <FormInput
         containerStyle={[icon && styles.inputWithIconStyle, inputStyle]}
+        inputStyle={appStyles.formInputStyle}
         {...inputProps}
       />
     </View>

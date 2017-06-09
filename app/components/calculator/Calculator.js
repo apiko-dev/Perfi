@@ -1,11 +1,14 @@
 import React, { PropTypes } from 'react';
 import { Text, View } from 'react-native';
 import Button from './CalculatorButton';
-import styles from '../../styles/CalculatorStyles';
+import colors from '../../styles/colors';
+import styles from './CalculatorStyles';
 
-const getIcon = name => ({
+const getIcon = (name, color = colors.secondaryText) => ({
   name,
   style: { marginRight: 0 },
+  color,
+  size: 24,
 });
 
 const Calculator = (props) => {
@@ -20,7 +23,7 @@ const Calculator = (props) => {
   } = props;
 
   const submitButtonOptions = isReadyForSubmit ? {
-    icon: getIcon('done'),
+    icon: getIcon('done', colors.defaultPrimary),
     onPress: onSubmit,
   } : {
     title: '=',
@@ -30,7 +33,7 @@ const Calculator = (props) => {
   return (
     <View>
       <View style={styles.expressionContainerStyle}>
-        <Text>{expr}</Text>
+        <Text style={styles.expressionStyle}>{expr}</Text>
       </View>
       <View style={styles.keyboardRowStyle}>
         <Button title="C" onPress={onClear} />

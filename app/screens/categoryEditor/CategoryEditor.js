@@ -3,6 +3,7 @@ import { NavigationActions } from 'react-navigation';
 import { ScreenWrapper } from '../../components';
 import CategoryFormContainer from './categoryForm/CategoryFormContainer';
 import DeleteCategoryButtonContainer from './screenHeader/DeleteCategoryButtonContainer';
+import { getParam } from '../../utils/navHelpers';
 
 const CategoryEditor = ({ navigation }) => (
   <ScreenWrapper>
@@ -18,6 +19,7 @@ CategoryEditor.propTypes = {
 };
 
 CategoryEditor.navigationOptions = ({ navigation }) => ({
+  title: getParam('title')(navigation),
   headerRight: <DeleteCategoryButtonContainer navigation={navigation} />,
 });
 

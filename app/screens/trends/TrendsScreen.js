@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { ScreenWrapper } from '../../components';
-import TrendsFormView from './trendsForm/TrendsFormView'
+import TrendsFormView from './trendsForm/TrendsFormView';
 import AccountsSelectBox from './AccountsSelectBoxContainer';
 
 const Trends = ({ transactions, categories, navigation }) => {

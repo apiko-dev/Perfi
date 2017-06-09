@@ -1,15 +1,12 @@
 import React, { PropTypes } from 'react';
-import { Icon } from 'react-native-elements';
 import { View } from 'react-native';
+import { FormInput, Icon } from 'react-native-elements';
 import {
-  FormInputWithIcon,
-  IconsPickerModal,
   ActionButton,
-  ScreenWrapper,
-  SelectBox,
+  CategoryTypeSelector,
+  IconsPickerModal,
 } from '../../../components';
-
-const getLabel = value => value;
+import appStyles from '../../../styles/AppStyles';
 
 const CategoryForm = (props) => {
   const {
@@ -20,41 +17,35 @@ const CategoryForm = (props) => {
     setName,
     icon,
     name,
-    types,
     type,
     togglePicker,
     setType,
     isPickerVisible,
-    style: { fixedButtonContainer, iconStyle, rowStyle, blockStyle },
   } = props;
 
   return (
-    <ScreenWrapper>
-      <View style={blockStyle}>
-        <View style={rowStyle}>
-          <Icon
-            name={icon}
-            onPress={togglePicker}
-            iconStyle={iconStyle}
-            size={16}
-            type="material-community"
-            raised
-          />
-          <FormInputWithIcon
-            value={name}
-            onChangeText={setName}
-          />
-        </View>
-        <SelectBox
-          items={types}
-          selectedValue={type}
-          onValueChange={setType}
-          getLabel={getLabel}
+    <View style={[appStyles.rootStyle, appStyles.containerStyle, appStyles.withMarginTop]}>
+      <View style={appStyles.rowStyle}>
+        <Icon
+          name={icon}
+          onPress={togglePicker}
+          iconStyle={appStyles.iconStyle}
+          size={16}
+          type="material-community"
+          raised
+        />
+        <FormInput
+          inputStyle={appStyles.formInputStyle}
+          value={name}
+          onChangeText={setName}
         />
       </View>
+      <CategoryTypeSelector
+        currentType={type}
+        onSelect={setType}
+      />
       {isValid && (
         <ActionButton
-          style={fixedButtonContainer}
           onPress={onSubmit}
           iconName="check"
         />
@@ -65,7 +56,7 @@ const CategoryForm = (props) => {
         isVisible={isPickerVisible}
         hideModal={togglePicker}
       />
-    </ScreenWrapper>
+    </View>
   );
 };
 
@@ -79,9 +70,7 @@ CategoryForm.propTypes = {
   onChangeIcon: PropTypes.func,
   togglePicker: PropTypes.func,
   isPickerVisible: PropTypes.bool,
-  types: PropTypes.arrayOf(PropTypes.string),
   onSubmit: PropTypes.func,
-  style: PropTypes.any,
   isValid: PropTypes.bool,
 };
 

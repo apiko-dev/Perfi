@@ -6,7 +6,6 @@ const enhance = compose(
   withProps(({ navigation }) => ({
     currentAccount: getParam('account')(navigation),
     onSelectAccount: setParam('account')(navigation),
-    intervals: ['day', 'week', 'month', 'year'],
     currentInterval: getParamOr('interval', 'day')(navigation),
     onSelectInterval: setParam('interval')(navigation),
   })),

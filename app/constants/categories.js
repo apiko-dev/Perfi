@@ -1,8 +1,8 @@
 import R from 'ramda';
 
 export const categoriesTypes = {
-  expense: 'expense',
-  income: 'income',
+  expense: 'Expense',
+  income: 'Income',
 };
 
 const incomeCategories = [

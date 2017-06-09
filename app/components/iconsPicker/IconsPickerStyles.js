@@ -1,19 +1,19 @@
 import { create } from 'react-native-platform-stylesheet';
-import colors from '../constants/colors';
+import colors from '../../styles/colors';
 
 const styles = create({
-  iconContainerStyle: {
+  iconStyle: {
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 0.5,
-    borderColor: colors.black,
-    borderStyle: 'solid',
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingTop: 5,
-    paddingBottom: 5,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+    fontSize: 26,
+    color: colors.secondaryText,
     backgroundColor: colors.white,
+    borderStyle: 'solid',
   },
   rowStyle: {
     flexDirection: 'row',
@@ -26,6 +26,7 @@ const styles = create({
     alignSelf: 'center',
   },
   pickedItemStyle: {
+    color: colors.defaultPrimary,
     backgroundColor: colors.lightGray,
   },
 });

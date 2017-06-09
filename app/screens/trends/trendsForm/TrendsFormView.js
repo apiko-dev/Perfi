@@ -4,11 +4,11 @@ import moment from 'moment';
 import formStyles from '../../../styles/FormStyles';
 import TrendsForm from './TrendsForm';
 import { withStyle } from '../../../utils/enhancers/index';
-import sceneStyles from '../../../styles/SceneStyles';
+import appStyles from '../../../styles/AppStyles';
 import { categoriesTypes } from '../../../constants/categories';
 
 const { rowStyle, blockStyle } = formStyles;
-const { rootStyle } = sceneStyles;
+const { rootStyle } = appStyles;
 
 const getDate = date => new Date(moment(date).set({
   hour: 0,

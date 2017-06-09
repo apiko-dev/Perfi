@@ -1,27 +1,16 @@
 import React, { PropTypes } from 'react';
-import { View, TouchableWithoutFeedback } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import styles from '../../styles/IconsPickerStyles';
+import { Icon } from 'react-native-elements';
+import styles from '../iconsPicker/IconsPickerStyles';
 
-const { iconContainerStyle, pickedItemStyle } = styles;
-
-const IconsPickerItem = ({ name, isSelected, onIconPress }) => {
-  const iconStyle = [iconContainerStyle, isSelected && pickedItemStyle];
-
-  return (
-    <TouchableWithoutFeedback
-      key={name}
-      onPress={() => onIconPress(name)}
-    >
-      <View style={iconStyle}>
-        <MaterialCommunityIcons
-          name={name}
-          size={26}
-        />
-      </View>
-    </TouchableWithoutFeedback>
-  );
-};
+const IconsPickerItem = ({ name, isSelected, onIconPress }) => (
+  <Icon
+    key={name}
+    iconStyle={[styles.iconStyle, isSelected && styles.pickedItemStyle]}
+    name={name}
+    type="material-community"
+    onPress={() => onIconPress(name)}
+  />
+);
 
 IconsPickerItem.propTypes = {
   name: PropTypes.string,

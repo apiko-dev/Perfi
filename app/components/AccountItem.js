@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
-import ItemWithIcon from './ItemWithIcon';
+import TextWithIcons from './TextWithIcons';
 
-const AccountItem = ({ name, icon }) => <ItemWithIcon title={name} icon={icon} />;
+const AccountItem = ({ name, icon }) => <TextWithIcons text={name} leftIcon={icon} />;
 
 AccountItem.propTypes = {
-  name: PropTypes.string,
   icon: PropTypes.string,
+  name: PropTypes.string,
 };
 
 export default AccountItem;

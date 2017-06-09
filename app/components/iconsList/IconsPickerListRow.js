@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
-import styles from '../../styles/IconsPickerStyles';
+import styles from '../iconsPicker/IconsPickerStyles';
 import IconsPickerItem from './IconsPickerListItem';
 
 const { rowStyle } = styles;

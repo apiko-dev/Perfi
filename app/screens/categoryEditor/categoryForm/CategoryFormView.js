@@ -2,16 +2,8 @@ import { compose, withProps, withPropsOnChange, withState, withHandlers } from '
 import R from 'ramda';
 import CategoryForm from './CategoryForm';
 import { categoriesTypes } from '../../../constants/categories';
-import buttonsStyles from '../../../styles/ButtonsStyles';
-import inputStyles from '../../../styles/FormInputWithIconStyles';
 import icons from '../../../constants/categoryIcons';
-import formStyles from '../../../styles/FormStyles';
-import { withStyle } from '../../../utils/enhancers';
 import { getParam } from '../../../utils/navHelpers';
-
-const { fixedButtonContainer } = buttonsStyles;
-const { iconStyle } = inputStyles;
-const { rowStyle, blockStyle } = formStyles;
 
 const accountProp = (propName, def) => R.pathOr(def, ['category', propName]);
 
@@ -46,18 +38,12 @@ const onSubmit = ({ submit, navigation, category, onClose, ...props }) => () => 
 };
 
 const enhance = compose(
-  withStyle({
-    fixedButtonContainer,
-    iconStyle,
-    blockStyle,
-    rowStyle,
-  }),
-  withProps({ icons, types: R.values(categoriesTypes) }),
+  withProps({ icons }),
   withCategory,
   withSubmit,
   withState('icon', 'setIcon', accountProp('icon', icons[0])),
   withState('name', 'setName', accountProp('name')),
-  withState('type', 'setType', accountProp('type')),
+  withState('type', 'setType', accountProp('type', categoriesTypes.expense)),
   withState('isPickerVisible', 'setPickerVisible', false),
   withHandlers({
     togglePicker,
