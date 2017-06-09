@@ -5,13 +5,13 @@ import Calculator from './calculator';
 import CalculatorModal from './CalculatorModal';
 import CategoryTypeSelector from './CategoryTypeSelector';
 import CustomListItem from './CustomListItem';
+import DateIntervalSelector from './DateIntervalSelector';
 import NavButton from './NavButton';
 import SelectBox from './selectBox';
 import Drawer from './Drawer';
 import DrawerButton from './DrawerButton';
 import FormInputWithIcon from './FormInputWithIcon';
 import IconsPickerModal from './iconsPicker';
-import ItemWithIcon from './ItemWithIcon';
 import Loading from './Loading';
 import NavIcon from './NavIcon';
 import PropsProxyHOC from './PropsProxyHOC';
@@ -35,12 +35,12 @@ export {
   CalculatorModal,
   CategoryTypeSelector,
   CustomListItem,
+  DateIntervalSelector,
   Drawer,
   DrawerButton,
   NavButton,
   FormInputWithIcon,
   IconsPickerModal,
-  ItemWithIcon,
   Loading,
   NavIcon,
   PropsProxyHOC,

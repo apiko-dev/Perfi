@@ -1,25 +1,11 @@
 import React, { PropTypes } from 'react';
-import { Platform, Text, View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import DrawerButton from '../../../components/DrawerButton';
 import Selector from '../../../components/Selector';
-import { AccountHeaderTrigger, AccountItem, TextWithIcons } from '../../../components';
+import { AccountHeaderTrigger, AccountItem, DateIntervalSelector } from '../../../components';
 import styles from './TransactionsHeaderStyles';
 import appStyles from '../../../styles/AppStyles';
-
-const capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1);
-
-const IntervalItem = name => <Text>{capitalizeFirstLetter(name)}</Text>;
-
-const IntervalTrigger = name => (
-  <TextWithIcons
-    containerStyle={{ marginRight: 10 }}
-    text={capitalizeFirstLetter(name)}
-    textStyle={{ fontSize: 16 }}
-    rightIcon="menu-down"
-    color="white"
-  />
-);
 
 const TransactionsHeader = (props) => {
   const {
@@ -27,8 +13,7 @@ const TransactionsHeader = (props) => {
     accounts,
     currentAccount = accounts[0],
     onSelectAccount,
-    intervals,
-    currentInterval = intervals[0],
+    currentInterval,
     onSelectInterval,
   } = props;
 
@@ -44,11 +29,8 @@ const TransactionsHeader = (props) => {
         triggerRenderer={AccountHeaderTrigger}
         onSelect={onSelectAccount}
       />
-      <Selector
-        options={intervals}
-        currentOption={currentInterval}
-        optionRenderer={IntervalItem}
-        triggerRenderer={IntervalTrigger}
+      <DateIntervalSelector
+        currentInterval={currentInterval}
         onSelect={onSelectInterval}
       />
       <Icon
@@ -65,7 +47,6 @@ TransactionsHeader.propTypes = {
   accounts: PropTypes.array,
   currentAccount: PropTypes.object,
   onSelectAccount: PropTypes.func,
-  intervals: PropTypes.array,
   currentInterval: PropTypes.string,
   onSelectInterval: PropTypes.func,
 };
