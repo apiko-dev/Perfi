@@ -2,25 +2,10 @@ import React, { PropTypes } from 'react';
 import { Button, Platform, Text, View } from 'react-native';
 import screens from '../constants/screens';
 import { DrawerButton } from '../components';
+import PieChart from '../components/PieChart';
 
 const Settings = ({ navigation }) => (
-  <View>
-    <Text>Settings</Text>
-
-    { Platform.select({
-      ios: (
-        <View>
-          <Button
-            title="Accounts"
-            onPress={() => navigation.navigate(screens.Accounts)}
-          />
-          <Button
-            title="Categories"
-            onPress={() => navigation.navigate(screens.Categories)}
-          />
-        </View>
-      ) }) }
-  </View>
+  <PieChart />
 );
 
 Settings.propTypes = {
