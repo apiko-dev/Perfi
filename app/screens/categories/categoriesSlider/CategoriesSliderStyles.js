@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
   tabStyle: {
     padding: 4,
-  }
+  },
 });
 
 export default styles;

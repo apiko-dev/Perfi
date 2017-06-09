@@ -1,6 +1,6 @@
 import React from 'react';
-import { ListView, Text } from 'react-native';
-import { Card, ListItem } from 'react-native-elements';
+import { ListView } from 'react-native';
+import { ListItem } from 'react-native-elements';
 import { branch, compose, renderComponent, withProps } from 'recompose';
 import R from 'ramda';
 import CategoryWithTransactions from './CategoryWithTransactions';

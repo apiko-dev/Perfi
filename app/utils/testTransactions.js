@@ -1,7 +1,7 @@
 const randomNumberBetween = (start, end) => Math.floor((Math.random() * end) + start);
 
 const randomDateBetween = (start, end) =>
-  new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  new Date(start.getTime() + (Math.random() * (end.getTime() - start.getTime())));
 
 const createTransaction = () => ({
   value: randomNumberBetween(0, 100),

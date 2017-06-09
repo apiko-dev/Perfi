@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
 import TextWithIcons from './TextWithIcons';
+import appStyles from '../styles/AppStyles';
 
 const AccountHeaderTrigger = ({ name, icon }) => (
   <TextWithIcons
-    containerStyle={{ marginLeft: 10, marginRight: 10 }}
     text={name}
-    textStyle={{ fontSize: 16 }}
+    textStyle={appStyles.headerTextStyle}
     leftIcon={icon}
     rightIcon="menu-down"
     color="white"

@@ -1,22 +1,16 @@
 import React, { PropTypes } from 'react';
-import { StyleSheet } from 'react-native';
 import Selector from './Selector';
 import TextItem from './TextItem';
 import TextWithIcons from './TextWithIcons';
 import { capitalizeFirstLetter } from '../utils/stringHelper';
-
-const styles = StyleSheet.create({
-  textStyle: {
-    fontSize: 16,
-  },
-});
+import appStyles from '../styles/AppStyles';
 
 const intervals = ['day', 'week', 'month', 'year'];
 
 const IntervalTrigger = name => (
   <TextWithIcons
     text={capitalizeFirstLetter(name)}
-    textStyle={styles.textStyle}
+    textStyle={appStyles.headerTextStyle}
     rightIcon="menu-down"
     color="white"
   />

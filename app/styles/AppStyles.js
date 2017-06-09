@@ -27,6 +27,9 @@ const styles = StyleSheet.create({
     paddingRight: indent,
     backgroundColor: colors.defaultPrimary,
   },
+  headerTextStyle: {
+    fontSize: 16,
+  },
   iconStyle: {
     fontSize: 24,
     color: colors.secondaryText,

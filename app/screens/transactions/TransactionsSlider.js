@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import moment from 'moment';
 import { compose, withProps } from 'recompose';
 import { getParam, getParamOr } from '../../utils/navHelpers';
@@ -37,17 +37,27 @@ const getInterval = getParamOr('interval', 'day');
 
 const getAccount = getParam('account');
 
-const TransactionsListSlide = navigation => ({ index, key }) => (
-  <TransactionsListContainer
-    key={key}
-    onSelectTransaction={transaction => navigation.navigate(
-      screens.TransactionEditor,
-      { transaction },
-    )}
-    account={getAccount(navigation)}
-    period={getPeriod(index, getInterval(navigation))}
-  />
-);
+const TransactionsListSlide = (navigation) => {
+  const Slide = ({ index, key }) => (
+    <TransactionsListContainer
+      key={key}
+      onSelectTransaction={transaction => navigation.navigate(
+        screens.TransactionEditor,
+        { transaction },
+      )}
+      account={getAccount(navigation)}
+      period={getPeriod(index, getInterval(navigation))}
+    />
+  );
+
+  Slide.propTypes = {
+    index: PropTypes.number,
+    key: PropTypes.string,
+  };
+
+  return Slide;
+};
+
 
 const enhance = compose(
   withProps(({ navigation }) => ({
