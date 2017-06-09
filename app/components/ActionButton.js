@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-elements';
+import colors from '../styles/colors';
 
 const styles = StyleSheet.create({
   rootStyle: {
@@ -13,6 +14,7 @@ const styles = StyleSheet.create({
     height: 48,
     padding: 2,
     borderRadius: 24,
+    backgroundColor: colors.accent,
   },
 });
 

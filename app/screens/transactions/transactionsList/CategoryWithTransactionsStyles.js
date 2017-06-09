@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../../constants/colors';
+import colors from '../../../styles/colors';
 import normalize from '../../../utils/normalizeText';
 
 const styles = StyleSheet.create({
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   badgeContainerStyle: {
-    backgroundColor: colors.secondaryText,
+    backgroundColor: colors.gray,
   },
   leftTitleStyle: {
     flex: 0.25,

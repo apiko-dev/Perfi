@@ -1,9 +1,10 @@
 export default {
-  // material teal/amber schema
-  darkPrimary: '#00796B',
-  defaultPrimary: '#009688',
-  lightPrimary: '#B2DFDB',
-  accent: '#FFC107',
+  // material light-green/orange
+  darkPrimary: '#689F38',
+  defaultPrimary: '#8BC34A',
+  lightPrimary: '#DCEDC8',
+  textPrimary: '#FFFFFF',
+  accent: '#FF9800',
   primaryText: '#212121',
   secondaryText: '#757575',
   divider: '#BDBDBD',

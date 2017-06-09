@@ -1,14 +1,13 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import Modal from 'react-native-modal';
 import moment from 'moment';
 import R from 'ramda';
 import {
   ActionButton,
-  Calculator,
+  CalculatorModal,
   FormInputWithIcon,
-  TouchableFormInput
+  TouchableFormInput,
 } from '../../../components';
 
 const defaultIcon = R.propOr('help-circle', 'icon');
@@ -77,15 +76,11 @@ const TransactionForm = (props) => {
         onConfirm={onSetDate}
         onCancel={onToggleDatePicker}
       />
-      <Modal
-        style={style.calculatorModalStyle}
+      <CalculatorModal
+        value={value}
         isVisible={isCalculatorVisible}
-      >
-        <Calculator
-          value={value}
-          onSubmit={onChangeValue}
-        />
-      </Modal>
+        onSubmit={onChangeValue}
+      />
     </View>
   );
 };

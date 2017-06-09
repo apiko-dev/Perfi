@@ -1,22 +1,65 @@
-import { StatusBar } from 'react-native';
-import { create } from 'react-native-platform-stylesheet';
+import { Platform, StyleSheet } from 'react-native';
+import colors from './colors';
 
-const styles = create({
-  containerStyle: {
-    flex: 1,
-    android: {
-      marginTop: StatusBar.currentHeight,
-    },
+const indent = 10;
+const doubleIndent = indent * 2;
+const iconMargin = Platform.OS === 'android' ? 16 : 10;
+
+const styles = StyleSheet.create({
+  blockStyle: {
+    backgroundColor: colors.white,
   },
-  sceneWrapperStyle: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    backgroundColor: '#fff',
-    position: 'relative',
+  containerStyle: {
+    paddingLeft: doubleIndent,
+    paddingRight: doubleIndent,
+  },
+  formInputStyle: {
+    color: colors.primaryText,
+  },
+  headerIconStyle: {
+    marginLeft: iconMargin,
+    marginRight: iconMargin,
+    fontSize: 26,
+    color: colors.textPrimary,
   },
   headerStyle: {
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingLeft: indent,
+    paddingRight: indent,
+    backgroundColor: colors.defaultPrimary,
+  },
+  headerTextStyle: {
+    fontSize: 16,
+  },
+  iconStyle: {
+    fontSize: 24,
+    color: colors.secondaryText,
+  },
+  rootStyle: {
+    flex: 1,
+  },
+  rowStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  withMarginBottom: {
+    marginBottom: indent,
+  },
+  withMarginTop: {
+    marginTop: indent,
+  },
+  withoutMargins: {
+    marginTop: 0,
+    marginRight: 0,
+    marginBottom: 0,
+    marginLeft: 0,
+  },
+  withVerticalMargin: {
+    marginTop: indent,
+    marginBottom: indent,
+  },
+  withVerticalPadding: {
+    paddingTop: indent,
+    paddingBottom: indent,
   },
 });
 

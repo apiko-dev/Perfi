@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { View } from 'react-native';
-import Modal from 'react-native-modal';
 import { Icon } from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import calendarDateFormat from '../../../utils/calendarDateFormat';
@@ -8,12 +7,12 @@ import {
   AccountItem,
   AccountTrigger,
   ActionButton,
-  Calculator,
+  CalculatorModal,
   FormInputWithIcon,
   Selector,
   TouchableFormInput,
 } from '../../../components';
-import styles from './TransferFormStyles';
+import appStyles from '../../../styles/AppStyles';
 
 const TransferForm = (props) => {
   const {
@@ -37,7 +36,7 @@ const TransferForm = (props) => {
   } = props;
 
   return (
-    <View style={styles.rootStyle}>
+    <View style={[appStyles.rootStyle, appStyles.containerStyle, appStyles.withMarginTop]}>
       <TouchableFormInput
         icon="calculator"
         value={value.toString()}
@@ -51,7 +50,7 @@ const TransferForm = (props) => {
         onSelect={setAccountFrom}
       />
       <Icon
-        containerStyle={styles.iconContainerStyle}
+        iconStyle={[appStyles.iconStyle, appStyles.withMarginTop]}
         type="material-community"
         name="arrow-down"
       />
@@ -85,15 +84,11 @@ const TransferForm = (props) => {
           iconName="check"
         />
       )}
-      <Modal
-        style={styles.calculatorModalStyle}
+      <CalculatorModal
+        value={value}
         isVisible={isCalculatorVisible}
-      >
-        <Calculator
-          value={value}
-          onSubmit={onValueChange}
-        />
-      </Modal>
+        onSubmit={onValueChange}
+      />
     </View>
   );
 };

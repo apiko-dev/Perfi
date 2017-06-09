@@ -1,8 +1,9 @@
 import React from 'react';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import { compose, withProps, withState, withHandlers } from 'recompose';
-import { categoriesTypes as types } from '../../constants/categories';
-import CategoriesListContainer from './categoriesList/CategoriesListContainer';
+import { categoriesTypes as types } from '../../../constants/categories';
+import CategoriesListContainer from '../categoriesList/CategoriesListContainer';
+import styles from './CategoriesSliderStyles';
 
 const route = key => ({ key, title: key.toUpperCase() });
 
@@ -14,7 +15,14 @@ const initNavigationState = {
   ],
 };
 
-const renderHeader = props => <TabBar {...props} />;
+const renderHeader = props => (
+  <TabBar
+    {...props}
+    indicatorStyle={styles.indicatorStyle}
+    style={styles.tabBarStyle}
+    tabStyle={styles.tabStyle}
+  />
+);
 
 const Categories = (type, onSelectCategory) => () => (
   <CategoriesListContainer

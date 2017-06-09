@@ -6,11 +6,11 @@ import {
 } from '../navigators';
 
 const Routes = {
-  [screens.TransactionsRoot]: {
-    screen: TransactionsNavigator,
-  },
   [screens.TrendsRoot]: {
     screen: TrendsNavigator,
+  },
+  [screens.TransactionsRoot]: {
+    screen: TransactionsNavigator,
   },
   [screens.SettingsRoot]: {
     screen: SettingsNavigator,

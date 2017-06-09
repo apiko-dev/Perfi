@@ -2,11 +2,14 @@ import { StyleSheet } from 'react-native';
 import colors from '../../../styles/colors';
 
 const styles = StyleSheet.create({
-  rootStyle: {
-    backgroundColor: colors.lightGray,
+  indicatorStyle: {
+    backgroundColor: colors.accent,
   },
-  rightTitleStyle: {
-    color: colors.primaryText,
+  tabBarStyle: {
+    backgroundColor: colors.defaultPrimary,
+  },
+  tabStyle: {
+    padding: 4,
   },
 });
 

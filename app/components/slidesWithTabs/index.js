@@ -1,8 +1,8 @@
-import React from 'react';
 import { compose, withHandlers, withProps, withState } from 'recompose';
 import R from 'ramda';
 import SlidesWithTabs from './SlidesWithTabs';
 
+// eslint-disable-next-line
 const ifFunc = (fn, value, def) => R.is(Function, fn) ? fn(value) : def;
 
 const enhance = compose(

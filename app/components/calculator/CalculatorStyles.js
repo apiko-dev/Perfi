@@ -1,10 +1,15 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../styles/colors';
 
 const styles = StyleSheet.create({
   expressionContainerStyle: {
     height: 48,
     padding: 8,
-    backgroundColor: '#BBDEFB',
+    backgroundColor: colors.lightGray,
+  },
+  expressionStyle: {
+    fontSize: 24,
+    textAlign: 'right',
   },
   keyboardRowStyle: {
     flexDirection: 'row',

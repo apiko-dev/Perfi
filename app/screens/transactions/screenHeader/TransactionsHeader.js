@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
-import { Platform, Text, View } from 'react-native';
+import { Platform, View } from 'react-native';
+import { Icon } from 'react-native-elements';
 import DrawerButton from '../../../components/DrawerButton';
 import Selector from '../../../components/Selector';
-import { AccountItem } from '../../../components';
+import { AccountHeaderTrigger, AccountItem, DateIntervalSelector } from '../../../components';
 import styles from './TransactionsHeaderStyles';
-
-const IntervalItem = name => <Text>{name}</Text>;
+import appStyles from '../../../styles/AppStyles';
 
 const TransactionsHeader = (props) => {
   const {
@@ -13,13 +13,12 @@ const TransactionsHeader = (props) => {
     accounts,
     currentAccount = accounts[0],
     onSelectAccount,
-    intervals,
-    currentInterval = intervals[0],
+    currentInterval,
     onSelectInterval,
   } = props;
 
   return (
-    <View style={styles.rootStyle}>
+    <View style={[styles.rootStyle, appStyles.headerStyle]}>
       {Platform.OS === 'android' && (
         <DrawerButton navigation={navigation} />
       )}
@@ -27,13 +26,17 @@ const TransactionsHeader = (props) => {
         options={accounts}
         currentOption={currentAccount}
         optionRenderer={AccountItem}
+        triggerRenderer={AccountHeaderTrigger}
         onSelect={onSelectAccount}
       />
-      <Selector
-        options={intervals}
-        currentOption={currentInterval}
-        optionRenderer={IntervalItem}
+      <DateIntervalSelector
+        currentInterval={currentInterval}
         onSelect={onSelectInterval}
+      />
+      <Icon
+        iconStyle={appStyles.headerIconStyle}
+        name="chart-arc"
+        type="material-community"
       />
     </View>
   );
@@ -44,7 +47,6 @@ TransactionsHeader.propTypes = {
   accounts: PropTypes.array,
   currentAccount: PropTypes.object,
   onSelectAccount: PropTypes.func,
-  intervals: PropTypes.array,
   currentInterval: PropTypes.string,
   onSelectInterval: PropTypes.func,
 };

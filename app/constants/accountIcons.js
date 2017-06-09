@@ -42,4 +42,5 @@ export default [
   'church',
   'city',
   'clippy',
+  'clock',
 ];

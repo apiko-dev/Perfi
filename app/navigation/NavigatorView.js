@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { addNavigationHelpers } from 'react-navigation';
 import { Loading } from '../components';
 import Navigator from './Navigator';
+import colors from '../styles/colors';
 
 const NavigatorView = ({ dispatch, navigator, isReady }) => (
   isReady ? (
@@ -12,6 +13,7 @@ const NavigatorView = ({ dispatch, navigator, isReady }) => (
       containerStyle={StyleSheet.absoluteFill}
       size={60}
       thickness={5}
+      color={colors.defaultPrimary}
     />
   )
 );
