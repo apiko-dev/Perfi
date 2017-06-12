@@ -1,101 +1,69 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import colors from '../styles/colors';
-
 import { Pie } from 'react-native-pathjs-charts';
+import PiePath from 'paths-js/pie';
+import R from 'ramda';
+import colors from '../styles/colors';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f7f7f7',
+  },
+  topLayout: {
+    position: 'absolute',
+    flex: 1,
+    top: 0,
+    left: 0,
+    backgroundColor: colors.lightShadow,
   },
 });
 
-const PieChartBasic = () => {
-  const data = [{
-    "name": "Washington",
-    "population": 7694980
-  }, {
-    "name": "Oregon",
-    "population": 2584160
-  }, {
-    "name": "Minnesota",
-    "population": 6590667,
-  }, {
-    "name": "Alaska",
-    "population": 7284698
-  }, {
-    "name": "Washington",
-    "population": 2344980
-  }, {
-    "name": "Oregon",
-    "population": 5684160
-  }, {
-    "name": "Minnesota",
-    "population": 7530667,
-  }, {
-    "name": "Alaska",
-    "population": 1294698
-  }];
+const data = [
+  { name: 'one', value: 80, icon: 'tag' },
+  { name: 'two', value: 160, icon: 'car' },
+  { name: 'three', value: 320, icon: 'phone' },
+];
 
-  const options = {
-    margin: {
-      top: 20,
-      left: 20,
-      right: 20,
-      bottom: 20
-    },
-    width: 350,
-    height: 350,
-    color: colors.darkPrimary,
-    r: 100,
-    R: 150,
-    legendPosition: 'topRight',
-    animate: {
-      type: 'oneByOne',
-      duration: 200,
-      fillTransition: 3,
-    },
-    label: {
-      fontFamily: 'Arial',
-      fontSize: 8,
-      fontWeight: true,
-      color: colors.textPrimary,
-    }
-  };
+const options = {
+  margin: {
+    top: 20,
+    left: 20,
+    right: 20,
+    bottom: 20,
+  },
+  width: 400,
+  height: 400,
+  r: 80,
+  R: 120,
+  // pallete: Object.values(pieChartPalette).map(hexToRgb),
+  color: '#03a9f4',
+};
+
+const PieChart = () => {
+  const { width, height, r: innerRadius, R: outerRadius } = options;
+
+  const chart = PiePath({
+    center: [width / 2, height / 2],
+    r: innerRadius,
+    R: outerRadius,
+    data,
+    accessor: R.prop('value'),
+  });
 
   return (
     <View style={styles.container}>
       <Pie
-        data={data}
         options={options}
-        accessorKey="population"
-        margin={{top: 20, left: 20, right: 20, bottom: 20}}
-        color={colors.darkPrimary}
-        pallete={
-          [
-            {'r':25,'g':99,'b':201},
-            {'r':24,'g':175,'b':35},
-            {'r':190,'g':31,'b':69},
-            {'r':100,'g':36,'b':199},
-            {'r':214,'g':207,'b':32},
-            {'r':198,'g':84,'b':45}
-          ]
-        }
-        r={80}
-        R={120}
-        legendPosition="topRight"
-        label={{
-          fontFamily: 'Arial',
-          fontSize: 16,
-          fontWeight: true,
-          color: '#000000'
-        }}
+        data={data}
+        accessorKey="value"
       />
+      <View style={styles.lightShadow}>
+        <Text>OK</Text>
+      </View>
     </View>
   );
 };
 
-export default PieChartBasic;
+export default PieChart;

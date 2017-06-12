@@ -23,6 +23,7 @@ import SlidesWithTabs from './slidesWithTabs';
 import TouchableFormInput from './TouchableFormInput';
 import TextItem from './TextItem';
 import TextWithIcons from './TextWithIcons';
+import PieChart from './PieChart';
 import AccountsSelectBox from './AccountsSelectBox';
 
 export {
@@ -52,4 +53,5 @@ export {
   TextItem,
   TextWithIcons,
   TouchableFormInput,
+  PieChart,
 };

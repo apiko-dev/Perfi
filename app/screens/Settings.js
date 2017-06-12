@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Button, Platform, Text, View } from 'react-native';
 import screens from '../constants/screens';
-import { DrawerButton } from '../components';
-import PieChart from '../components/PieChart';
+import { DrawerButton, PieChart } from '../components';
 
 const Settings = ({ navigation }) => (
   <PieChart />
