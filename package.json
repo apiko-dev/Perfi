@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^4.0.0",
+    "babel-polyfill": "^6.23.0",
     "expo": "^15.1.0",
     "expr-eval": "^1.0.0",
     "moment": "^2.18.1",

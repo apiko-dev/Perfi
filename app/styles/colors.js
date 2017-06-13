@@ -26,14 +26,14 @@ export default {
 };
 
 export const pieChartPalette = {
-  orange300: '#ffb74d',
-  lightGreen300: '#aed581',
-  orange400: '#ffa726',
-  lightGreen400: '#9ccc65',
-  orange500: '#ff9800',
-  lightGreen500: '#8bc34a',
-  orange600: '#fb8c00',
-  lightGreen600: '#7cb342',
-  orange700: '#f57c00',
-  blueGray700: '#455a64',
+  blue500: '#2196F3',
+  red500: '#F44336',
+  green500: '#4CAF50',
+  lightBlue500: '#03A9F4',
+  pink500: '#E91E63',
+  lime500: '#CDDC39',
+  cyan500: '#00BCD4',
+  purple500: '#9C27B0',
+  yellow500: '#FFEB3B',
+  blueGray500: '#607D8B',
 };
