@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { Icon } from 'react-native-elements';
+import React from 'react';
+import { View } from 'react-native';
 import { Svg } from 'expo';
+import TextWithIcons from '../TextWithIcons';
+import propTypes from './PieChartPropTypes';
 import styles from './PieChartStyles';
-import colors from '../../styles/colors';
+import colors, { pieChartPalette } from '../../styles/colors';
 
 const { Circle, G } = Svg;
 
 const SingleSlice = (props) => {
-  const { data, width, height, centerX, centerY, innerRadius, outerRadius } = props;
+  const { data, width, height, centerX, centerY, innerRadius, outerRadius, labelRadius } = props;
+  const outerFillColor = Object.values(pieChartPalette)[0];
 
   return (
     <View style={[styles.container, { width, height }]}>
@@ -21,7 +23,8 @@ const SingleSlice = (props) => {
             r={outerRadius}
             cx={centerX}
             cy={centerY}
-            fill={colors.defaultPrimary}
+            fill={outerFillColor}
+            fillOpacity={0.9}
           />
           <Circle
             r={innerRadius}
@@ -31,11 +34,18 @@ const SingleSlice = (props) => {
           />
         </G>
       </Svg>
-      <View style={[styles.topLayout, { width, height }]}>
-        <Text>Data</Text>
+      <View style={[styles.topLayout, { top: (height / 2) - labelRadius }]}>
+        <TextWithIcons
+          containerStyle={styles.singleLabelStyle}
+          text="100%"
+          color={colors.secondaryText}
+          leftIcon={data[0] && data[0].icon}
+        />
       </View>
     </View>
   );
 };
+
+SingleSlice.propTypes = propTypes;
 
 export default SingleSlice;

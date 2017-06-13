@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SeveralSlices from './SeveralSlices';
 import SingleSlice from './SingleSlice';
+import propTypes from './PieChartPropTypes';
 
-const data = [
+const defaultData = [
   { name: 'one', value: 10, icon: 'tag' },
   { name: 'two', value: 20, icon: 'car' },
   { name: 'three', value: 30, icon: 'phone' },
@@ -14,17 +15,17 @@ const data = [
   { name: 'three', value: 90, icon: 'phone' },
 ];
 
-const options = {
+const defaultProps = {
   width: 360,
   height: 360,
   innerRadius: 70,
   outerRadius: 110,
-  labelR: 140,
-  color: '#03a9f4',
+  labelRadius: 140,
 };
 
-const PieChart = () => {
+const PieChart = ({ data = defaultData, ...props }) => {
   const Chart = data.length > 1 ? SeveralSlices : SingleSlice;
+  const options = { ...defaultProps, ...props };
   const { width, height } = options;
 
   return (
@@ -36,5 +37,7 @@ const PieChart = () => {
     />
   );
 };
+
+PieChart.propTypes = propTypes;
 
 export default PieChart;
