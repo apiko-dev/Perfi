@@ -4,15 +4,22 @@ import { Icon } from 'react-native-elements';
 import { Svg } from 'expo';
 import R from 'ramda';
 import styles from './PieChartStyles';
+import Sector from './Sector';
 import 'babel-polyfill';
 const Pie = require('paths-js/pie');
 
 const { Circle, G, Path } = Svg;
 
 const data = [
-  { name: 'one', value: 80, icon: 'tag' },
-  { name: 'two', value: 160, icon: 'car' },
-  { name: 'three', value: 320, icon: 'phone' },
+  { name: 'one', value: 10, icon: 'tag' },
+  { name: 'two', value: 20, icon: 'car' },
+  { name: 'three', value: 30, icon: 'phone' },
+  { name: 'one', value: 40, icon: 'tag' },
+  { name: 'two', value: 50, icon: 'car' },
+  { name: 'three', value: 60, icon: 'phone' },
+  { name: 'one', value: 70, icon: 'tag' },
+  { name: 'two', value: 80, icon: 'car' },
+  { name: 'three', value: 90, icon: 'phone' },
 ];
 
 const options = {
@@ -24,28 +31,15 @@ const options = {
   },
   width: 360,
   height: 360,
-  r: 80,
-  R: 120,
+  r: 70,
+  R: 110,
+  labelR: 140,
   color: '#03a9f4',
-};
-
-const Sector = ({ sector }, i) => {
-  console.log('sector', sector);
-
-  return (
-    <Path
-      key={i}
-      d={sector.path.print()}
-      stroke="#00ff00"
-      fill="#0000ff"
-      fillOpacity={1}
-    />
-  );
 };
 
 const PieChart = () => {
   const { width, height, r: innerRadius, R: outerRadius } = options;
-
+  
   const chart = Pie({
     center: [width / 2, height / 2],
     r: innerRadius,
@@ -54,8 +48,6 @@ const PieChart = () => {
     accessor: R.prop('value'),
   });
 
-  console.log('chart', chart);
-
   return (
     <View style={[styles.container, { width, height }]}>
       <Svg
@@ -63,19 +55,44 @@ const PieChart = () => {
         height={height}
       >
         {chart.curves.map(Sector)}
-        {chart.curves.map((c, i) => (
-          <Circle key={i} r="4" cx={c.sector.centroid[0]} cy={c.sector.centroid[1]} fill="pink" />
-        ))}
       </Svg>
       <View style={[styles.topLayout, { width, height }]}>
-        {chart.curves.map((c, i) => (
-          <Icon
-            key={i}
-            style={{ position: 'absolute', left: c.sector.centroid[0] - 12, top: c.sector.centroid[1] - 12 }}
-            name={c.item.icon}
-            type="material-community"
-          />
-        ))}
+        {chart.curves.map((c, i) => {
+          const r2 = 130;
+          const r3 = 160;
+          const x0 = width / 2;
+          const y0 = height / 2;
+          const x1 = c.sector.centroid[0];
+          const y1 = c.sector.centroid[1];
+          const angle = Math.atan2(y1 - y0, x1 - x0);
+          const x2 = x0 + (r2 * Math.cos(angle));
+          const y2 = y0 + (r2 * Math.sin(angle));
+          const x3 = x0 + (r3 * Math.cos(angle));
+          const y3 = y0 + (r3 * Math.sin(angle));
+
+          return (
+            <View key={i}>
+              <Icon
+                style={{
+                  position: 'absolute',
+                  left: x2 - 12,
+                  top: y2 - 12,
+                }}
+                name={c.item.icon}
+                type="material-community"
+              />
+              <Text
+                style={{
+                  position: 'absolute',
+                  left: x3 - 12,
+                  top: y3 - 12,
+                }}
+              >
+                {c.item.value}
+              </Text>
+            </View>
+          );
+        })}
       </View>
     </View>
   );
