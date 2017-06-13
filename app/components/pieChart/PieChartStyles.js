@@ -14,8 +14,7 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     left: 0,
-    backgroundColor: colors.lightGray,
-    opacity: 0.5,
+    backgroundColor: 'transparent',
   },
 });
 
