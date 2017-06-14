@@ -1,9 +1,13 @@
 import React, { PropTypes } from 'react';
 import { Platform, View } from 'react-native';
-import { Icon } from 'react-native-elements';
-import DrawerButton from '../../../components/DrawerButton';
-import Selector from '../../../components/Selector';
-import { AccountHeaderTrigger, AccountItem, DateIntervalSelector } from '../../../components';
+import {
+  AccountHeaderTrigger,
+  AccountItem,
+  DateIntervalSelector,
+  DrawerButton,
+  HeaderIcon,
+  Selector,
+} from '../../../components';
 import styles from './TransactionsHeaderStyles';
 import appStyles from '../../../styles/AppStyles';
 
@@ -15,6 +19,8 @@ const TransactionsHeader = (props) => {
     onSelectAccount,
     currentInterval,
     onSelectInterval,
+    isChartShown,
+    onToggleChart,
   } = props;
 
   return (
@@ -33,10 +39,9 @@ const TransactionsHeader = (props) => {
         currentInterval={currentInterval}
         onSelect={onSelectInterval}
       />
-      <Icon
-        iconStyle={appStyles.headerIconStyle}
-        name="chart-arc"
-        type="material-community"
+      <HeaderIcon
+        name={isChartShown ? 'view-list' : 'chart-arc'}
+        onPress={onToggleChart}
       />
     </View>
   );
@@ -49,6 +54,8 @@ TransactionsHeader.propTypes = {
   onSelectAccount: PropTypes.func,
   currentInterval: PropTypes.string,
   onSelectInterval: PropTypes.func,
+  isChartShown: PropTypes.bool,
+  onToggleChart: PropTypes.func,
 };
 
 export default TransactionsHeader;

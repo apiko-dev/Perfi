@@ -11,6 +11,7 @@ import SelectBox from './selectBox';
 import Drawer from './Drawer';
 import DrawerButton from './DrawerButton';
 import FormInputWithIcon from './FormInputWithIcon';
+import HeaderIcon from './HeaderIcon';
 import IconsPickerModal from './iconsPicker';
 import Loading from './Loading';
 import NavIcon from './NavIcon';
@@ -41,6 +42,7 @@ export {
   DrawerButton,
   NavButton,
   FormInputWithIcon,
+  HeaderIcon,
   IconsPickerModal,
   Loading,
   NavIcon,

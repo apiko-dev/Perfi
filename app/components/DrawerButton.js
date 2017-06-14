@@ -1,11 +1,9 @@
 import React from 'react';
-import { Icon } from 'react-native-elements';
+import HeaderIcon from './HeaderIcon';
 import screens from '../constants/screens';
-import styles from '../styles/AppStyles';
 
 const DrawerButton = ({ navigation }) => (
-  <Icon
-    iconStyle={styles.headerIconStyle}
+  <HeaderIcon
     name="menu"
     onPress={() => navigation.navigate(screens.DrawerOpen)}
   />
