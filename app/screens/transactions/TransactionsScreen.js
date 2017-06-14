@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import screens from '../../constants/screens';
 import { ActionButton, ScreenWrapper } from '../../components';
 import TransactionsHeaderContainer from './screenHeader/TransactionsHeaderContainer';
-import TransactionsSlider from './TransactionsSlider';
+import TransactionsSlider from './transactionsSlider/TransactionsSlider';
 
 const Transactions = ({ navigation }) => (
   <ScreenWrapper>
