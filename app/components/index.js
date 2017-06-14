@@ -17,6 +17,7 @@ import Loading from './Loading';
 import NavIcon from './NavIcon';
 import PropsProxyHOC from './PropsProxyHOC';
 import ActionButton from './ActionButton';
+import PieChart from './pieChart/PieChart';
 import ScreenWrapper from './ScreenWrapper';
 import Selector from './Selector';
 import SecondaryText from './SecondaryText';
@@ -24,7 +25,6 @@ import SlidesWithTabs from './slidesWithTabs';
 import TouchableFormInput from './TouchableFormInput';
 import TextItem from './TextItem';
 import TextWithIcons from './TextWithIcons';
-import PieChart from './pieChart/PieChart';
 import AccountsSelectBox from './AccountsSelectBox';
 
 export {
@@ -46,6 +46,7 @@ export {
   IconsPickerModal,
   Loading,
   NavIcon,
+  PieChart,
   PropsProxyHOC,
   ScreenWrapper,
   Selector,
@@ -55,5 +56,4 @@ export {
   TextItem,
   TextWithIcons,
   TouchableFormInput,
-  PieChart,
 };
