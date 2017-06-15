@@ -3,12 +3,14 @@ import { View } from 'react-native';
 import { PieChart } from '../../../components';
 import appStyles from '../../../styles/AppStyles';
 
-const TransactionsChart = ({ expensesMap }) => (
+const TransactionsChart = ({ expenses }) => (
   <View style={[appStyles.containerStyle, appStyles.withMarginTop]}>
-    <PieChart data={expensesMap} />
+    <PieChart data={expenses} />
   </View>
 );
 
-TransactionsChart.propTypes = {};
+TransactionsChart.propTypes = {
+  expenses: PropTypes.any,
+};
 
 export default TransactionsChart;

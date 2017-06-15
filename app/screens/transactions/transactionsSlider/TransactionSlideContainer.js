@@ -15,13 +15,13 @@ const mapStateToProps = (state, ownProps) => {
 
   const currentCategoriesIds = R.uniq(R.map(R.prop('category'), currentTransactions));
 
-  const currentCategories = R.values(R.pick(currentCategoriesIds, categories.byId));
+  const currentCategories = R.pick(currentCategoriesIds, categories.byId);
 
   return {
     account,
     period,
     transactions: currentTransactions,
-    categories: currentCategories,
+    categoriesById: currentCategories,
   };
 };
 

@@ -15,8 +15,8 @@ const withDataSource = withProps({
   ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
 });
 
-const withClonedDataSource = withProps(({ ds, categories }) => ({
-  dataSource: ds.cloneWithRows(categories),
+const withClonedDataSource = withProps(({ ds, categoriesById }) => ({
+  dataSource: ds.cloneWithRows(categoriesById),
 }));
 
 const withGroupedTransactions = withProps((props) => {

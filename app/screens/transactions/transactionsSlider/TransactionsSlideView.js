@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import TransactionsListView from '../transactionsList/TransactionsListView';
-import TransactionsChart from '../transactionsChart/TransactionsChart';
+import TransactionsChartView from '../transactionsChart/TransactionsChartView';
 
 const TransactionsSlide = ({ showChart, ...props }) => {
-  const Slide = showChart ? TransactionsChart : TransactionsListView;
+  const Slide = showChart ? TransactionsChartView : TransactionsListView;
 
   return <Slide {...props} />;
 };
