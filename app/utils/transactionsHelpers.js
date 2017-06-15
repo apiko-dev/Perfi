@@ -30,6 +30,10 @@ export const isExpense = R.curry((categoriesById, transaction) => R.propEq(
   'type', categoriesTypes.expense, categoriesById[transaction.category],
 ));
 
+export const isIncome = R.curry((categoriesById, transaction) => R.propEq(
+  'type', categoriesTypes.income, categoriesById[transaction.category],
+));
+
 export const transactionsSum = (transactions, categories, accId) => R.reduce(
   (sum, transaction) => {
     let delta = 0;
