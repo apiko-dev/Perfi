@@ -14,7 +14,7 @@ const withSlideProps = navigation => withProps({
     screens.TransactionEditor,
     { transaction },
   ),
-  chartShown: getParam('chartShown')(navigation),
+  showChart: getParam('showChart')(navigation),
 });
 
 const enhance = compose(

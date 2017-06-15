@@ -2,14 +2,14 @@ import React, { PropTypes } from 'react';
 import TransactionsListView from '../transactionsList/TransactionsListView';
 import TransactionsChart from '../transactionsChart/TransactionsChart';
 
-const TransactionsSlide = ({ chartShown, ...props }) => {
-  const Slide = chartShown ? TransactionsChart : TransactionsListView;
+const TransactionsSlide = ({ showChart, ...props }) => {
+  const Slide = showChart ? TransactionsChart : TransactionsListView;
 
   return <Slide {...props} />;
 };
 
 TransactionsSlide.propTypes = {
-  chartShown: PropTypes.bool,
+  showChart: PropTypes.bool,
 };
 
 export default TransactionsSlide;

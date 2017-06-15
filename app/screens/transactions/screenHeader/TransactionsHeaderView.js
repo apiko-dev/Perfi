@@ -8,11 +8,11 @@ const enhance = compose(
     onSelectAccount: setParam('account')(navigation),
     currentInterval: getParamOr('interval', 'day')(navigation),
     onSelectInterval: setParam('interval')(navigation),
-    isChartShown: getParamOr('chartShown', false)(navigation),
+    isChartShown: getParamOr('showChart', false)(navigation),
   })),
   withHandlers({
     onToggleChart: ({ navigation, isChartShown }) => () => {
-      setParam('chartShown', navigation, !isChartShown);
+      setParam('showChart', navigation, !isChartShown);
     },
   }),
 );

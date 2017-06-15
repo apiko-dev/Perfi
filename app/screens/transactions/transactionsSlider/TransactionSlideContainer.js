@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import R from 'ramda';
 import { getPeriod } from '../../../utils/dateHelpers';
 import { filterByAccountAndDate } from '../../../utils/transactionsHelpers';
-import TransactionsSlide from './TransactionsSlide';
+import TransactionsSlideView from './TransactionsSlideView';
 
 const mapStateToProps = (state, ownProps) => {
   const { accounts, categories, transactions } = state;
@@ -25,4 +25,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(TransactionsSlide);
+export default connect(mapStateToProps)(TransactionsSlideView);
