@@ -4,7 +4,23 @@ import screens from '../constants/screens';
 import { DrawerButton, PieChart } from '../components';
 
 const Settings = ({ navigation }) => (
-  <PieChart />
+  <View>
+    <Text>Settings</Text>
+
+    { Platform.select({
+      ios: (
+        <View>
+          <Button
+            title="Accounts"
+            onPress={() => navigation.navigate(screens.Accounts)}
+          />
+          <Button
+            title="Categories"
+            onPress={() => navigation.navigate(screens.Categories)}
+          />
+        </View>
+      ) }) }
+  </View>
 );
 
 Settings.propTypes = {
