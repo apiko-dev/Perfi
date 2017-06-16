@@ -25,13 +25,11 @@ import SlidesWithTabs from './slidesWithTabs';
 import TouchableFormInput from './TouchableFormInput';
 import TextItem from './TextItem';
 import TextWithIcons from './TextWithIcons';
-import AccountsSelectBox from './AccountsSelectBox';
 
 export {
   AccountHeaderTrigger,
   AccountItem,
   AccountTrigger,
-  AccountsSelectBox,
   ActionButton,
   Calculator,
   CalculatorModal,
