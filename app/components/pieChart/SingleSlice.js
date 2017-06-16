@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Svg } from 'expo';
+import R from 'ramda';
 import TextWithIcons from '../TextWithIcons';
 import propTypes from './PieChartPropTypes';
 import styles from './PieChartStyles';
@@ -10,7 +11,8 @@ const { Circle, G } = Svg;
 
 const SingleSlice = (props) => {
   const { data, width, height, centerX, centerY, innerRadius, outerRadius, labelRadius } = props;
-  const outerFillColor = Object.values(pieChartPalette)[0];
+  const isEmpty = R.isEmpty(data);
+  const outerFillColor = isEmpty ? colors.divider : R.values(pieChartPalette)[0];
 
   return (
     <View style={[styles.container, { width, height }]}>
@@ -30,14 +32,14 @@ const SingleSlice = (props) => {
             r={innerRadius}
             cx={centerX}
             cy={centerY}
-            fill={colors.white}
+            fill={colors.backgroundColor}
           />
         </G>
       </Svg>
       <View style={[styles.topLayout, { top: (height / 2) - labelRadius }]}>
         <TextWithIcons
           containerStyle={styles.singleLabelStyle}
-          text="100%"
+          text={isEmpty ? '' : '100%'}
           color={colors.secondaryText}
           leftIcon={data[0] && data[0].icon}
         />

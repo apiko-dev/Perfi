@@ -5,6 +5,7 @@ import R from 'ramda';
 import { compose, withProps } from 'recompose';
 import { withToggle } from '../../../utils/enhancers';
 import TransactionsList from './TransactionsList';
+import { isIncome } from '../../../constants/categories';
 import colors from '../../../styles/colors';
 import styles from './CategoryWithTransactionsStyles';
 
@@ -61,7 +62,7 @@ CategoryWithTransactions.propTypes = {
 };
 
 const withTransactionsSum = withProps(({ category, transactions }) => ({
-  transactionsSum: getTransactionsSum(transactions) * (category.type === 'income' ? 1 : -1),
+  transactionsSum: getTransactionsSum(transactions) * (isIncome(category.type) ? 1 : -1),
 }));
 
 export default compose(withTransactionsSum, withToggle)(CategoryWithTransactions);
