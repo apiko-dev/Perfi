@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { View, Text } from 'react-native';
-import styles from '../trendsForm/TrendsFormStyles';
+import styles from '../trendsReport/TrendsFormStyles';
 
 const {
   containerStyle,

@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 import { ScreenWrapper } from '../../components';
-import TrendsFormView from './trendsForm/TrendsFormView';
+import TrendsReport from './trendsReport/TrendsReport';
 
 const Trends = ({ navigation }) => (
   <ScreenWrapper>
+    <TrendsReport />
   </ScreenWrapper>
 );
 
