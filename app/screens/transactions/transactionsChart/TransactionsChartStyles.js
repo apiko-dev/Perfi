@@ -13,13 +13,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     flex: 1,
   },
-  chartTextStyle: {
+  textStyle: {
     textAlign: 'center',
-    color: colors.primaryText,
+    color: colors.secondaryText,
     fontSize: 18,
   },
   balanceTextStyle: {
-    color: colors.secondaryText,
     fontSize: 20,
     fontWeight: 'bold',
   },
