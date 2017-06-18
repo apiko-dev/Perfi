@@ -12,6 +12,7 @@
     "eslint-plugin-react": "^6.10.3",
     "eslint-plugin-react-native": "^2.3.1",
     "jest-expo": "^0.3.0",
+    "react-devtools": "^2.3.3",
     "react-native-scripts": "0.0.26",
     "react-test-renderer": "~15.4.1",
     "remote-redux-devtools": "^0.5.7"
@@ -23,7 +24,8 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
-    "lint": "eslint --ignore-path .gitignore --format=node_modules/eslint-formatter-pretty ."
+    "lint": "eslint --ignore-path .gitignore --format=node_modules/eslint-formatter-pretty .",
+    "devtools": "react-devtools"
   },
   "jest": {
     "preset": "jest-expo"

@@ -3,19 +3,31 @@ import { compose, withState, withProps, withHandlers } from 'recompose';
 import moment from 'moment';
 import TrendsReport from './TrendsReport';
 
-const getDate = date => new Date(moment(date).set({
-  hour: 0,
-  minute: 0,
-  second: 0,
-  millisecond: 0,
-}));
+const onCloseDatePicker = ({ toggleDatePicker }) => () => {
+  toggleDatePicker(false);
+};
+
+const onOpenDatePicker = ({ toggleDatePicker, setDateToChange }) => dateToChange => () => {
+  setDateToChange(dateToChange);
+  toggleDatePicker(true);
+};
+
+const onSetDate = ({ toggleDatePicker, dateToChange, setDateFrom, setDateTo }) => (date) => {
+  const setDate = dateToChange === 'dateFrom' ? setDateFrom : setDateTo;
+  setDate(date);
+  toggleDatePicker(false);
+};
 
 const enhance = compose(
-  withState('dateFrom', 'setDateFrom', getDate(new Date())),
-  withState('dateTo', 'setDateTo', getDate(new Date())),
-  withState('isDateFromPickerVisible', 'setDateFromPickerState', false),
-  withState('isDateToPickerVisible', 'setDateToPickerState', false),
-  withHandlers({}),
+  withState('dateFrom', 'setDateFrom', new Date()),
+  withState('dateTo', 'setDateTo', new Date()),
+  withState('dateToChange', 'setDateToChange', 'dateFrom'),
+  withState('isDatePickerVisible', 'toggleDatePicker', false),
+  withHandlers({
+    onCloseDatePicker,
+    onOpenDatePicker,
+    onSetDate,
+  }),
 );
 
 export default enhance(TrendsReport);
