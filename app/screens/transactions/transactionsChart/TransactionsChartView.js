@@ -37,7 +37,7 @@ const enhance = compose(
       balance: incomes - expenses,
       expenses,
       incomes,
-    }
+    };
   }),
 );
 
