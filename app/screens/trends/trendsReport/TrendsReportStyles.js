@@ -1,12 +1,17 @@
-import { StyleSheet } from 'react-native';
+import { create } from 'react-native-platform-stylesheet';
 
-const styles = StyleSheet.create({
+const styles = create({
   dateRangeStyle: {
     justifyContent: 'space-between',
   },
   dateButtonStyle: {
     width: 120,
-    height: 40,
+    android: {
+      height: 40,
+    },
+    ios: {
+      height: 24,
+    },
   },
 });
 

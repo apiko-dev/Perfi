@@ -1,6 +1,7 @@
 import AccountItem from './AccountItem';
 import AccountHeaderTrigger from './AccountHeaderTrigger';
 import AccountTrigger from './AccountTrigger';
+import BarChart from './barChart/BarChart';
 import Calculator from './calculator';
 import CalculatorModal from './CalculatorModal';
 import CategoryTypeSelector from './CategoryTypeSelector';
@@ -31,6 +32,7 @@ export {
   AccountItem,
   AccountTrigger,
   ActionButton,
+  BarChart,
   Calculator,
   CalculatorModal,
   CategoryTypeSelector,
