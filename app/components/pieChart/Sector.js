@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Svg } from 'expo';
-import colors, { pieChartPalette } from '../../styles/colors';
+import colors, { chartPalette } from '../../styles/colors';
 
 const { Path } = Svg;
 
-const palette = Object.values(pieChartPalette);
+const palette = Object.values(chartPalette);
 
 const getColor = i => palette[i % palette.length];
 

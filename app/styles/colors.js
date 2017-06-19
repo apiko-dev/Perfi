@@ -23,10 +23,10 @@ export default {
   lightShadow: 'rgba(0, 0, 0, 0.05)',
   darkShadow: 'rgba(0, 0, 0, 0.4)',
   border: '#ededed',
-  backgroundColor: '#E9E9EF'
+  backgroundColor: '#E9E9EF',
 };
 
-export const pieChartPalette = {
+export const chartPalette = {
   blue500: '#2196F3',
   red500: '#F44336',
   green500: '#4CAF50',
