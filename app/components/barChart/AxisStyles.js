@@ -3,8 +3,10 @@ import colors from '../../styles/colors';
 
 const styles = StyleSheet.create({
   rootStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    borderLeftWidth: 2,
+    borderLeftColor: colors.secondaryText,
+    borderBottomWidth: 2,
+    borderBottomColor: colors.secondaryText,
   },
 });
 

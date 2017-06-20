@@ -4,6 +4,7 @@ import { Svg } from 'expo';
 import R from 'ramda';
 import 'babel-polyfill';
 import exampleData from './exampleData';
+import Axis from './Axis';
 import Column from './Column';
 import styles from './BarChartStyles';
 // import colors, { chartPalette } from '../../styles/colors';
@@ -34,14 +35,19 @@ const BarChart = (props) => {
   });
 
   return (
-    <View style={[styles.container, { width, height }]}>
-      <Axis />
-      <Svg
+    <View>
+      <Axis
         width={width}
         height={height}
-      >
-        {chart.curves.map(Column)}
-      </Svg>
+      />
+      <View style={styles.chartContainerStyle}>
+        <Svg
+          width={width}
+          height={height}
+        >
+          {chart.curves.map(Column)}
+        </Svg>
+      </View>
     </View>
   );
 };
