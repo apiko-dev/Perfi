@@ -1,49 +1,71 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { Svg } from 'expo';
 import R from 'ramda';
 import 'babel-polyfill';
 import exampleData from './exampleData';
-import Axis from './Axis';
 import Column from './Column';
+import Line from './Line';
 import styles from './BarChartStyles';
 // import colors, { chartPalette } from '../../styles/colors';
 
 const Bar = require('paths-js/bar');
 
-const defaultProps = {
+const options = {
   data: exampleData,
-  height: 300,
-  gutter: 10,
+  height: 325,
+  barsGroupWidth: 50,
+  barsGroupGap: 10,
+  xLabelHeight: 25,
+  yLabelWidth: 40,
 };
 
-const chartWidth = (data, groupWidth = 50, gutter = defaultProps.gutter) => {
+const getChartWidth = (data, groupWidth = options.barsGroupWidth, gap = options.barsGroupGap) => {
   const groups = data[0] && data[0].length;
   
-  return groups > 1 ? (groups * groupWidth) + (gutter * (groups - 1)) : groupWidth;
+  return groups > 1 ? (groups * groupWidth) + (gap * (groups - 1)) : groupWidth;
 };
 
+const getMaxValue = R.pipe(
+  R.flatten,
+  R.map(R.prop('value')),
+  R.apply(R.max),
+);
+
 const BarChart = (props) => {
-  const options = { ...defaultProps, ...props };
-  const { data, height } = options;
-  const width = chartWidth(data);
+  const { data, height, barsGroupGap, xLabelHeight, yLabelWidth } = { ...options, ...props };
+
+  const plotHeight = height - xLabelHeight;
+  const maxValue = getMaxValue(data);
+  const dec = Math.floor(Math.log(maxValue) / Math.log(10));
+  const lineStep = 10 ** (dec > 1 ? dec - 1 : dec);
+  const linesNumber = Math.ceil(maxValue / lineStep);
+
+  const chartHeight = (height - xLabelHeight) * (maxValue / (lineStep * linesNumber));
+  const chartWidth = getChartWidth(data);
 
   const chart = Bar({
-    ...options,
-    width,
+    data,
+    width: chartWidth,
+    height: chartHeight,
+    gutter: options.barsGroupGap,
     accessor: R.prop('value'),
   });
 
   return (
     <View>
-      <Axis
-        width={width}
-        height={height}
-      />
-      <View style={styles.chartContainerStyle}>
+      <View style={{ height: plotHeight }}>
+        {R.times(Line, linesNumber)}
+      </View>
+      <View
+        style={[styles.chartContainerStyle, {
+          paddingTop: plotHeight - chartHeight,
+          paddingLeft: yLabelWidth + barsGroupGap,
+        }]}
+      >
         <Svg
-          width={width}
-          height={height}
+          width={chartWidth}
+          height={chartHeight}
         >
           {chart.curves.map(Column)}
         </Svg>

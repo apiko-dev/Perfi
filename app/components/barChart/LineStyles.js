@@ -2,11 +2,10 @@ import { StyleSheet } from 'react-native';
 import colors from '../../styles/colors';
 
 const styles = StyleSheet.create({
-  rootStyle: {
-    borderLeftWidth: 2,
-    borderLeftColor: colors.secondaryText,
-    borderBottomWidth: 2,
-    borderBottomColor: colors.secondaryText,
+  stripeStyle: {
+    flex: 1,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.divider,
   },
 });
 
