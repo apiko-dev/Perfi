@@ -8,9 +8,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
   },
-  xLabelsContainerStyle: {
-    flexDirection: 'row',
-  },
 });
 
 export default styles;
