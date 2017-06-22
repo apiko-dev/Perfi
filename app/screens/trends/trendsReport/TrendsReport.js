@@ -11,6 +11,8 @@ const TrendsReport = (props) => {
   const {
     dateFrom,
     dateTo,
+    chartData,
+    labels,
     isDatePickerVisible,
     onCloseDatePicker,
     onSetDate,
@@ -33,7 +35,7 @@ const TrendsReport = (props) => {
           onPress={onOpenDatePicker('dateTo')}
         />
       </View>
-      <BarChart />
+      <BarChart data={chartData} labels={labels} />
       <DateTimePicker
         isVisible={isDatePickerVisible}
         onConfirm={onSetDate}

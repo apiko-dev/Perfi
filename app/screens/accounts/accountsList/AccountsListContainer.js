@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import R from 'ramda';
 import AccountsListView from './AccountsListView';
-import { transactionsSum } from '../../../utils/transactionsHelpers';
+import { accountTransactionsSum as transactionsSum } from '../../../utils/transactionsHelpers';
 
 const transfersSum = (transfers, accId) => R.reduce((sum, transfer) => {
   let delta = 0;

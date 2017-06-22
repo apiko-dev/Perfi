@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { ScreenWrapper } from '../../components';
-import TrendsReport from './trendsReport/TrendsReportView';
+import TrendsReportContainer from './trendsReport/TrendsReportContainer';
 
 const Trends = ({ navigation }) => (
   <ScreenWrapper>
-    <TrendsReport />
+    <TrendsReportContainer />
   </ScreenWrapper>
 );
 

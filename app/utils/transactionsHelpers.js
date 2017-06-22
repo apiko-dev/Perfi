@@ -34,7 +34,7 @@ export const isIncome = R.curry((categoriesById, transaction) => R.propEq(
   'type', categoriesTypes.income, categoriesById[transaction.category],
 ));
 
-export const transactionsSum = (transactions, categories, accId) => R.reduce(
+export const accountTransactionsSum = (transactions, categories, accId) => R.reduce(
   (sum, transaction) => {
     let delta = 0;
 
@@ -45,3 +45,12 @@ export const transactionsSum = (transactions, categories, accId) => R.reduce(
     return sum + delta;
   }, 0, R.values(transactions.byId),
 );
+
+export const getSum = R.pipe(
+  R.map(R.prop('value')),
+  R.sum,
+);
+
+export const getExpenses = categoriesById => R.filter(isExpense(categoriesById));
+
+export const getIncomes = categoriesByIds => R.filter(isIncome(categoriesByIds));

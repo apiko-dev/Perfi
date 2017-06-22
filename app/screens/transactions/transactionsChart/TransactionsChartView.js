@@ -8,9 +8,9 @@ const transactionsSum = R.pipe(
   R.sum,
 );
 
-const getExpensesTransactions = categoriesById => R.filter(isExpense(categoriesById));
+const getExpenses = categoriesById => R.filter(isExpense(categoriesById));
 
-const getIncomesTransactions = categoriesByIds => R.filter(isIncome(categoriesByIds));
+const getIncomes = categoriesByIds => R.filter(isIncome(categoriesByIds));
 
 const getChartItem = categoriesById => (transactions) => {
   const { name, icon } = categoriesById[transactions[0].category];
@@ -27,8 +27,8 @@ const getChartData = categoriesById => R.pipe(
 
 const enhance = compose(
   withProps(({ transactions, categoriesById }) => {
-    const expensesTransactions = getExpensesTransactions(categoriesById)(transactions);
-    const incomesTransactions = getIncomesTransactions(categoriesById)(transactions);
+    const expensesTransactions = getExpenses(categoriesById)(transactions);
+    const incomesTransactions = getIncomes(categoriesById)(transactions);
     const expenses = transactionsSum(expensesTransactions);
     const incomes = transactionsSum(incomesTransactions);
 
