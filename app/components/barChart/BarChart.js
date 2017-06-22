@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import R from 'ramda';
 import exampleData from './exampleData';
 import Bars from './Bars';
@@ -8,17 +8,22 @@ import styles from './BarChartStyles';
 
 const options = {
   data: exampleData,
-  height: 325,
-  barsGroupWidth: 50,
+  height: 320,
+  minWidth: 320,
+  minBarsGroupWidth: 50,
   barsGroupGap: 10,
-  xLabelHeight: 25,
+  xLabelHeight: 20,
   yLabelWidth: 40,
 };
 
-const getChartWidth = (data, groupWidth = options.barsGroupWidth, gap = options.barsGroupGap) => {
+const getChartWidth = (data) => {
   const groups = data[0] && data[0].length;
+  const { minWidth, barsGroupGap, minBarsGroupWidth, yLabelWidth } = options;
+  const width = minWidth - yLabelWidth - (2 * barsGroupGap);
   
-  return groups > 1 ? (groups * groupWidth) + (gap * (groups - 1)) : groupWidth;
+  return groups > 1 && (minBarsGroupWidth + barsGroupGap) * groups > width - barsGroupGap
+    ? (groups * minBarsGroupWidth) + (barsGroupGap * (groups - 1))
+    : width;
 };
 
 const getMaxValue = R.pipe(
@@ -38,7 +43,7 @@ const BarChart = (props) => {
   } = { ...options, ...props };
 
   const maxValue = getMaxValue(data);
-  const dec = Math.floor(Math.log(maxValue) / Math.log(10));
+  const dec = Math.round(Math.log(maxValue) / Math.log(10));
   const lineStep = 10 ** (dec > 1 ? dec - 1 : dec);
   const linesNumber = Math.ceil(maxValue / lineStep);
 
@@ -48,7 +53,7 @@ const BarChart = (props) => {
   const plotHeight = height - xLabelHeight;
 
   return (
-    <View>
+    <ScrollView horizontal>
       <Plot
         width={plotWidth}
         height={plotHeight}
@@ -71,7 +76,7 @@ const BarChart = (props) => {
           accessorKey="value"
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
