@@ -31,6 +31,16 @@ const withTrendItem = withProps(({ months, totals }) => ({
   renderRow: renderTrendItem(months, totals),
 }));
 
+const withFooter = withProps(({ averageIncome, averageExpense }) => ({
+  renderFooter: () => (
+    <TrendsListItem
+      label="Average, per month"
+      income={averageIncome}
+      expense={averageExpense}
+    />
+  ),
+}));
+
 export default compose(
   withProps({
     enableEmptySections: true,
@@ -39,4 +49,5 @@ export default compose(
   withDataSource,
   withClonedDataSource,
   withTrendItem,
+  withFooter,
 )(ListView);

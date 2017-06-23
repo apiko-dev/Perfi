@@ -44,6 +44,16 @@ const withChartData = withProps(({ totals }) => ({
   ], [[], []], totals),
 }));
 
+const average = arr => R.divide(
+  R.sum(R.map(R.prop('value'), arr)),
+  R.length(arr),
+);
+
+const withAverageData = withProps(({ chartData }) => ({
+  averageIncome: average(chartData[0]),
+  averageExpense: average(chartData[1]),
+}));
+
 const withDateLimits = withPropsOnChange(
   ['dateToChange'],
   ({ dateToChange, dateFrom, dateTo }) => ({
@@ -76,6 +86,7 @@ const enhance = compose(
   withLabels,
   withTotals,
   withChartData,
+  withAverageData,
   withDateLimits,
   withHandlers({
     onCloseDatePicker,

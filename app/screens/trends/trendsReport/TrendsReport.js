@@ -16,12 +16,14 @@ const TrendsReport = (props) => {
     maxDate,
     chartData,
     labels,
+    totals,
+    months,
+    averageIncome,
+    averageExpense,
     isDatePickerVisible,
     onCloseDatePicker,
     onSetDate,
     onOpenDatePicker,
-    totals,
-    months,
   } = props;
 
   return (
@@ -40,8 +42,16 @@ const TrendsReport = (props) => {
           onPress={onOpenDatePicker('dateTo')}
         />
       </View>
-      <BarChart data={chartData} labels={labels} />
-      <TrendsList totals={totals} months={months} />
+      <BarChart
+        data={chartData}
+        labels={labels}
+      />
+      <TrendsList
+        totals={totals}
+        months={months}
+        averageIncome={averageIncome}
+        averageExpense={averageExpense}
+      />
       <DateTimePicker
         minimumDate={minDate}
         maximumDate={maxDate}
@@ -62,6 +72,8 @@ TrendsReport.propTypes = {
   labels: PropTypes.array,
   months: PropTypes.array,
   totals: PropTypes.array,
+  averageIncome: PropTypes.number,
+  averageExpense: PropTypes.number,
   isDatePickerVisible: PropTypes.bool,
   onSetDate: PropTypes.func,
   onOpenDatePicker: PropTypes.func,
