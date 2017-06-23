@@ -29,7 +29,7 @@ const getChartWidth = (data) => {
 const getMaxValue = R.pipe(
   R.flatten,
   R.map(R.prop('value')),
-  R.apply(R.max),
+  R.apply(Math.max),
 );
 
 const BarChart = (props) => {
