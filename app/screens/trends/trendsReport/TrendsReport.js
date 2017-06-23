@@ -4,6 +4,7 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import { timeFormats } from '../../../utils/dateHelpers';
 import { BarChart, TouchableFormInput } from '../../../components';
+import TrendsList from '../trendsList';
 import appStyles from '../../../styles/AppStyles';
 import styles from './TrendsReportStyles';
 
@@ -19,6 +20,8 @@ const TrendsReport = (props) => {
     onCloseDatePicker,
     onSetDate,
     onOpenDatePicker,
+    totals,
+    months,
   } = props;
 
   return (
@@ -38,6 +41,7 @@ const TrendsReport = (props) => {
         />
       </View>
       <BarChart data={chartData} labels={labels} />
+      <TrendsList totals={totals} months={months} />
       <DateTimePicker
         minimumDate={minDate}
         maximumDate={maxDate}
@@ -56,6 +60,8 @@ TrendsReport.propTypes = {
   maxDate: PropTypes.instanceOf(Date),
   chartData: PropTypes.array,
   labels: PropTypes.array,
+  months: PropTypes.array,
+  totals: PropTypes.array,
   isDatePickerVisible: PropTypes.bool,
   onSetDate: PropTypes.func,
   onOpenDatePicker: PropTypes.func,

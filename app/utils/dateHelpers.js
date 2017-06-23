@@ -12,6 +12,7 @@ export const timeFormats = {
   dayOfMonth: 'MM/DD',
   month: 'MM/YYYY',
   monthShort: 'MM/YY',
+  monthLong: 'MMMM YYYY',
   year: 'YYYY',
 };
 
@@ -35,7 +36,7 @@ export const startOfNextMonth = (d = new Date()) =>
 
 export const endOfMonth = (d = new Date()) => moment(d).endOf('month').toDate();
 
-export const formatMonth = d => moment(d).format(timeFormats.monthShort);
+export const formatMonth = (d, f = timeFormats.monthShort) => moment(d).format(f);
 
 export const addDays = (date, daysNumber) => moment(date).add(daysNumber, 'days').toDate();
 

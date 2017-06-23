@@ -38,3 +38,8 @@ export const chartPalette = {
   yellow500: '#FFEB3B',
   blueGray500: '#607D8B',
 };
+
+export const categoryTypesColor = {
+  income: '#1E88E5',
+  expense: '#E53935',
+};
