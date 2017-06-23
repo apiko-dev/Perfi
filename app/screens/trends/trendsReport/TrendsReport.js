@@ -11,6 +11,8 @@ const TrendsReport = (props) => {
   const {
     dateFrom,
     dateTo,
+    minDate,
+    maxDate,
     chartData,
     labels,
     isDatePickerVisible,
@@ -37,6 +39,8 @@ const TrendsReport = (props) => {
       </View>
       <BarChart data={chartData} labels={labels} />
       <DateTimePicker
+        minimumDate={minDate}
+        maximumDate={maxDate}
         isVisible={isDatePickerVisible}
         onConfirm={onSetDate}
         onCancel={onCloseDatePicker}
@@ -48,6 +52,10 @@ const TrendsReport = (props) => {
 TrendsReport.propTypes = {
   dateFrom: PropTypes.instanceOf(Date),
   dateTo: PropTypes.instanceOf(Date),
+  minDate: PropTypes.instanceOf(Date),
+  maxDate: PropTypes.instanceOf(Date),
+  chartData: PropTypes.array,
+  labels: PropTypes.array,
   isDatePickerVisible: PropTypes.bool,
   onSetDate: PropTypes.func,
   onOpenDatePicker: PropTypes.func,

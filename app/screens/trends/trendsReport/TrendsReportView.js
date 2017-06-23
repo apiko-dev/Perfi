@@ -1,22 +1,17 @@
-import { compose, withState, withProps, withHandlers } from 'recompose';
+import { compose, withState, withProps, withPropsOnChange, withHandlers } from 'recompose';
 import R from 'ramda';
 import moment from 'moment';
 import TrendsReport from './TrendsReport';
 import { categoriesTypes as types } from '../../../constants/categories';
 import { inDateRange, getExpenses, getIncomes, getSum } from '../../../utils/transactionsHelpers';
-
-const startOfMonth = (d = new Date()) => moment(d).startOf('month').toDate();
-
-const startOfNextMonth = (d = new Date()) => startOfMonth(moment(d).add(1, 'months').toDate());
-
-const endOfMonth = (d = new Date()) => moment(d).endOf('month').toDate();
-
-const formatMonth = d => moment(d).format('MM/YY');
-
-// eslint-disable-next-line
-const getMonths = (from, to, months) => from.getTime() <= to.getTime()
-    ? getMonths(startOfNextMonth(from), to, [...months, from])
-    : months;
+import {
+  addDays,
+  endOfMonth,
+  startOfMonth,
+  startOfNextMonth,
+  getMonths,
+  formatMonth,
+} from '../../../utils/dateHelpers';
 
 const withMonths = withProps(({ dateFrom, dateTo }) => ({
   months: getMonths(dateFrom, dateTo, []),
@@ -49,6 +44,14 @@ const withChartData = withProps(({ totals }) => ({
   ], [[], []], totals),
 }));
 
+const withDateLimits = withPropsOnChange(
+  ['dateToChange'],
+  ({ dateToChange, dateFrom, dateTo }) => ({
+    minDate: dateToChange === 'dateFrom' ? undefined : addDays(dateFrom, 1),
+    maxDate: dateToChange === 'dateTo' ? undefined : addDays(dateTo, -1),
+  }),
+);
+
 const onCloseDatePicker = ({ toggleDatePicker }) => () => {
   toggleDatePicker(false);
 };
@@ -73,6 +76,7 @@ const enhance = compose(
   withLabels,
   withTotals,
   withChartData,
+  withDateLimits,
   withHandlers({
     onCloseDatePicker,
     onOpenDatePicker,
