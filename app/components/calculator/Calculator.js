@@ -2,17 +2,15 @@ import React, { PropTypes } from 'react';
 import { Text, View } from 'react-native';
 import R from 'ramda';
 import { compose, branch, renderComponent, withProps } from 'recompose';
-import Button  from './CalculatorButton';
+import CalcButton  from './CalculatorButton';
 import colors from '../../styles/colors';
 import styles from './CalculatorStyles';
 
-const renderButton = onPress => token => <Button key={token} token={token} onPress={onPress} />;
+const Button = onPress => token => <CalcButton key={token} token={token} onPress={onPress} />;
 
-const renderButtonsGroup = (onPress, tokens) => R.map(renderButton(onPress), tokens);
-
-const renderButtonsRow = onPress => tokens => (
-  <View style={styles.keyboardRowStyle}>
-    {renderButtonsGroup(onPress, tokens)}
+const ButtonsGroup = (onPress, style) => ({ tokens }) => (
+  <View style={[styles.keyboardRowStyle, style]}>
+    {R.map(Button(onPress), tokens)}
   </View>
 );
 
@@ -20,8 +18,8 @@ const SubmitButton = branch(
   R.prop('isReadyForSubmit'),
   renderComponent(compose(withProps({
     icon: { name: 'done', color: colors.defaultPrimary },
-  }))(Button)),
-)(Button);
+  }))(CalcButton)),
+)(CalcButton);
 
 const Calculator = (props) => {
   const {
@@ -34,7 +32,8 @@ const Calculator = (props) => {
     onSubmitResult,
   } = props;
 
-  const buttonsRow = renderButtonsRow(onPressToken);
+  const Group = ButtonsGroup(onPressToken, { flex: 2 });
+  const Row = ButtonsGroup(onPressToken);
 
   return (
     <View>
@@ -42,16 +41,16 @@ const Calculator = (props) => {
         <Text style={styles.expressionStyle}>{expr}</Text>
       </View>
       <View style={styles.keyboardRowStyle}>
-        <Button token="C" onPress={onClear} />
-        {renderButtonsGroup(onPressToken, ['/', '*'])}
-        <Button icon={{ name: 'backspace' }} onPress={onBackspace} />
+        <CalcButton token="C" onPress={onClear} />
+        <Group tokens={['/', '*']} />
+        <CalcButton icon={{ name: 'backspace' }} onPress={onBackspace} />
       </View>
-      {buttonsRow(['7', '8', '9', '-'])}
-      {buttonsRow(['4', '5', '6', '+'])}
+      <Row tokens={['7', '8', '9', '-']} />
+      <Row tokens={['4', '5', '6', '+']} />
       <View style={styles.keyboardRowStyle}>
         <View style={styles.keyboardShortRowStyle}>
-          {buttonsRow(['1', '2', '3'])}
-          {buttonsRow(['0', '000', '.'])}
+          <Row tokens={['1', '2', '3']} />
+          <Row tokens={['0', '000', '.']} />
         </View>
         <SubmitButton
           containerStyle={styles.submitButtonContainerStyle}
