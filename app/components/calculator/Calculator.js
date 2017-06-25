@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Text, View } from 'react-native';
 import R from 'ramda';
+import { compose, branch, renderComponent, withProps } from 'recompose';
 import Button  from './CalculatorButton';
 import colors from '../../styles/colors';
 import styles from './CalculatorStyles';
@@ -15,6 +16,13 @@ const renderButtonsRow = onPress => tokens => (
   </View>
 );
 
+const SubmitButton = branch(
+  R.prop('isReadyForSubmit'),
+  renderComponent(compose(withProps({
+    icon: { name: 'done', color: colors.defaultPrimary },
+  }))(Button)),
+)(Button);
+
 const Calculator = (props) => {
   const {
     expr,
@@ -25,14 +33,6 @@ const Calculator = (props) => {
     onBackspace,
     onSubmitResult,
   } = props;
-
-  const submitButtonOptions = isReadyForSubmit ? {
-    icon: { name: 'done', color: colors.defaultPrimary },
-    onPress: onSubmitResult,
-  } : {
-    token: '=',
-    onPress: onCalculate,
-  };
 
   const buttonsRow = renderButtonsRow(onPressToken);
 
@@ -53,10 +53,12 @@ const Calculator = (props) => {
           {buttonsRow(['1', '2', '3'])}
           {buttonsRow(['0', '000', '.'])}
         </View>
-        <Button
+        <SubmitButton
           containerStyle={styles.submitButtonContainerStyle}
           buttonStyle={styles.submitButtonStyle}
-          {...submitButtonOptions}
+          token="="
+          isReadyForSubmit={isReadyForSubmit}
+          onPress={isReadyForSubmit ? onSubmitResult : onCalculate}
         />
       </View>
     </View>
