@@ -5,6 +5,10 @@ export const categoriesTypes = {
   income: 'Income',
 };
 
+export const isExpense = type => type === categoriesTypes.expense;
+
+export const isIncome = type => type === categoriesTypes.income;
+
 const incomeCategories = [
   { name: 'Salary', icon: 'cash' },
   { name: 'Savings', icon: 'coin' },

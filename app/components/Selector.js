@@ -29,7 +29,7 @@ const Selector = ({ options, currentOption, optionRenderer, triggerRenderer, onS
 
 Selector.propTypes = {
   options: PropTypes.array,
-  currentOption: PropTypes.oneOfType(PropTypes.object, PropTypes.string),
+  currentOption: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   optionRenderer: PropTypes.func.isRequired,
   triggerRenderer: PropTypes.func,
   onSelect: PropTypes.func,
