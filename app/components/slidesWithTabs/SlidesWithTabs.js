@@ -6,6 +6,11 @@ import { virtualize } from 'react-swipeable-views-utils';
 import colors from '../../styles/colors';
 import styles from './SlidesWithTabsStyles';
 
+SwipeableViews.propTypes = {
+  ...SwipeableViews.propTypes,
+  children: PropTypes.any.isRequired,
+};
+
 const Slides = virtualize(SwipeableViews);
 
 const SlidesWithTabs = (props) => {

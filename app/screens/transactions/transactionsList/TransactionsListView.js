@@ -4,14 +4,12 @@ import { ListItem } from 'react-native-elements';
 import { branch, compose, renderComponent, withProps } from 'recompose';
 import R from 'ramda';
 import CategoryWithTransactions from './CategoryWithTransactions';
+import { groupByCategories } from '../../../utils/transactionsHelpers';
+import { withDataSource } from '../../../utils/enhancers';
 import listItemStyles from './TransactionItemStyles';
 
-const withDataSource = withProps({
-  ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
-});
-
-const withClonedDataSource = withProps(({ ds, categories }) => ({
-  dataSource: ds.cloneWithRows(categories),
+const withTransactionsByCategories = withProps(({ transactions }) => ({
+  transactionsByCategories: groupByCategories(transactions),
 }));
 
 const withGroupedTransactions = withProps((props) => {
@@ -42,8 +40,8 @@ const withoutTransactions = branch(
 );
 
 const TransactionsGroupedByCategories = compose(
-  withDataSource,
-  withClonedDataSource,
+  withTransactionsByCategories,
+  withDataSource('categoriesById'),
   withGroupedTransactions,
   withoutTransactions,
 )(ListView);

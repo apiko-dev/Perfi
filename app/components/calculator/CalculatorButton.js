@@ -4,27 +4,35 @@ import { Button } from 'react-native-elements';
 import colors from '../../styles/colors';
 import styles from './CalculatorButtonStyles';
 
+const defaultIconProps = {
+  style: { marginRight: 0 },
+  color: colors.secondaryText,
+  size: 24,
+};
+
 const CalculatorButton = (props) => {
   const {
-    token,
-    title,
-    onPress,
     buttonStyle,
     containerStyle,
+    token,
+    icon,
+    onPress,
     ...options
   } = props;
 
-  const onPressButton = token ? () => onPress(token) : onPress;
+  const title = {
+    [icon ? 'icon' : 'title']: icon ? { ...defaultIconProps, ...icon } : token,
+  };
 
   return (
     <View style={[styles.containerStyle, containerStyle]}>
       <Button
         {...options}
+        {...title}
         buttonStyle={[styles.buttonStyle, buttonStyle]}
-        title={token || title}
         fontSize={18}
         color={colors.primaryText}
-        onPress={onPressButton}
+        onPress={() => onPress(token)}
       />
     </View>
   );
@@ -35,6 +43,7 @@ CalculatorButton.propTypes = {
   buttonStyle: View.propTypes.style,
   title: PropTypes.string,
   token: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  icon: PropTypes.object,
   onPress: PropTypes.func,
 };
 
