@@ -7,7 +7,7 @@ import styles from './CalculatorButtonStyles';
 const defaultIconProps = {
   style: { marginRight: 0 },
   color: colors.secondaryText,
-  size: 24
+  size: 24,
 };
 
 const CalculatorButton = (props) => {
@@ -21,7 +21,7 @@ const CalculatorButton = (props) => {
   } = props;
 
   const title = {
-    [!!icon ? 'icon' : 'title']: !!icon ? { ...defaultIconProps, ...icon } : token,
+    [icon ? 'icon' : 'title']: icon ? { ...defaultIconProps, ...icon } : token,
   };
 
   return (

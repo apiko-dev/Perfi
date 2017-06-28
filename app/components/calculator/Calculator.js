@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { Text, View } from 'react-native';
 import R from 'ramda';
 import { compose, branch, renderComponent, withProps } from 'recompose';
-import CalcButton  from './CalculatorButton';
+import CalcButton from './CalculatorButton';
 import colors from '../../styles/colors';
 import styles from './CalculatorStyles';
 
