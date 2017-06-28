@@ -1,15 +1,13 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
 import R from 'ramda';
-import exampleData from './exampleData';
 import Bars from './Bars';
 import Plot from './Plot';
 import styles from './BarChartStyles';
 
 const options = {
-  data: exampleData,
   height: 320,
-  minWidth: 320,
+  width: 320,
   minBarsGroupWidth: 50,
   barsGroupGap: 10,
   xLabelHeight: 20,
@@ -18,12 +16,13 @@ const options = {
 
 const getChartWidth = (data) => {
   const groups = data[0] && data[0].length;
-  const { minWidth, barsGroupGap, minBarsGroupWidth, yLabelWidth } = options;
-  const width = minWidth - yLabelWidth - (2 * barsGroupGap);
+  const { width, barsGroupGap, minBarsGroupWidth, yLabelWidth } = options;
+  const chartWidth = width - yLabelWidth;
+  const groupWithGapWidth = minBarsGroupWidth + barsGroupGap;
   
-  return groups > 1 && (minBarsGroupWidth + barsGroupGap) * groups > width - barsGroupGap
-    ? (groups * minBarsGroupWidth) + (barsGroupGap * (groups - 1))
-    : width;
+  return groups > 1 && (groupWithGapWidth * groups) - barsGroupGap > chartWidth
+    ? (groups * groupWithGapWidth) - barsGroupGap
+    : chartWidth;
 };
 
 const getMaxValue = R.pipe(
@@ -36,6 +35,7 @@ const BarChart = (props) => {
   const {
     data,
     height,
+    width,
     barsGroupGap,
     xLabelHeight,
     yLabelWidth,
@@ -49,24 +49,24 @@ const BarChart = (props) => {
 
   const chartHeight = (height - xLabelHeight) * (maxValue / (lineStep * linesNumber));
   const chartWidth = getChartWidth(data);
-  const plotWidth = yLabelWidth + chartWidth + (2 * barsGroupGap);
   const plotHeight = height - xLabelHeight;
 
   return (
-    <ScrollView horizontal>
+    <View style={{ height, width }}>
       <Plot
-        width={plotWidth}
+        width={width}
         height={plotHeight}
         labelWidth={yLabelWidth}
         linesStep={lineStep}
         linesNumber={linesNumber}
         labels={labels}
       />
-      <View
+      <ScrollView
         style={[styles.chartContainerStyle, {
-          paddingTop: plotHeight - chartHeight,
-          paddingLeft: yLabelWidth + barsGroupGap,
+          top: plotHeight - chartHeight,
+          left: yLabelWidth,
         }]}
+        horizontal
       >
         <Bars
           data={data}
@@ -74,9 +74,10 @@ const BarChart = (props) => {
           height={chartHeight}
           gutter={barsGroupGap}
           accessorKey="value"
+          labels={labels}
         />
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 

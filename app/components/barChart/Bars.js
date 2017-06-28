@@ -1,8 +1,11 @@
 import React, { PropTypes } from 'react';
+import { Text, View } from 'react-native';
 import { Svg } from 'expo';
 import R from 'ramda';
 import 'babel-polyfill';
 import { chartPalette } from '../../styles/colors';
+import appStyles from '../../styles/AppStyles';
+import styles from './BarChartStyles';
 
 const Chart = require('paths-js/bar');
 
@@ -18,7 +21,13 @@ const Bar = curve => (
   />
 );
 
-const Bars = ({ data, width, height, gutter, accessorKey }) => {
+const Label = i => (
+  <Text key={i} style={[styles.labelStyle, styles.xLabelStyle]}>
+    {i}
+  </Text>
+);
+
+const Bars = ({ data, width, height, gutter, accessorKey, labels }) => {
   const chart = Chart({
     data,
     width,
@@ -28,12 +37,19 @@ const Bars = ({ data, width, height, gutter, accessorKey }) => {
   });
 
   return (
-    <Svg
-      width={width}
-      height={height}
-    >
-      {chart.curves.map(Bar)}
-    </Svg>
+    <View style={appStyles.rootStyle}>
+      <Svg
+        width={width}
+        height={height}
+      >
+        {chart.curves.map(Bar)}
+      </Svg>
+      {labels && labels.length > 0 && (
+        <View style={styles.xLabelsContainerStyle}>
+          {R.map(Label, labels)}
+        </View>
+      )}
+    </View>
   );
 };
 
@@ -43,6 +59,7 @@ Bars.propTypes = {
   height: PropTypes.number,
   gutter: PropTypes.number,
   accessorKey: PropTypes.string,
+  labels: PropTypes.array,
 };
 
 
