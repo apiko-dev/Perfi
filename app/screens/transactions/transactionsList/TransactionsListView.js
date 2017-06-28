@@ -5,18 +5,11 @@ import { branch, compose, renderComponent, withProps } from 'recompose';
 import R from 'ramda';
 import CategoryWithTransactions from './CategoryWithTransactions';
 import { groupByCategories } from '../../../utils/transactionsHelpers';
+import { withDataSource } from '../../../utils/enhancers';
 import listItemStyles from './TransactionItemStyles';
 
 const withTransactionsByCategories = withProps(({ transactions }) => ({
   transactionsByCategories: groupByCategories(transactions),
-}));
-
-const withDataSource = withProps({
-  ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
-});
-
-const withClonedDataSource = withProps(({ ds, categoriesById }) => ({
-  dataSource: ds.cloneWithRows(categoriesById),
 }));
 
 const withGroupedTransactions = withProps((props) => {
@@ -48,8 +41,7 @@ const withoutTransactions = branch(
 
 const TransactionsGroupedByCategories = compose(
   withTransactionsByCategories,
-  withDataSource,
-  withClonedDataSource,
+  withDataSource('categoriesById'),
   withGroupedTransactions,
   withoutTransactions,
 )(ListView);
