@@ -1,0 +1,27 @@
+import React, { PropTypes } from 'react';
+import { Text, View } from 'react-native';
+import { PieChart } from '../../../components';
+import appStyles from '../../../styles/AppStyles';
+import styles from './TransactionsChartStyles';
+
+const TransactionsChart = ({ chartData, balance, expenses, incomes }) => (
+  <View style={[appStyles.containerStyle, appStyles.withMarginTop]}>
+    <View style={styles.chartContainerStyle}>
+      <PieChart data={chartData} />
+      <View style={styles.chartTextContainerStyle}>
+        {!!incomes && <Text style={styles.textStyle}>+ {incomes}</Text>}
+        {!!expenses && <Text style={styles.textStyle}>- {expenses}</Text>}
+      </View>
+    </View>
+    <Text style={[styles.textStyle, styles.balanceTextStyle]}>Balance: {balance}</Text>
+  </View>
+);
+
+TransactionsChart.propTypes = {
+  chartData: PropTypes.array,
+  balance: PropTypes.number,
+  expenses: PropTypes.number,
+  incomes: PropTypes.number,
+};
+
+export default TransactionsChart;

@@ -1,4 +1,4 @@
-import { compose, renameProp, withHandlers, withState, withProps } from 'recompose';
+import { compose, withHandlers, withState, withProps } from 'recompose';
 import R from 'ramda';
 import { Parser } from 'expr-eval';
 import Calculator from './Calculator';
@@ -18,7 +18,6 @@ const hasDotInLastNumber = R.pipe(
 const removeTailOperator = R.replace(/[^0-9]$/, '');
 
 const enhance = compose(
-  renameProp('onSubmit', 'onSubmitResult'),
   withState('expr', 'updateExpr', ({ value }) => value || defaultExpr),
   withProps(({ expr }) => ({
     isReadyForSubmit: R.none(isOperator, expr),
@@ -57,8 +56,8 @@ const enhance = compose(
 
       updateExpr(newExpr);
     },
-    onSubmit: ({ expr, onSubmitResult }) => () => {
-      onSubmitResult(+expr);
+    onSubmitResult: ({ expr, onSubmit }) => () => {
+      onSubmit(+expr);
     },
   }),
 );

@@ -1,15 +1,25 @@
 import React, { PropTypes } from 'react';
 import { Text, View } from 'react-native';
-import Button from './CalculatorButton';
+import R from 'ramda';
+import { compose, branch, renderComponent, withProps } from 'recompose';
+import CalcButton from './CalculatorButton';
 import colors from '../../styles/colors';
 import styles from './CalculatorStyles';
 
-const getIcon = (name, color = colors.secondaryText) => ({
-  name,
-  style: { marginRight: 0 },
-  color,
-  size: 24,
-});
+const Button = onPress => token => <CalcButton key={token} token={token} onPress={onPress} />;
+
+const ButtonsGroup = (onPress, style) => ({ tokens }) => (
+  <View style={[styles.keyboardRowStyle, style]}>
+    {R.map(Button(onPress), tokens)}
+  </View>
+);
+
+const SubmitButton = branch(
+  R.prop('isReadyForSubmit'),
+  renderComponent(compose(withProps({
+    icon: { name: 'done', color: colors.defaultPrimary },
+  }))(CalcButton)),
+)(CalcButton);
 
 const Calculator = (props) => {
   const {
@@ -19,16 +29,11 @@ const Calculator = (props) => {
     onCalculate,
     onClear,
     onBackspace,
-    onSubmit,
+    onSubmitResult,
   } = props;
 
-  const submitButtonOptions = isReadyForSubmit ? {
-    icon: getIcon('done', colors.defaultPrimary),
-    onPress: onSubmit,
-  } : {
-    title: '=',
-    onPress: onCalculate,
-  };
+  const Group = ButtonsGroup(onPressToken, { flex: 2 });
+  const Row = ButtonsGroup(onPressToken);
 
   return (
     <View>
@@ -36,40 +41,23 @@ const Calculator = (props) => {
         <Text style={styles.expressionStyle}>{expr}</Text>
       </View>
       <View style={styles.keyboardRowStyle}>
-        <Button title="C" onPress={onClear} />
-        <Button token="/" onPress={onPressToken} />
-        <Button token="*" onPress={onPressToken} />
-        <Button icon={getIcon('backspace')} onPress={onBackspace} />
+        <CalcButton token="C" onPress={onClear} />
+        <Group tokens={['/', '*']} />
+        <CalcButton icon={{ name: 'backspace' }} onPress={onBackspace} />
       </View>
-      <View style={styles.keyboardRowStyle}>
-        <Button token="7" onPress={onPressToken} />
-        <Button token="8" onPress={onPressToken} />
-        <Button token="9" onPress={onPressToken} />
-        <Button token="-" onPress={onPressToken} />
-      </View>
-      <View style={styles.keyboardRowStyle}>
-        <Button token="4" onPress={onPressToken} />
-        <Button token="5" onPress={onPressToken} />
-        <Button token="6" onPress={onPressToken} />
-        <Button token="+" onPress={onPressToken} />
-      </View>
+      <Row tokens={['7', '8', '9', '-']} />
+      <Row tokens={['4', '5', '6', '+']} />
       <View style={styles.keyboardRowStyle}>
         <View style={styles.keyboardShortRowStyle}>
-          <View style={styles.keyboardRowStyle}>
-            <Button token="1" onPress={onPressToken} />
-            <Button token="2" onPress={onPressToken} />
-            <Button token="3" onPress={onPressToken} />
-          </View>
-          <View style={styles.keyboardRowStyle}>
-            <Button token="0" onPress={onPressToken} />
-            <Button token="000" onPress={onPressToken} />
-            <Button token="." onPress={onPressToken} />
-          </View>
+          <Row tokens={['1', '2', '3']} />
+          <Row tokens={['0', '000', '.']} />
         </View>
-        <Button
+        <SubmitButton
           containerStyle={styles.submitButtonContainerStyle}
           buttonStyle={styles.submitButtonStyle}
-          {...submitButtonOptions}
+          token="="
+          isReadyForSubmit={isReadyForSubmit}
+          onPress={isReadyForSubmit ? onSubmitResult : onCalculate}
         />
       </View>
     </View>
@@ -83,7 +71,7 @@ Calculator.propTypes = {
   onCalculate: PropTypes.func,
   onClear: PropTypes.func,
   onPressToken: PropTypes.func,
-  onSubmit: PropTypes.func,
+  onSubmitResult: PropTypes.func,
 };
 
 export default Calculator;
