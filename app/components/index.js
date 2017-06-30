@@ -4,6 +4,7 @@ import AccountTrigger from './AccountTrigger';
 import BarChart from './barChart/BarChart';
 import Calculator from './calculator';
 import CalculatorModal from './CalculatorModal';
+import Card from './Card';
 import CategoryTypeSelector from './CategoryTypeSelector';
 import CustomListItem from './CustomListItem';
 import DateIntervalSelector from './DateIntervalSelector';
@@ -35,6 +36,7 @@ export {
   BarChart,
   Calculator,
   CalculatorModal,
+  Card,
   CategoryTypeSelector,
   CustomListItem,
   DateIntervalSelector,

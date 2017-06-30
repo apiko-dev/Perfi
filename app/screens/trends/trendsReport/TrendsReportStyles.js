@@ -13,6 +13,9 @@ const styles = create({
       height: 24,
     },
   },
+  chartWrapperStyle: {
+    alignItems: 'center',
+  },
 });
 
 export default styles;
