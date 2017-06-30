@@ -32,7 +32,7 @@ const SingleSlice = (props) => {
             r={innerRadius}
             cx={centerX}
             cy={centerY}
-            fill={colors.backgroundColor}
+            fill={colors.white}
           />
         </G>
       </Svg>
