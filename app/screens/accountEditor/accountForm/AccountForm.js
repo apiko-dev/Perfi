@@ -5,7 +5,9 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import {
   ActionButton,
   CalculatorModal,
+  Card,
   IconsPickerModal,
+  PickerIcon,
   SecondaryText,
   TouchableFormInput,
 } from '../../../components';
@@ -34,25 +36,19 @@ const AccountForm = (props) => {
   } = props;
 
   return (
-    <View style={[appStyles.rootStyle, appStyles.withMarginTop]}>
-      <View style={[appStyles.rowStyle, appStyles.containerStyle, appStyles.withMarginBottom]}>
-        <Icon
+    <View style={appStyles.rootStyle}>
+      <Card wrapperStyle={appStyles.rowStyle}>
+        <PickerIcon
           onPress={onTogglePicker}
           name={icon}
-          type="material-community"
-          iconStyle={appStyles.iconStyle}
-          size={16}
-          raised
         />
         <FormInput
           inputStyle={appStyles.formInputStyle}
           value={name}
           onChangeText={onNameChange}
         />
-      </View>
-      <View
-        style={[appStyles.containerStyle, appStyles.blockStyle, appStyles.withVerticalPadding]}
-      >
+      </Card>
+      <Card>
         <SecondaryText>Initial balance</SecondaryText>
         <TouchableFormInput
           icon="calculator"
@@ -65,7 +61,7 @@ const AccountForm = (props) => {
           onPress={onToggleDatePicker}
           value={calendarDateFormat(date)}
         />
-      </View>
+      </Card>
       {isValid && (
         <ActionButton
           onPress={onSubmit}

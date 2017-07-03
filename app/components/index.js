@@ -17,6 +17,7 @@ import HeaderIcon from './HeaderIcon';
 import IconsPickerModal from './iconsPicker';
 import Loading from './Loading';
 import NavIcon from './NavIcon';
+import PickerIcon from './PickerIcon';
 import PropsProxyHOC from './PropsProxyHOC';
 import ActionButton from './ActionButton';
 import PieChart from './pieChart/PieChart';
@@ -42,12 +43,13 @@ export {
   DateIntervalSelector,
   Drawer,
   DrawerButton,
-  NavButton,
   FormInputWithIcon,
   HeaderIcon,
   IconsPickerModal,
   Loading,
+  NavButton,
   NavIcon,
+  PickerIcon,
   PieChart,
   PropsProxyHOC,
   ScreenWrapper,

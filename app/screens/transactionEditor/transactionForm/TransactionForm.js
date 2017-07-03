@@ -89,7 +89,7 @@ const TransactionForm = (props) => {
 };
 
 TransactionForm.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.any,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   account: PropTypes.object,
   category: PropTypes.object,
