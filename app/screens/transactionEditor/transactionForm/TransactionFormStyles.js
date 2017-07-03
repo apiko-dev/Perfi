@@ -3,9 +3,6 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   rootStyle: {
     flex: 1,
-    paddingTop: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
   },
   submitButtonStyle: {
     position: 'absolute',
