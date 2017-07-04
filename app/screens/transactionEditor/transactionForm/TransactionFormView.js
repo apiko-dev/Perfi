@@ -1,4 +1,4 @@
-import { compose, withHandlers, withProps, withState } from 'recompose';
+import { compose, withHandlers, withProps, withPropsOnChange, withState } from 'recompose';
 import R from 'ramda';
 import screens from '../../../constants/screens';
 import TransactionForm from './TransactionForm';
@@ -7,9 +7,16 @@ import styles from './TransactionFormStyles';
 
 const transactionProp = (propName, def) => R.pathOr(def, ['transaction', propName]);
 
+const requiredProps = ['value', 'account', 'category', 'date'];
+
 const isFieldsFilled = R.pipe(
   R.props,
   R.none(R.isNil),
+);
+
+const withSubmitState = withPropsOnChange(
+  requiredProps,
+  props => ({ isReadyForSubmit: isFieldsFilled(requiredProps, props) }),
 );
 
 const onChangeValue = ({ setValue, toggleCalculator }) => (value) => {
@@ -30,7 +37,6 @@ const onChangeCategory = ({ navigation, setCategory, readyForSubmit }) => () => 
   navigation.navigate(screens.Categories, {
     onSelectCategory: (category) => {
       setCategory(category);
-      readyForSubmit(true);
       navigation.goBack(null);
     },
   });
@@ -70,7 +76,6 @@ const enhance = compose(
   withProps(({ transaction, createTransaction, updateTransaction }) => ({
     submit: transaction ? updateTransaction : createTransaction,
   })),
-  withProps(props => ({ isReadyForSubmit: isFieldsFilled(props) })),
   withState('value', 'setValue', transactionProp('value', 0)),
   withState('account', 'setAccount', transactionProp('account')),
   withState('category', 'setCategory', transactionProp('category')),
@@ -78,7 +83,7 @@ const enhance = compose(
   withState('date', 'setDate', transactionProp('date', new Date())),
   withState('isDatePickerVisible', 'toggleDatePicker', false),
   withState('isCalculatorVisible', 'toggleCalculator', false),
-  withState('isReadyForSubmit', 'readyForSubmit', isFieldsFilled(['value', 'category', 'date'])),
+  withSubmitState,
   withHandlers({
     onChangeValue,
     onChangeAccount,

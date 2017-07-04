@@ -8,6 +8,7 @@ import {
   AccountTrigger,
   ActionButton,
   CalculatorModal,
+  Card,
   FormInputWithIcon,
   Selector,
   TouchableFormInput,
@@ -36,48 +37,45 @@ const TransferForm = (props) => {
   } = props;
 
   return (
-    <View style={[appStyles.rootStyle, appStyles.containerStyle, appStyles.withMarginTop]}>
-      <TouchableFormInput
-        icon="calculator"
-        value={value.toString()}
-        onPress={onToggleCalculator}
-      />
-      <Selector
-        options={accounts}
-        currentOption={accountFrom}
-        optionRenderer={AccountItem}
-        triggerRenderer={AccountTrigger}
-        onSelect={setAccountFrom}
-      />
-      <Icon
-        iconStyle={[appStyles.iconStyle, appStyles.withMarginTop]}
-        type="material-community"
-        name="arrow-down"
-      />
-      <Selector
-        options={accounts}
-        currentOption={accountTo}
-        optionRenderer={AccountItem}
-        triggerRenderer={AccountTrigger}
-        onSelect={setAccountTo}
-      />
-      <DateTimePicker
-        isVisible={isDatePickerVisible}
-        onConfirm={onDateChange}
-        onCancel={onToggleDatePicker}
-      />
-      <TouchableFormInput
-        icon="calendar"
-        onPress={onToggleDatePicker}
-        value={calendarDateFormat(date)}
-      />
-      <FormInputWithIcon
-        icon="pen"
-        value={notes}
-        onChangeText={setNotes}
-        placeholder="Notes"
-        multiline
-      />
+    <View style={appStyles.rootStyle}>
+      <Card>
+        <TouchableFormInput
+          icon="calculator"
+          value={value.toString()}
+          onPress={onToggleCalculator}
+        />
+        <Selector
+          options={accounts}
+          currentOption={accountFrom}
+          optionRenderer={AccountItem}
+          triggerRenderer={AccountTrigger}
+          onSelect={setAccountFrom}
+        />
+        <Icon
+          iconStyle={[appStyles.iconStyle, appStyles.withMarginTop]}
+          type="material-community"
+          name="arrow-down"
+        />
+        <Selector
+          options={accounts}
+          currentOption={accountTo}
+          optionRenderer={AccountItem}
+          triggerRenderer={AccountTrigger}
+          onSelect={setAccountTo}
+        />
+        <TouchableFormInput
+          icon="calendar"
+          onPress={onToggleDatePicker}
+          value={calendarDateFormat(date)}
+        />
+        <FormInputWithIcon
+          icon="pen"
+          value={notes}
+          onChangeText={setNotes}
+          placeholder="Notes"
+          multiline
+        />
+      </Card>
       {isValid && (
         <ActionButton
           onPress={onSubmit}
@@ -88,6 +86,11 @@ const TransferForm = (props) => {
         value={value}
         isVisible={isCalculatorVisible}
         onSubmit={onValueChange}
+      />
+      <DateTimePicker
+        isVisible={isDatePickerVisible}
+        onConfirm={onDateChange}
+        onCancel={onToggleDatePicker}
       />
     </View>
   );

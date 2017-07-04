@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     color: colors.textPrimary,
   },
   containerStyle: {
+    margin: 0,
     backgroundColor: colors.secondaryText,
   },
 });
