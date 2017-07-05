@@ -5,7 +5,7 @@ import navOptions from '../../utils/navOptions';
 const CategoriesNavigator = StackNavigator(CategoriesRoutes, {
   ...navOptions({
     title: 'Categories',
-    icon: 'cards-outline',
+    icon: 'view-list',
   }),
 });
 

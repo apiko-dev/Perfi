@@ -40,7 +40,7 @@ const TransactionsHeader = (props) => {
         onSelect={onSelectInterval}
       />
       <HeaderIcon
-        name={isChartShown ? 'view-list' : 'chart-arc'}
+        name={isChartShown ? 'format-list-bulleted' : 'chart-arc'}
         onPress={onToggleChart}
       />
     </View>
