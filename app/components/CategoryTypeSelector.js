@@ -3,11 +3,11 @@ import R from 'ramda';
 import Selector from './Selector';
 import TextItem from './TextItem';
 import FormInputWithIcon from './FormInputWithIcon';
-import { categoriesTypes } from '../constants/categories';
+import { categoriesTypes as types } from '../constants/categories';
 
 const CategoryTypeTrigger = type => (
   <FormInputWithIcon
-    icon="wallet"
+    icon={`arrow-${type === types.income ? 'down' : 'up'}-bold-circle`}
     value={type}
     editable={false}
   />
@@ -15,7 +15,7 @@ const CategoryTypeTrigger = type => (
 
 const CategoryTypeSelector = ({ currentType, onSelect }) => (
   <Selector
-    options={R.values(categoriesTypes)}
+    options={R.values(types)}
     currentOption={currentType}
     optionRenderer={TextItem}
     triggerRenderer={CategoryTypeTrigger}
