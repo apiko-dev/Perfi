@@ -1,11 +1,30 @@
 import React, { PropTypes } from 'react';
-import { Button, Platform, Text, View } from 'react-native';
-import screens from '../constants/screens';
-import { DrawerButton, PieChart } from '../components';
+import { Button, Image, Platform, StyleSheet, Text, View } from 'react-native';
+import screens from '../../constants/screens';
+import { Card, DrawerButton, SecondaryText } from '../../components';
+import appStyles from '../../styles/AppStyles';
+
+const logo = require('../../images/jss-logo.png');
+
+const styles = StyleSheet.create({
+  logoStyle: {
+    width: 32,
+    height: 32,
+    marginLeft: 8,
+    marginRight: 8,
+  },
+});
 
 const Settings = ({ navigation }) => (
   <View>
-    <Text>Settings</Text>
+    <Card wrapperStyle={appStyles.rowStyle}>
+      <SecondaryText>Made by</SecondaryText>
+      <Image
+        style={styles.logoStyle}
+        source={logo}
+      />
+      <SecondaryText>JSSolutions with love</SecondaryText>
+    </Card>
 
     { Platform.select({
       ios: (
