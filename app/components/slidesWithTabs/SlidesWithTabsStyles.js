@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions, Platform, StyleSheet } from 'react-native';
 import colors from '../../styles/colors';
 
 const { width: windowWidth } = Dimensions.get('window');
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.defaultPrimary,
   },
   currentTabStyle: {
+    top: Platform.OS === 'ios' ? -2 : 0,
     borderBottomWidth: 2,
     borderBottomColor: colors.accent,
   },

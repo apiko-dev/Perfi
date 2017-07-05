@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import { timeFormats } from '../../../utils/dateHelpers';
-import { BarChart, TouchableFormInput } from '../../../components';
+import { BarChart, Card, TouchableFormInput } from '../../../components';
 import TrendsList from '../trendsList';
 import appStyles from '../../../styles/AppStyles';
 import styles from './TrendsReportStyles';
@@ -27,8 +27,8 @@ const TrendsReport = (props) => {
   } = props;
 
   return (
-    <View style={[appStyles.rootStyle, appStyles.containerStyle, appStyles.withMarginTop]}>
-      <View style={[appStyles.rowStyle, styles.dateRangeStyle]}>
+    <ScrollView style={appStyles.rootStyle}>
+      <Card wrapperStyle={[appStyles.rowStyle, styles.dateRangeStyle]}>
         <TouchableFormInput
           style={styles.dateButtonStyle}
           value={moment(dateFrom).format(timeFormats.month)}
@@ -41,17 +41,21 @@ const TrendsReport = (props) => {
           icon="calendar"
           onPress={onOpenDatePicker('dateTo')}
         />
-      </View>
-      <BarChart
-        data={chartData}
-        labels={labels}
-      />
-      <TrendsList
-        totals={totals}
-        months={months}
-        averageIncome={averageIncome}
-        averageExpense={averageExpense}
-      />
+      </Card>
+      <Card wrapperStyle={styles.chartWrapperStyle}>
+        <BarChart
+          data={chartData}
+          labels={labels}
+        />
+      </Card>
+      <Card>
+        <TrendsList
+          totals={totals}
+          months={months}
+          averageIncome={averageIncome}
+          averageExpense={averageExpense}
+        />
+      </Card>
       <DateTimePicker
         minimumDate={minDate}
         maximumDate={maxDate}
@@ -59,7 +63,7 @@ const TrendsReport = (props) => {
         onConfirm={onSetDate}
         onCancel={onCloseDatePicker}
       />
-    </View>
+    </ScrollView>
   );
 };
 

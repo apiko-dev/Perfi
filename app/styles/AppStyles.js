@@ -1,9 +1,6 @@
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import colors from './colors';
-
-const indent = 10;
-const doubleIndent = indent * 2;
-const iconMargin = Platform.OS === 'android' ? 16 : 10;
+import { indent, doubleIndent, iconMargin } from './dimensions';
 
 const styles = StyleSheet.create({
   blockStyle: {

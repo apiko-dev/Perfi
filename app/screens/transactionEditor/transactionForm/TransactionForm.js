@@ -6,6 +6,7 @@ import R from 'ramda';
 import {
   ActionButton,
   CalculatorModal,
+  Card,
   FormInputWithIcon,
   TouchableFormInput,
 } from '../../../components';
@@ -35,35 +36,37 @@ const TransactionForm = (props) => {
 
   return (
     <View style={style.rootStyle}>
-      <TouchableFormInput
-        icon="calculator"
-        value={value.toString()}
-        onPress={onToggleCalculator}
-      />
-      <TouchableFormInput
-        value={account && account.name}
-        icon={defaultIcon(account)}
-        placeholder="Account"
-        onPress={onChangeAccount}
-      />
-      <TouchableFormInput
-        value={category && category.name}
-        icon={defaultIcon(category)}
-        placeholder="Category"
-        onPress={onChangeCategory}
-      />
-      <TouchableFormInput
-        value={moment(date).format('dddd, L')}
-        icon="calendar"
-        onPress={onToggleDatePicker}
-      />
-      <FormInputWithIcon
-        value={note}
-        icon="lead-pencil"
-        placeholder="Note"
-        multiline
-        onChangeText={onUpdateNote}
-      />
+      <Card>
+        <TouchableFormInput
+          icon="calculator"
+          value={value.toString()}
+          onPress={onToggleCalculator}
+        />
+        <TouchableFormInput
+          value={account && account.name}
+          icon={defaultIcon(account)}
+          placeholder="Account"
+          onPress={onChangeAccount}
+        />
+        <TouchableFormInput
+          value={category && category.name}
+          icon={defaultIcon(category)}
+          placeholder="Category"
+          onPress={onChangeCategory}
+        />
+        <TouchableFormInput
+          value={moment(date).format('dddd, L')}
+          icon="calendar"
+          onPress={onToggleDatePicker}
+        />
+        <FormInputWithIcon
+          value={note}
+          icon="lead-pencil"
+          placeholder="Note"
+          multiline
+          onChangeText={onUpdateNote}
+        />
+      </Card>
       {isReadyForSubmit && (
         <ActionButton
           style={style.submitButtonStyle}
@@ -86,7 +89,7 @@ const TransactionForm = (props) => {
 };
 
 TransactionForm.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.any,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   account: PropTypes.object,
   category: PropTypes.object,

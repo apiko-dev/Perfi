@@ -4,6 +4,7 @@ import AccountTrigger from './AccountTrigger';
 import BarChart from './barChart/BarChart';
 import Calculator from './calculator';
 import CalculatorModal from './CalculatorModal';
+import Card from './Card';
 import CategoryTypeSelector from './CategoryTypeSelector';
 import CustomListItem from './CustomListItem';
 import DateIntervalSelector from './DateIntervalSelector';
@@ -16,6 +17,7 @@ import HeaderIcon from './HeaderIcon';
 import IconsPickerModal from './iconsPicker';
 import Loading from './Loading';
 import NavIcon from './NavIcon';
+import PickerIcon from './PickerIcon';
 import PropsProxyHOC from './PropsProxyHOC';
 import ActionButton from './ActionButton';
 import PieChart from './pieChart/PieChart';
@@ -35,17 +37,19 @@ export {
   BarChart,
   Calculator,
   CalculatorModal,
+  Card,
   CategoryTypeSelector,
   CustomListItem,
   DateIntervalSelector,
   Drawer,
   DrawerButton,
-  NavButton,
   FormInputWithIcon,
   HeaderIcon,
   IconsPickerModal,
   Loading,
+  NavButton,
   NavIcon,
+  PickerIcon,
   PieChart,
   PropsProxyHOC,
   ScreenWrapper,

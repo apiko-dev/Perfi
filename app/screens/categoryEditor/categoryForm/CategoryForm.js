@@ -4,7 +4,9 @@ import { FormInput, Icon } from 'react-native-elements';
 import {
   ActionButton,
   CategoryTypeSelector,
+  Card,
   IconsPickerModal,
+  PickerIcon,
 } from '../../../components';
 import appStyles from '../../../styles/AppStyles';
 
@@ -24,26 +26,24 @@ const CategoryForm = (props) => {
   } = props;
 
   return (
-    <View style={[appStyles.rootStyle, appStyles.containerStyle, appStyles.withMarginTop]}>
-      <View style={appStyles.rowStyle}>
-        <Icon
-          name={icon}
-          onPress={togglePicker}
-          iconStyle={appStyles.iconStyle}
-          size={16}
-          type="material-community"
-          raised
+    <View style={appStyles.rootStyle}>
+      <Card>
+        <View style={[appStyles.rowStyle, appStyles.withMarginBottom]}>
+          <PickerIcon
+            name={icon}
+            onPress={togglePicker}
+          />
+          <FormInput
+            inputStyle={appStyles.formInputStyle}
+            value={name}
+            onChangeText={setName}
+          />
+        </View>
+        <CategoryTypeSelector
+          currentType={type}
+          onSelect={setType}
         />
-        <FormInput
-          inputStyle={appStyles.formInputStyle}
-          value={name}
-          onChangeText={setName}
-        />
-      </View>
-      <CategoryTypeSelector
-        currentType={type}
-        onSelect={setType}
-      />
+      </Card>
       {isValid && (
         <ActionButton
           onPress={onSubmit}

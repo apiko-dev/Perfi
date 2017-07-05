@@ -49,9 +49,11 @@ const average = arr => R.divide(
   R.length(arr),
 );
 
+const round = x => Math.round(x * 100) / 100;
+
 const withAverageData = withProps(({ chartData }) => ({
-  averageIncome: average(chartData[0]),
-  averageExpense: average(chartData[1]),
+  averageIncome: round(average(chartData[0])),
+  averageExpense: round(average(chartData[1])),
 }));
 
 const withDateLimits = withPropsOnChange(

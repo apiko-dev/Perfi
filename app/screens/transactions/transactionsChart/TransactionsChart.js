@@ -1,11 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Text, View } from 'react-native';
-import { PieChart } from '../../../components';
-import appStyles from '../../../styles/AppStyles';
+import { Card, PieChart } from '../../../components';
 import styles from './TransactionsChartStyles';
 
 const TransactionsChart = ({ chartData, balance, expenses, incomes }) => (
-  <View style={[appStyles.containerStyle, appStyles.withMarginTop]}>
+  <Card>
     <View style={styles.chartContainerStyle}>
       <PieChart data={chartData} />
       <View style={styles.chartTextContainerStyle}>
@@ -14,7 +13,7 @@ const TransactionsChart = ({ chartData, balance, expenses, incomes }) => (
       </View>
     </View>
     <Text style={[styles.textStyle, styles.balanceTextStyle]}>Balance: {balance}</Text>
-  </View>
+  </Card>
 );
 
 TransactionsChart.propTypes = {

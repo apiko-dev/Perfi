@@ -11,7 +11,7 @@ const withAccount = withProps(({ navigation }) => ({
 }));
 
 const withValidation = withProps(({ name }) => ({
-  isValid: name && name.length > 0,
+  isValid: !!name && name.length > 0,
 }));
 
 const withSubmitEvent = withProps(({ account, createAccount, updateAccount }) => ({

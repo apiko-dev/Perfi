@@ -25,6 +25,7 @@ const NavButton = (props) => {
       iconStyle={styles.headerIconStyle}
       name={iconName}
       type={iconType}
+      underlayColor="transparent"
       onPress={onPress}
     />
   ) : null;
