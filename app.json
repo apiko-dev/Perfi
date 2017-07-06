@@ -10,7 +10,9 @@
       "backgroundColor": "#689F38",
       "barStyle": "light-content"
     },
+    "icon": "./app/images/app-icon.png",
     "loading": {
+      "icon": "./app/images/app-logo.png",
       "backgroundColor": "#689F38",
       "hideExponentText": true
     }
