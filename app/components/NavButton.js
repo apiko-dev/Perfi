@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import styles from '../styles/AppStyles';

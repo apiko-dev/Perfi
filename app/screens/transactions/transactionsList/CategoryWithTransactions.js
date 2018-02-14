@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Platform, Text, TouchableOpacity, TouchableNativeFeedback, View } from 'react-native';
 import { Badge, Icon } from 'react-native-elements';
 import R from 'ramda';

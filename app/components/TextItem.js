@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, Text } from 'react-native';
 import { capitalizeFirstLetter } from '../utils/stringHelper';
 import colors from '../styles/colors';

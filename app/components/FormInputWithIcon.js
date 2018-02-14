@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, View } from 'react-native';
 import { FormInput } from 'react-native-elements';
 import { MaterialCommunityIcons } from '@expo/vector-icons';

@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import { REHYDRATE } from 'redux-persist/constants';
+import { REHYDRATE } from 'redux-persist/lib/constants';
 
 const initialState = { isReady: false };
 

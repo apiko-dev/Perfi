@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { ListItem } from 'react-native-elements';
 import moment from 'moment';
 import styles from './TransactionItemStyles';

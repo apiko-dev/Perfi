@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { FormInput, Icon } from 'react-native-elements';
 import { View } from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
