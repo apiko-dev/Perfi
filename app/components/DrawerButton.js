@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import HeaderIcon from './HeaderIcon';
 import screens from '../constants/screens';
 
@@ -10,7 +11,7 @@ const DrawerButton = ({ navigation }) => (
 );
 
 DrawerButton.propTypes = {
-  navigation: React.PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default DrawerButton;

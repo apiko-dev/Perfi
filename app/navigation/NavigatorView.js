@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet } from 'react-native';
 import { addNavigationHelpers } from 'react-navigation';
 import { Loading } from '../components';

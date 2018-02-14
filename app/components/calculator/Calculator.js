@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
 import R from 'ramda';
 import { compose, branch, renderComponent, withProps } from 'recompose';

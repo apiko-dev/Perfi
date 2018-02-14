@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { TouchableWithoutFeedback } from 'react-native';
 import Modal from 'react-native-modal';
 import styles from './IconsPickerStyles';
