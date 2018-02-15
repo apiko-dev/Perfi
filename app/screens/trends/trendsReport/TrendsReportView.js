@@ -22,7 +22,7 @@ const withLabels = withProps(({ months }) => ({
 }));
 
 const withTotals = withProps(({ months, transactions, categories }) => {
-  const totals = R.map((month) => {
+  const totals = transactions ? R.map((month) => {
     const period = { from: month, to: endOfMonth(month) };
     const trs = R.filter(inDateRange(period), transactions);
     const expense = R.values(getExpenses(categories)(trs));
@@ -32,16 +32,16 @@ const withTotals = withProps(({ months, transactions, categories }) => {
       [types.expense]: getSum(expense),
       [types.income]: getSum(income),
     };
-  }, months);
+  }, months) : [];
 
   return { totals };
 });
 
 const withChartData = withProps(({ totals }) => ({
-  chartData: R.reduce((acc, val) => [
+  chartData: totals.length ? R.reduce((acc, val) => [
     [...acc[0], { value: val[types.income] }],
     [...acc[1], { value: val[types.expense] }],
-  ], [[], []], totals),
+  ], [[], []], totals) : [],
 }));
 
 const average = arr => R.divide(
@@ -52,8 +52,8 @@ const average = arr => R.divide(
 const round = x => Math.round(x * 100) / 100;
 
 const withAverageData = withProps(({ chartData }) => ({
-  averageIncome: round(average(chartData[0])),
-  averageExpense: round(average(chartData[1])),
+  averageIncome: chartData.length ? round(average(chartData[0])) : 0,
+  averageExpense: chartData.length ? round(average(chartData[1])) : 0,
 }));
 
 const withDateLimits = withPropsOnChange(

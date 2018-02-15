@@ -42,7 +42,7 @@ const BarChart = (props) => {
     labels,
   } = { ...options, ...props };
 
-  const maxValue = getMaxValue(data);
+  const maxValue = data.length ? getMaxValue(data) : 1;
   const dec = Math.round(Math.log(maxValue) / Math.log(10));
   const lineStep = 10 ** (dec > 1 ? dec - 1 : dec);
   const linesNumber = Math.ceil(maxValue / lineStep);

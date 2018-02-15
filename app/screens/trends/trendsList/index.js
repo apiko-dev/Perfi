@@ -8,13 +8,13 @@ import TrendsListItem from './TrendsListItem';
 
 const renderTrendItem = (months, totals) => (i) => {
   const label = formatMonth(months[i], timeFormats.monthLong);
-  const total = totals[i];
+  const total = totals.length ? totals[i] : undefined;
 
   return (
     <TrendsListItem
       label={label}
-      income={total[types.income]}
-      expense={total[types.expense]}
+      income={total ? total[types.income] : 0}
+      expense={total ? total[types.expense] : 0}
     />
   );
 };

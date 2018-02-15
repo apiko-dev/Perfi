@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, ViewPropTypes} from 'react-native';
 import {Icon} from 'react-native-elements';
 import colors from '../styles/colors';
 
@@ -67,13 +67,13 @@ const TextWithIcons = (props) => {
 
 TextWithIcons.propTypes = {
 	leftIcon: PropTypes.string,
-	leftIconStyle: View.propTypes.style,
+	leftIconStyle: ViewPropTypes.style,
 	rightIcon: PropTypes.string,
-	rightIconStyle: View.propTypes.style,
+	rightIconStyle: ViewPropTypes.style,
 	text: PropTypes.string,
 	textStyle: Text.propTypes.style,
 	color: PropTypes.string,
-	containerStyle: View.propTypes.style,
+	containerStyle: ViewPropTypes.style,
 };
 
 export default TextWithIcons;

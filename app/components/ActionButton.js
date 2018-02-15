@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewPropTypes } from 'react-native';
 import { Button } from 'react-native-elements';
 import colors from '../styles/colors';
 
@@ -40,7 +40,7 @@ const ActionButton = ({ style, iconName, color, ...props }) => (
 ActionButton.propTypes = {
   color: PropTypes.string,
   iconName: PropTypes.string,
-  style: View.propTypes.style,
+  style: ViewPropTypes.style,
 };
 
 export default ActionButton;
