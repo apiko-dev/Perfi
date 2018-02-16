@@ -15,6 +15,12 @@
       "icon": "./app/images/app-logo.png",
       "backgroundColor": "#689F38",
       "hideExponentText": true
+    },
+    "name": "Perfi",
+    "version": "0.0.1",
+    "slug": "apiko-perfi-app",
+    "android": {
+      "package": "com.apiko.perfi"
     }
   }
 }

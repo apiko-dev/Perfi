@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { View, ViewPropTypes } from 'react-native';
 import { Button } from 'react-native-elements';
 import colors from '../../styles/colors';
 import styles from './CalculatorButtonStyles';
@@ -40,8 +40,8 @@ const CalculatorButton = (props) => {
 };
 
 CalculatorButton.propTypes = {
-  containerStyle: View.propTypes.style,
-  buttonStyle: View.propTypes.style,
+  containerStyle: ViewPropTypes.style,
+  buttonStyle: ViewPropTypes.style,
   title: PropTypes.string,
   token: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   icon: PropTypes.object,

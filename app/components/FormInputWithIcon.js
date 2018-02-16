@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewPropTypes } from 'react-native';
 import { FormInput } from 'react-native-elements';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import appStyles from '../styles/AppStyles';
@@ -36,9 +36,9 @@ const FormInputWithIcon = (props) => {
 };
 
 FormInputWithIcon.propTypes = {
-  containerStyle: View.propTypes.style,
-  iconStyle: View.propTypes.style,
-  inputStyle: View.propTypes.style,
+  containerStyle: ViewPropTypes.style,
+  iconStyle: ViewPropTypes.style,
+  inputStyle: ViewPropTypes.style,
   icon: PropTypes.string,
 };
 

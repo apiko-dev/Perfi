@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewPropTypes } from 'react-native';
 import { CircleSnail } from 'react-native-progress';
 import colors from '../styles/colors';
 
@@ -26,7 +26,7 @@ Loading.propTypes = {
   size: PropTypes.number,
   color: PropTypes.string,
   thickness: PropTypes.number,
-  containerStyle: PropTypes.oneOfType([PropTypes.object, View.propTypes.style]),
+  containerStyle: PropTypes.oneOfType([PropTypes.object, ViewPropTypes.style]),
 };
 
 export default Loading;

@@ -10,7 +10,7 @@ const createTransaction = (props) => {
   return { value, account, category, date, note };
 };
 
-const initialState = insertAll({}, testTransactions.map(createTransaction));
+const initialState = insertAll({}, []);
 
 const transactionsReducer = handleActions({
   [actionTypes.CREATE_TRANSACTION]: (state, { payload }) => insert(
