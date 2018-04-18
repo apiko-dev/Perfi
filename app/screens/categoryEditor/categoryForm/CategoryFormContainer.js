@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { createCategory, updateCategory } from '../../../actions';
+import { categoriesOperations } from '../../../modules/categories';
 import CategoryFormView from './CategoryFormView';
 
-export default connect(null, { createCategory, updateCategory })(CategoryFormView);
+
+export default connect(null, categoriesOperations)(CategoryFormView);

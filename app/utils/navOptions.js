@@ -1,17 +1,17 @@
-import { Platform } from 'react-native';
-import { NavIcon, PropsProxyHOC } from '../components';
+import React from 'react';
+import { NavIcon, PropsProxyHOC, Logo } from '../components';
 import styles from '../styles/AppStyles';
-import colors from '../styles/colors';
+
 
 const navOptions = ({ title, icon }) => ({
   navigationOptions: {
     title,
-    [Platform.select({
-      android: 'drawerIcon',
-      ios: 'tabBarIcon',
-    })]: PropsProxyHOC(NavIcon, { name: icon }),
+    headerTitle: <Logo />,
+    drawerIcon: PropsProxyHOC(NavIcon, { name: icon }),
     headerStyle: styles.headerStyle,
-    headerTintColor: colors.textPrimary,
+    headerTitleStyle: styles.headerTitleStyle,
+    headerBackTitle: null,
+
   },
 });
 

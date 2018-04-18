@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { deleteCategory } from '../../../actions';
+import { categoriesOperations } from '../../../modules/categories';
 import DeleteCategoryButtonView from './DeleteCategoryButtonView';
 
-export default connect(null, { deleteCategory })(DeleteCategoryButtonView);
+export default connect(null, categoriesOperations)(DeleteCategoryButtonView);

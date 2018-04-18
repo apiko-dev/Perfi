@@ -1,4 +1,29 @@
 export default {
+
+  white: '#ffffff',
+  black: '#131314',
+  grey: '#D7DFE3',
+  greyDarker: '#afb8bb',
+  green: '#27ae60',
+  greenLight: '#05c46b',
+  orange: '#f39c12',
+  blue: '#2980b9',
+  red: '#ef1f28',
+
+
+
+  primary: '#504B4B',
+  primaryDarken: '#323131',
+  secondary: '#1CD493',
+  secondaryOpacity: 'rgba(28, 212, 147, .4)',
+    // error: '#FF445B',
+    // white: '#FFFFFF',
+  lightGrey: '#dbdbdb',
+
+  darkGrey: '#7A7777',
+  transparent: 'rgba(0, 0, 0, 0)',
+
+
   // material light-green/orange
   darkPrimary: '#689F38',
   defaultPrimary: '#8BC34A',
@@ -16,8 +41,7 @@ export default {
   error: '#F44336',
 
   // additional
-  white: '#ffffff',
-  black: '#000000',
+
   gray: '#848b90',
   lightGray: '#F5F5F5',
   lightShadow: 'rgba(0, 0, 0, 0.05)',
