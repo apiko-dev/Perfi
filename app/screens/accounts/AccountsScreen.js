@@ -1,24 +1,49 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
+
+import { View, FlatList } from 'react-native';
 import screens from '../../constants/screens';
 import {
-  ActionButton,
-  ScreenWrapper,
   NavButton,
+  Subtitle,
+  AccountItem,
 } from '../../components';
-import AccountsListContainer from './accountsList/AccountsListContainer';
+import s from './AccountsStyles';
 
 const onNavigate = (nav, screen, params) => () => nav.navigate(screen, params);
 
-const Accounts = ({ navigation }) => (
-  <ScreenWrapper>
-    <AccountsListContainer navigation={navigation} />
-    <ActionButton
-      iconName="add"
-      onPress={onNavigate(navigation, screens.AccountEditor, { title: 'Add account' })}
+const Accounts = ({ accounts, onPress, onAddAccount, totalBalance }) => {
+  const _keyExtractor = item => item.id;
+
+  /* eslint-disable react/prop-types */
+  const _renderItem = ({ item }) => (
+    <AccountItem
+      name={item.name}
+      initialBalance={item.initialBalance}
+      color={item.color}
+      onPress={item.isAddButton ? onAddAccount : () => onPress(item)}
+      isAddButton={item.isAddButton}
     />
-  </ScreenWrapper>
-);
+  );
+
+  return (
+    <View style={s.root}>
+      <Subtitle
+        style={s.subtitle}
+        leftText="Accounts"
+        totalBalance={totalBalance}
+      />
+      <FlatList
+        data={accounts}
+        keyExtractor={_keyExtractor}
+        renderItem={_renderItem}
+        numColumns={3}
+        style={s.paddingHorizontal}
+        bounces={false}
+      />
+    </View>
+  );
+};
 
 Accounts.navigationOptions = ({ navigation }) => ({
   headerRight: (
@@ -32,7 +57,10 @@ Accounts.navigationOptions = ({ navigation }) => ({
 });
 
 Accounts.propTypes = {
-  navigation: PropTypes.object,
+  accounts: T.array,
+  onPress: T.func,
+  onAddAccount: T.func,
+  totalBalance: T.number,
 };
 
 export default Accounts;

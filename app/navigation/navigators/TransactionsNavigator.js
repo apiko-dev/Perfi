@@ -16,8 +16,8 @@ const TransactionsNavigator = StackNavigator({
   ...CategoriesRoutes,
 }, {
   ...navOptions({
-    title: 'Transactions',
-    icon: 'chart-arc',
+    title: 'Home',
+    icon: 'home',
   }),
 });
 

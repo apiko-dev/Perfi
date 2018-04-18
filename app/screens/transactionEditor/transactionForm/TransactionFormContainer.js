@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createTransaction, updateTransaction } from '../../../actions';
+import { transactionsOperations } from '../../../modules/transactions';
 import { getParam } from '../../../utils/navHelpers';
 import TransactionForm from './TransactionFormView';
 
@@ -15,7 +15,4 @@ const mapStateToProps = ({ accounts, categories }, { navigation }) => {
   } : {};
 };
 
-export default connect(mapStateToProps, {
-  createTransaction,
-  updateTransaction,
-})(TransactionForm);
+export default connect(mapStateToProps, transactionsOperations)(TransactionForm);

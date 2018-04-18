@@ -16,7 +16,7 @@ const AccountEditor = ({ navigation }) => (
 );
 
 AccountEditor.navigationOptions = ({ navigation }) => ({
-  title: getParam('account')(navigation) ? 'Edit Account' : 'New Account',
+  headerTitle: getParam('account')(navigation) ? 'Edit account' : 'New account',
   headerRight: <DeleteAccountButtonContainer navigation={navigation} />,
 });
 

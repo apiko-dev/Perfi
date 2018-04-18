@@ -1,0 +1,4 @@
+export default {
+  IMAGES_LOADED: 'IMAGES_LOADED',
+  FONTS_LOADED: 'FONTS_LOADED',
+};

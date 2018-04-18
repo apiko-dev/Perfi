@@ -15,13 +15,16 @@ export default {
   CategoriesIncome: 'Income',
   CategoriesExpense: 'Expense',
   CategoryEditor: 'CategoryEditor',
-  
+
   SettingsRoot: 'SettingsRoot',
   Settings: 'Settings',
 
+  FavouritesRoot: 'FavouritesRoot',
+  Favourites: 'Favourites',
+
   TrendsRoot: 'TrendsRoot',
   Trends: 'Trends',
-  
+
   DrawerOpen: 'DrawerOpen',
   DrawerClose: 'DrawerClose',
 };

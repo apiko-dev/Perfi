@@ -1,8 +1,7 @@
-import { mapProps } from 'recompose';
+import { withProps } from 'recompose';
 
-const withStyle = style => mapProps(props => ({
-  ...props,
-  style: { ...style, ...props.style },
+const withStyle = style => withProps(props => ({
+  style: [style, props.style],
 }));
 
 export default withStyle;

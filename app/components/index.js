@@ -1,4 +1,3 @@
-import AccountItem from './AccountItem';
 import AccountHeaderTrigger from './AccountHeaderTrigger';
 import AccountTrigger from './AccountTrigger';
 import BarChart from './barChart/BarChart';
@@ -10,7 +9,7 @@ import CustomListItem from './CustomListItem';
 import DateIntervalSelector from './DateIntervalSelector';
 import NavButton from './NavButton';
 import SelectBox from './selectBox';
-import Drawer from './Drawer';
+import Drawer from './Drawer/Drawer';
 import DrawerButton from './DrawerButton';
 import FormInputWithIcon from './FormInputWithIcon';
 import HeaderIcon from './HeaderIcon';
@@ -28,10 +27,17 @@ import SlidesWithTabs from './slidesWithTabs';
 import TouchableFormInput from './TouchableFormInput';
 import TextItem from './TextItem';
 import TextWithIcons from './TextWithIcons';
+import Text from './Text';
+import AccountItem from './AccountItem';
+import Subtitle from './Subtitle';
+import Logo from './Logo';
+import Icon from './Icon';
+
+
+import TouchableItem from './TouchableItem';
 
 export {
   AccountHeaderTrigger,
-  AccountItem,
   AccountTrigger,
   ActionButton,
   BarChart,
@@ -60,4 +66,10 @@ export {
   TextItem,
   TextWithIcons,
   TouchableFormInput,
+  Text,
+  AccountItem,
+  Subtitle,
+  TouchableItem,
+  Logo,
+  Icon,
 };

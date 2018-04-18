@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import colors from './colors';
-import { indent, doubleIndent, iconMargin } from './dimensions';
+import { indent, doubleIndent, headerHeight } from './dimensions';
 
 const styles = StyleSheet.create({
   blockStyle: {
@@ -14,15 +14,14 @@ const styles = StyleSheet.create({
     color: colors.primaryText,
   },
   headerIconStyle: {
-    marginLeft: iconMargin,
-    marginRight: iconMargin,
-    fontSize: 26,
-    color: colors.textPrimary,
+    fontSize: 30,
+    color: colors.greyDarker,
   },
   headerStyle: {
+    height: headerHeight,
     paddingLeft: indent,
     paddingRight: indent,
-    backgroundColor: colors.defaultPrimary,
+    backgroundColor: colors.white,
   },
   headerTextStyle: {
     fontSize: 16,

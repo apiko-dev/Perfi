@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createAccount, updateAccount } from '../../../actions';
+import { accountsOperations } from '../../../modules/accounts';
 import AccountFormView from './AccountFormView';
 
-export default connect(null, { createAccount, updateAccount })(AccountFormView);
+export default connect(null, accountsOperations)(AccountFormView);

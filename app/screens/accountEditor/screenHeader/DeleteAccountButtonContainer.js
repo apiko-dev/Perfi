@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { deleteAccount } from '../../../actions';
+import { accountsOperations } from '../../../modules/accounts';
 import DeleteAccountButtonView from './DeleteAccountButtonView';
 
-export default connect(null, { deleteAccount })(DeleteAccountButtonView);
+export default connect(null, accountsOperations)(DeleteAccountButtonView);
