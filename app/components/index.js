@@ -32,6 +32,13 @@ import AccountItem from './AccountItem';
 import Subtitle from './Subtitle';
 import Logo from './Logo';
 import Icon from './Icon';
+import Input from './Input';
+import Button from './Button';
+import KeyboardAvoidingView from './KeyboardAvoidingView';
+import DatePicker from './DatePicker';
+import HeaderTitle from './HeaderTitle';
+import VerticalSeparator from './VerticalSeparator';
+import HeaderTextButton from './HeaderTextButton';
 
 
 import TouchableItem from './TouchableItem';
@@ -72,4 +79,11 @@ export {
   TouchableItem,
   Logo,
   Icon,
+  Input,
+  Button,
+  KeyboardAvoidingView,
+  DatePicker,
+  HeaderTitle,
+  VerticalSeparator,
+  HeaderTextButton,
 };

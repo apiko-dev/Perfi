@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
-import { View, ViewPropTypes } from 'react-native';
-import { TouchableItem, Text, NavIcon } from '../../components';
+import { View, ViewPropTypes, TouchableOpacity } from 'react-native';
+import { Text, NavIcon } from '../../components';
 import { colors } from '../../styles';
 import s from './styles';
 
@@ -17,7 +17,7 @@ const AccountItem = ({
    ...props
 }) => (
 
-  <TouchableItem
+  <TouchableOpacity
     onPress={onPress}
     style={[s.container, containerStyle]}
     {...props}
@@ -42,7 +42,7 @@ const AccountItem = ({
       </View>
     </View>
 
-  </TouchableItem>
+  </TouchableOpacity>
 
 
 );

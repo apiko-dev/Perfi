@@ -4,11 +4,20 @@ import { StyleSheet, View, ViewPropTypes } from 'react-native';
 import { FormInput } from 'react-native-elements';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import appStyles from '../styles/AppStyles';
+import { colors, dimensions } from '../styles';
+
+const { indent, verticalIndent } = dimensions;
 
 const styles = StyleSheet.create({
   containerWithIconStyle: {
     flexDirection: 'row',
     alignItems: 'center',
+    height: verticalIndent * 3,
+    paddingLeft: indent,
+    paddingRight: indent,
+    borderColor: colors.greyDarker,
+    borderWidth: 1,
+    borderRadius: 4,
   },
   inputWithIconStyle: {
     marginLeft: 10,

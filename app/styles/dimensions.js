@@ -1,11 +1,14 @@
 import { Platform, Dimensions } from 'react-native';
-import { moderateScale } from './scalingUtils';
+import { moderateScale, verticalScale } from './scalingUtils';
 const { width } = Dimensions.get('window');
 
 export const indent = moderateScale(16);
 export const halfIndent = moderateScale(indent / 2);
 export const doubleIndent = moderateScale(indent * 2);
 
+export const verticalIndent = verticalScale(indent);
+
+export const iconSize = indent * 1.5;
 export const iconMargin = Platform.OS === 'android' ? 16 : 10;
 
 

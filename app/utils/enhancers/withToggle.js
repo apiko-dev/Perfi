@@ -1,12 +1,15 @@
-import { compose, withState, withHandlers } from 'recompose';
+import { compose, withHandlers, withState } from 'recompose';
 
-const withToggle = compose(
-  withState('isOn', 'toggle', false),
+export default (
+  stateName,
+  updaterName,
+  handlerName,
+  intitialState = false,
+) => compose(
+  withState(stateName, updaterName, intitialState),
   withHandlers({
-    on: ({ toggle }) => () => toggle(true),
-    off: ({ toggle }) => () => toggle(false),
-    toggle: ({ toggle }) => () => toggle(current => !current),
+    [handlerName]: props => () => {
+      props[updaterName](!props[stateName]);
+    },
   }),
 );
-
-export default withToggle;
