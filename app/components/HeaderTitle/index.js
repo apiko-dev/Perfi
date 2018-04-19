@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import PropTypes from 'prop-types';
-import styles from '../../styles';
+import T from 'prop-types';
 import Text from '../Text';
 import VerticalSeparator from '../VerticalSeparator';
 import s from './styles';
@@ -39,10 +38,10 @@ const HeaderTitle = ({
 );
 
 HeaderTitle.propTypes = {
-  rightTitle: PropTypes.string,
+  rightTitle: T.string,
   rightTitleStyle: Text.propTypes.style,
   style: Text.propTypes.style,
-  title: PropTypes.string.isRequired,
+  title: T.string.isRequired,
   titleStyle: Text.propTypes.style,
 };
 

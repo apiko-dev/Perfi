@@ -1,7 +1,7 @@
 import { compose, withHandlers, withState, withProps, defaultProps, hoistStatics } from 'recompose';
 import R from 'ramda';
 import { connect } from 'react-redux';
-
+import { Keyboard } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import AccountEditorScreenView from './AccountEditorScreenView';
 import { getParam } from '../../utils/navHelpers';
@@ -41,6 +41,7 @@ const onSelectColor = ({ setColor, toggleColorPicker }) => (color) => {
 };
 
 const onSubmit = ({ submit, account, navigation, ...props }) => () => {
+  Keyboard.dismiss();
   const editedProps =
     R.pick(['name', 'currency', 'date', 'initialBalance', 'balance', 'color'], props);
   const propsToSubmit = account ? { id: account.id, ...editedProps } : editedProps;
@@ -56,7 +57,7 @@ const enhance = compose(
   withState('initialBalance', 'onInitialBalanceChange', accountProp('initialBalance', 0)),
   withState('balance', 'setBalance', accountProp('balance')),
   withState('date', 'setDate', accountProp('date', new Date())),
-  withState('color', 'setColor', accountProp('color')),
+  withState('color', 'setColor', accountProp('color', colors.green)),
   withState('isColorPickerVisible', 'toggleColorPicker', false),
 
   defaultProps({

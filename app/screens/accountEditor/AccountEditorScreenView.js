@@ -4,7 +4,7 @@ import T from 'prop-types';
 import Modal from 'react-native-modal';
 import { ColorPicker } from 'react-native-color-picker';
 import { getParam } from '../../utils/navHelpers';
-import DeleteAccountButtonContainer from './screenHeader/DeleteAccountButtonContainer';
+import DeleteButton from './DeleteButton';
 import {
   Input,
   Button,
@@ -15,8 +15,6 @@ import {
   HeaderTitle,
 } from '../../components/index';
 import s from './styles';
-import { colors } from '../../styles';
-
 
 const AccountEditor = ({
    name,
@@ -102,9 +100,9 @@ const AccountEditor = ({
 );
 
 AccountEditor.navigationOptions = ({ navigation }) => ({
-  // headerTitle: getParam('account')(navigation) ? 'Edit account' : 'New account',
-  headerTitle: <HeaderTitle title='Edit account' />,
-  headerRight: <DeleteAccountButtonContainer navigation={navigation} />,
+  headerTitle:
+  <HeaderTitle title={getParam('account')(navigation) ? 'Edit account' : 'New account'} />,
+  headerRight: <DeleteButton navigation={navigation} />,
 });
 
 AccountEditor.propTypes = {

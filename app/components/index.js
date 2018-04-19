@@ -38,6 +38,7 @@ import KeyboardAvoidingView from './KeyboardAvoidingView';
 import DatePicker from './DatePicker';
 import HeaderTitle from './HeaderTitle';
 import VerticalSeparator from './VerticalSeparator';
+import HeaderTextButton from './HeaderTextButton';
 
 
 import TouchableItem from './TouchableItem';
@@ -84,4 +85,5 @@ export {
   DatePicker,
   HeaderTitle,
   VerticalSeparator,
+  HeaderTextButton,
 };
