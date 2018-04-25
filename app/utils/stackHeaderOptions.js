@@ -1,11 +1,16 @@
 import React from 'react';
-import { DrawerButton } from '../components';
+import { NavigationButton } from '../components';
+import screens from '../constants/screens';
 
 const headerOptions = defaultOptions => ({ navigation }) => {
   const isInitRoute = navigation.state.key === 'Init';
 
   return isInitRoute ? {
-    headerLeft: <DrawerButton navigation={navigation} />,
+    headerLeft:
+    <NavigationButton
+      iconName="menu"
+      onPress={() => navigation.navigate(screens.DrawerOpen)}
+    />,
   } : defaultOptions;
 };
 
