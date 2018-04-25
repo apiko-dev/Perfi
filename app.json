@@ -6,9 +6,9 @@
     },
     "orientation": "portrait",
     "primaryColor": "#8BC34A",
-    "androidStatusBarColor": "#689F38",
+    "androidStatusBarColor": "#27ae60",
     "androidStatusBar": {
-      "backgroundColor": "#689F38",
+      "backgroundColor": "#27ae60",
       "barStyle": "dark-content"
     },
     "icon": "./app/images/app-icon.png",
