@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   accountContainer: {
     width: dimensions.length,
     height: dimensions.length,
-    borderRadius: 5,
+    borderRadius: dimensions.borderRadius,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -21,17 +21,17 @@ const styles = StyleSheet.create({
   title: {
     fontSize: fontSizes.big,
     color: colors.white,
-    fontWeight: fontWeights.heavy,
+    fontWeight: fontWeights.extraBold,
   },
   subtitle: {
     fontSize: fontSizes.small,
     color: colors.white,
-    fontWeight: fontWeights.heavy,
+    fontWeight: fontWeights.bold,
   },
   addButtonSubtitle: {
-    fontSize: fontSizes.small - 2,
+    fontSize: fontSizes.verySmall - 2,
     color: colors.greyDarker,
-    fontWeight: fontWeights.heavy,
+    fontWeight: fontWeights.bold,
   },
   subtitleContainer: {
     position: 'absolute',

@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
-import { View, ViewPropTypes, TouchableOpacity } from 'react-native';
-import { Text, NavIcon } from '../../components';
+import { View, ViewPropTypes } from 'react-native';
+import { Text, NavIcon, TouchableItem } from '../../components';
 import { colors } from '../../styles';
 import s from './styles';
 
@@ -16,8 +16,7 @@ const AccountItem = ({
    initialBalance,
    ...props
 }) => (
-
-  <TouchableOpacity
+  <TouchableItem
     onPress={onPress}
     style={[s.container, containerStyle]}
     {...props}
@@ -36,13 +35,13 @@ const AccountItem = ({
           tintColor={colors.greyDarker}
         />
           :
-        <Text style={s.title}>{initialBalance}$</Text>}
+        <Text style={s.title}>${initialBalance}</Text>}
       <View style={s.subtitleContainer}>
         <Text style={isAddButton ? s.addButtonSubtitle : s.subtitle}>{name}</Text>
       </View>
     </View>
 
-  </TouchableOpacity>
+  </TouchableItem>
 
 
 );
