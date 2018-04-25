@@ -1,8 +1,9 @@
 import React from 'react';
 import T from 'prop-types';
-import { TouchableOpacity, ViewPropTypes } from 'react-native';
+import { ViewPropTypes, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import Text from '../Text';
+import TouchableItem from '../TouchableItem';
 import s from './styles';
 
 const Button = (props) => {
@@ -15,35 +16,43 @@ const Button = (props) => {
     title,
     titleStyle,
     containerDisabled = s.disabled,
+    isActive = false,
+    activeBackgroundColor,
+    activeColor,
     ...touchableProps
   } = props;
 
   return (
-    <TouchableOpacity
+    <TouchableItem
       style={[
         s.container,
         (!!icon || !!iconRight) && s.rowAligned,
         containerStyle,
         backgroundColor && { backgroundColor },
+        isActive && activeBackgroundColor,
         touchableProps.disabled && containerDisabled,
       ]}
       {...touchableProps}
     >
-      {!!icon && <MaterialIcons {...icon} />}
-      <Text
-        style={[
+      <View>
+        {!!icon && <MaterialIcons {...icon} />}
+        <Text
+          style={[
             s.title,
             titleStyle,
             !!icon && s.marginLeft,
             !!iconRight && s.marginRight,
             color && { color },
+            isActive && { color: activeColor },
             touchableProps.disabled && s.titleDisabled,
           ]}
-      >
-        {title}
-      </Text>
-      {!!iconRight && <MaterialIcons {...iconRight} />}
-    </TouchableOpacity>
+        >
+          {title}
+        </Text>
+        {!!iconRight && <MaterialIcons {...iconRight} />}
+      </View>
+
+    </TouchableItem>
   );
 };
 
@@ -57,6 +66,9 @@ Button.propTypes = {
   iconRight: T.object,
   title: T.string,
   titleStyle: Text.propTypes.style,
+  isActive: T.bool,
+  activeBackgroundColor: ViewPropTypes.style,
+  activeColor: T.string,
 };
 
 export default Button;
