@@ -7,7 +7,7 @@ export default StyleSheet.create({
   root: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: verticalIndent * 3,
+    height: verticalIndent * 2.8,
     paddingLeft: indent,
     borderColor: colors.greyDarker,
     borderWidth: 1,

@@ -44,3 +44,24 @@ export const addDays = (date, daysNumber) => moment(date).add(daysNumber, 'days'
 export const getMonths = (from, to, months) => from.getTime() <= to.getTime()
   ? getMonths(startOfNextMonth(from), to, [...months, from])
   : months;
+
+export const dateWithDots = d => moment(d).format('DD.MM.YYYY');
+export const dateWithTime = d => moment(d).format('HH:MM | DD.MM.YYYY');
+
+
+export const startOfDay = moment().startOf('day');
+export const startOfYesterday = moment().subtract(1, 'days').startOf('day');
+export const startOfWeek = moment().subtract(7, 'days').startOf('day');
+export const startOfMonthAgo = moment().subtract(1, 'months').startOf('day');
+export const startOfYear = moment().subtract(1, 'years').startOf('day');
+
+
+export const isToday = date => date.startOf('day').isSame(moment().startOf('day'));
+export const isYesterday = date => date.isSame(moment().subtract(1, 'days').startOf('day'));
+
+
+export const formatDateForSubtitle = (d) => {
+  if (!d.format) {
+    return `${dateWithDots(d.from)} - ${dateWithDots(d.to)}`;
+  } return dateWithDots(d);
+};

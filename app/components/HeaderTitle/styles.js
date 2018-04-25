@@ -3,8 +3,9 @@ import { colors, dimensions, fontSizes } from '../../styles';
 
 const styles = StyleSheet.create({
   root: {
-    marginLeft: dimensions.indent * -1.5,
-    marginRight: dimensions.indent * -1.5,
+    // marginLeft: dimensions.indent * -1.5,
+    // marginRight: dimensions.indent * -1.5,
+    marginLeft: dimensions.halfIndent,
   },
   title: {
     color: colors.headerText,

@@ -1,6 +1,6 @@
 import { compose, withProps } from 'recompose';
 import { getParam } from '../../../utils/navHelpers';
-import { HeaderTextButton } from '../../../components';
+import { NavigationButton } from '../../../components';
 
 const enhance = compose(
   withProps(({ navigation, deleteAccount }) => {
@@ -11,9 +11,9 @@ const enhance = compose(
       title: 'Delete',
       backOnSuccess: true,
       isVisible: !!account,
-      action: () => deleteAccount(account.id),
+      onPress: () => deleteAccount(account.id),
     };
   }),
 );
 
-export default enhance(HeaderTextButton);
+export default enhance(NavigationButton);

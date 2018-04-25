@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import R from 'ramda';
 
 const getAccountsIds = accounts => R.pathOr([], ['ids'], accounts);
-const getAccountsEntities = accounts => R.pathOr({}, ['byId'], accounts);
+export const getAccountsEntities = accounts => R.pathOr({}, ['byId'], accounts);
 
 export const getTotalBalance = createSelector(
   [

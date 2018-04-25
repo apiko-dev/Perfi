@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions';
+import moment from 'moment';
 import types from './types';
 import { insert, insertAll, update, remove } from '../../utils/stateHelper';
 
@@ -8,7 +9,86 @@ const createTransaction = (props) => {
   return { value, account, category, date, note };
 };
 
-const initialState = insertAll({}, []);
+
+const defaultAccounts = [
+  createTransaction({
+    value: 10,
+    account: '1',
+    category: '1',
+    date: moment().subtract(10, 'days'),
+  }),
+  createTransaction({
+    value: 4,
+    account: '2',
+    category: '2',
+    date: moment().subtract(4, 'days'),
+  }),
+  createTransaction({
+    value: 3,
+    account: '3',
+    category: '3',
+    date: moment().subtract(3, 'days'),
+  }),
+  createTransaction({
+    value: 2,
+    account: '1',
+    category: '2',
+    date: moment().subtract(2, 'days'),
+  }),
+  createTransaction({
+    value: -100,
+    account: '1',
+    category: '3',
+    date: moment().subtract(1, 'days'),
+  }),
+  createTransaction({
+    value: 100,
+    account: '2',
+    category: '2',
+    date: moment().subtract(1, 'days'),
+  }),
+  createTransaction({
+    value: -100,
+    account: '3',
+    category: '1',
+    date: moment().subtract(1, 'days'),
+  }),
+  createTransaction({
+    value: -150,
+    account: '1',
+    category: '3',
+    date: moment().subtract(1, 'days'),
+  }),
+  createTransaction({
+    value: 30,
+    account: '2',
+    category: '2',
+    date: moment().subtract(1, 'days'),
+  }),
+  createTransaction({
+    value: 250,
+    account: '2',
+    category: '1',
+    date: moment().subtract(1, 'days'),
+  }),
+  createTransaction({
+    value: 510,
+    account: '1',
+    category: '1',
+    date: moment().subtract(1, 'days'),
+  }),
+
+  createTransaction({ value: -100, account: '2', category: '1', date: new Date() }),
+  createTransaction({ value: 100, account: '0', category: '3', date: new Date() }),
+  createTransaction({ value: 50, account: '3', category: '0', date: new Date() }),
+  createTransaction({ value: 40, account: '1', category: '3', date: new Date() }),
+  createTransaction({ value: 30, account: '2', category: '2', date: new Date() }),
+  createTransaction({ value: 600, account: '3', category: '1', date: new Date() }),
+  createTransaction({ value: -360, account: '3', category: '3', date: new Date() }),
+  createTransaction({ value: 760, account: '1', category: '2', date: new Date() }),
+];
+
+const initialState = insertAll({}, defaultAccounts);
 
 const transactionsReducer = handleActions({
   [types.CREATE_TRANSACTION]: (state, { payload }) => insert(

@@ -1,7 +1,13 @@
-import { createTransaction, updateTransaction, deleteTransaction } from './actions';
+import {
+  createTransaction,
+  updateTransaction,
+  deleteTransaction,
+  addTransactionToFavourite,
+} from './actions';
 
 export default {
   createTransaction,
   updateTransaction,
   deleteTransaction,
+  addTransactionToFavourite,
 };

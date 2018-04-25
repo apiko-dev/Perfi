@@ -14,6 +14,7 @@ const Input = ({
   isNotValidStyle = s.isNotValid,
   icon,
   iconRight,
+  rightIconStyle,
   inputRef,
   label,
   error,
@@ -61,7 +62,7 @@ const Input = ({
         !!iconRight &&
         <MaterialIcons
           color={isFocus ? isFocusColor : colors.greyDarker}
-          style={s.icon}
+          style={[s.icon, rightIconStyle]}
           {...iconRight}
         />
       }
@@ -75,6 +76,7 @@ Input.propTypes = {
   secondContainerStyle: ViewPropTypes.style,
   containerStyleFocus: ViewPropTypes.style,
   isNotValidStyle: ViewPropTypes.style,
+  rightIconStyle: ViewPropTypes.style,
   placeholderColor: T.string,
   isFocusColor: T.string,
   isFocus: T.bool,

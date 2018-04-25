@@ -28,14 +28,14 @@ const styles = StyleSheet.create({
 
   label: {
     paddingTop: verticalIndent / 2,
-    fontSize: fontSizes.verySmallFont,
+    fontSize: fontSizes.verySmall,
     color: colors.greyDarker,
   },
 
   secondContainer: {
     alignItems: 'center',
     marginRight: indent,
-    paddingTop: fontSizes.verySmallFont,
+    paddingTop: fontSizes.verySmall,
   },
 
   balanceContainer: {

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Image, Platform, StyleSheet, Text, View } from 'react-native';
+import { Button, Image, Platform, StyleSheet, View } from 'react-native';
 import screens from '../../constants/screens';
-import { Card, DrawerButton, SecondaryText } from '../../components';
+import { Card, SecondaryText } from '../../components';
 import appStyles from '../../styles/AppStyles';
 
 const logo = require('../../images/jss-logo.png');
@@ -47,13 +47,5 @@ Settings.propTypes = {
   navigation: PropTypes.object,
 };
 
-Settings.navigationOptions = ({ navigation }) => ({
-  title: 'Settings',
-  ...Platform.select({
-    android: {
-      headerLeft: <DrawerButton navigation={navigation} />,
-    },
-  }),
-});
 
 export default Settings;

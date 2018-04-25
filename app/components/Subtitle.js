@@ -1,15 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 import { StyleSheet, View, ViewPropTypes } from 'react-native';
-import { fontSizes, dimensions, colors } from '../styles';
+import { fontSizes, dimensions, colors, fontWeights } from '../styles';
 import { Text } from '../components';
+import { formatDateForSubtitle } from '../utils/dateHelpers';
 
 const styles = StyleSheet.create({
   leftText: {
-    fontSize: fontSizes.medium,
+    fontSize: fontSizes.small,
   },
   rightText: {
-    fontSize: fontSizes.medium,
+    fontSize: fontSizes.small,
   },
   textContainer: {
     paddingBottom: dimensions.indent,
@@ -19,18 +20,29 @@ const styles = StyleSheet.create({
   rightContainer: {
     flexDirection: 'row',
   },
-  fontColor: {
+  total: {
     color: colors.green,
+    fontWeight: fontWeights.extraBold,
+  },
+  date: {
+    color: colors.greyDarker,
+    fontWeight: fontWeights.extraBold,
+
   },
 });
 
-const Subtitle = ({ style, leftText, totalBalance }) => (
+const Subtitle = ({ style, leftText, totalBalance, date }) => (
   <View style={[styles.textContainer, style]}>
     <Text style={styles.leftText}>{leftText}</Text>
     {totalBalance &&
       <View style={styles.rightContainer}>
         <Text style={styles.rightText}>Total: </Text>
-        <Text style={[styles.rightText, styles.fontColor]}>{totalBalance}</Text>
+        <Text style={[styles.rightText, styles.total]}>${totalBalance}</Text>
+      </View>
+    }
+    {date &&
+      <View style={styles.rightContainer}>
+        <Text style={[styles.rightText, styles.date]}>{formatDateForSubtitle(date)}</Text>
       </View>
     }
 
@@ -39,6 +51,9 @@ const Subtitle = ({ style, leftText, totalBalance }) => (
 
 Subtitle.propTypes = {
   style: ViewPropTypes.style,
+  leftText: T.string,
+  totalBalance: T.number,
+  date: T.object,
 };
 
 export default Subtitle;

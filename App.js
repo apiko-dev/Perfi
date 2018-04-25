@@ -9,6 +9,8 @@ import styles from './app/styles/AppStyles';
 import colors from './app/styles/colors';
 import { appOperations } from './app/modules/app';
 
+console.ignoredYellowBox = ['MenuContext'];
+
 const App = () => (
   <MenuContext>
     <View style={styles.rootStyle}>
