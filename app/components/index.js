@@ -10,7 +10,6 @@ import DateIntervalSelector from './DateIntervalSelector';
 import NavButton from './NavButton';
 import SelectBox from './selectBox';
 import Drawer from './Drawer/Drawer';
-import DrawerButton from './DrawerButton';
 import FormInputWithIcon from './FormInputWithIcon';
 import HeaderIcon from './HeaderIcon';
 import IconsPickerModal from './iconsPicker';
@@ -38,7 +37,11 @@ import KeyboardAvoidingView from './KeyboardAvoidingView';
 import DatePicker from './DatePicker';
 import HeaderTitle from './HeaderTitle';
 import VerticalSeparator from './VerticalSeparator';
-import HeaderTextButton from './HeaderTextButton';
+import Separator from './Separator';
+import RoundIcon from './RoundIcon';
+import Select from './Select';
+import Calendar from './Calendar';
+import NavigationButton from './NavigationButton';
 
 
 import TouchableItem from './TouchableItem';
@@ -55,7 +58,6 @@ export {
   CustomListItem,
   DateIntervalSelector,
   Drawer,
-  DrawerButton,
   FormInputWithIcon,
   HeaderIcon,
   IconsPickerModal,
@@ -85,5 +87,9 @@ export {
   DatePicker,
   HeaderTitle,
   VerticalSeparator,
-  HeaderTextButton,
+  Separator,
+  RoundIcon,
+  Select,
+  Calendar,
+  NavigationButton,
 };

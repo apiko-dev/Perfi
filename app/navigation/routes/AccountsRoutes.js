@@ -6,7 +6,7 @@ import headerOptions from '../../utils/stackHeaderOptions';
 const Routes = {
   [screens.Accounts]: {
     screen: Accounts,
-    navigationOptions: headerOptions({ title: 'Accounts' }),
+    navigationOptions: headerOptions(),
   },
   [screens.AccountEditor]: {
     screen: AccountEditor,

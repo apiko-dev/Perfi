@@ -9,9 +9,9 @@ import {
 } from '../navigators';
 
 const Routes = {
-  // [screens.TransactionsRoot]: {
-  //   screen: TransactionsNavigator,
-  // },
+  [screens.TransactionsRoot]: {
+    screen: TransactionsNavigator,
+  },
   [screens.AccountsRoot]: {
     screen: AccountsNavigator,
   },

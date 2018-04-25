@@ -4,10 +4,12 @@ import screens from '../../constants/screens';
 import navOptions from '../../utils/navOptions';
 import AccountsRoutes from '../routes/AccountsRoutes';
 import CategoriesRoutes from '../routes/CategoriesRoutes';
+import headerOptions from '../../utils/stackHeaderOptions';
 
 const TransactionsNavigator = StackNavigator({
   [screens.Transactions]: {
     screen: Transactions,
+    navigationOptions: headerOptions(),
   },
   [screens.TransactionEditor]: {
     screen: TransactionEditor,

@@ -4,11 +4,11 @@ import T from 'prop-types';
 import { View, FlatList } from 'react-native';
 import screens from '../../constants/screens';
 import {
-  NavButton,
+  NavigationButton,
   Subtitle,
   AccountItem,
 } from '../../components';
-import s from './AccountsStyles';
+import s from './styles';
 
 const onNavigate = (nav, screen, params) => () => nav.navigate(screen, params);
 
@@ -47,11 +47,9 @@ const Accounts = ({ accounts, onPress, onAddAccount, totalBalance }) => {
 
 Accounts.navigationOptions = ({ navigation }) => ({
   headerRight: (
-    <NavButton
-      iconName="compare-arrows"
-      iconType="material"
-      navigation={navigation}
-      action={onNavigate(navigation, screens.TransferEditor, { title: 'Add transfer' })}
+    <NavigationButton
+      iconName="swap-horizontal"
+      onPress={onNavigate(navigation, screens.TransferEditor, { title: 'Add transfer' })}
     />
   ),
 });
