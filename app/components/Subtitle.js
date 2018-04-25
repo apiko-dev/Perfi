@@ -42,7 +42,6 @@ const Subtitle = ({ style, leftText, totalBalance, date }) => (
     }
     {date &&
       <View style={styles.rightContainer}>
-        {console.log('datevdatedatedatedatedatedate', date)}
         <Text style={[styles.rightText, styles.date]}>{formatDateForSubtitle(date)}</Text>
       </View>
     }

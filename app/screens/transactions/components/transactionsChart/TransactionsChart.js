@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
-import { Card, PieChart } from '../../../components';
+import { Card, PieChart } from '../../../../components/index';
 import styles from './TransactionsChartStyles';
 
 const TransactionsChart = ({ chartData, balance, expenses, incomes }) => (

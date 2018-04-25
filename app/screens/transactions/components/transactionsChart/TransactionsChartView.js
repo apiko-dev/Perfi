@@ -1,6 +1,6 @@
 import { compose, withProps } from 'recompose';
 import R from 'ramda';
-import { isExpense, isIncome, groupByCategories } from '../../../utils/transactionsHelpers';
+import { isExpense, isIncome, groupByCategories } from '../../../../utils/transactionsHelpers';
 import TransactionsChart from './TransactionsChart';
 
 const transactionsSum = R.pipe(
