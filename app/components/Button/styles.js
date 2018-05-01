@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.green,
     height: dimensions.verticalIndent * 4,
   },
   containerPressed: {

@@ -11,6 +11,7 @@
       "backgroundColor": "#27ae60",
       "barStyle": "dark-content"
     },
+
     "icon": "./app/images/app-icon.png",
     "splash": {
       "image": "./app/assets/icons/splash.png",

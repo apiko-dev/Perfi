@@ -11,7 +11,6 @@ const navOptions = ({ title, icon }) => ({
     headerStyle: styles.headerStyle,
     headerTitleStyle: styles.headerTitleStyle,
     headerBackTitle: null,
-
   },
 });
 
