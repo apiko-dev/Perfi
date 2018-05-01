@@ -1,6 +1,7 @@
 export default {
   TransactionsRoot: 'TransactionsRoot',
   Transactions: 'Transactions',
+  Calculator: 'Calculator',
 
   TransactionEditorRoot: 'TransactionEditorRoot',
   TransactionEditor: 'TransactionEditor',

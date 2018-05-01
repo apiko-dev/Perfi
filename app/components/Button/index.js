@@ -36,7 +36,7 @@ const Button = (props) => {
     >
       <View>
         {!!icon && <MaterialIcons {...icon} />}
-        <Text
+        {!!title && <Text
           style={[
             s.title,
             titleStyle,
@@ -49,6 +49,7 @@ const Button = (props) => {
         >
           {title}
         </Text>
+        }
         {!!iconRight && <MaterialIcons {...iconRight} />}
       </View>
 

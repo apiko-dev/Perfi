@@ -21,10 +21,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: fontSizes.big,
     color: colors.white,
-    fontWeight: fontWeights.extraBold,
+    fontWeight: fontWeights.heavy,
   },
   subtitle: {
-    fontSize: fontSizes.small,
+    fontSize: fontSizes.verySmall,
     color: colors.white,
     fontWeight: fontWeights.bold,
   },

@@ -7,6 +7,7 @@ import Settings from './settings/SettingsScreen';
 import TransactionEditor from './transactionEditor/TransactionEditorScreen';
 import Trends from './trends/TrendsScreen';
 import TransferEditor from './transferEditor/TransferEditorScreen';
+import Calculator from './Calculator';
 
 export {
   Accounts,
@@ -18,4 +19,5 @@ export {
   Transactions,
   TransferEditor,
   Trends,
+  Calculator,
 };

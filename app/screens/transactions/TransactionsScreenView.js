@@ -17,7 +17,6 @@ import { colors, dimensions, scalingUtils } from '../../styles';
 import NavigationButton from '../../components/NavigationButton';
 import { getParam } from '../../utils/navHelpers';
 
-
 const Transactions = ({
     navigation,
     totalBalance,
@@ -133,14 +132,15 @@ const Transactions = ({
         <ActionButton.Item
           buttonColor={colors.red}
           title="Add Expence"
-          onPress={() => navigation.navigate(screens.TransactionEditor)}
+          onPress={() => navigation.navigate(screens.Calculator, { type: 'expense' })}
+          // onPress={() => navigation.navigate(screens.TransactionEditor)}
         >
           <NavIcon name="minus" tintColor={colors.white} />
         </ActionButton.Item>
         <ActionButton.Item
           buttonColor={colors.green}
           title="Add Income"
-          onPress={() => navigation.navigate(screens.TransactionEditor)}
+          onPress={() => navigation.navigate(screens.Calculator, { type: 'income' })}
         >
           <NavIcon name="plus" tintColor={colors.white} />
         </ActionButton.Item>
