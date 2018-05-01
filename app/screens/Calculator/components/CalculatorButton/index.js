@@ -30,6 +30,7 @@ const CalculatorButton = (props) => {
       <Button
         {...options}
         {...title}
+        disabled={token === ''}
         style={[s.buttonStyle, buttonStyle]}
         titleStyle={s.buttonTextStyle}
         color={colors.primaryText}
