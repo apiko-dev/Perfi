@@ -6,10 +6,10 @@ import TrendsNavigator from './TrendsNavigator';
 import FavouritesNavigator from './FavouritesNavigator';
 
 export {
+  TrendsNavigator,
   CategoriesNavigator,
   AccountsNavigator,
   SettingsNavigator,
   TransactionsNavigator,
-  TrendsNavigator,
   FavouritesNavigator,
 };

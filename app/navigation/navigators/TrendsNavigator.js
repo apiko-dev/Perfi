@@ -12,7 +12,7 @@ const TrendsNavigator = StackNavigator({
 }, {
   ...navOptions({
     title: 'Trends',
-    icon: 'chart-bar',
+    icon: 'bar-chart',
   }),
 });
 
