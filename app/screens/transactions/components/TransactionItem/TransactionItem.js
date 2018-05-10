@@ -28,7 +28,7 @@ const TransactionItem = ({
     right: [{
       backgroundColor: colors.red,
       onPress: onDelete,
-      component: <ButtonView name="delete" />,
+      component: <ButtonView name="trash" />,
     }],
     left: [{
       backgroundColor: colors.yellow,
