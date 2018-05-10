@@ -42,6 +42,7 @@ import RoundIcon from './RoundIcon';
 import Select from './Select';
 import Calendar from './Calendar';
 import NavigationButton from './NavigationButton';
+import FormInput from './FormInput';
 
 
 import TouchableItem from './TouchableItem';
@@ -92,4 +93,5 @@ export {
   Select,
   Calendar,
   NavigationButton,
+  FormInput,
 };
