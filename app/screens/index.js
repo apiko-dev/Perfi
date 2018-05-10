@@ -4,7 +4,7 @@ import Transactions from './transactions';
 import Categories from './categories/CategoriesScreen';
 import CategoryEditor from './categoryEditor/CategoryEditor';
 import Settings from './settings/SettingsScreen';
-import TransactionEditor from './transactionEditor/TransactionEditorScreen';
+import TransactionEditor from './TransactionEditor';
 import Trends from './trends/TrendsScreen';
 import TransferEditor from './transferEditor/TransferEditorScreen';
 import Calculator from './Calculator';

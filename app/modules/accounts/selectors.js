@@ -14,3 +14,12 @@ export const getTotalBalance = createSelector(
     (accumulator, currentValue) =>
       accumulator + R.pathOr(0, [currentValue, 'initialBalance'], entities), 0),
 );
+
+export const getAccounts = createSelector(
+  [
+    getAccountsIds,
+    getAccountsEntities,
+  ],
+
+  (ids, entities) => ids.map(id => entities[id]),
+);
