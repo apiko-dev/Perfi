@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
   },
   headerStyle: {
     height: headerHeight,
-    // paddingLeft: indent,
-    // paddingRight: indent,
+    borderBottomWidth: 0,
+    elevation: 0,
     backgroundColor: colors.white,
   },
   headerTextStyle: {
