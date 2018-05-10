@@ -9,7 +9,6 @@ import DatePicker from './DatePicker';
 import { dimensions } from '../../styles';
 
 
-
 const enhance = compose(
   defaultProps({
     mode: 'date',
@@ -18,7 +17,7 @@ const enhance = compose(
     confirmBtnText: 'Confirm',
     cancelBtnText: 'Decline',
     icon: {
-      name: 'date-range',
+      name: 'calendar',
       size: dimensions.iconSize,
     },
   }),
@@ -26,11 +25,11 @@ const enhance = compose(
   withState('displayedDate', 'setDisplayedDate', null),
 
   withHandlers({
-    onSelectDate: props => date => {
-      props.onSelectDate && props.onSelectDate(moment(date, 'LL'), date);
+    onSelectDate: props => (date) => {
+      props.onSelectDate && props.onSelectDate(moment(date, 'LL'), date); // eslint-disable-line
       props.setDisplayedDate(date);
     },
-  })
+  }),
 );
 
 export default enhance(DatePicker);

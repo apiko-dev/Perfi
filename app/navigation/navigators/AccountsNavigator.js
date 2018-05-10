@@ -5,7 +5,7 @@ import navOptions from '../../utils/navOptions';
 const AccountsNavigator = StackNavigator(AccountsRoutes, {
   ...navOptions({
     title: 'Accounts',
-    icon: 'wallet',
+    icon: 'folder',
   }),
 });
 

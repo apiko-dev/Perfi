@@ -173,8 +173,9 @@ Transactions.propTypes = {
 
 Transactions.navigationOptions = ({ navigation }) => ({
   headerRight: <NavigationButton
-    iconName="chart-arc"
-    name={getParam('isChartShown')(navigation) ? 'format-list-bulleted' : 'chart-arc'}
+    iconName="pie-chart"
+    name={getParam('isChartShown')(navigation) ? 'list' : 'pie-chart'}
+    tintColor={colors.green}
     onPress={getParam('onToggleChart')(navigation)}
   />,
 });

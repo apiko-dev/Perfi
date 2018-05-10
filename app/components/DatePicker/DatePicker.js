@@ -2,21 +2,22 @@ import React from 'react';
 import T from 'prop-types';
 import { View, ViewPropTypes } from 'react-native';
 import DatePicker from 'react-native-datepicker';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Text from '../Text';
 import s from './styles';
-import calendarDateFormat from '../../utils/calendarDateFormat';
+import { colors } from '../../styles';
 
 
-const renderIcon = icon => (
-  <MaterialIcons
+const renderIcon = (icon, isSelected) => (
+  <MaterialCommunityIcons
     {...icon}
-    style={s.icon}
+    style={[s.icon, isSelected && { color: colors.green }]}
   />
 );
 
 const CustomDatePicker = ({
   inputStyle,
+  isSelected,
   label,
   labelStyle,
   placeholder,
@@ -37,14 +38,14 @@ const CustomDatePicker = ({
       placeholder={placeholder}
       style={[s.root, inputStyle]}
       customStyles={{
-        dateInput: s.input,
+        dateInput: [s.input, isSelected && { borderColor: colors.green }],
         dateText: s.inputText,
         dateTouchBody: s.body,
         btnTextConfirm: s.btnConfirm,
         btnTextCancel: s.btnCancel,
         placeholderText: s.placeholder,
       }}
-      iconComponent={renderIcon(icon)}
+      iconComponent={renderIcon(icon, isSelected)}
       onDateChange={onSelectDate}
       {...props}
     />
@@ -67,6 +68,7 @@ CustomDatePicker.propTypes = {
   androidMode: T.oneOf(['default', 'calendar', 'spinner']),
   mode: T.oneOf(['date', 'time', 'datetime']),
   resetTrigger: T.bool,
+  isSelected: T.bool,
 };
 
 export default CustomDatePicker;

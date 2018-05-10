@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 import { TextInput, View, ViewPropTypes } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Text from '../Text';
 import { colors } from '../../styles';
 import s from './styles';
@@ -14,6 +14,7 @@ const Input = ({
   isNotValidStyle = s.isNotValid,
   icon,
   iconRight,
+  leftIconStyle,
   rightIconStyle,
   inputRef,
   label,
@@ -41,11 +42,11 @@ const Input = ({
     >
       {
         !!icon &&
-        <MaterialIcons
-          color={isFocus ? isFocusColor : colors.greyDarker}
-          style={s.icon}
-          {...icon}
-        />
+          <MaterialCommunityIcons
+            color={isFocus ? isFocusColor : colors.greyDarker}
+            style={[s.icon, leftIconStyle]}
+            {...icon}
+          />
       }
       {!!prefix && <Text style={s.prefix}>{prefix}</Text>}
       <TextInput
@@ -60,7 +61,7 @@ const Input = ({
       />
       {
         !!iconRight &&
-        <MaterialIcons
+        <MaterialCommunityIcons
           color={isFocus ? isFocusColor : colors.greyDarker}
           style={[s.icon, rightIconStyle]}
           {...iconRight}
@@ -76,6 +77,7 @@ Input.propTypes = {
   secondContainerStyle: ViewPropTypes.style,
   containerStyleFocus: ViewPropTypes.style,
   isNotValidStyle: ViewPropTypes.style,
+  leftIconStyle: ViewPropTypes.style,
   rightIconStyle: ViewPropTypes.style,
   placeholderColor: T.string,
   isFocusColor: T.string,

@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 import { StyleSheet, View } from 'react-native';
-import NavIcon from './NavIcon';
+import CategoryIcon from './CategoryIcon';
 import { colors, dimensions } from '../styles';
 
 
@@ -17,15 +17,16 @@ const styles = StyleSheet.create({
 });
 
 
-const RoundIcon = ({ backgroundColor, tintColor = colors.white, ...props }) => (
-  <View style={[styles.circle, { backgroundColor }]}>
-    <NavIcon tintColor={tintColor} {...props} />
-    </View>
+const RoundIcon = ({ backgroundColor, tintColor = colors.white, border, ...props }) => (
+  <View style={[styles.circle, { backgroundColor }, border]}>
+    <CategoryIcon tintColor={tintColor} {...props} />
+  </View>
 );
 
 RoundIcon.propTypes = {
   backgroundColor: T.string.isRequired,
   tintColor: T.string,
+  border: T.any,
 };
 
 export default RoundIcon;

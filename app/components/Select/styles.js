@@ -1,11 +1,18 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { colors, dimensions, fontSizes } from '../../styles';
 
 export default StyleSheet.create({
 
   option: {
-    justifyContent: 'center',
-    paddingHorizontal: dimensions.indent,
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingLeft: dimensions.indent + 2,
+    paddingRight: dimensions.indent,
+    borderBottomWidth: 0.5,
+    borderColor: colors.greyLighter,
+  },
+  optionIcon: {
+    paddingRight: dimensions.indent,
   },
   optionText: {
     fontSize: fontSizes.verySmall,
@@ -15,24 +22,44 @@ export default StyleSheet.create({
     fontSize: fontSizes.verySmall,
     color: colors.greyDarker,
   },
+  select: {
+    ...Platform.select({
+      ios: {
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        shadowOffset: {
+          height: 0,
+          width: 0,
+        },
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
+  },
   selectedInputStile: {
     color: colors.black,
   },
   selectedOption: {
     backgroundColor: colors.green,
   },
+  selectedOptionText: {
+    color: colors.white,
+  },
   label: {
-    paddingBottom: dimensions.indent / 2,
-    paddingTop: dimensions.indent / 2,
+    paddingBottom: dimensions.halfIndent,
+    paddingTop: dimensions.halfIndent,
     fontSize: fontSizes.verySmall,
     fontWeight: '700',
   },
   rightIconStyle: {
-    paddingRight: 0,
+    paddingRight: 5,
   },
-
+  leftIconStyle: {
+    paddingLeft: 0,
+  },
   secondInputContainer: {
-    paddingLeft: dimensions.halfIndent,
+    paddingLeft: dimensions.indent,
     borderColor: colors.grey,
   },
   selectedSecondInputContainer: {

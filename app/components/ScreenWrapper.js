@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewPropTypes } from 'react-native';
 import { dimensions, colors } from '../styles';
 
 const styles = StyleSheet.create({
@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const ScreenWrapper = ({ children }) => (
-  <View style={styles.rootStyle}>
+const ScreenWrapper = ({ children, style }) => (
+  <View style={[styles.rootStyle, style]}>
     { children }
   </View>
 );
@@ -22,6 +22,7 @@ ScreenWrapper.propTypes = {
     PropTypes.element,
     PropTypes.array,
   ]),
+  style: ViewPropTypes.styles,
 };
 
 export default ScreenWrapper;

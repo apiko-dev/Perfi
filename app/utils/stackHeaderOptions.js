@@ -8,7 +8,7 @@ const headerOptions = defaultOptions => ({ navigation }) => {
   return isInitRoute ? {
     headerLeft:
     <NavigationButton
-      iconName="menu"
+      iconName="bars"
       onPress={() => navigation.navigate(screens.DrawerOpen)}
     />,
   } : defaultOptions;

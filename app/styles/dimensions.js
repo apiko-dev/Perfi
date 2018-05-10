@@ -16,6 +16,7 @@ export const iconMargin = Platform.OS === 'android' ? 16 : 10;
 
 
 export const length = (width / 3) - (indent + (halfIndent / 1.5));
+export const containerWidth = Dimensions.get('window').width - (indent * 2);
 
 
 export const appBarHeight = Platform.OS === 'ios' ? 44 : 56;

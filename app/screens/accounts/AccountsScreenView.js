@@ -48,7 +48,7 @@ const Accounts = ({ accounts, onPress, onAddAccount, totalBalance }) => {
 Accounts.navigationOptions = ({ navigation }) => ({
   headerRight: (
     <NavigationButton
-      iconName="swap-horizontal"
+      iconName="pie-chart"
       onPress={onNavigate(navigation, screens.TransferEditor, { title: 'Add transfer' })}
     />
   ),
