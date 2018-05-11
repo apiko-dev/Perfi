@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import colors from '../../../../styles/colors';
-import { dimensions, scalingUtils } from '../../../../styles/index';
+import { scalingUtils, dimensions } from '../../../../styles/index';
 
 const dotSize = scalingUtils.moderateScale(6);
 
@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginLeft: 3,
     marginRight: 3,
-    marginTop: 3,
-    marginBottom: 3,
+    // marginTop: 3,
+    marginBottom: 6,
   },
 
   activeDot: {

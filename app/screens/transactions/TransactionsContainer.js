@@ -22,9 +22,10 @@ import {
   isToday,
 } from '../../utils/dateHelpers';
 
-const mapStateToProps = ({ accounts, transactions }, { dateForFiltering }) => ({
-  totalBalance: getTotalBalance(accounts),
-  transactions: getTransactions(transactions, dateForFiltering),
+
+const mapStateToProps = (state, { dateForFiltering }) => ({
+  transactions: getTransactions(state.transactions, dateForFiltering),
+  totalBalance: getTotalBalance(state),
 });
 
 const enhance = compose(

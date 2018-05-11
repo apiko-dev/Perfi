@@ -19,7 +19,7 @@ const Accounts = ({ accounts, onPress, onAddAccount, totalBalance }) => {
   const _renderItem = ({ item }) => (
     <AccountItem
       name={item.name}
-      initialBalance={item.initialBalance}
+      initialBalance={item.balance}
       color={item.color}
       onPress={item.isAddButton ? onAddAccount : () => onPress(item)}
       isAddButton={item.isAddButton}

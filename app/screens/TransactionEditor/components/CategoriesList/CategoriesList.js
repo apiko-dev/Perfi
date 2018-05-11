@@ -14,6 +14,7 @@ const CategoryList = ({
     onSelect,
   }) => {
   const _keyExtractor = item => item.id;
+  console.log('categories', categories);
 
 
   /* eslint-disable react/prop-types */

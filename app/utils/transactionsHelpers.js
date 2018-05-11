@@ -59,6 +59,18 @@ export const getSum = R.pipe(
   R.sum,
 );
 
+export const transfersSum = (transfers, accId) => R.reduce((sum, transfer) => {
+  let delta = 0;
+
+  if (R.propEq('to', accId, transfer)) {
+    delta = transfer.value;
+  } else if (R.propEq('from', accId, transfer)) {
+    delta = -transfer.value;
+  }
+
+  return sum + delta;
+}, 0, R.values(transfers.byId));
+
 export const getExpenses = categoriesById => R.filter(isExpense(categoriesById));
 
 export const getIncomes = categoriesByIds => R.filter(isIncome(categoriesByIds));
