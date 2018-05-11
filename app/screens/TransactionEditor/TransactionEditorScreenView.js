@@ -31,6 +31,7 @@ const AccountEditor = ({
   accounts,
   onChangeAccount,
   expenseCategories,
+  incomeCategories,
   categoryName,
   categoryIcon,
   isSelectedCategory,
@@ -105,7 +106,7 @@ const AccountEditor = ({
 
     <CategoriesList
       isVisible={isVisibleModal}
-      categories={expenseCategories}
+      categories={value < 0 ? expenseCategories : incomeCategories}
       onSelect={onChangeCategory}
       onToggleModal={onToggleModal}
     />
@@ -117,7 +118,7 @@ const AccountEditor = ({
 
 AccountEditor.navigationOptions = ({ navigation }) => ({
   headerTitle:
-  <HeaderTitle title={getParam('account')(navigation) ? 'Edit account' : 'New account'} />,
+  <HeaderTitle title={getParam('value')(navigation) < 0 ? 'Expense detail' : 'Income detail'} />,
 });
 
 AccountEditor.propTypes = {
@@ -132,6 +133,7 @@ AccountEditor.propTypes = {
   accounts: T.array,
   onChangeAccount: T.func,
   expenseCategories: T.array,
+  incomeCategories: T.array,
   categoryName: T.string,
   categoryIcon: T.object,
   isSelectedCategory: T.bool,

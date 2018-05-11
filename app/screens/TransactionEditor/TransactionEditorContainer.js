@@ -21,10 +21,10 @@ import { colors } from '../../styles';
 // import screens from '../../constants/screens';
 
 
-const mapStateToProps = ({ accounts, categories }) => ({
-  accounts: getAccounts(accounts),
-  expenseCategories: getExpenseCategory(categories),
-  incomeCategories: getIncomeCategory(categories),
+const mapStateToProps = state => ({
+  accounts: getAccounts(state),
+  expenseCategories: getExpenseCategory(state.categories),
+  incomeCategories: getIncomeCategory(state.categories),
 });
 
 

@@ -1,25 +1,32 @@
 import { createSelector } from 'reselect';
 import R from 'ramda';
+import {
+  transfersSum,
+  accountTransactionsSum as transactionsSum,
+} from '../../utils/transactionsHelpers';
 
-const getAccountsIds = accounts => R.pathOr([], ['ids'], accounts);
-export const getAccountsEntities = accounts => R.pathOr({}, ['byId'], accounts);
 
-export const getTotalBalance = createSelector(
-  [
-    getAccountsIds,
-    getAccountsEntities,
-  ],
+const getAccountsIds = state => R.pathOr([], ['accounts', 'ids'], state);
+const getState = state => state;
+const getAccountsEntities = state => R.pathOr({}, ['accounts', 'byId'], state);
 
-  (ids, entities) => ids.reduce(
-    (accumulator, currentValue) =>
-      accumulator + R.pathOr(0, [currentValue, 'initialBalance'], entities), 0),
-);
 
 export const getAccounts = createSelector(
   [
     getAccountsIds,
     getAccountsEntities,
+    getState,
   ],
 
-  (ids, entities) => ids.map(id => entities[id]),
+  (ids, entities, state) => R.map(accId => ({
+    ...entities[accId],
+    balance:
+     transfersSum(state.transfers, accId) +
+     transactionsSum(state.transactions, state.categories, accId),
+  }), ids),
+);
+
+
+export const getTotalBalance = createSelector(
+  [getAccounts], accounts => accounts.reduce((old, current) => old + current.balance, 0),
 );

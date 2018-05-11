@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import types from './types';
-import { colors } from '../../styles'
+import { colors } from '../../styles';
 import { insert, insertAll, update, remove } from '../../utils/stateHelper';
 
 
@@ -67,7 +67,6 @@ const createAccount = (props) => {
 
 
 const defaultAccounts = [
-  // createAccount({ name: 'Add button', icon: 'credit-card', isAddButton: true }),
   createAccount({ name: 'Card', icon: 'credit-card', color: colors.orange }),
   createAccount({ name: 'Cash', icon: 'cash-multiple', color: colors.blue }),
   createAccount({ name: 'Test 1', icon: 'cash-multiple', color: colors.red }),

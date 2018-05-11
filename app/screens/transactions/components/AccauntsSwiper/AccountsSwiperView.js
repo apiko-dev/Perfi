@@ -11,7 +11,7 @@ const AccauntsSwiper = ({ groupedAccounts, onSelectAccount }) => {
     <AccountItem
       key={item.id}
       name={item.name}
-      initialBalance={item.initialBalance}
+      initialBalance={item.balance}
       color={item.color}
       onPress={() => console.log('On account Press', onSelectAccount)}
       isAddButton={item.isAddButton}
