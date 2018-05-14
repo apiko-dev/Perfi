@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     borderRadius: (dimensions.iconSize + 15) / 2,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 2,
     width: dimensions.iconSize + 15,
     height: dimensions.iconSize + 15,
   },

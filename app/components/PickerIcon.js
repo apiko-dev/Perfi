@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
-import colors from '../styles/colors';
+import { dimensions, colors } from '../styles';
 
 const styles = StyleSheet.create({
   iconStyle: {
@@ -18,7 +18,7 @@ const PickerIcon = props => (
     type="material-community"
     iconStyle={styles.iconStyle}
     containerStyle={styles.containerStyle}
-    size={18}
+    size={dimensions.iconSize}
     raised
     {...props}
   />

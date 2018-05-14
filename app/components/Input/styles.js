@@ -9,7 +9,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     height: verticalIndent * 2.8,
     paddingLeft: indent,
-    borderColor: colors.greyDarker,
+    borderColor: colors.grey,
     borderWidth: 1,
     borderRadius: 4,
   },

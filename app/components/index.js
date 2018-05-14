@@ -43,6 +43,9 @@ import Select from './Select';
 import Calendar from './Calendar';
 import NavigationButton from './NavigationButton';
 import FormInput from './FormInput';
+import CategoriesList from './CategoriesList';
+import BigRoundIconButton from './BigRoundIconButton';
+import SegmentedControl from './SegmentedControl';
 
 
 import TouchableItem from './TouchableItem';
@@ -94,4 +97,7 @@ export {
   Calendar,
   NavigationButton,
   FormInput,
+  CategoriesList,
+  BigRoundIconButton,
+  SegmentedControl,
 };
