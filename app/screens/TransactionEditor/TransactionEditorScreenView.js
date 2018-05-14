@@ -5,9 +5,6 @@ import { getParam } from '../../utils/navHelpers';
 import { dimensions, colors } from '../../styles';
 // import dateFormat from '../../constants/dateFormat';
 
-
-import { CategoriesList } from './components';
-
 import {
   Input,
   Button,
@@ -18,29 +15,30 @@ import {
   HeaderTitle,
   Select,
   FormInput,
-} from '../../components/index';
+  CategoriesList,
+} from '../../components';
 import s from './styles';
 
 const AccountEditor = ({
-  data,
-  date,
-  setDate,
-  value,
-  onUpdateNote,
-  note,
-  accounts,
-  onChangeAccount,
-  expenseCategories,
-  incomeCategories,
-  categoryName,
-  categoryIcon,
-  isSelectedCategory,
-  onChangeCategory,
-  onToggleModal,
-  isVisibleModal,
-  onSubmit,
-  isReadyForSubmit,
-  icon,
+data,
+icon,
+date,
+value,
+note,
+setDate,
+onSubmit,
+accounts,
+categoryName,
+categoryIcon,
+onUpdateNote,
+onToggleModal,
+isVisibleModal,
+onChangeAccount,
+incomeCategories,
+onChangeCategory,
+isReadyForSubmit,
+expenseCategories,
+isSelectedCategory,
 }) => (
   <View style={s.root}>
     <ScreenWrapper style={s.withoutPaddingBot}>
@@ -60,9 +58,7 @@ const AccountEditor = ({
           onSelect={onChangeAccount}
           textStyle={s.selectTextStyle}
           optionHeight={dimensions.verticalIndent * 2.8}
-
         />
-
 
         <FormInput
           style={s.selector}
@@ -93,7 +89,6 @@ const AccountEditor = ({
       </ScrollView>
     </ScreenWrapper>
 
-
     <KeyboardAvoidingView withHeader>
       {isReadyForSubmit &&
       <Button
@@ -105,6 +100,7 @@ const AccountEditor = ({
     </KeyboardAvoidingView>
 
     <CategoriesList
+      isModal
       isVisible={isVisibleModal}
       categories={value < 0 ? expenseCategories : incomeCategories}
       onSelect={onChangeCategory}

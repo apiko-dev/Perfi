@@ -3,7 +3,6 @@ import {
   colors,
   dimensions,
   fontSizes,
-  fontWeights,
   scalingUtils,
 } from '../../../../styles/index';
 
@@ -26,7 +25,7 @@ export default StyleSheet.create({
   title: {
     color: colors.greyVeryDarker,
     fontSize: fontSizes.small,
-    fontWeight: fontWeights.extraBold,
+    // fontWeight: fontWeights.extraBold,
   },
 
   border: {

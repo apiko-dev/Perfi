@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { dimensions, colors, fontSizes } from '../../styles';
+
+
 const { indent, verticalIndent } = dimensions;
 
 const length = verticalIndent * 3.5;
@@ -11,7 +13,7 @@ const styles = StyleSheet.create({
 
   container: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   colorPickerContainer: {
