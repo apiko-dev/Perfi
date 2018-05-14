@@ -1,19 +1,22 @@
 import { compose, withProps } from 'recompose';
+import { connect } from 'react-redux';
 import { getParam } from '../../../utils/navHelpers';
-import { NavButton } from '../../../components';
+import { NavigationButton } from '../../../components';
+import { categoriesOperations } from '../../../modules/categories';
 
 const enhance = compose(
+  connect(null, categoriesOperations),
   withProps(({ navigation, deleteCategory }) => {
     const category = getParam('category')(navigation);
 
     return {
       category,
-      iconName: 'delete',
+      title: 'Delete',
       backOnSuccess: true,
       isVisible: !!category,
-      action: () => deleteCategory(category.id),
+      onPress: () => deleteCategory(category.id),
     };
   }),
 );
 
-export default enhance(NavButton);
+export default enhance(NavigationButton);
