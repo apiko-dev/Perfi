@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     marginLeft: dimensions.halfIndent,
   },
   title: {
-    color: colors.headerText,
+    color: colors.greyVeryDarker,
     fontSize: fontSizes.xmedium,
     textAlign: 'center',
 

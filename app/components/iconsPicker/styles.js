@@ -1,28 +1,22 @@
 import { create } from 'react-native-platform-stylesheet';
-import colors from '../../styles/colors';
+import { colors, dimensions } from '../../styles';
 
 const styles = create({
   iconStyle: {
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 10,
-    paddingBottom: 10,
-    fontSize: 26,
-    color: colors.secondaryText,
-    backgroundColor: colors.white,
-    borderStyle: 'solid',
+    padding: dimensions.halfIndent + 2,
   },
   rowStyle: {
     flexDirection: 'row',
+    paddingHorizontal: dimensions.halfIndent,
   },
   modalStyle: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+
   },
   listStyle: {
-    flex: 1,
+    backgroundColor: colors.white,
     alignSelf: 'center',
   },
   pickedItemStyle: {

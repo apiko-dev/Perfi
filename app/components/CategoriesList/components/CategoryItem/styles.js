@@ -5,11 +5,11 @@ import {
   fontSizes,
   fontWeights,
   scalingUtils,
-} from '../../../../../../styles/index';
+} from '../../../../styles/index';
 
 export default StyleSheet.create({
   container: {
-    height: scalingUtils.verticalScale(65),
+    height: scalingUtils.verticalScale(54),
     backgroundColor: colors.white,
     flexDirection: 'row',
   },

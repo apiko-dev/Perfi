@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import colors from '../../../../styles/colors';
-import { fontSizes, fontWeights } from '../../../../styles';
+import { fontSizes, fontWeights, dimensions } from '../../../../styles';
 
 const styles = StyleSheet.create({
 
@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
     height: 62,
   },
   icon: {
-    marginLeft: 18,
-    marginRight: 8,
+    marginLeft: dimensions.indent,
+    marginRight: dimensions.indent / 1.5,
     alignItems: 'center',
   },
   inactiveIcon: {

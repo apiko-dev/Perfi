@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors, dimensions, fontSizes, fontWeights } from '../../../../styles';
+import { colors, dimensions, fontSizes, fontWeights } from '../../styles/index';
 
 const { doubleIndent, verticalIndent } = dimensions;
 
@@ -36,5 +36,14 @@ export default StyleSheet.create({
   modal: {
     margin: doubleIndent,
   },
+
+  listContainer: {
+    paddingTop: verticalIndent,
+  },
+
+  footer: {
+    height: 85,
+  },
+
 
 });

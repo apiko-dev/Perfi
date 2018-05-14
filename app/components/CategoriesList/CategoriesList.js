@@ -2,8 +2,8 @@ import React from 'react';
 import T from 'prop-types';
 import { View, FlatList } from 'react-native';
 import Modal from 'react-native-modal';
-import { Text, TouchableItem, Separator } from '../../../../components';
-import { CategoryItem } from './components';
+import { Text, TouchableItem, Separator } from '../index';
+import { CategoryItem } from './components/index';
 import s from './styles';
 
 
@@ -12,10 +12,9 @@ const CategoryList = ({
     isVisible,
     onToggleModal,
     onSelect,
+    isModal,
   }) => {
   const _keyExtractor = item => item.id;
-  console.log('categories', categories);
-
 
   /* eslint-disable react/prop-types */
   const _renderItem = ({ item }) => (
@@ -24,7 +23,8 @@ const CategoryList = ({
       onSelect={onSelect}
     />
   );
-  return (
+  return isModal ?
+
     <View>
       <View style={s.calendarIcon}>
         <TouchableItem onPress={onToggleModal} />
@@ -43,7 +43,6 @@ const CategoryList = ({
             <Separator />
           </View>
           <FlatList
-            style={s.list}
             data={categories}
             renderItem={_renderItem}
             keyExtractor={_keyExtractor}
@@ -53,10 +52,23 @@ const CategoryList = ({
         </View>
       </Modal>
     </View>
-  );
+
+        :
+
+    <View style={s.listContainer}>
+      <Separator />
+      <FlatList
+        data={categories}
+        renderItem={_renderItem}
+        keyExtractor={_keyExtractor}
+        ItemSeparatorComponent={Separator}
+        ListFooterComponent={categories.length ? <View style={s.footer}><Separator /></View> : null}
+      />
+    </View>;
 };
 
 CategoryList.propTypes = {
+  isModal: T.bool,
   isVisible: T.bool,
   onToggleModal: T.func,
   onSelect: T.func,

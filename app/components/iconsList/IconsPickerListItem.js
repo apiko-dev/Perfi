@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'react-native-elements';
-import styles from '../iconsPicker/IconsPickerStyles';
+import styles from '../iconsPicker/styles';
+import BigRoundIconButton from '../BigRoundIconButton';
+import { colors } from '../../styles';
 
 const IconsPickerItem = ({ name, isSelected, onIconPress }) => (
-  <Icon
-    key={name}
-    iconStyle={[styles.iconStyle, isSelected && styles.pickedItemStyle]}
+  <BigRoundIconButton
     name={name}
-    type="material-community"
+    border={{ borderColor: isSelected ? colors.green : colors.greyDarker }}
     onPress={() => onIconPress(name)}
+    containerStyle={styles.iconStyle}
+    tintColor={isSelected ? colors.green : colors.greyDarker}
   />
-);
+  );
 
 IconsPickerItem.propTypes = {
   name: PropTypes.string,

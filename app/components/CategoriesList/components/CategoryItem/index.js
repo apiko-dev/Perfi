@@ -1,10 +1,10 @@
 import React from 'react';
 import T from 'prop-types';
 import { View, Text } from 'react-native';
-import { RoundIcon, TouchableItem } from '../../../../../../components/index';
+import { RoundIcon, TouchableItem } from '../../../index';
 import s from './styles';
 
-import { colors } from '../../../../../../styles/index';
+import { colors } from '../../../../styles';
 
 
 const TransactionItem = ({

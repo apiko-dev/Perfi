@@ -1,5 +1,5 @@
 import screens from '../../constants/screens';
-import Accounts from '../../screens/accounts/AccountsListContainer';
+import Accounts from '../../screens/Accounts';
 import { TransferEditor, AccountEditor } from '../../screens';
 import headerOptions from '../../utils/stackHeaderOptions';
 
