@@ -6,7 +6,7 @@ import Categories from './Categories';
 import CategoryEditor from './CategoryEditor';
 import Calculator from './Calculator';
 
-import Settings from './settings/SettingsScreen';
+import Settings from './Settings';
 import Trends from './trends/TrendsScreen';
 import TransferEditor from './transferEditor/TransferEditorScreen';
 

@@ -6,6 +6,7 @@ import storage from './storage';
 import transactions from './transactions';
 import transfers from './transfers';
 import navigator from './navigator';
+import settings from './settings';
 
 const appReducer = combineReducers({
   app,
@@ -15,6 +16,7 @@ const appReducer = combineReducers({
   transactions,
   transfers,
   navigator,
+  settings,
 });
 
 export default appReducer;
