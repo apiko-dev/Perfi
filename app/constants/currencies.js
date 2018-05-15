@@ -1,8 +1,14 @@
-// Test currencies
-export default [{
-  name: 'US Dollar',
-  sign: '$',
-}, {
-  name: 'Euro',
-  sign: 'e',
-}];
+export default {
+  dollar: {
+    name: '$ - US Dollar',
+    sign: '$',
+  },
+  euro: {
+    name: '€ - Euro',
+    sign: '€',
+  },
+  hryvnia: {
+    name: '₴ - Hryvnia',
+    sign: '₴',
+  },
+};

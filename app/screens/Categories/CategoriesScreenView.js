@@ -60,7 +60,7 @@ const Categories = ({
       >
         <CategoriesList
           categories={expenseCategories}
-          onSelect={expenseCategories}
+          onSelect={onSelectCategory}
         />
       </TabContainer>
 

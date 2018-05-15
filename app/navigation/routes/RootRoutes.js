@@ -21,9 +21,6 @@ const Routes = {
   [screens.TrendsRoot]: {
     screen: TrendsNavigator,
   },
-  [screens.SettingsRoot]: {
-    screen: SettingsNavigator,
-  },
   [screens.FavouritesRoot]: {
     screen: FavouritesNavigator,
   },
