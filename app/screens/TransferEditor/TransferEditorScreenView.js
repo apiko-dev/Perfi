@@ -14,6 +14,7 @@ import {
   CalculatorModal,
   AccountItem,
 } from '../../components';
+import s from './styles';
 
 const TransferEditor = ({
   navigation,
@@ -35,9 +36,9 @@ const TransferEditor = ({
   isDatePickerVisible,
   isValid,
 }) => (
-  <ScreenWrapper>
-      <View>
-        <View >
+  <ScreenWrapper style={s.root}>
+      <View style={s.container}>
+        <View style={s.card}>
           <TouchableFormInput
             icon="calculator"
             value={value.toString()}
@@ -51,12 +52,14 @@ const TransferEditor = ({
             onSelect={setAccountFrom}
           />
         </View>
-        <Icon
-          iconStyle={[appStyles.iconStyle, appStyles.withMarginTop]}
-          type="material-community"
-          name="arrow-down"
-        />
-        <View>
+        <View style={{margin: 50}}>
+          <Icon
+            iconStyle={[appStyles.iconStyle, appStyles.withMarginTop]}
+            type="material-community"
+            name="arrow-down"
+          />
+        </View>
+        <View style={s.card}>
           <Selector
             options={accounts}
             currentOption={accountTo}
@@ -98,7 +101,7 @@ const TransferEditor = ({
 );
 
 TransferEditor.navigationOptions = ({ navigation }) => ({
-  title: navigation.state.params.title,
+  title: 'Transfer',
 });
 
 TransferEditor.propTypes = {
