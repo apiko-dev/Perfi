@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { dimensions, colors, fontSizes, scalingUtils, fontWeights } from '../../styles';
+import { dimensions, colors } from '../../styles';
 
-const { indent } = dimensions;
 
 const styles = StyleSheet.create({
   root: {
@@ -12,9 +11,6 @@ const styles = StyleSheet.create({
     marginHorizontal: dimensions.indent,
     paddingTop: dimensions.indent,
     paddingBottom: 0,
-  },
-  separator: {
-    opacity: 0.2,
   },
 });
 

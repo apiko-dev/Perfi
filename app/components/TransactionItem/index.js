@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import R from 'ramda';
 import { compose, withProps, pure } from 'recompose';
 import TransactionItem from './TransactionItem';
-import { accountsOperations } from '../../../../modules/accounts';
-import { colors } from '../../../../styles';
+import { accountsOperations } from '../../modules/accounts/index';
+import { colors } from '../../styles/index';
 
 
 const mapStateToProps = ({ accounts, categories }) => ({

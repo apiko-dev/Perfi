@@ -1,11 +1,11 @@
 import screens from '../../constants/screens';
-import { Categories, CategoryEditor } from '../../screens';
+import { Favourites, CategoryEditor } from '../../screens';
 import headerOptions from '../../utils/stackHeaderOptions';
 
 const Routes = {
   [screens.Categories]: {
-    screen: Categories,
-    navigationOptions: headerOptions({ title: 'Categories' }),
+    screen: Favourites,
+    navigationOptions: headerOptions({ title: 'Favourites' }),
   },
   [screens.CategoryEditor]: {
     screen: CategoryEditor,

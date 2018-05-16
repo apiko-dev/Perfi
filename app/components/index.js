@@ -49,6 +49,9 @@ import SegmentedControl from './SegmentedControl';
 
 
 import TouchableItem from './TouchableItem';
+import FlatList from './FlatList';
+import TransactionItem from './TransactionItem';
+import DateFilter from './DateFilter';
 
 export {
   AccountHeaderTrigger,
@@ -100,4 +103,7 @@ export {
   CategoriesList,
   BigRoundIconButton,
   SegmentedControl,
+  FlatList,
+  TransactionItem,
+  DateFilter,
 };

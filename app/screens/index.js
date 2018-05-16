@@ -9,6 +9,7 @@ import Calculator from './Calculator';
 import Settings from './Settings';
 import Trends from './trends/TrendsScreen';
 import TransferEditor from './transferEditor/TransferEditorScreen';
+import Favourites from './Favourites';
 
 export {
   Accounts,
@@ -22,4 +23,5 @@ export {
   Settings,
   TransferEditor,
   Trends,
+  Favourites,
 };
