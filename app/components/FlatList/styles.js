@@ -1,7 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { dimensions, colors, fontSizes, scalingUtils, fontWeights } from '../../styles';
-
-const { indent } = dimensions;
+import { dimensions, colors, fontSizes } from '../../styles';
 
 const styles = StyleSheet.create({
   list: {
@@ -12,7 +10,7 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     paddingTop: dimensions.halfIndent,
-    alignSelf: 'center',
+    textAlign: 'center',
     fontSize: fontSizes.small,
     color: colors.greyDarker,
   },

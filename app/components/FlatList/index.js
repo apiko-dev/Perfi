@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList as List, Text, View } from 'react-native';
-import s from '../../screens/Favourites/styles';
+import s from './styles';
 import Separator from '../Separator';
 
 const _keyExtractor = item => item.id;

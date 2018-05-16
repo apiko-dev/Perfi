@@ -4,9 +4,9 @@ import types from './types';
 import { insert, insertAll, update, remove } from '../../utils/stateHelper';
 
 const createTransaction = (props) => {
-  const { value, account, category, date = new Date(), note } = props;
+  const { value, account, category, date = new Date(), note, isFavourites } = props;
 
-  return { value, account, category, date, note };
+  return { value, account, category, date, note, isFavourites };
 };
 
 

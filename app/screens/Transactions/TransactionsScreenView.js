@@ -23,10 +23,11 @@ const Transactions = ({
     transactions,
     onDeleteTransaction,
     onAddTransactionToFavourite,
+    onDeleteFromFavourites,
     dateForFiltering,
     setDateForFiltering,
     setListRef,
-    }) => {
+}) => {
 
   /* eslint-disable react/prop-types */
   const _renderItem = ({ item }) => (
@@ -37,6 +38,8 @@ const Transactions = ({
       value={item.value}
       onDelete={() => onDeleteTransaction(item.id)}
       onAddToFavourite={() => onAddTransactionToFavourite(item.id)}
+      onDeleteFromFavourites={() => onDeleteFromFavourites(item.id)}
+      isFavourites={item.isFavourites}
     />
   );
 
@@ -102,6 +105,7 @@ Transactions.propTypes = {
   transactions: T.array,
   onDeleteTransaction: T.func,
   onAddTransactionToFavourite: T.func,
+  onDeleteFromFavourites: T.func,
   dateForFiltering: T.object,
   setDateForFiltering: T.func,
   setListRef: T.func,

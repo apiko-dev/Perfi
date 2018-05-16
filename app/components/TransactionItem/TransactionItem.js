@@ -22,8 +22,11 @@ const TransactionItem = ({
    categoryIconName,
    categoryName,
    onDelete,
+   isFavourites,
    onAddToFavourite,
+   onDeleteFromFavourites,
 }) => {
+
   const swipeoutBtns = {
     right: onDelete ? [{
       backgroundColor: colors.red,
@@ -31,8 +34,8 @@ const TransactionItem = ({
       component: <ButtonView name="trash" />,
     }] : undefined,
     left: onAddToFavourite ? [{
-      backgroundColor: colors.yellow,
-      onPress: onAddToFavourite,
+      backgroundColor: isFavourites ? colors.yellow : colors.grey,
+      onPress: isFavourites ? onDeleteFromFavourites : onAddToFavourite ,
       component: <ButtonView name="star" />,
     }]: undefined,
   };
@@ -71,6 +74,8 @@ TransactionItem.propTypes = {
   categoryName: T.string,
   onDelete: T.func,
   onAddToFavourite: T.func,
+  onDeleteFromFavourite: T.func,
+  isFavourites: T.bool,
 };
 
 export default TransactionItem;

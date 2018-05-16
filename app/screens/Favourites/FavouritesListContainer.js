@@ -8,7 +8,7 @@ import {
 import { connect } from 'react-redux';
 import FavouritesScreenView from './FavouritesScreenView';
 import { transactionsOperations } from '../../modules/transactions';
-import { getTransactions } from '../../modules/transactions/selectors';
+import { getFavouritesTransactions } from '../../modules/transactions/selectors';
 
 import {
   startOfDay,
@@ -16,7 +16,7 @@ import {
 
 
 const mapStateToProps = (state, { dateForFiltering }) => ({
-  data: getTransactions(state.transactions, dateForFiltering),
+  data: getFavouritesTransactions(state.transactions, dateForFiltering),
 });
 
 const enhance = compose(
@@ -25,7 +25,7 @@ const enhance = compose(
   withState('listRef', 'setListRef', null),
 
   withHandlers({
-    onDeleteTransaction: props => id => props.deleteTransaction(id),
+    onDeleteFromFavourites: props => id => props.onDeleteFromFavourites(id),
   }),
   lifecycle({
     componentDidUpdate(prevProps) {

@@ -5,7 +5,6 @@ import {
   hoistStatics,
   lifecycle,
 } from 'recompose';
-import moment from 'moment';
 import { connect } from 'react-redux';
 import TransactionsScreenView from './TransactionsScreenView';
 import { transactionsOperations } from '../../modules/transactions';
@@ -14,12 +13,6 @@ import { getTotalBalance } from '../../modules/accounts/selectors';
 
 import {
   startOfDay,
-  startOfYesterday,
-  startOfWeek,
-  startOfMonthAgo,
-  startOfYear,
-  isYesterday,
-  isToday,
 } from '../../utils/dateHelpers';
 
 
@@ -35,14 +28,10 @@ const enhance = compose(
   withState('listRef', 'setListRef', null),
 
   withHandlers({
-    onDeleteTransaction: props => (id) => {
-      props.deleteTransaction(id);
-    },
-    onAddTransactionToFavourite: props => (id) => {
-      props.addTransactionToFavourite(id);
-    },
+    onDeleteTransaction: props => id => props.deleteTransaction(id),
+    onAddTransactionToFavourite: props => id => props.addTransactionToFavourites(id),
+    onDeleteFromFavourites: props => id => props.onDeleteFromFavourites(id),
   }),
-
   lifecycle({
     componentWillMount() {
       this.props.navigation.setParams(

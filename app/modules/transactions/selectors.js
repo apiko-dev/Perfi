@@ -24,3 +24,20 @@ export const getTransactions = createSelector(
     return newArray;
   },
 );
+
+export const getFavouritesTransactions = createSelector(
+  [getTransactionsIds, getTransactionsEntities, getDateForFiltering],
+  (ids, entities, date) => {
+    const newArray = [];
+    ids.forEach((id) => {
+      const transaction = entities[id];
+      const period = !date.format ?
+        date : { from: +date.startOf('day'), to: +date.endOf('day') };
+      if (inPeriod(period, transaction.date) && transaction.isFavourites) {
+        newArray.push(transaction);
+      }
+    });
+
+    return newArray;
+  },
+);
