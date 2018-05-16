@@ -2,10 +2,15 @@ import React from 'react';
 import T from 'prop-types';
 import ActionButton from 'react-native-action-button';
 import screens from '../../constants/screens';
-import { ScreenWrapper, Subtitle, CategoriesList, SegmentedControl } from '../../components';
+import {
+  ScreenWrapper,
+  Subtitle,
+  CategoriesList,
+  SegmentedControl,
+  TabContainer,
+} from '../../components';
 import { getParam } from '../../utils/navHelpers';
 import { categoriesTypes as types } from '../../constants/categories';
-import { TabContainer } from './components';
 import s from './styles';
 import { colors } from '../../styles';
 

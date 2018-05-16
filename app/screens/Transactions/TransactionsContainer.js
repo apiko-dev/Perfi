@@ -8,6 +8,7 @@ import {
 import moment from 'moment';
 import { connect } from 'react-redux';
 import TransactionsScreenView from './TransactionsScreenView';
+// import TransactionsScreenView from './components/transactionsChart/TransactionsChartView';
 import { transactionsOperations } from '../../modules/transactions';
 import { getTransactions } from '../../modules/transactions/selectors';
 import { getTotalBalance } from '../../modules/accounts/selectors';

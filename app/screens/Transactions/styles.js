@@ -79,6 +79,13 @@ const styles = StyleSheet.create({
     opacity: 0.2,
   },
 
+  pieContainer: {
+    flex: 1,
+    paddingTop: dimensions.verticalIndent,
+    backgroundColor: 'orange',
+    alignItems: 'center',
+  },
+
 });
 
 export default styles;

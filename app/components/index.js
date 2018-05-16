@@ -46,6 +46,7 @@ import FormInput from './FormInput';
 import CategoriesList from './CategoriesList';
 import BigRoundIconButton from './BigRoundIconButton';
 import SegmentedControl from './SegmentedControl';
+import TabContainer from './TabContainer';
 
 
 import TouchableItem from './TouchableItem';
@@ -100,4 +101,5 @@ export {
   CategoriesList,
   BigRoundIconButton,
   SegmentedControl,
+  TabContainer,
 };
