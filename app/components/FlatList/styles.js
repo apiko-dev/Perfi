@@ -4,17 +4,17 @@ import { dimensions, colors, fontSizes, scalingUtils, fontWeights } from '../../
 const { indent } = dimensions;
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: colors.white,
+  list: {
+    marginTop: dimensions.halfIndent,
   },
-  subtitle: {
-    marginHorizontal: dimensions.indent,
-    paddingTop: dimensions.indent,
-    paddingBottom: 0,
+  paddingBottom: {
+    paddingBottom: 85,
   },
-  separator: {
-    opacity: 0.2,
+  emptyText: {
+    paddingTop: dimensions.halfIndent,
+    alignSelf: 'center',
+    fontSize: fontSizes.small,
+    color: colors.greyDarker,
   },
 });
 

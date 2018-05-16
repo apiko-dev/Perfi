@@ -1,19 +1,19 @@
 import React from 'react';
 import T from 'prop-types';
-import { View, FlatList, Text } from 'react-native';
+import { View, } from 'react-native';
 import ActionButton from 'react-native-action-button';
 import screens from '../../constants/screens';
-import { TransactionItem, AccauntsSwiper } from './components';
+import { AccauntsSwiper } from './components';
 import {
   Subtitle,
   Separator,
-  Select,
-  Button,
-  Calendar,
+  DateFilter,
   NavIcon,
+  TransactionItem,
+  FlatList,
 } from '../../components';
 import s from './styles';
-import { colors, dimensions, scalingUtils } from '../../styles';
+import { colors, dimensions } from '../../styles';
 import NavigationButton from '../../components/NavigationButton';
 import { getParam } from '../../utils/navHelpers';
 
@@ -23,21 +23,10 @@ const Transactions = ({
     transactions,
     onDeleteTransaction,
     onAddTransactionToFavourite,
-    onToggleCalendar,
-    isVisibleCalendar,
-    onChangeCalendar,
-    isActiveCalendar,
-    isActiveToday,
-    isActiveYesterday,
-    isActiveSelector,
-    onSetActiveToday,
-    onSetActiveYesterday,
     dateForFiltering,
-    onChangeSelector,
+    setDateForFiltering,
     setListRef,
     }) => {
-  const _keyExtractor = item => item.id;
-
 
   /* eslint-disable react/prop-types */
   const _renderItem = ({ item }) => (
@@ -62,65 +51,21 @@ const Transactions = ({
         <AccauntsSwiper navigation={navigation} />
       </View>
       <Separator style={s.separator} />
-
-      <View style={s.selectors}>
-        <Select
-          selectorsWidth={scalingUtils.moderateScale(100)}
-          options={['Week', 'Month', 'Year']}
-          style={s.dateSelector}
-          defaultValue="Select"
-          onSelect={onChangeSelector}
-          isActiveSelector={isActiveSelector}
-        />
-        <Button
-          title="Today"
-          onPress={onSetActiveToday}
-          titleStyle={s.btTitleStyle}
-          containerStyle={s.btnContainer}
-          isActive={isActiveToday}
-          activeBackgroundColor={s.activeButtonBackgroundColor}
-          activeColor={colors.white}
-
-        />
-        <Button
-          title="Yesterday"
-          onPress={onSetActiveYesterday}
-          titleStyle={s.btTitleStyle}
-          containerStyle={s.btnContainer}
-          isActive={isActiveYesterday}
-          activeBackgroundColor={s.activeButtonBackgroundColor}
-          activeColor={colors.white}
-
-        />
-        <Calendar
-          isVisible={isVisibleCalendar}
-          isActiveIcon={isActiveCalendar}
-          onToggleCalendar={onToggleCalendar}
-          onSelectedDate={onChangeCalendar}
-          initialDate={dateForFiltering}
-        />
-      </View>
-
+      <DateFilter
+        dateForFiltering={dateForFiltering}
+        setDateForFiltering={setDateForFiltering}
+      />
       <Subtitle
         style={s.subtitle}
         leftText="Transaction"
         date={dateForFiltering}
       />
-
       <FlatList
-        style={s.list}
         data={transactions}
         renderItem={_renderItem}
-        keyExtractor={_keyExtractor}
-        ListHeaderComponent={Separator}
-        ItemSeparatorComponent={Separator}
-        ListEmptyComponent={<Text style={s.emptyText}>{"You don't have any transaction"}</Text>}
-        ListFooterComponent={
-          transactions.length ? <View style={s.paddingBottom}><Separator /></View> : null
-        }
-        ref={setListRef}
+        listEmptyText="You don't have any favourites"
+        flatListRef={setListRef}
       />
-
       <ActionButton
         buttonColor={colors.green}
         size={55}
@@ -157,17 +102,8 @@ Transactions.propTypes = {
   transactions: T.array,
   onDeleteTransaction: T.func,
   onAddTransactionToFavourite: T.func,
-  onToggleCalendar: T.func,
-  isVisibleCalendar: T.bool,
-  onChangeCalendar: T.func,
-  isActiveCalendar: T.bool,
-  isActiveToday: T.bool,
-  isActiveYesterday: T.bool,
-  isActiveSelector: T.bool,
-  onSetActiveToday: T.func,
-  onSetActiveYesterday: T.func,
   dateForFiltering: T.object,
-  onChangeSelector: T.func,
+  setDateForFiltering: T.func,
   setListRef: T.func,
 };
 

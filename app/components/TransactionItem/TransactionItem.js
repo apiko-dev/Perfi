@@ -2,11 +2,11 @@ import React from 'react';
 import T from 'prop-types';
 import { View, Text } from 'react-native';
 import Swipeout from 'react-native-swipeout';
-import { NavIcon, RoundIcon } from '../../../../components';
+import { NavIcon, RoundIcon } from '../index';
 import s from './styles';
 
-import { dateWithTime } from '../../../../utils/dateHelpers';
-import { colors } from '../../../../styles';
+import { dateWithTime } from '../../utils/dateHelpers';
+import { colors } from '../../styles/index';
 
 
 const ButtonView = ({ name }) => ( // eslint-disable-line
@@ -25,21 +25,21 @@ const TransactionItem = ({
    onAddToFavourite,
 }) => {
   const swipeoutBtns = {
-    right: [{
+    right: onDelete ? [{
       backgroundColor: colors.red,
       onPress: onDelete,
       component: <ButtonView name="trash" />,
-    }],
-    left: [{
+    }] : undefined,
+    left: onAddToFavourite ? [{
       backgroundColor: colors.yellow,
       onPress: onAddToFavourite,
       component: <ButtonView name="star" />,
-    }],
+    }]: undefined,
   };
+
   return (
     <Swipeout
-      right={swipeoutBtns.right}
-      left={swipeoutBtns.left}
+      {...swipeoutBtns}
       sensitivity={0}
       autoClose
     >
