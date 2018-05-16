@@ -59,5 +59,18 @@ export default {
     ),
     viewBox: "0 0 801 323.9"
   },
+  'transfer': {
+    svg: (
+      <G>
+        <G id="transfer">
+          <G>
+            <Polygon points="32,24 7.992,24 7.992,28 0,22 7.992,16 7.992,20 32,20"/>
+            <Polygon points="0,12 24,12 24,16 32,10 24,4 24,8 0,8"/>
+          </G>
+        </G>
+      </G>
+    ),
+    viewBox: "0 0 32 32"
+  },
 
 };

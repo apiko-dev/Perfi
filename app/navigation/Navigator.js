@@ -6,7 +6,7 @@ import screens from '../constants/screens';
 
 const Navigator = DrawerNavigator;
 const config = {
-  initialRouteName: screens.FavouritesRoot,
+  initialRouteName: screens.AccountsRoot,
   contentComponent: Drawer,
 };
 
