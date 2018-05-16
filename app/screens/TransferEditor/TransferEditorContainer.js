@@ -1,11 +1,11 @@
-import {
-  compose,
-  withProps,
-  withState,
-  withHandlers,
-} from 'recompose';
+import { connect } from 'react-redux';
 import R from 'ramda';
-import TransferForm from './TransferForm';
+import { transfersOperations } from '../../modules/transfers/index';
+import { compose, withHandlers, withProps, withState, hoistStatics } from 'recompose';
+import { NavigationActions } from 'react-navigation';
+import TransferEditorScreenView from './TransferEditorScreenView';
+
+const mapStateToProps = ({ accounts }) => ({ accounts: R.values(accounts.byId) });
 
 const transferProp = (propName, def) => R.pathOr(def, ['transfer', propName]);
 
@@ -27,7 +27,7 @@ const onToggleDatePicker = ({ isDatePickerVisible, setDatePickerVisible }) => ()
   setDatePickerVisible(!isDatePickerVisible);
 };
 
-const onSubmit = ({ createTransfer, onClose, ...props }) => () => {
+const onSubmit = ({ createTransfer, navigation, onClose, ...props }) => () => {
   const transferProps = R.pick(['value', 'date', 'notes'], props);
   const { accountFrom, accountTo } = props;
 
@@ -37,7 +37,7 @@ const onSubmit = ({ createTransfer, onClose, ...props }) => () => {
     to: accountTo.id,
   });
 
-  onClose();
+  navigation.dispatch(NavigationActions.back());
 };
 
 const withValidation = withProps(({ accountFrom: from, accountTo: to, value }) => ({
@@ -45,6 +45,7 @@ const withValidation = withProps(({ accountFrom: from, accountTo: to, value }) =
 }));
 
 const enhance = compose(
+  connect(mapStateToProps, transfersOperations),
   withState('accountFrom', 'setAccountFrom', transferProp('accountFrom')),
   withState('accountTo', 'setAccountTo', transferProp('accountTo')),
   withState('value', 'setValue', transferProp('value', 0)),
@@ -66,4 +67,4 @@ const enhance = compose(
   }),
 );
 
-export default enhance(TransferForm);
+export default hoistStatics(enhance)(TransferEditorScreenView);
