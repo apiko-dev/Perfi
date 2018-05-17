@@ -1,128 +1,145 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { AccountTrigger, ScreenWrapper } from '../../components';
-import appStyles from '../../styles/AppStyles';
-import calendarDateFormat from '../../utils/calendarDateFormat';
-import { View } from 'react-native';
-import DateTimePicker from 'react-native-modal-datetime-picker';
+import { View, ScrollView } from 'react-native';
+import T from 'prop-types';
+import { dimensions, colors } from '../../styles';
+
 import {
-  TouchableFormInput,
-  Selector,
+  Input,
+  Button,
+  KeyboardAvoidingView,
+  DatePicker,
+  ScreenWrapper,
+  HeaderTitle,
+  Select,
   Icon,
-  FormInputWithIcon,
-  ActionButton,
-  CalculatorModal,
-  AccountItem,
 } from '../../components';
 import s from './styles';
 
-const TransferEditor = ({
-  navigation,
-  value,
-  notes,
-  date,
-  accounts,
-  accountFrom,
-  accountTo,
-  setAccountFrom,
-  setAccountTo,
-  setNotes,
-  onDateChange,
-  onSubmit,
-  onToggleCalculator,
-  onToggleDatePicker,
-  onValueChange,
-  isCalculatorVisible,
-  isDatePickerVisible,
-  isValid,
+const AccountEditor = ({
+data,
+icon,
+date,
+value,
+note,
+setDate,
+onSubmit,
+accounts,
+categoryName,
+categoryIcon,
+onUpdateNote,
+onToggleModal,
+isVisibleModal,
+onChangeAccount,
+incomeCategories,
+onChangeCategory,
+isReadyForSubmit,
 }) => (
-  <ScreenWrapper style={s.root}>
-      <View style={s.container}>
+  <View style={s.root}>
+    <ScreenWrapper style={s.withoutPaddingBot}>
+      <ScrollView>
         <View style={s.card}>
-          <TouchableFormInput
-            icon="calculator"
-            value={value.toString()}
-            onPress={onToggleCalculator}
+          <Input
+            isValid
+            placeholder="Value"
+            value={note}
+            onChangeText={onUpdateNote}
+            containerStyle={s.marginVertical}
+            iconRight={icon}
           />
-          <Selector
+          <Select
+            isAccount
             options={accounts}
-            currentOption={accountFrom}
-            optionRenderer={AccountItem}
-            triggerRenderer={AccountTrigger}
-            onSelect={setAccountFrom}
+            containerStyle={s.marginVertical}
+            style={s.selector}
+            defaultValue="Account"
+            selectorsWidth={dimensions.containerWidth}
+            onSelect={onChangeAccount}
+            textStyle={s.selectTextStyle}
+            optionHeight={dimensions.verticalIndent * 2.8}
           />
         </View>
-        <View style={{margin: 50}}>
+        <View style={s.containerIcon}>
           <Icon
-            iconStyle={[appStyles.iconStyle, appStyles.withMarginTop]}
-            type="material-community"
-            name="arrow-down"
+            name="arrow_down"
+            color={colors.green}
+            width={40}
+            height={40}
+          />
+          <Icon
+            name="arrow_down"
+            color={colors.green}
+            width={40}
+            height={40}
           />
         </View>
         <View style={s.card}>
-          <Selector
+          <Select
+            isAccount
             options={accounts}
-            currentOption={accountTo}
-            optionRenderer={AccountItem}
-            triggerRenderer={AccountTrigger}
-            onSelect={setAccountTo}
+            containerStyle={s.marginVertical}
+            style={s.selector}
+            defaultValue="Account"
+            selectorsWidth={dimensions.containerWidth}
+            onSelect={onChangeAccount}
+            textStyle={s.selectTextStyle}
+            optionHeight={dimensions.verticalIndent * 2.8}
           />
-          <TouchableFormInput
-            icon="calendar"
-            onPress={onToggleDatePicker}
-            value={calendarDateFormat(date)}
+          <DatePicker
+            isSelected
+            placeholder="Initial date"
+            onSelectDate={val => setDate(val)}
+            containerStyle={s.marginVertical}
+            defaultValue={data}
+            // format={dateFormat.newAccountDateFormat}
+            date={date}
           />
-          <FormInputWithIcon
-            icon="pen"
-            value={notes}
-            onChangeText={setNotes}
+          <Input
+            isValid
             placeholder="Notes"
-            multiline
+            value={note}
+            onChangeText={onUpdateNote}
+            containerStyle={s.marginVertical}
+            iconRight={icon}
           />
         </View>
-        {isValid && (
-          <ActionButton
-            onPress={onSubmit}
-            iconName="check"
-          />
-        )}
-        <CalculatorModal
-          value={value}
-          isVisible={isCalculatorVisible}
-          onSubmit={onValueChange}
-        />
-        <DateTimePicker
-          isVisible={isDatePickerVisible}
-          onConfirm={onDateChange}
-          onCancel={onToggleDatePicker}
-        />
-    </View>
-  </ScreenWrapper>
+      </ScrollView>
+    </ScreenWrapper>
+    <KeyboardAvoidingView withHeader>
+      {isReadyForSubmit &&
+      <Button
+        secondaryOpacity
+        title="Save"
+        onPress={onSubmit}
+      />
+      }
+    </KeyboardAvoidingView>
+  </View>
 );
 
-TransferEditor.navigationOptions = ({ navigation }) => ({
-  title: 'Transfer',
+AccountEditor.navigationOptions = () => ({
+  headerTitle: <HeaderTitle title={'Transfer'} />,
 });
 
-TransferEditor.propTypes = {
-  navigation: PropTypes.object,
-  value: PropTypes.number,
-  date: PropTypes.instanceOf(Date),
-  onSubmit: PropTypes.func,
-  setAccountFrom: PropTypes.func,
-  accounts: PropTypes.array,
-  notes: PropTypes.string,
-  setNotes: PropTypes.func,
-  onDateChange: PropTypes.func,
-  onToggleCalculator: PropTypes.func,
-  setAccountTo: PropTypes.func,
-  onToggleDatePicker: PropTypes.func,
-  onValueChange: PropTypes.func,
-  accountFrom: PropTypes.object,
-  accountTo: PropTypes.object,
-  isDatePickerVisible: PropTypes.bool,
-  isCalculatorVisible: PropTypes.bool,
-  isValid: PropTypes.bool,
+AccountEditor.propTypes = {
+  date: T.any,
+  onSubmit: T.func,
+  icon: T.object,
+  data: T.any,
+  setDate: T.func,
+  value: T.number,
+  onUpdateNote: T.func,
+  note: T.string,
+  accounts: T.array,
+  onChangeAccount: T.func,
+  expenseCategories: T.array,
+  incomeCategories: T.array,
+  categoryName: T.string,
+  categoryIcon: T.object,
+  isSelectedCategory: T.bool,
+  onChangeCategory: T.func,
+  onToggleModal: T.func,
+  isVisibleModal: T.bool,
+  isReadyForSubmit: T.bool,
 };
 
-export default TransferEditor;
+export default AccountEditor;

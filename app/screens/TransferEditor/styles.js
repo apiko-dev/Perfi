@@ -1,33 +1,36 @@
 import { StyleSheet } from 'react-native';
-import { dimensions, colors, fontSizes, scalingUtils, fontWeights } from '../../styles';
+import { dimensions, colors, fontSizes, fontWeights } from '../../styles';
 
-const { indent } = dimensions;
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    justifyContent: 'flex-start',
-    backgroundColor: colors.white,
   },
-  container: {
-
+  selector: {
+    alignItems: 'center',
+    borderRadius: 4,
   },
-  subtitle: {
-    marginHorizontal: dimensions.indent,
-    paddingTop: dimensions.indent,
-    paddingBottom: 0,
-  },
-  separator: {
-    opacity: 0.2,
+  containerIcon: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginVertical: dimensions.verticalIndent,
   },
   card: {
-    padding: 5,
-    margin: 5,
-    borderWidth: 2,
-    borderRadius: 5,
+    borderWidth: 1,
+    borderRadius: 4,
     borderStyle: 'dashed',
-    borderColor: colors.greyDarker,
-  }
+    borderColor: colors.darkGrey,
+    paddingHorizontal: dimensions.halfVerticalIndent,
+  },
+  withoutPaddingBot: {
+    paddingBottom: 0,
+  },
+  marginVertical: {
+    marginVertical: dimensions.halfVerticalIndent,
+  },
+  selectTextStyle: {
+    fontSize: fontSizes.medium,
+  },
 });
 
 export default styles;

@@ -8,6 +8,7 @@ export const halfIndent = moderateScale(indent / 2);
 export const doubleIndent = moderateScale(indent * 2);
 
 export const verticalIndent = verticalScale(indent);
+export const halfVerticalIndent = verticalScale(indent / 2);
 
 export const borderRadius = 4;
 
