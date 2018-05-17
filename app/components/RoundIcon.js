@@ -18,7 +18,9 @@ const styles = StyleSheet.create({
 });
 
 
-const RoundIcon = ({ backgroundColor, tintColor = colors.white, border, ...props }) => (
+const RoundIcon = ({
+  backgroundColor, tintColor = colors.white, border, ...props
+}) => (
   <View style={[styles.circle, { backgroundColor }, border]}>
     <CategoryIcon tintColor={tintColor} {...props} />
   </View>

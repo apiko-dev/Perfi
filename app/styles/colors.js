@@ -18,8 +18,8 @@ export default {
   primaryDarken: '#323131',
   secondary: '#1CD493',
   secondaryOpacity: 'rgba(28, 212, 147, .4)',
-    // error: '#FF445B',
-    // white: '#FFFFFF',
+  // error: '#FF445B',
+  // white: '#FFFFFF',
   lightGrey: '#dbdbdb',
 
   darkGrey: '#7A7777',

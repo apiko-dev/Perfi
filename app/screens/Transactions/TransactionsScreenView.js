@@ -1,6 +1,6 @@
 import React from 'react';
 import T from 'prop-types';
-import { View, } from 'react-native';
+import { View } from 'react-native';
 import ActionButton from 'react-native-action-button';
 import screens from '../../constants/screens';
 import { AccauntsSwiper } from './components';
@@ -18,17 +18,16 @@ import NavigationButton from '../../components/NavigationButton';
 import { getParam } from '../../utils/navHelpers';
 
 const Transactions = ({
-    navigation,
-    totalBalance,
-    transactions,
-    onDeleteTransaction,
-    onAddTransactionToFavourite,
-    onDeleteFromFavourites,
-    dateForFiltering,
-    setDateForFiltering,
-    setListRef,
+  navigation,
+  totalBalance,
+  transactions,
+  onDeleteTransaction,
+  onAddTransactionToFavourite,
+  onDeleteFromFavourites,
+  dateForFiltering,
+  setDateForFiltering,
+  setListRef,
 }) => {
-
   /* eslint-disable react/prop-types */
   const _renderItem = ({ item }) => (
     <TransactionItem

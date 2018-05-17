@@ -17,19 +17,19 @@ import {
 import s from './styles';
 
 const AccountEditor = ({
-   name,
-   date,
-   onSubmit,
-   isValid,
-   initialBalance,
-   onNameChange,
-   onDateChange,
-   onChangeBalance,
-   onToggleColorPicker,
-   isColorPickerVisible,
-   onSelectColor,
-   icon,
-   color,
+  name,
+  date,
+  onSubmit,
+  isValid,
+  initialBalance,
+  onNameChange,
+  onDateChange,
+  onChangeBalance,
+  onToggleColorPicker,
+  isColorPickerVisible,
+  onSelectColor,
+  icon,
+  color,
 }) => (
   <View style={s.root}>
     <ScreenWrapper>

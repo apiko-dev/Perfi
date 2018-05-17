@@ -7,14 +7,14 @@ import s from './styles';
 
 
 const AccountItem = ({
-   name,
-   style,
-   containerStyle,
-   color,
-   isAddButton,
-   onPress,
-   initialBalance,
-   ...props
+  name,
+  style,
+  containerStyle,
+  color,
+  isAddButton,
+  onPress,
+  initialBalance,
+  ...props
 }) => (
   <TouchableItem
     onPress={onPress}

@@ -9,6 +9,8 @@ import styles from './CalculatorStyles';
 
 const Button = onPress => token => <CalcButton key={token} token={token} onPress={onPress} />;
 
+// eslint-disable react/prop-types
+
 const ButtonsGroup = (onPress, style) => ({ tokens }) => (
   <View style={[styles.keyboardRowStyle, style]}>
     {R.map(Button(onPress), tokens)}

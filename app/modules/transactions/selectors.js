@@ -9,7 +9,7 @@ const getTransactionsEntities = transactions => R.pathOr({}, ['byId'], transacti
 const getDateForFiltering = (_, dateForFiltering) => dateForFiltering;
 
 export const getTransactions = createSelector(
-[getTransactionsIds, getTransactionsEntities, getDateForFiltering],
+  [getTransactionsIds, getTransactionsEntities, getDateForFiltering],
   (ids, entities, date) => {
     const newArray = [];
     ids.forEach((id) => {

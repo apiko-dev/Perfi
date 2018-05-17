@@ -25,7 +25,9 @@ const styles = StyleSheet.create({
 });
 
 const FormInputWithIcon = (props) => {
-  const { containerStyle, icon, iconStyle, inputStyle, ...inputProps } = props;
+  const {
+    containerStyle, icon, iconStyle, inputStyle, ...inputProps
+  } = props;
 
   return (
     <View style={[containerStyle, icon && styles.containerWithIconStyle]}>

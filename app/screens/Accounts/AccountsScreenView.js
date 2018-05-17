@@ -6,14 +6,16 @@ import screens from '../../constants/screens';
 import {
   Subtitle,
   AccountItem,
-  Icon
+  Icon,
 } from '../../components';
 import s from './styles';
 import colors from '../../styles/colors';
 
 const onNavigate = (nav, screen, params) => () => nav.navigate(screen, params);
 
-const Accounts = ({ accounts, onPress, onAddAccount, totalBalance }) => {
+const Accounts = ({
+  accounts, onPress, onAddAccount, totalBalance,
+}) => {
   const _keyExtractor = item => item.id;
 
   /* eslint-disable react/prop-types */

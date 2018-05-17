@@ -8,12 +8,12 @@ import s from './styles';
 
 
 const CategoriesList = ({
-    categories,
-    isVisible,
-    onToggleModal,
-    onSelect,
-    isModal,
-  }) => {
+  categories,
+  isVisible,
+  onToggleModal,
+  onSelect,
+  isModal,
+}) => {
   const _keyExtractor = item => item.id;
 
   /* eslint-disable react/prop-types */
@@ -53,7 +53,7 @@ const CategoriesList = ({
       </Modal>
     </View>
 
-        :
+    :
 
     <View style={s.listContainer}>
       <Separator />

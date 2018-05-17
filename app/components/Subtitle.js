@@ -31,7 +31,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const Subtitle = ({ style, leftText, totalBalance, date }) => (
+const Subtitle = ({
+  style, leftText, totalBalance, date,
+}) => (
   <View style={[styles.textContainer, style]}>
     <Text style={styles.leftText}>{leftText}</Text>
     {totalBalance &&

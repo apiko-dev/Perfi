@@ -7,7 +7,9 @@ import svgs from '../../assets/svgs';
 import { colors } from '../../styles';
 
 const Icon = (props) => {
-  const { containerStyle, onPress, color, ...icon } = props;
+  const {
+    containerStyle, onPress, color, ...icon
+  } = props;
   const Root = R.is(Function, onPress) ? TouchableOpacity : View;
 
   return (
@@ -18,7 +20,7 @@ const Icon = (props) => {
       <SvgIcon
         width={14}
         height={14}
-        fill={color ? color : colors.icon}
+        fill={color || colors.icon}
         {...icon}
         svgs={svgs}
       />

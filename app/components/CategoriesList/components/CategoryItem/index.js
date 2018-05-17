@@ -27,7 +27,7 @@ const TransactionItem = ({
       <Text style={s.title}>{item.name}</Text>
     </View>
   </TouchableItem>
-  );
+);
 
 TransactionItem.propTypes = {
   item: T.object,

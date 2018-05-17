@@ -15,24 +15,27 @@ import {
 } from '../../components';
 import s from './styles';
 
+const IconArrowDown = (props) => (
+  <Icon
+    name="arrow_down"
+    color={colors.green}
+    width={40}
+    height={40}
+    {...props}
+  />
+);
+
 const AccountEditor = ({
-data,
-icon,
-date,
-value,
-note,
-setDate,
-onSubmit,
-accounts,
-categoryName,
-categoryIcon,
-onUpdateNote,
-onToggleModal,
-isVisibleModal,
-onChangeAccount,
-incomeCategories,
-onChangeCategory,
-isReadyForSubmit,
+  date,
+  icon,
+  data,
+  note,
+  setDate,
+  onSubmit,
+  accounts,
+  onUpdateNote,
+  onChangeAccount,
+  isReadyForSubmit,
 }) => (
   <View style={s.root}>
     <ScreenWrapper style={s.withoutPaddingBot}>
@@ -59,18 +62,8 @@ isReadyForSubmit,
           />
         </View>
         <View style={s.containerIcon}>
-          <Icon
-            name="arrow_down"
-            color={colors.green}
-            width={40}
-            height={40}
-          />
-          <Icon
-            name="arrow_down"
-            color={colors.green}
-            width={40}
-            height={40}
-          />
+          <IconArrowDown />
+          <IconArrowDown />
         </View>
         <View style={s.card}>
           <Select
@@ -117,7 +110,7 @@ isReadyForSubmit,
 );
 
 AccountEditor.navigationOptions = () => ({
-  headerTitle: <HeaderTitle title={'Transfer'} />,
+  headerTitle: <HeaderTitle title="Transfer" />,
 });
 
 AccountEditor.propTypes = {
@@ -126,19 +119,10 @@ AccountEditor.propTypes = {
   icon: T.object,
   data: T.any,
   setDate: T.func,
-  value: T.number,
   onUpdateNote: T.func,
   note: T.string,
   accounts: T.array,
   onChangeAccount: T.func,
-  expenseCategories: T.array,
-  incomeCategories: T.array,
-  categoryName: T.string,
-  categoryIcon: T.object,
-  isSelectedCategory: T.bool,
-  onChangeCategory: T.func,
-  onToggleModal: T.func,
-  isVisibleModal: T.bool,
   isReadyForSubmit: T.bool,
 };
 

@@ -11,22 +11,22 @@ import { colors } from '../../styles/index';
 
 const ButtonView = ({ name }) => ( // eslint-disable-line
   <View style={s.buttonIcon}>
-    <NavIcon name={name} tintColor={colors.white} /></View>
+    <NavIcon name={name} tintColor={colors.white} />
+  </View>
 );
 
 const TransactionItem = ({
-   date,
-   value,
-   accountName,
-   accountColor,
-   categoryIconName,
-   categoryName,
-   onDelete,
-   isFavourites,
-   onAddToFavourite,
-   onDeleteFromFavourites,
+  date,
+  value,
+  accountName,
+  accountColor,
+  categoryIconName,
+  categoryName,
+  onDelete,
+  isFavourites,
+  onAddToFavourite,
+  onDeleteFromFavourites,
 }) => {
-
   const swipeoutBtns = {
     right: onDelete ? [{
       backgroundColor: colors.red,
@@ -35,9 +35,9 @@ const TransactionItem = ({
     }] : undefined,
     left: onAddToFavourite ? [{
       backgroundColor: isFavourites ? colors.yellow : colors.grey,
-      onPress: isFavourites ? onDeleteFromFavourites : onAddToFavourite ,
+      onPress: isFavourites ? onDeleteFromFavourites : onAddToFavourite,
       component: <ButtonView name="star" />,
-    }]: undefined,
+    }] : undefined,
   };
 
   return (

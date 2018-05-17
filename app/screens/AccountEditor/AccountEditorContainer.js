@@ -40,7 +40,9 @@ const onSelectColor = ({ setColor, toggleColorPicker }) => (color) => {
   setColor(color);
 };
 
-const onSubmit = ({ submit, account, navigation, ...props }) => () => {
+const onSubmit = ({
+  submit, account, navigation, ...props
+}) => () => {
   Keyboard.dismiss();
   const editedProps =
     R.pick(['name', 'currency', 'date', 'initialBalance', 'balance', 'color'], props);

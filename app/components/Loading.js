@@ -12,7 +12,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const Loading = ({ size, color = colors.defaultPrimary, thickness, containerStyle }) => (
+const Loading = ({
+  size, color = colors.defaultPrimary, thickness, containerStyle,
+}) => (
   <View style={[styles.rootStyle, containerStyle]}>
     <CircleSnail
       size={size}

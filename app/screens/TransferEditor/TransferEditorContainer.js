@@ -50,7 +50,9 @@ const enhance = compose(
   ),
 
 
-  withProps(({ transaction, createTransaction, updateTransaction, category, account }) => ({
+  withProps(({
+    transaction, createTransaction, updateTransaction, category, account,
+  }) => ({
     submit: transaction ? updateTransaction : createTransaction,
     categoryName: R.pathOr('Category', ['name'], category),
     categoryIcon: {
@@ -62,7 +64,9 @@ const enhance = compose(
   withHandlers({
     onUpdateNote: ({ updateNote }) => (text) => { updateNote(text); },
     onChangeAccount: ({ setAccount }) => (id, account) => { setAccount(account); },
-    onSubmit: ({ submit, transaction, account, category, navigation, ...props }) => () => {
+    onSubmit: ({
+      submit, transaction, account, category, navigation, ...props
+    }) => () => {
       const editedProps = {
         ...R.pick(['value', 'date', 'note'], props),
         account: account && account.id,

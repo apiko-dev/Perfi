@@ -4,7 +4,9 @@ import { Text, View } from 'react-native';
 import { Card, PieChart } from '../../../../components/index';
 import styles from './TransactionsChartStyles';
 
-const TransactionsChart = ({ chartData, balance, expenses, incomes }) => (
+const TransactionsChart = ({
+  chartData, balance, expenses, incomes,
+}) => (
   <Card>
     <View style={styles.chartContainerStyle}>
       <PieChart data={chartData} />

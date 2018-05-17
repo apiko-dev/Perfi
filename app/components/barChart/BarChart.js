@@ -16,7 +16,9 @@ const options = {
 
 const getChartWidth = (data) => {
   const groups = data[0] && data[0].length;
-  const { width, barsGroupGap, minBarsGroupWidth, yLabelWidth } = options;
+  const {
+    width, barsGroupGap, minBarsGroupWidth, yLabelWidth,
+  } = options;
   const chartWidth = width - yLabelWidth;
   const groupWithGapWidth = minBarsGroupWidth + barsGroupGap;
   
