@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   selector: {
     alignItems: 'center',
     borderRadius: 4,
+    backgroundColor: colors.white,
   },
   containerIcon: {
     flexDirection: 'row',
@@ -20,16 +21,35 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderStyle: 'dashed',
     borderColor: colors.darkGrey,
-    paddingHorizontal: dimensions.halfVerticalIndent,
+    padding: dimensions.halfVerticalIndent,
   },
-  withoutPaddingBot: {
+  withoutPaddingBottom: {
     paddingBottom: 0,
   },
   marginVertical: {
-    marginVertical: dimensions.halfVerticalIndent,
+    marginVertical: dimensions.halfIndent,
+  },
+  containerInputStyle: {
+    backgroundColor: colors.white,
   },
   selectTextStyle: {
     fontSize: fontSizes.medium,
+  },
+  secondInputContainer: {
+    paddingLeft: dimensions.indent,
+    borderColor: colors.white,
+  },
+  selectedSecondInputContainer: {
+    borderColor: colors.white,
+  },
+  inputText: {
+    color: colors.black,
+  },
+  error: {
+    fontSize: fontSizes.small,
+    color: colors.white,
+    fontWeight: '700',
+    lineHeight: fontSizes.small,
   },
 });
 

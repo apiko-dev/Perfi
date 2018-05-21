@@ -2,7 +2,9 @@ import { handleActions } from 'redux-actions';
 import types from './types';
 import { insert, update, remove } from '../../utils/stateHelper';
 
-const createTransfer = (props) => {
+const initialState = {};
+
+export const createTransfer = (props) => {
   const {
     value, from, to, date = new Date(), note,
   } = props;
@@ -11,8 +13,6 @@ const createTransfer = (props) => {
     value, from, to, date, note,
   };
 };
-
-const initialState = {};
 
 const transfersReducer = handleActions({
   [types.CREATE_TRANSFER]: (state, { payload }) => insert(state, createTransfer(payload)),

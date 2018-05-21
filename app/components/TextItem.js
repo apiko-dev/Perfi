@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text } from 'react-native';
-import { capitalizeFirstLetter } from '../utils/stringHelper';
+import { toUpperCaseFirstLetter } from '../utils/stringHelper';
 import colors from '../styles/colors';
 
 const styles = StyleSheet.create({
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 
 const TextItem = text => (
   <Text style={styles.itemStyle}>
-    {capitalizeFirstLetter(text)}
+    {toUpperCaseFirstLetter(text)}
   </Text>
 );
 

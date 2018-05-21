@@ -26,6 +26,7 @@ const CustomDatePicker = ({
   defaultValue,
   onSelectDate,
   containerStyle,
+  colorIsSelected = colors.green,
   resetTrigger,
   ...props
 }) => (
@@ -38,7 +39,7 @@ const CustomDatePicker = ({
       placeholder={placeholder}
       style={[s.root, inputStyle]}
       customStyles={{
-        dateInput: [s.input, isSelected && { borderColor: colors.green }],
+        dateInput: [s.input, isSelected && { borderColor: colorIsSelected }],
         dateText: s.inputText,
         dateTouchBody: s.body,
         btnTextConfirm: s.btnConfirm,
@@ -65,6 +66,7 @@ CustomDatePicker.propTypes = {
   format: T.string,
   confirmBtnText: T.string,
   cancelBtnText: T.string,
+  colorIsSelected: T.string,
   androidMode: T.oneOf(['default', 'calendar', 'spinner']),
   mode: T.oneOf(['date', 'time', 'datetime']),
   resetTrigger: T.bool,
