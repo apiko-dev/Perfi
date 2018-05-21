@@ -1,27 +1,10 @@
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { dimensions, colors, fontSizes, fontWeights } from '../../styles';
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
     backgroundColor: colors.white,
-  },
-
-  separator: {
-    marginTop: dimensions.verticalIndent / 2,
-    ...Platform.select({
-      ios: {
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
-        shadowOffset: {
-          height: 0,
-          width: 0,
-        },
-      },
-      android: {
-        elevation: 1,
-      },
-    }),
   },
   chartContainer: {
     flexDirection: 'row',
@@ -56,11 +39,11 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: dimensions.indent,
     paddingTop: dimensions.verticalIndent,
+    marginBottom: dimensions.verticalIndent / 2,
   },
   subtitle: {
     marginHorizontal: dimensions.indent,
     paddingTop: dimensions.indent,
-    paddingBottom: 0,
   },
 });
 

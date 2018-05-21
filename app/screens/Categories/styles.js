@@ -6,9 +6,6 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
   },
 
-  subTitle: {
-    // paddingBottom: dimensions.verticalIndent / 2,
-  },
 });
 
 export default styles;
