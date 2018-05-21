@@ -5,7 +5,7 @@ import {
   fontSizes,
   fontWeights,
   scalingUtils,
-} from '../../../../styles';
+} from '../../styles/index';
 
 export default StyleSheet.create({
   container: {
