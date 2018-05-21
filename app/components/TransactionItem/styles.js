@@ -26,9 +26,10 @@ export default StyleSheet.create({
   },
 
   value: {
-    alignItems: 'flex-end',
+    alignItems: 'center',
     justifyContent: 'center',
     padding: dimensions.indent,
+    flexDirection: 'row',
   },
 
   valueText: {
@@ -66,6 +67,11 @@ export default StyleSheet.create({
 
   expenseColor: {
     color: colors.red,
+  },
+
+  percentText: {
+    color: colors.greyVeryDarker,
+    fontSize: fontSizes.medium,
   },
 
 });
