@@ -3,7 +3,6 @@ import T from 'prop-types';
 import { View, Text } from 'react-native';
 import { VictoryPie } from 'victory-native';
 import { PieLegend } from './components';
-
 import {
   Subtitle,
   Separator,
@@ -12,6 +11,7 @@ import {
   FlatList,
   SegmentedControl,
   AddTransactionButton,
+  HeaderTitle,
 } from '../../components';
 import s from './styles';
 import { categoriesTypes as types } from '../../constants/categories';
@@ -21,7 +21,7 @@ import colors from '../../styles/colors';
 const tabs = [types.income, types.expense];
 
 
-const Transactions = ({
+const TransactionsStatistics = ({
     navigation,
     totalValue,
     date,
@@ -44,7 +44,7 @@ const Transactions = ({
         onTabPress={setSelectedTabIndex}
       />
     </View>
-    <Separator style={s.separator} />
+    <Separator withShadow />
     <FlatList
       data={dataForList}
       renderItem={({ item }) => (
@@ -81,19 +81,23 @@ const Transactions = ({
           </View>
           <Subtitle
             style={s.subtitle}
+            withLittlePadding
             leftText="Statistic per category"
           />
           <Separator />
         </View>
         }
     />
-
     <AddTransactionButton navigation={navigation} />
   </View>
   );
 
+TransactionsStatistics.navigationOptions = ({
+  headerTitle: <HeaderTitle title="Statistics" />,
+});
 
-Transactions.propTypes = {
+
+TransactionsStatistics.propTypes = {
   navigation: T.object,
   totalValue: T.number,
   date: T.string,
@@ -105,4 +109,4 @@ Transactions.propTypes = {
   dataForList: T.array,
 };
 
-export default Transactions;
+export default TransactionsStatistics;

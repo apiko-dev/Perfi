@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
   subtitle: {
     marginHorizontal: dimensions.indent,
     paddingTop: dimensions.indent,
-    paddingBottom: 0,
   },
 });
 

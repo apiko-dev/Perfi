@@ -1,3 +1,3 @@
-import TransactionsContainer from './TransactionsContainer';
+import TransactionsStatisticsContainer from './TransactionsStatisticsContainer';
 
-export default TransactionsContainer;
+export default TransactionsStatisticsContainer;

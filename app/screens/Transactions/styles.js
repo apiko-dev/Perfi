@@ -9,18 +9,7 @@ const styles = StyleSheet.create({
   subtitle: {
     marginHorizontal: dimensions.indent,
     paddingTop: dimensions.indent,
-    paddingBottom: 0,
   },
-  separator: {
-    opacity: 0.2,
-  },
-
-  pieContainer: {
-    paddingTop: dimensions.verticalIndent,
-    backgroundColor: 'orange',
-    alignItems: 'center',
-  },
-
 });
 
 export default styles;

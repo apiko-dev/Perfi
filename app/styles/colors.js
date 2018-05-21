@@ -3,6 +3,7 @@ export default {
   white: '#ffffff',
   black: '#131314',
   grey: '#D7DFE3',
+  greyOpacity: 'rgba(215, 223, 227, .3)',
   greyLighter: '#ececec',
   greyDarker: '#afb8bb',
   greyVeryDarker: '#666666',

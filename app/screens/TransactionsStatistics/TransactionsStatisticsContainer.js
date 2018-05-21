@@ -5,7 +5,7 @@ import {
   withProps,
 } from 'recompose';
 import { connect } from 'react-redux';
-import TransactionsScreenView from './TransactionsScreenView';
+import TransactionsScreenView from './TransactionsStatisticsView';
 import { transactionsOperations } from '../../modules/transactions';
 import {
   getAccountsStats,

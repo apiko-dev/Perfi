@@ -44,26 +44,30 @@ const Transactions = ({
     <View style={s.root}>
       <Subtitle
         style={s.subtitle}
+        withoutPadding
         leftText="Accounts"
         totalBalance={totalBalance}
       />
       <View style={{ paddingLeft: dimensions.halfIndent, paddingRight: dimensions.halfIndent }}>
         <AccauntsSwiper navigation={navigation} />
       </View>
-      <Separator style={s.separator} />
+      <Separator withOpacity />
       <DateFilter
         dateForFiltering={dateForFiltering}
         setDateForFiltering={setDateForFiltering}
       />
       <Subtitle
         style={s.subtitle}
+        withLittlePadding
         leftText="Transaction"
         date={dateForFiltering}
       />
+      <Separator withShadow />
       <FlatList
         data={transactions}
         renderItem={_renderItem}
         listEmptyText="You don't have any transactions"
+        ListHeaderComponent={null}
         flatListRef={setListRef}
       />
       <AddTransactionButton navigation={navigation} />
