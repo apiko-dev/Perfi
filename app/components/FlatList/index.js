@@ -6,19 +6,19 @@ import Separator from '../Separator';
 const _keyExtractor = item => item.id;
 
 const FlatList = ({ listEmptyText, flatListRef, data, ...props }) => (
-      <List
-        style={s.list}
-        data={data}
-        keyExtractor={_keyExtractor}
-        ListHeaderComponent={Separator}
-        ItemSeparatorComponent={Separator}
-        ListEmptyComponent={<Text style={s.emptyText}>{listEmptyText}</Text>}
-        ListFooterComponent={
+  <List
+    style={s.list}
+    data={data}
+    keyExtractor={_keyExtractor}
+    ListHeaderComponent={Separator}
+    ItemSeparatorComponent={Separator}
+    ListEmptyComponent={<Text style={s.emptyText}>{listEmptyText}</Text>}
+    ListFooterComponent={
           data.length ? <View style={s.paddingBottom}><Separator /></View> : null
         }
-        ref={flatListRef}
-        {...props}
-      />
+    ref={flatListRef}
+    {...props}
+  />
 );
 
 export default FlatList;

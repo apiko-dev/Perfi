@@ -23,10 +23,6 @@ const withSubmitEvent = withProps(({ account, createAccount, updateAccount }) =>
   submit: account ? updateAccount : createAccount,
 }));
 
-const onDateChange = ({ setDate }) => (date) => {
-  setDate(date);
-};
-
 const onChangeBalance = ({ onInitialBalanceChange }) => (value) => {
   onInitialBalanceChange(+value.replace(/[^\d]/g, ''));
 };
@@ -56,20 +52,18 @@ const enhance = compose(
   withState('name', 'onNameChange', accountProp('name')),
   withState('initialBalance', 'onInitialBalanceChange', accountProp('initialBalance', 0)),
   withState('balance', 'setBalance', accountProp('balance')),
-  withState('date', 'setDate', accountProp('date', new Date())),
   withState('color', 'setColor', accountProp('color', colors.green)),
   withState('isColorPickerVisible', 'toggleColorPicker', false),
 
   defaultProps({
     onClear: () => null,
     icon: {
-      name: 'attach-money',
+      name: 'currency-usd',
       size: dimensions.iconSize,
     },
   }),
 
   withHandlers({
-    onDateChange,
     onChangeBalance,
     onToggleColorPicker,
     onSelectColor,

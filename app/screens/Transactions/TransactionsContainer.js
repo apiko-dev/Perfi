@@ -10,14 +10,11 @@ import TransactionsScreenView from './TransactionsScreenView';
 import { transactionsOperations } from '../../modules/transactions';
 import { getTransactions } from '../../modules/transactions/selectors';
 import { getTotalBalance } from '../../modules/accounts/selectors';
-
-import {
-  startOfDay,
-} from '../../utils/dateHelpers';
+import { startOfDay } from '../../utils/dateHelpers';
 
 
-const mapStateToProps = (state, { dateForFiltering }) => ({
-  transactions: getTransactions(state.transactions, dateForFiltering),
+const mapStateToProps = (state, props) => ({
+  transactions: getTransactions(state, props),
   totalBalance: getTotalBalance(state),
 });
 
@@ -33,7 +30,7 @@ const enhance = compose(
     onDeleteFromFavourites: props => id => props.onDeleteFromFavourites(id),
   }),
   lifecycle({
-    componentWillMount() {
+    componentDidMount() {
       this.props.navigation.setParams(
         {
           isChartShown: this.props.isChartShown,

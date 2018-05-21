@@ -89,15 +89,13 @@ const defaultAccounts = [
     isFavourites: false,
   }),
 
-  createTransaction({ value: -100, account: '1', category: '7', date: new Date(), isFavourites: false }),
-  createTransaction({ value: -99, account: '1', category: '7', date: new Date(), isFavourites: false }),
-  createTransaction({ value: -100, account: '0', category: '3', date: new Date(), isFavourites: false }),
-  createTransaction({ value: 50, account: '3', category: '0', date: new Date(), isFavourites: false }),
-  createTransaction({ value: -40, account: '1', category: '3', date: new Date(), isFavourites: false }),
-  createTransaction({ value: 30, account: '2', category: '2', date: new Date(), isFavourites: false }),
-  createTransaction({ value: 600, account: '3', category: '1', date: new Date(), isFavourites: false }),
-  createTransaction({ value: -360, account: '3', category: '3', date: new Date(), isFavourites: false }),
-  createTransaction({ value: 760, account: '1', category: '2', date: new Date(), isFavourites: false }),
+  createTransaction({ value: 300, account: '0', category: '1', date: new Date(), isFavourites: true }),
+  createTransaction({ value: 300, account: '1', category: '1', date: new Date(), isFavourites: true }),
+  createTransaction({ value: -200, account: '1', category: '3', date: new Date(), isFavourites: true }),
+  createTransaction({ value: 300, account: '2', category: '0', date: new Date(), isFavourites: true }),
+  createTransaction({ value: -100, account: '2', category: '6', date: new Date(), isFavourites: true }),
+  createTransaction({ value: 300, account: '3', category: '2', date: new Date(), isFavourites: true }),
+  createTransaction({ value: -400, account: '3', category: '8', date: new Date(), isFavourites: true }),
 ];
 
 const initialState = insertAll({}, defaultAccounts);

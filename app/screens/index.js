@@ -5,6 +5,7 @@ import TransactionEditor from './TransactionEditor';
 import Categories from './Categories';
 import CategoryEditor from './CategoryEditor';
 import Calculator from './Calculator';
+import TransactionsStatistics from './TransactionsStatistics';
 
 import Settings from './Settings';
 import Trends from './trends/TrendsScreen';
@@ -19,6 +20,7 @@ export {
   Categories,
   CategoryEditor,
   Calculator,
+  TransactionsStatistics,
 
   Settings,
   TransferEditor,

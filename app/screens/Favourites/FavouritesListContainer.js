@@ -15,8 +15,8 @@ import {
 } from '../../utils/dateHelpers';
 
 
-const mapStateToProps = (state, { dateForFiltering }) => ({
-  data: getFavouritesTransactions(state.transactions, dateForFiltering),
+const mapStateToProps = (state, props) => ({
+  data: getFavouritesTransactions(state, props),
 });
 
 const enhance = compose(

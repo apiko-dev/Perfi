@@ -1,7 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { dimensions, colors, fontSizes, scalingUtils, fontWeights } from '../../styles';
-
-const { indent } = dimensions;
+import { dimensions, colors } from '../../styles';
 
 const styles = StyleSheet.create({
   root: {
@@ -16,6 +14,13 @@ const styles = StyleSheet.create({
   separator: {
     opacity: 0.2,
   },
+
+  pieContainer: {
+    paddingTop: dimensions.verticalIndent,
+    backgroundColor: 'orange',
+    alignItems: 'center',
+  },
+
 });
 
 export default styles;
