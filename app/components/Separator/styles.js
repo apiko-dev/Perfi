@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { colors } from '../../styles';
 
 const styles = StyleSheet.create({
@@ -6,6 +6,26 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: colors.grey,
     opacity: 0.5,
+  },
+
+  shadow: {
+    backgroundColor: colors.greyOpacity,
+    ...Platform.select({
+      ios: {
+        shadowOpacity: 0.8,
+        shadowRadius: 4,
+        shadowOffset: {
+          height: 0,
+          width: 0,
+        },
+      },
+      android: {
+        elevation: 0.3,
+      },
+    }),
+  },
+  opacity: {
+    opacity: 0.3,
   },
 });
 

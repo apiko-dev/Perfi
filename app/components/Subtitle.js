@@ -13,9 +13,12 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.small,
   },
   textContainer: {
-    paddingBottom: dimensions.indent,
+    paddingBottom: dimensions.halfIndent,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  withoutPadding: {
+    paddingBottom: 0,
   },
   rightContainer: {
     flexDirection: 'row',
@@ -31,10 +34,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const Subtitle = ({
-  style, leftText, totalBalance, date,
-}) => (
-  <View style={[styles.textContainer, style]}>
+const Subtitle = ({ style, leftText, totalBalance, date, withoutPadding }) => (
+  <View style={[styles.textContainer, style, withoutPadding && styles.withoutPadding]}>
     <Text style={styles.leftText}>{leftText}</Text>
     {totalBalance &&
       <View style={styles.rightContainer}>
@@ -56,6 +57,7 @@ Subtitle.propTypes = {
   leftText: T.string,
   totalBalance: T.number,
   date: T.object,
+  withoutPadding: T.bool,
 };
 
 export default Subtitle;

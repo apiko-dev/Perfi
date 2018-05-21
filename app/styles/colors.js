@@ -3,6 +3,7 @@ export default {
   white: '#ffffff',
   black: '#131314',
   grey: '#D7DFE3',
+  greyOpacity: 'rgba(215, 223, 227, .3)',
   greyLighter: '#ececec',
   greyDarker: '#afb8bb',
   greyVeryDarker: '#666666',
@@ -11,7 +12,8 @@ export default {
   orange: '#f39c12',
   blue: '#2980b9',
   red: '#ef1f28',
-  yellow: '#FFC107',
+  yellow: '#F5C94E',
+  purple: '#933DA8',
 
 
   primary: '#504B4B',

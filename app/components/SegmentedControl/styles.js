@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors, fontWeights, fontSizes } from '../../styles';
+import { colors, fontWeights, fontSizes, dimensions } from '../../styles';
 
 const styles = StyleSheet.create({
   tabsContainerStyle: {
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   tabStyle: {
-    paddingVertical: 10,
+    paddingVertical: dimensions.verticalIndent / 2,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

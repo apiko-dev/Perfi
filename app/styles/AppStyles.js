@@ -19,8 +19,9 @@ const styles = StyleSheet.create({
   },
   headerStyle: {
     height: headerHeight,
-    borderBottomWidth: 0,
     elevation: 0,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.greyOpacity,
     backgroundColor: colors.white,
   },
   headerTextStyle: {

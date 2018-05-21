@@ -10,9 +10,7 @@ import {
 import s from './styles';
 
 const _renderItem = onDeleteFromFavourites => ({
-  item: {
-    account, category, date, value, id,
-  },
+  item: { account, category, date, value, id }, // eslint-disable-line
 }) => (
   <TransactionItem
     accountId={account}
@@ -50,7 +48,7 @@ const Favourites = ({
 
 Favourites.propTypes = {
   data: T.array,
-  onDeleteTransaction: T.func,
+  onDeleteFromFavourites: T.func,
   setDateForFiltering: T.func,
   dateForFiltering: T.object,
   setListRef: T.func,

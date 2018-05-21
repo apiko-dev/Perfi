@@ -16,6 +16,7 @@ const ButtonView = ({ name }) => ( // eslint-disable-line
 );
 
 const TransactionItem = ({
+  isSimpleItem,
   date,
   value,
   accountName,
@@ -26,6 +27,7 @@ const TransactionItem = ({
   isFavourites,
   onAddToFavourite,
   onDeleteFromFavourites,
+  percent,
 }) => {
   const swipeoutBtns = {
     right: onDelete ? [{
@@ -40,42 +42,66 @@ const TransactionItem = ({
     }] : undefined,
   };
 
-  return (
-    <Swipeout
-      {...swipeoutBtns}
-      sensitivity={0}
-      autoClose
-    >
+  return (<View>
+    {isSimpleItem ?
       <View style={s.container}>
         <View style={s.icon}>
-          <RoundIcon name={categoryIconName} backgroundColor={accountColor} />
+          <RoundIcon
+            name={categoryIconName}
+            backgroundColor={value > 0 ? colors.green : colors.red}
+          />
         </View>
         <View style={s.mainContentContainer}>
           <Text style={s.title}>{categoryName}</Text>
-          <Text style={s.accountName}>{accountName}</Text>
-          <Text style={s.date}>{dateWithTime(date)}</Text>
         </View>
         <View style={s.value}>
           <Text style={[s.valueText, value > 0 ? s.incomeColor : s.expenseColor]}>
-            {value > 0 ? `+ $${value}` : `- $${value.toString().substr(1)}`}
+            {value > 0 ? `+ $${value}` : `- $${value.toString()
+            .substr(1)}`}
           </Text>
+          <Text style={s.percentText}> / {percent}%</Text>
         </View>
       </View>
-    </Swipeout>
-  );
+      :
+      <Swipeout
+        {...swipeoutBtns}
+        sensitivity={0}
+        autoClose
+      >
+        <View style={s.container}>
+          <View style={s.icon}>
+            <RoundIcon name={categoryIconName} backgroundColor={accountColor} />
+          </View>
+          <View style={s.mainContentContainer}>
+            <Text style={s.title}>{categoryName}</Text>
+            <Text style={s.accountName}>{accountName}</Text>
+            <Text style={s.date}>{dateWithTime(date)}</Text>
+          </View>
+          <View style={s.value}>
+            <Text style={[s.valueText, value > 0 ? s.incomeColor : s.expenseColor]}>
+              {value > 0 ? `+ $${value}` : `- $${value.toString().substr(1)}`}
+            </Text>
+          </View>
+        </View>
+      </Swipeout>
+    }
+
+  </View>);
 };
 
 TransactionItem.propTypes = {
   date: T.object,
   value: T.number,
+  percent: T.number,
   accountName: T.string,
   accountColor: T.string,
   categoryIconName: T.string,
   categoryName: T.string,
   onDelete: T.func,
   onAddToFavourite: T.func,
-  onDeleteFromFavourite: T.func,
+  onDeleteFromFavourites: T.func,
   isFavourites: T.bool,
+  isSimpleItem: T.bool,
 };
 
 export default TransactionItem;

@@ -1,6 +1,6 @@
 import React from 'react';
 import T from 'prop-types';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Platform } from 'react-native';
 import CategoryIcon from './CategoryIcon';
 import { colors, dimensions } from '../styles';
 
@@ -10,7 +10,11 @@ const styles = StyleSheet.create({
     borderRadius: (dimensions.iconSize + 15) / 2,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 2,
+    ...Platform.select({
+      ios: {
+        paddingTop: 2,
+      },
+    }),
     width: dimensions.iconSize + 15,
     height: dimensions.iconSize + 15,
   },

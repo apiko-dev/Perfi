@@ -3,7 +3,7 @@ import { dimensions, colors, fontSizes } from '../../styles';
 
 const styles = StyleSheet.create({
   list: {
-    marginTop: dimensions.halfIndent,
+    // marginTop: dimensions.halfIndent,
   },
   paddingBottom: {
     paddingBottom: 85,

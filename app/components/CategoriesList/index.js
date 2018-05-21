@@ -1,8 +1,8 @@
 import React from 'react';
 import T from 'prop-types';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
-import { Text, TouchableItem, Separator } from '../index';
+import { Text, Separator } from '../index';
 import { CategoryItem } from './components/index';
 import s from './styles';
 
@@ -27,7 +27,7 @@ const CategoriesList = ({
 
     <View>
       <View style={s.calendarIcon}>
-        <TouchableItem onPress={onToggleModal} />
+        <TouchableOpacity onPress={onToggleModal} />
       </View>
 
       <Modal

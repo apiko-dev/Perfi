@@ -10,26 +10,23 @@ import {
   Button,
   Text,
   KeyboardAvoidingView,
-  DatePicker,
   ScreenWrapper,
   HeaderTitle,
 } from '../../components/index';
 import s from './styles';
 
 const AccountEditor = ({
-  name,
-  date,
-  onSubmit,
-  isValid,
-  initialBalance,
-  onNameChange,
-  onDateChange,
-  onChangeBalance,
-  onToggleColorPicker,
-  isColorPickerVisible,
-  onSelectColor,
-  icon,
-  color,
+   name,
+   onSubmit,
+   isValid,
+   initialBalance,
+   onNameChange,
+   onChangeBalance,
+   onToggleColorPicker,
+   isColorPickerVisible,
+   onSelectColor,
+   icon,
+   color,
 }) => (
   <View style={s.root}>
     <ScreenWrapper>
@@ -75,12 +72,6 @@ const AccountEditor = ({
         iconRight={icon}
       />
 
-      <DatePicker
-        placeholder="Initial date"
-        onSelectDate={onDateChange}
-        defaultValue={date}
-      />
-
     </ScreenWrapper>
 
 
@@ -107,12 +98,10 @@ AccountEditor.navigationOptions = ({ navigation }) => ({
 
 AccountEditor.propTypes = {
   name: T.string,
-  date: T.any,
   onSubmit: T.func,
   isValid: T.bool,
   initialBalance: T.number,
   onNameChange: T.func,
-  onDateChange: T.func,
   onChangeBalance: T.func,
   onToggleColorPicker: T.func,
   isColorPickerVisible: T.bool,

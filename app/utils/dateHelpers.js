@@ -65,3 +65,8 @@ export const formatDateForSubtitle = (d) => {
     return `${dateWithDots(d.from)} - ${dateWithDots(d.to)}`;
   } return dateWithDots(d);
 };
+export const formatDateForPie = (d) => {
+  if (!d.format) {
+    return `${dateWithDots(d.from)}\n${dateWithDots(d.to)}`;
+  } return dateWithDots(d);
+};

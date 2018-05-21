@@ -10,7 +10,7 @@ const createAccount = (props) => {
     icon,
     initialBalance = 10,
     initialDate = new Date(),
-    color = colors.green,
+    color = colors.yellow,
     isAddButton = false,
   } = props;
 
@@ -71,7 +71,7 @@ const createAccount = (props) => {
 const defaultAccounts = [
   createAccount({ name: 'Card', icon: 'credit-card', color: colors.orange }),
   createAccount({ name: 'Cash', icon: 'cash-multiple', color: colors.blue }),
-  createAccount({ name: 'Test 1', icon: 'cash-multiple', color: colors.red }),
+  createAccount({ name: 'Test 1', icon: 'cash-multiple', color: colors.purple }),
   createAccount({ name: 'Test 2', icon: 'cash-multiple' }),
 ];
 
