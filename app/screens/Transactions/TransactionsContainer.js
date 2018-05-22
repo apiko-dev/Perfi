@@ -6,11 +6,13 @@ import {
   lifecycle,
 } from 'recompose';
 import { connect } from 'react-redux';
+import { Animated, Platform } from 'react-native';
 import TransactionsScreenView from './TransactionsScreenView';
 import { transactionsOperations } from '../../modules/transactions';
 import { getTransactions } from '../../modules/transactions/selectors';
 import { getTotalBalance } from '../../modules/accounts/selectors';
 import { startOfDay } from '../../utils/dateHelpers';
+import { dimensions } from '../../styles';
 
 
 const mapStateToProps = (state, props) => ({
@@ -23,26 +25,24 @@ const enhance = compose(
   connect(mapStateToProps, transactionsOperations),
 
   withState('listRef', 'setListRef', null),
+  withState('isScrollEnabled', 'setScrollEnabled', true),
+  withState('scrollY', 'setScrollY',
+    new Animated.Value(Platform.OS === 'ios' ? -dimensions.headerMaxHeight : 0)),
 
   withHandlers({
     onDeleteTransaction: props => id => props.deleteTransaction(id),
     onAddTransactionToFavourite: props => id => props.addTransactionToFavourites(id),
     onDeleteFromFavourites: props => id => props.onDeleteFromFavourites(id),
+    onAllowScroll: props => isScrollEnabled => props.setScrollEnabled(isScrollEnabled),
   }),
   lifecycle({
-    componentDidMount() {
-      this.props.navigation.setParams(
-        {
-          isChartShown: this.props.isChartShown,
-          onToggleChart: this.props.onToggleChart,
-        },
-      );
-    },
-    componentDidUpdate(prevProps) {
-      if (this.props.transactions !== prevProps.transactions) {
-        setTimeout(() => this.props.listRef.scrollToOffset(0), 0);
-      }
-    },
+    // componentDidUpdate(prevProps) {
+    //   const newTrans = this.props.transactions;
+    //   const oldTrans = prevProps.transactions;
+    //   if (newTrans !== oldTrans && (oldTrans.length - newTrans.length) !== 1) {
+    //     setTimeout(() => this.props.listRef._listRef.scrollToOffset(0), 0);
+    //   }
+    // },
   }),
 
 );
