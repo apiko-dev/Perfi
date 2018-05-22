@@ -47,7 +47,7 @@ export const accountTransactionsSum = (transactions, categories, accId) => R.red
     let delta = 0;
 
     if (R.propEq('account', accId, transaction)) {
-      delta = transaction.value ;
+      delta = transaction.value;
     }
     return sum + delta;
   }, 0, R.values(transactions.byId),

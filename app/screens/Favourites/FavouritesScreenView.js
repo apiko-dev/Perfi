@@ -10,7 +10,7 @@ import {
 import s from './styles';
 
 const _renderItem = onDeleteFromFavourites => ({
-  item: { account, category, date, value, id },
+  item: { account, category, date, value, id }, // eslint-disable-line
 }) => (
   <TransactionItem
     accountId={account}
@@ -19,7 +19,7 @@ const _renderItem = onDeleteFromFavourites => ({
     value={value}
     onDelete={() => onDeleteFromFavourites(id)}
   />
-  );
+);
 
 const Favourites = ({
   data,
@@ -44,7 +44,7 @@ const Favourites = ({
       flatListRef={setListRef}
     />
   </View>
-  );
+);
 
 Favourites.propTypes = {
   data: T.array,

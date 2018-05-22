@@ -13,7 +13,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const CustomListItem = ({ icon, style, rightTitle, ...props }) => (
+const CustomListItem = ({
+  icon, style, rightTitle, ...props
+}) => (
   <ListItem
     {...props}
     containerStyle={[styles.rootStyle, style]}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ScreenWrapper } from '../../components';
 import TrendsReportContainer from './trendsReport/TrendsReportContainer';
 
-const Trends = ({ navigation }) => (
+const Trends = () => (
   <ScreenWrapper>
     <TrendsReportContainer />
   </ScreenWrapper>

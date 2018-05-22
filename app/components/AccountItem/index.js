@@ -7,14 +7,14 @@ import s from './styles';
 
 
 const AccountItem = ({
-   name,
-   style,
-   containerStyle,
-   color,
-   isAddButton,
-   onPress,
-   initialBalance,
-   ...props
+  name,
+  style,
+  containerStyle,
+  color,
+  isAddButton,
+  onPress,
+  initialBalance,
+  ...props
 }) => (
   <TouchableItem
     onPress={onPress}
@@ -28,14 +28,17 @@ const AccountItem = ({
         isAddButton ? s.addButtonContainer : { backgroundColor: color },
       ]}
     >
-      {isAddButton ?
-        <NavIcon
-          name="plus"
-          size={40}
-          tintColor={colors.greyDarker}
-        />
-          :
-        <Text style={s.title}>${initialBalance}</Text>}
+      {isAddButton
+        ? (
+          <NavIcon
+            name="plus"
+            size={40}
+            tintColor={colors.greyDarker}
+          />
+        ) : (
+          <Text style={s.title}>${initialBalance}</Text>
+         )
+      }
       <View style={s.subtitleContainer}>
         <Text style={isAddButton ? s.addButtonSubtitle : s.subtitle}>{name}</Text>
       </View>

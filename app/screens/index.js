@@ -9,7 +9,7 @@ import TransactionsStatistics from './TransactionsStatistics';
 
 import Settings from './Settings';
 import Trends from './trends/TrendsScreen';
-import TransferEditor from './transferEditor/TransferEditorScreen';
+import TransferEditor from './TransferEditor';
 import Favourites from './Favourites';
 
 export {

@@ -60,7 +60,7 @@ const CategoryEditor = (props) => {
             options={['Expense', 'Income']}
             containerStyle={s.selectorContainer}
             style={s.selector}
-            defaultValue={'Choose transaction type'}
+            defaultValue="Choose transaction type"
             selectorsWidth={dimensions.containerWidth}
             onSelect={onSelectCategory}
             textStyle={s.selectTextStyle}

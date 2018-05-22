@@ -13,7 +13,9 @@ const sum = R.pipe(
 const percent = total => value => `${Math.floor((value / total) * 100)}%`;
 
 const IconWithRate = (props) => {
-  const { data, centerX, centerY, outerRadius, labelRadius } = props;
+  const {
+    data, centerX, centerY, outerRadius, labelRadius,
+  } = props;
   const radiusDelta = 20;
   const iconDistance = outerRadius + radiusDelta;
   const textDistance = labelRadius + radiusDelta;

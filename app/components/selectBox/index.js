@@ -12,7 +12,9 @@ import selectStyles from './SelectBoxStyles';
 
 const { itemWrapperStyle, itemTextStyle, containerStyle } = selectStyles;
 
-const SelectBox = ({ onValueChange, selectedValue, getLabel, items, withIcon, getIcon, style }) => {
+const SelectBox = ({
+  onValueChange, selectedValue, getLabel, items, withIcon, getIcon, style,
+}) => {
   const getItem = (value) => {
     const label = getLabel(value);
     const icon = withIcon && getIcon(value);

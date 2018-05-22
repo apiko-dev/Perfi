@@ -12,7 +12,7 @@ const IconsPickerItem = ({ name, isSelected, onIconPress }) => (
     containerStyle={styles.iconStyle}
     tintColor={isSelected ? colors.green : colors.greyDarker}
   />
-  );
+);
 
 IconsPickerItem.propTypes = {
   name: PropTypes.string,

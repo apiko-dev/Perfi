@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import Selector from './Selector';
 import TextItem from './TextItem';
 import TextWithIcons from './TextWithIcons';
-import { capitalizeFirstLetter } from '../utils/stringHelper';
+import { toUpperCaseFirstLetter } from '../utils/stringHelper';
 import appStyles from '../styles/AppStyles';
 
 const intervals = ['day', 'week', 'month', 'year'];
 
 const IntervalTrigger = name => (
   <TextWithIcons
-    text={capitalizeFirstLetter(name)}
+    text={toUpperCaseFirstLetter(name)}
     textStyle={appStyles.headerTextStyle}
     rightIcon="menu-down"
     color="white"

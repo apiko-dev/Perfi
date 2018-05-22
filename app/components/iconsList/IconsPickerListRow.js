@@ -7,12 +7,12 @@ import IconsPickerItem from './IconsPickerListItem';
 const { rowStyle } = styles;
 
 const IconsPickerListRow = ({ row, onIconPick, selectedIconName }) => {
-  const renderRowItem = name => <IconsPickerItem
+  const renderRowItem = name => (<IconsPickerItem
     key={name}
     onIconPress={onIconPick}
     name={name}
     isSelected={name === selectedIconName}
-  />;
+  />);
 
   return (
     <View style={rowStyle}>

@@ -17,7 +17,9 @@ const Option = (optionRenderer, onSelect) => (option, key) => (
   </MenuOption>
 );
 
-const Selector = ({ options, currentOption, optionRenderer, triggerRenderer, onSelect }) => (
+const Selector = ({
+  options, currentOption, optionRenderer, triggerRenderer, onSelect,
+}) => (
   <Menu>
     <MenuTrigger>
       {R.call(triggerRenderer || optionRenderer, currentOption)}

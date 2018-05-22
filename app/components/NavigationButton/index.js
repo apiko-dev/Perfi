@@ -19,7 +19,7 @@ const NavigationButton = (props) => {
     navigation,
     backOnSuccess,
     isVisible = true,
-  ...iconProps
+    ...iconProps
   } = props;
 
   const onPressButton = () => {

@@ -11,7 +11,8 @@ import { colors } from '../../styles/index';
 
 const ButtonView = ({ name }) => ( // eslint-disable-line
   <View style={s.buttonIcon}>
-    <NavIcon name={name} tintColor={colors.white} /></View>
+    <NavIcon name={name} tintColor={colors.white} />
+  </View>
 );
 
 const TransactionItem = ({
@@ -65,7 +66,7 @@ const TransactionItem = ({
       :
       <Swipeout
         {...swipeoutBtns}
-        sensitivity={50}
+        sensitivity={0}
         autoClose
         scroll={onAllowScroll}
       >

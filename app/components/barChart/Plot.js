@@ -14,7 +14,9 @@ const Line = (max, step, labelWidth) => i => (
 );
 
 const Plot = (props) => {
-  const { width, height, labelWidth, linesStep, linesNumber } = props;
+  const {
+    width, height, labelWidth, linesStep, linesNumber,
+  } = props;
   const maxValue = linesStep * linesNumber;
 
   return (

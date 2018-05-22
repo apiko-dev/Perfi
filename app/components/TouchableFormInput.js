@@ -26,7 +26,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const TouchableFormInput = ({ onPress, ...props, containerStyle, icon }) => (
+const TouchableFormInput = ({
+  onPress, ...props, containerStyle, icon,
+}) => (
   <TouchableOpacity
     onPress={onPress}
   >
@@ -48,10 +50,6 @@ TouchableFormInput.propTypes = {
 };
 
 export default TouchableFormInput;
-
-
-
-
 
 
 // const FormInputWithIcon = (props) => {

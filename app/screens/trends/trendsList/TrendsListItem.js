@@ -4,7 +4,9 @@ import { View, Text } from 'react-native';
 import appStyles from '../../../styles/AppStyles';
 import styles from './TrendsListItemStyles';
 
-const TrendsListItem = ({ label, labelBold, income = 0, expense = 0, withoutBorder }) => (
+const TrendsListItem = ({
+  label, labelBold, income = 0, expense = 0, withoutBorder,
+}) => (
   <View style={[appStyles.rowStyle, styles.rootStyle, !withoutBorder && styles.borderStyle]}>
     <Text
       style={[appStyles.rootStyle, styles.labelStyle, labelBold && styles.boldTextStyle]}
