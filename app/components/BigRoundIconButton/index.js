@@ -21,7 +21,9 @@ const styles = StyleSheet.create({
 });
 
 
-const BigRoundIconButton = ({ backgroundColor, tintColor = colors.white, border, onPress, containerStyle, ...props }) => (
+const BigRoundIconButton = ({
+  backgroundColor, tintColor = colors.white, border, onPress, containerStyle, ...props
+}) => (
   <TouchableItem onPress={onPress} style={containerStyle}>
     <View style={[styles.circle, { backgroundColor }, border]} >
       <CategoryIcon tintColor={tintColor} {...props} />

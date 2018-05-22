@@ -5,6 +5,7 @@ import Separator from '../Separator';
 
 const _keyExtractor = item => item.id;
 
+// eslint-disable-next-line react/prop-types
 const FlatList = ({ listEmptyText, flatListRef, data, ...props }) => (
   <List
     style={s.list}

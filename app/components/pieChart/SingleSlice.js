@@ -10,7 +10,9 @@ import colors, { chartPalette } from '../../styles/colors';
 const { Circle, G } = Svg;
 
 const SingleSlice = (props) => {
-  const { data, width, height, centerX, centerY, innerRadius, outerRadius, labelRadius } = props;
+  const {
+    data, width, height, centerX, centerY, innerRadius, outerRadius, labelRadius,
+  } = props;
   const isEmpty = R.isEmpty(data);
   const outerFillColor = isEmpty ? colors.divider : R.values(chartPalette)[0];
 

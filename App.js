@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar, View } from 'react-native';
-import { MenuContext } from 'react-native-popup-menu';
+import { MenuProvider } from 'react-native-popup-menu';
 import { Provider } from 'react-redux';
 import { lifecycle } from 'recompose';
 import store from './app/store';
@@ -12,7 +12,7 @@ import { appOperations } from './app/modules/app';
 console.ignoredYellowBox = ['MenuContext'];
 
 const App = () => (
-  <MenuContext>
+  <MenuProvider>
     <View style={styles.rootStyle}>
       <StatusBar
         barStyle="dark-content"
@@ -22,7 +22,7 @@ const App = () => (
         <Navigator />
       </Provider>
     </View>
-  </MenuContext>
+  </MenuProvider>
 );
 
 const enhance = lifecycle({

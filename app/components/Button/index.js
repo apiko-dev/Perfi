@@ -47,9 +47,8 @@ const Button = (props) => {
             touchableProps.disabled && s.titleDisabled,
           ]}
         >
-          {title}
-        </Text>
-        }
+            {title}
+        </Text>}
         {!!iconRight && <MaterialIcons {...iconRight} />}
       </View>
 

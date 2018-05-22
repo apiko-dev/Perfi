@@ -45,7 +45,9 @@ const enhance = compose(
       setIcon(value);
       setPickerVisible(false);
     },
-    onSubmit: ({ submit, navigation, category, onClose, ...props }) => () => {
+    onSubmit: ({
+      submit, navigation, category, onClose, ...props
+    }) => () => {
       Keyboard.dismiss();
       const editedProps = R.pick(['name', 'icon', 'type'], props);
       const propsToSubmit = category ? { id: category.id, ...editedProps } : editedProps;

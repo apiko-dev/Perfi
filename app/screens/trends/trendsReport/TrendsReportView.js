@@ -73,7 +73,9 @@ const onOpenDatePicker = ({ toggleDatePicker, setDateToChange }) => dateToChange
   toggleDatePicker(true);
 };
 
-const onSetDate = ({ toggleDatePicker, dateToChange, setDateFrom, setDateTo }) => (date) => {
+const onSetDate = ({
+  toggleDatePicker, dateToChange, setDateFrom, setDateTo,
+}) => (date) => {
   const setDate = dateToChange === 'dateFrom' ? setDateFrom : setDateTo;
   setDate(moment(date).startOf('month').toDate());
   toggleDatePicker(false);

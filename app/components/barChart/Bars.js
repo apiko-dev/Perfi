@@ -28,7 +28,9 @@ const Label = i => (
   </Text>
 );
 
-const Bars = ({ data, width, height, gutter, accessorKey, labels }) => {
+const Bars = ({
+  data, width, height, gutter, accessorKey, labels,
+}) => {
   const chart = Chart({
     data,
     width,

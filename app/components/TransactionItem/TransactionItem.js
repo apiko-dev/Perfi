@@ -11,7 +11,8 @@ import { colors } from '../../styles/index';
 
 const ButtonView = ({ name }) => ( // eslint-disable-line
   <View style={s.buttonIcon}>
-    <NavIcon name={name} tintColor={colors.white} /></View>
+    <NavIcon name={name} tintColor={colors.white} />
+  </View>
 );
 
 const TransactionItem = ({
@@ -27,7 +28,7 @@ const TransactionItem = ({
   onAddToFavourite,
   onDeleteFromFavourites,
   percent,
-                         }) => {
+}) => {
   const swipeoutBtns = {
     right: onDelete ? [{
       backgroundColor: colors.red,

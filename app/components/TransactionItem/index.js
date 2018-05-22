@@ -14,7 +14,9 @@ const mapStateToProps = ({ accounts, categories }) => ({
 const enhance = compose(
   connect(mapStateToProps, accountsOperations),
 
-  withProps(({ accountsEntities, accountId, categoriesEntities, categoryId }) => ({
+  withProps(({
+    accountsEntities, accountId, categoriesEntities, categoryId,
+  }) => ({
     accountName: R.pathOr('Account deleted', [accountId, 'name'], accountsEntities),
     accountColor: R.pathOr(colors.greyDarker, [accountId, 'color'], accountsEntities),
     categoryIconName: R.pathOr('shopping', [categoryId, 'icon'], categoriesEntities),

@@ -20,34 +20,32 @@ import {
 import s from './styles';
 
 const AccountEditor = ({
-data,
-icon,
-date,
-value,
-note,
-setDate,
-onSubmit,
-accounts,
-categoryName,
-categoryIcon,
-onUpdateNote,
-onToggleModal,
-isVisibleModal,
-onChangeAccount,
-incomeCategories,
-onChangeCategory,
-isReadyForSubmit,
-expenseCategories,
-isSelectedCategory,
+  data,
+  icon,
+  date,
+  value,
+  note,
+  setDate,
+  onSubmit,
+  accounts,
+  categoryName,
+  categoryIcon,
+  onUpdateNote,
+  onToggleModal,
+  isVisibleModal,
+  onChangeAccount,
+  incomeCategories,
+  onChangeCategory,
+  isReadyForSubmit,
+  expenseCategories,
+  isSelectedCategory,
 }) => (
   <View style={s.root}>
     <ScreenWrapper style={s.withoutPaddingBot}>
       <ScrollView>
-
         <Text style={[s.valueText, { color: value < 0 ? colors.red : colors.green }]}>
           {`${value < 0 ? '-' : '+'} $${Math.abs(value)}`}
         </Text>
-
         <Select
           isAccount
           options={accounts}
@@ -59,7 +57,6 @@ isSelectedCategory,
           textStyle={s.selectTextStyle}
           optionHeight={dimensions.verticalIndent * 2.8}
         />
-
         <FormInput
           style={s.selector}
           containerStyle={s.selectorContainer}
@@ -68,7 +65,6 @@ isSelectedCategory,
           icon={categoryIcon}
           onPress={onToggleModal}
         />
-
         <DatePicker
           isSelected
           placeholder="Initial date"
@@ -77,7 +73,6 @@ isSelectedCategory,
           // format={dateFormat.newAccountDateFormat}
           date={date}
         />
-
         <Input
           isValid
           placeholder="Note"
@@ -88,7 +83,6 @@ isSelectedCategory,
         />
       </ScrollView>
     </ScreenWrapper>
-
     <KeyboardAvoidingView withHeader>
       {isReadyForSubmit &&
       <Button
@@ -98,7 +92,6 @@ isSelectedCategory,
       />
       }
     </KeyboardAvoidingView>
-
     <CategoriesList
       isModal
       isVisible={isVisibleModal}
@@ -106,7 +99,6 @@ isSelectedCategory,
       onSelect={onChangeCategory}
       onToggleModal={onToggleModal}
     />
-
   </View>
 
 

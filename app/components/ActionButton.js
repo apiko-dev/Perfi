@@ -19,7 +19,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const ActionButton = ({ style, iconName, color, ...props }) => (
+const ActionButton = ({
+  style, iconName, color, ...props
+}) => (
   <View style={style || styles.rootStyle}>
     <Button
       raised

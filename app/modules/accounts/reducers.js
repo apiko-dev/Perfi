@@ -14,7 +14,9 @@ const createAccount = (props) => {
     isAddButton = false,
   } = props;
 
-  return { name, icon, initialBalance, initialDate, color, isAddButton };
+  return {
+    name, icon, initialBalance, initialDate, color, isAddButton,
+  };
 };
 
 

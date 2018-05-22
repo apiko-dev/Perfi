@@ -19,10 +19,10 @@ const s = StyleSheet.create({
 });
 
 const TabContainer = ({
-selectedTabIndex,
-tabIndex,
-children,
-topOffset,
+  selectedTabIndex,
+  tabIndex,
+  children,
+  topOffset,
 }) => (
   <View
     style={[

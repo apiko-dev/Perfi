@@ -11,7 +11,9 @@ import styles from './PieChartStyles';
 const Pie = require('paths-js/pie');
 
 const SeveralSlices = (props) => {
-  const { data, width, height, centerX, centerY, innerRadius, outerRadius } = props;
+  const {
+    data, width, height, centerX, centerY, innerRadius, outerRadius,
+  } = props;
 
   const chart = Pie({
     center: [centerX, centerY],

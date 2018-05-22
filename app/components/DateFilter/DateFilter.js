@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import {
   Select,
   Calendar,
-  Button
+  Button,
 } from '../../components';
 import s from './styles';
 import { colors, scalingUtils } from '../../styles';
@@ -32,33 +32,33 @@ const DateFilter = ({
   dateForFiltering,
   onChangeSelector,
 }) => (
-    <View style={s.selectors}>
-      <Select
-        selectorsWidth={scalingUtils.moderateScale(100)}
-        options={['Week', 'Month', 'Year']}
-        style={s.dateSelector}
-        defaultValue="Select"
-        onSelect={onChangeSelector}
-        isActiveSelector={isActiveSelector}
-      />
-      <ButtonFiler
-        title="Today"
-        onPress={onSetActiveToday}
-        isActive={isActiveToday}
-      />
-      <ButtonFiler
-        title="Yesterday"
-        onPress={onSetActiveYesterday}
-        isActive={isActiveYesterday}
-      />
-      <Calendar
-        isVisible={isVisibleCalendar}
-        isActiveIcon={isActiveCalendar}
-        onToggleCalendar={onToggleCalendar}
-        onSelectedDate={onChangeCalendar}
-        initialDate={dateForFiltering}
-      />
-    </View>
+  <View style={s.selectors}>
+    <Select
+      selectorsWidth={scalingUtils.moderateScale(100)}
+      options={['Week', 'Month', 'Year']}
+      style={s.dateSelector}
+      defaultValue="Select"
+      onSelect={onChangeSelector}
+      isActiveSelector={isActiveSelector}
+    />
+    <ButtonFiler
+      title="Today"
+      onPress={onSetActiveToday}
+      isActive={isActiveToday}
+    />
+    <ButtonFiler
+      title="Yesterday"
+      onPress={onSetActiveYesterday}
+      isActive={isActiveYesterday}
+    />
+    <Calendar
+      isVisible={isVisibleCalendar}
+      isActiveIcon={isActiveCalendar}
+      onToggleCalendar={onToggleCalendar}
+      onSelectedDate={onChangeCalendar}
+      initialDate={dateForFiltering}
+    />
+  </View>
 );
 
 DateFilter.propTypes = {

@@ -7,7 +7,9 @@ import IconsPickerList from '../iconsList/index';
 
 const { modalStyle, listStyle } = styles;
 
-const IconsPickerModal = ({ isVisible, onIconPick, hideModal, icons, selectedIconName }) => (
+const IconsPickerModal = ({
+  isVisible, onIconPick, hideModal, icons, selectedIconName,
+}) => (
   <TouchableWithoutFeedback onPress={hideModal}>
     <Modal
       isVisible={isVisible}

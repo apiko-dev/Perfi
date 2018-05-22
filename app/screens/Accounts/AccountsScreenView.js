@@ -1,18 +1,21 @@
 import React from 'react';
 import T from 'prop-types';
 
-import { View, FlatList } from 'react-native';
+import { View, FlatList, TouchableOpacity } from 'react-native';
 import screens from '../../constants/screens';
 import {
-  NavigationButton,
   Subtitle,
   AccountItem,
+  Icon,
 } from '../../components';
 import s from './styles';
+import colors from '../../styles/colors';
 
 const onNavigate = (nav, screen, params) => () => nav.navigate(screen, params);
 
-const Accounts = ({ accounts, onPress, onAddAccount, totalBalance }) => {
+const Accounts = ({
+  accounts, onPress, onAddAccount, totalBalance,
+}) => {
   const _keyExtractor = item => item.id;
 
   /* eslint-disable react/prop-types */
@@ -47,10 +50,16 @@ const Accounts = ({ accounts, onPress, onAddAccount, totalBalance }) => {
 
 Accounts.navigationOptions = ({ navigation }) => ({
   headerRight: (
-    <NavigationButton
-      iconName="pie-chart"
+    <TouchableOpacity
       onPress={onNavigate(navigation, screens.TransferEditor, { title: 'Add transfer' })}
-    />
+    >
+      <Icon
+        name="transfer"
+        color={colors.green}
+        width={60}
+        height={24}
+      />
+    </TouchableOpacity>
   ),
 });
 
