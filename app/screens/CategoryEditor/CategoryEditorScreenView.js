@@ -104,7 +104,6 @@ CategoryEditor.propTypes = {
   icons: T.array,
   onChangeIcon: T.func,
   setName: T.func,
-  type: T.string,
   togglePicker: T.func,
   isPickerVisible: T.bool,
   onSelectCategory: T.func,
