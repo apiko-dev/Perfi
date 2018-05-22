@@ -27,7 +27,8 @@ const TransactionItem = ({
   onAddToFavourite,
   onDeleteFromFavourites,
   percent,
-                         }) => {
+  onAllowScroll,
+}) => {
   const swipeoutBtns = {
     right: onDelete ? [{
       backgroundColor: colors.red,
@@ -64,8 +65,9 @@ const TransactionItem = ({
       :
       <Swipeout
         {...swipeoutBtns}
-        sensitivity={0}
+        sensitivity={50}
         autoClose
+        scroll={onAllowScroll}
       >
         <View style={s.container}>
           <View style={s.icon}>
@@ -99,6 +101,7 @@ TransactionItem.propTypes = {
   onDelete: T.func,
   onAddToFavourite: T.func,
   onDeleteFromFavourites: T.func,
+  onAllowScroll: T.func,
   isFavourites: T.bool,
   isSimpleItem: T.bool,
 };
