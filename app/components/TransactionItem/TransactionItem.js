@@ -4,10 +4,8 @@ import { View, Text } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import { NavIcon, RoundIcon } from '../index';
 import s from './styles';
-
 import { dateWithTime } from '../../utils/dateHelpers';
 import { colors } from '../../styles/index';
-
 
 const ButtonView = ({ name }) => ( // eslint-disable-line
   <View style={s.buttonIcon}>
@@ -29,6 +27,7 @@ const TransactionItem = ({
   onDeleteFromFavourites,
   percent,
   onAllowScroll,
+  isIncome,
 }) => {
   const swipeoutBtns = {
     right: onDelete ? [{
@@ -80,8 +79,9 @@ const TransactionItem = ({
             <Text style={s.date}>{dateWithTime(date)}</Text>
           </View>
           <View style={s.value}>
-            <Text style={[s.valueText, value > 0 ? s.incomeColor : s.expenseColor]}>
-              {value > 0 ? `+ $${value}` : `- $${value.toString().substr(1)}`}
+            <Text style={[s.valueText, isIncome ? s.incomeColor : s.expenseColor]}>
+              {isIncome ? `+ $${value}` : value === 0 ?
+                `- $${value}` : `- $${value.toString().substr(1)}`}
             </Text>
           </View>
         </View>
@@ -105,6 +105,7 @@ TransactionItem.propTypes = {
   onAllowScroll: T.func,
   isFavourites: T.bool,
   isSimpleItem: T.bool,
+  isIncome: T.bool,
 };
 
 export default TransactionItem;
