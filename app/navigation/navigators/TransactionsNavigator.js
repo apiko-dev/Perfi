@@ -4,6 +4,8 @@ import {
   Transactions,
   Calculator,
   TransactionsStatistics,
+  TransactionDetail,
+  TransferDetail,
   AccountDetail,
 } from '../../screens';
 import screens from '../../constants/screens';
@@ -31,6 +33,12 @@ const TransactionsNavigator = StackNavigator({
   [screens.AccountDetail]: {
     screen: AccountDetail,
     navigationOptions: headerOptions(),
+  },
+  [screens.TransactionDetail]: {
+    screen: TransactionDetail,
+  },
+  [screens.TransferDetail]: {
+    screen: TransferDetail,
   },
   ...AccountsRoutes,
   ...CategoriesRoutes,

@@ -37,6 +37,7 @@ import KeyboardAvoidingView from './KeyboardAvoidingView';
 import DatePicker from './DatePicker';
 import HeaderTitle from './HeaderTitle';
 import VerticalSeparator from './VerticalSeparator';
+import Value from './Value';
 import Separator from './Separator';
 import RoundIcon from './RoundIcon';
 import Select from './Select';
@@ -52,6 +53,7 @@ import FlatList from './FlatList';
 import TransactionItem from './TransactionItem';
 import DateFilter from './DateFilter';
 import AddTransactionButton from './AddTransactionButton';
+import CategoryIcon from './CategoryIcon';
 
 
 export {
@@ -95,10 +97,12 @@ export {
   DatePicker,
   HeaderTitle,
   VerticalSeparator,
+  Value,
   Separator,
   RoundIcon,
   Select,
   Calendar,
+  CategoryIcon,
   NavigationButton,
   FormInput,
   CategoriesList,

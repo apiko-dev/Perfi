@@ -50,8 +50,8 @@ const AccountEditor = ({
   to,
   value,
 }) => {
-  const optionsFrom = accountsArr.filter((item) => item.id !== to.id);
-  const optionsTo = accountsArr.filter((item) => item.id !== from.id);
+  const optionsFrom = accountsArr.filter(item => item.id !== to.id);
+  const optionsTo = accountsArr.filter(item => item.id !== from.id);
 
   return (
     <View style={s.root}>
@@ -71,6 +71,7 @@ const AccountEditor = ({
             />
             {
               !isValidValue.isValid &&
+              !!value &&
               !R.isEmpty(from) &&
               <Text style={s.error}>{isValidValue.message}</Text>
             }
