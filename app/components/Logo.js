@@ -5,8 +5,8 @@ import Icon from './Icon';
 const Logo = () => (
   <Icon
     name="logo"
-    width={98}
-    height={24}
+    width={90}
+    height={22}
   />
 );
 

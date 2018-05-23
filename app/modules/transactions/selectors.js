@@ -9,6 +9,7 @@ const getDateForFiltering = (_, props) => R.pathOr('', ['dateForFiltering'], pro
 const getCategoriesEntities = state => R.pathOr({}, ['categories', 'byId'], state);
 const getCategoryTypeForFiltering = (_, props) => R.pathOr('0', ['selectedTabIndex'], props);
 const getAccountsEntities = state => R.pathOr({}, ['accounts', 'byId'], state);
+const getAccountId = (_, props) => R.pathOr('0', ['accountId'], props);
 
 
 export const getTransactions = createSelector(
@@ -114,5 +115,26 @@ export const getCategoriesStats = createSelector(
       }, data
     );
     return res;
+  },
+);
+
+export const getCurrentAccountTransaction = createSelector(
+  [
+    getTransactionsIds,
+    getTransactionsEntities,
+    getDateForFiltering,
+    getAccountId,
+  ],
+  (ids, entities, date, accId) => {
+    const newArray = [];
+    ids.forEach((id) => {
+      const transaction = entities[id];
+      const period = !date.format ?
+        date : { from: +date.startOf('day'), to: +date.endOf('day') };
+      if (inPeriod(period, transaction.date) && transaction.account === accId) {
+        newArray.push(transaction);
+      }
+    });
+    return newArray;
   },
 );
