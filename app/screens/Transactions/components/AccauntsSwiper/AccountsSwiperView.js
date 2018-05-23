@@ -6,14 +6,15 @@ import s from './styles';
 import { AccountItem } from '../../../../components/index';
 
 
-const AccauntsSwiper = ({ groupedAccounts, onSelectAccount }) => {
+const AccauntsSwiper = ({ groupedAccounts, onAccountPress }) => {
   const accountItem = item => (
     <AccountItem
       key={item.id}
+      accountId={item.id}
       name={item.name}
       initialBalance={item.balance}
       color={item.color}
-      onPress={() => console.log('On account Press', onSelectAccount)}
+      onPress={onAccountPress}
       isAddButton={item.isAddButton}
     />
   );
@@ -45,7 +46,7 @@ const AccauntsSwiper = ({ groupedAccounts, onSelectAccount }) => {
 
 AccauntsSwiper.propTypes = {
   groupedAccounts: T.array,
-  onSelectAccount: T.func,
+  onAccountPress: T.func,
 };
 
 export default AccauntsSwiper;

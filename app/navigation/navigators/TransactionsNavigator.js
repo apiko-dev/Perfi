@@ -1,5 +1,11 @@
 import { StackNavigator } from 'react-navigation';
-import { TransactionEditor, Transactions, Calculator, TransactionsStatistics } from '../../screens';
+import {
+  TransactionEditor,
+  Transactions,
+  Calculator,
+  TransactionsStatistics,
+  AccountDetail,
+} from '../../screens';
 import screens from '../../constants/screens';
 import navOptions from '../../utils/navOptions';
 import AccountsRoutes from '../routes/AccountsRoutes';
@@ -21,6 +27,10 @@ const TransactionsNavigator = StackNavigator({
   },
   [screens.TransactionEditor]: {
     screen: TransactionEditor,
+  },
+  [screens.AccountDetail]: {
+    screen: AccountDetail,
+    navigationOptions: headerOptions(),
   },
   ...AccountsRoutes,
   ...CategoriesRoutes,

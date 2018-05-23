@@ -7,6 +7,7 @@ import s from './styles';
 
 
 const AccountItem = ({
+  accountId,
   name,
   style,
   containerStyle,
@@ -17,7 +18,7 @@ const AccountItem = ({
   ...props
 }) => (
   <TouchableItem
-    onPress={onPress}
+    onPress={() => onPress(accountId)}
     style={[s.container, containerStyle]}
     {...props}
   >
@@ -42,14 +43,13 @@ const AccountItem = ({
     </View>
 
   </TouchableItem>
-
-
 );
 
 AccountItem.propTypes = {
   style: ViewPropTypes.style,
   containerStyle: ViewPropTypes.style,
   name: T.string,
+  accountId: T.string,
   initialBalance: T.number,
   color: T.string,
   onPress: T.func,

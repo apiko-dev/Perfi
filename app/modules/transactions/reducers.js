@@ -112,6 +112,93 @@ const defaultAccounts = [
     value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
   }),
   createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
+    value: 30, account: '2', category: '2', date: new Date(), isFavourites: false,
+  }),
+  createTransaction({
     value: 600, account: '3', category: '1', date: new Date(), isFavourites: false,
   }),
   createTransaction({
