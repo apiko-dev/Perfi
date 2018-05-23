@@ -8,7 +8,7 @@ import {
 
 export default StyleSheet.create({
   container: {
-    height: scalingUtils.verticalScale(54),
+    height: scalingUtils.verticalScale(62),
     backgroundColor: colors.white,
     flexDirection: 'row',
   },

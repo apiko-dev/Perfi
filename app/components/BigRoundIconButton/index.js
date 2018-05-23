@@ -1,6 +1,6 @@
 import React from 'react';
 import T from 'prop-types';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import CategoryIcon from '../CategoryIcon';
 import TouchableItem from '../TouchableItem';
 import { colors, dimensions } from '../../styles';
@@ -9,8 +9,12 @@ import { colors, dimensions } from '../../styles';
 const styles = StyleSheet.create({
   circle: {
     borderRadius: (dimensions.bigIconSize + 15) / 2,
-    paddingTop: 4,
-    paddingLeft: 1,
+    ...Platform.select({
+      ios: {
+        paddingTop: 4,
+        paddingLeft: 1,
+      },
+    }),
     alignItems: 'center',
     justifyContent: 'center',
     width: dimensions.bigIconSize + 15,

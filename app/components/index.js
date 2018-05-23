@@ -12,7 +12,7 @@ import SelectBox from './selectBox';
 import Drawer from './Drawer/Drawer';
 import FormInputWithIcon from './FormInputWithIcon';
 import HeaderIcon from './HeaderIcon';
-import IconsPickerModal from './iconsPicker';
+import IconsPickerModal from './IconsPickerModal';
 import Loading from './Loading';
 import NavIcon from './NavIcon';
 import PickerIcon from './PickerIcon';
