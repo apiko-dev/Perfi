@@ -18,7 +18,7 @@ const fields = ['from', 'value', 'to', 'date', 'note'];
 const msg = 'There is not enough money';
 
 const checkValidValue = (value, { from: { balance } }) => ({
-  isValid: Number(value) < Number(balance),
+  isValid: !!value && Number(value) < Number(balance),
   message: `${msg}, available - ${balance}`,
 });
 

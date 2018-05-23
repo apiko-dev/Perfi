@@ -7,10 +7,13 @@ import AccountDetail from './AccountDetails';
 import Categories from './Categories';
 import CategoryEditor from './CategoryEditor';
 import Calculator from './Calculator';
+
 import Settings from './Settings';
 import Trends from './trends/TrendsScreen';
 import TransferEditor from './TransferEditor';
+import TransactionDetail from './TransactionDetail';
 import Favourites from './Favourites';
+import TransferDetail from './TransferDetail';
 
 export {
   Accounts,
@@ -22,8 +25,11 @@ export {
   Categories,
   CategoryEditor,
   Calculator,
+  TransactionDetail,
+
   Settings,
   Trends,
   TransferEditor,
+  TransferDetail,
   Favourites,
 };

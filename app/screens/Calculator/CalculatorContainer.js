@@ -1,8 +1,9 @@
 import { compose, withHandlers, withState, lifecycle, hoistStatics } from 'recompose';
+import { connect } from 'react-redux';
 import R from 'ramda';
 import CalculatorScreenView from './CalculatorScreenView';
-import { getParam } from '../../utils/navHelpers';
 import screens from '../../constants/screens';
+import { withPickParams } from '../../utils/enhancers';
 
 const defaultExpr = '0';
 
@@ -12,7 +13,13 @@ const hasDotInLastNumber = R.pipe(
   R.equals('.'),
 );
 
+const mapStateToProps = (state, props) => ({
+  value: R.pathOr('', ['transactions', 'byId', props.id, 'value'], state),
+});
+
 const enhance = compose(
+  withPickParams,
+  connect(mapStateToProps),
   withState('isIncome', 'setIsIncome', false),
 
   withState('expr', 'updateExpr', ({ value }) => value || defaultExpr),
@@ -41,14 +48,18 @@ const enhance = compose(
 
       updateExpr(newExpr);
     },
-    onSubmitResult: ({ expr, navigation, isIncome }) => () => {
-      navigation.navigate(screens.TransactionEditor, { isIncome, value: isIncome ? +expr : -expr });
+    onSubmitResult: ({ expr, navigation, isIncome, id }) => () => {
+      navigation.navigate(
+        screens.TransactionEditor, { value: isIncome ? +expr : -expr, id });
     },
   }),
 
   lifecycle({
     componentDidMount() {
-      this.props.setIsIncome(getParam('type')(this.props.navigation) === 'income');
+      const { setIsIncome, value, updateExpr, type } = this.props;
+
+      setIsIncome(type === 'income');
+      if (value) updateExpr(value);
     },
   }),
 );

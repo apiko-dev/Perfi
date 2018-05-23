@@ -24,20 +24,6 @@ export default StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
-
-  value: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: dimensions.indent,
-    flexDirection: 'row',
-  },
-
-  valueText: {
-    color: colors.green,
-    fontSize: fontSizes.xmedium,
-    fontWeight: fontWeights.extraBold,
-  },
-
   title: {
     color: colors.black,
     fontSize: fontSizes.small,
@@ -60,15 +46,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  incomeColor: {
-    color: colors.green,
-  },
-
-  expenseColor: {
-    color: colors.red,
-  },
-
   percentText: {
     color: colors.greyVeryDarker,
     fontSize: fontSizes.medium,
