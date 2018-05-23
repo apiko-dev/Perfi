@@ -61,11 +61,13 @@ const TransactionsStatistics = ({
           <View style={s.chartContainer}>
             <View style={s.pieContainer}>
               <VictoryPie
-                width={185} height={185}
-                innerRadius={60}
-                padding={0}
-                labels={() => ''}
                 data={dataForChart}
+                animate={{ duration: 800 }}
+                padding={0}
+                width={185}
+                height={185}
+                innerRadius={60}
+                labels={() => ''}
               />
               <View style={s.pieTextContainer}>
                 <Text

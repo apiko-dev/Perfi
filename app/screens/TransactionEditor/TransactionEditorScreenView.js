@@ -28,6 +28,7 @@ const AccountEditor = ({
   setDate,
   onSubmit,
   accounts,
+  isIncome,
   categoryName,
   categoryIcon,
   onUpdateNote,
@@ -43,8 +44,8 @@ const AccountEditor = ({
   <View style={s.root}>
     <ScreenWrapper style={s.withoutPaddingBot}>
       <ScrollView>
-        <Text style={[s.valueText, { color: value < 0 ? colors.red : colors.green }]}>
-          {`${value < 0 ? '-' : '+'} $${Math.abs(value)}`}
+        <Text style={[s.valueText, { color: isIncome ? colors.green : colors.red }]}>
+          {`${isIncome ? '+' : '-'} $${Math.abs(value)}`}
         </Text>
         <Select
           isAccount
@@ -95,7 +96,7 @@ const AccountEditor = ({
     <CategoriesList
       isModal
       isVisible={isVisibleModal}
-      categories={value < 0 ? expenseCategories : incomeCategories}
+      categories={isIncome ? incomeCategories : expenseCategories}
       onSelect={onChangeCategory}
       onToggleModal={onToggleModal}
     />
@@ -127,6 +128,7 @@ AccountEditor.propTypes = {
   isSelectedCategory: T.bool,
   onChangeCategory: T.func,
   onToggleModal: T.func,
+  isIncome: T.bool,
   isVisibleModal: T.bool,
   isReadyForSubmit: T.bool,
 };

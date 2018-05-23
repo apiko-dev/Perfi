@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity } from 'react-native';
-
-import { StyleSheet, View, ViewPropTypes } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import appStyles from '../styles/AppStyles';
 import { colors, dimensions } from '../styles';
@@ -21,16 +19,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
   },
-  inputWithIconStyle: {
-    marginLeft: 10,
-  },
 });
-
 const TouchableFormInput = ({
   onPress, ...props, containerStyle, icon,
 }) => (
   <TouchableOpacity
     onPress={onPress}
+    {...props}
   >
     <View style={[containerStyle, icon && styles.containerWithIconStyle]}>
       <View />

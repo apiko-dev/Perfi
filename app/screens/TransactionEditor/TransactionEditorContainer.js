@@ -37,6 +37,7 @@ const enhance = compose(
 
   withState('date', 'setDate', transactionProp('date', new Date())),
   withState('value', 'setValue', transactionProp('value', 0)),
+  withState('isIncome', 'setIsIncome', true),
   withState('isVisibleModal', 'setVisibleModal', false),
 
   withState('account', 'setAccount', transactionProp('account')),
@@ -104,6 +105,7 @@ const enhance = compose(
   lifecycle({
     componentDidMount() {
       this.props.setValue(getParam('value')(this.props.navigation));
+      this.props.setIsIncome(getParam('isIncome')(this.props.navigation));
     },
   }),
 );
