@@ -29,6 +29,7 @@ const TransactionItem = ({
   onDeleteFromFavourites,
   onPress,
   percent,
+  onAllowScroll,
 }) => {
   const swipeoutBtns = {
     right: onDelete ? [{
@@ -56,7 +57,7 @@ const TransactionItem = ({
           <View style={s.mainContentContainer}>
             <Text style={s.title}>{categoryName}</Text>
           </View>
-          <Value value={value}>
+          <Value value={value} >
             <Text style={s.percentText}> / {percent}%</Text>
           </Value>
         </TouchableOpacity>
@@ -65,6 +66,7 @@ const TransactionItem = ({
           {...swipeoutBtns}
           sensitivity={0}
           autoClose
+          scroll={onAllowScroll}
         >
           <TouchableOpacity onPress={onPress} style={s.container}>
             <View style={s.icon}>
@@ -92,10 +94,11 @@ TransactionItem.propTypes = {
   accountColor: T.string,
   categoryIconName: T.string,
   categoryName: T.string,
-  onAddToFavourite: T.func,
   onDelete: T.func,
+  onAddToFavourite: T.func,
   onDeleteFromFavourites: T.func,
   onPress: T.func,
+  onAllowScroll: T.func,
   isFavourites: T.bool,
   isSimpleItem: T.bool,
 };

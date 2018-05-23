@@ -72,6 +72,7 @@ DateFilter.propTypes = {
   onSetActiveToday: T.func,
   onSetActiveYesterday: T.func,
   onChangeSelector: T.func,
+  dateForFiltering: T.object,
 };
 
 

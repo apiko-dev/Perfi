@@ -4,7 +4,7 @@ import { compose, withProps, pure } from 'recompose';
 import TransactionItem from './TransactionItem';
 import { accountsOperations } from '../../modules/accounts/index';
 import { colors } from '../../styles/index';
-
+import { isIncome } from '../../constants/categories';
 
 const mapStateToProps = ({ accounts, categories }) => ({
   accountsEntities: accounts.byId,
@@ -21,6 +21,7 @@ const enhance = compose(
     accountColor: R.pathOr(colors.greyDarker, [accountId, 'color'], accountsEntities),
     categoryIconName: R.pathOr('shopping', [categoryId, 'icon'], categoriesEntities),
     categoryName: R.pathOr('Other', [categoryId, 'name'], categoriesEntities),
+    isIncome: isIncome(categoriesEntities[categoryId].type),
   })),
 );
 

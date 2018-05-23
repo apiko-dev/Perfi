@@ -19,6 +19,9 @@ const styles = StyleSheet.create({
   expenseColor: {
     color: colors.red,
   },
+  nullColor: {
+    color: colors.darkGrey,
+  },
 });
 
 export default styles;

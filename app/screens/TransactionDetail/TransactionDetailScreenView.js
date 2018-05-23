@@ -37,7 +37,11 @@ const TransactionDetail = ({
           <Text style={s.accountName}>{account.name}</Text>
           <Text style={s.regular}>{dateWithTime(transaction.date)}</Text>
         </View>
-        <Value size={fontSizes.big} value={transaction.value} />
+        <Value
+          size={fontSizes.big}
+          value={transaction.value}
+          isIncome={transaction.value > 0}
+        />
       </View>
       <Separator />
       {

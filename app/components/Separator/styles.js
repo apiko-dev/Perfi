@@ -7,12 +7,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.grey,
     opacity: 0.5,
   },
-
   shadow: {
     backgroundColor: colors.greyOpacity,
     ...Platform.select({
       ios: {
-        shadowOpacity: 0.8,
+        shadowOpacity: 0.9,
         shadowRadius: 4,
         shadowOffset: {
           height: 0,

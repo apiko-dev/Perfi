@@ -36,6 +36,7 @@ const enhance = compose(
 
   withState('date', 'setDate', new Date()),
   withState('value', 'setValue', 'value', 0),
+  withState('isIncome', 'setIsIncome', true),
   withState('isVisibleModal', 'setVisibleModal', false),
 
   withState('account', 'setAccount', ''),
@@ -111,9 +112,11 @@ const enhance = compose(
         accountsById,
         categoriesById,
         setSelectedCategory,
+        setIsIncome,
       } = this.props;
 
       setValue(getParam('value')(navigation));
+      setIsIncome(getParam('isIncome')(navigation));
 
       if (transaction) {
         const { date, account, category, note } = transaction;
