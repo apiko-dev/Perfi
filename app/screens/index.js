@@ -1,11 +1,12 @@
 import Accounts from './Accounts';
 import AccountEditor from './AccountEditor';
 import Transactions from './Transactions';
+import TransactionsStatistics from './TransactionsStatistics';
 import TransactionEditor from './TransactionEditor';
+import AccountDetail from './AccountDetails';
 import Categories from './Categories';
 import CategoryEditor from './CategoryEditor';
 import Calculator from './Calculator';
-import TransactionsStatistics from './TransactionsStatistics';
 
 import Settings from './Settings';
 import Trends from './trends/TrendsScreen';
@@ -18,16 +19,17 @@ export {
   Accounts,
   AccountEditor,
   Transactions,
+  TransactionsStatistics,
   TransactionEditor,
+  AccountDetail,
   Categories,
   CategoryEditor,
   Calculator,
-  TransactionsStatistics,
   TransactionDetail,
 
   Settings,
+  Trends,
   TransferEditor,
   TransferDetail,
-  Trends,
   Favourites,
 };

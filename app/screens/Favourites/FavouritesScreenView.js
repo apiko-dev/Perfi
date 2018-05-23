@@ -5,6 +5,7 @@ import {
   Subtitle,
   DateFilter,
   FlatList,
+  Separator,
   TransactionItem,
 } from '../../components';
 import s from './styles';
@@ -37,6 +38,7 @@ const Favourites = ({
       style={s.subtitle}
       leftText="Favourites"
     />
+    <Separator withShadow />
     <FlatList
       data={data}
       renderItem={_renderItem(onDeleteFromFavourites)}

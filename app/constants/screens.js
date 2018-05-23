@@ -1,12 +1,13 @@
 export default {
   TransactionsRoot: 'TransactionsRoot',
   Transactions: 'Transactions',
-  Calculator: 'Calculator',
+  TransactionsStatistics: 'TransactionsStatistics',
 
   TransactionEditorRoot: 'TransactionEditorRoot',
   TransactionEditor: 'TransactionEditor',
   TransactionsStatistics: 'TransactionsStatistics',
   TransactionDetail: 'TransactionDetail',
+  AccountDetail: 'AccountDetail',
 
   AccountsRoot: 'AccountsRoot',
   Accounts: 'Accounts',
@@ -19,6 +20,7 @@ export default {
   CategoriesIncome: 'Income',
   CategoriesExpense: 'Expense',
   CategoryEditor: 'CategoryEditor',
+  Calculator: 'Calculator',
 
   SettingsRoot: 'SettingsRoot',
   Settings: 'Settings',

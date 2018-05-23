@@ -1,17 +1,15 @@
 import React from 'react';
+import R from 'ramda';
 import { FlatList as List, Text, View } from 'react-native';
 import s from './styles';
 import Separator from '../Separator';
-
-const _keyExtractor = item => item.id;
 
 // eslint-disable-next-line react/prop-types
 const FlatList = ({ listEmptyText, flatListRef, data, ...props }) => (
   <List
     style={s.list}
     data={data}
-    keyExtractor={_keyExtractor}
-    ListHeaderComponent={Separator}
+    keyExtractor={R.prop('id')}
     ItemSeparatorComponent={Separator}
     ListEmptyComponent={<Text style={s.emptyText}>{listEmptyText}</Text>}
     ListFooterComponent={
