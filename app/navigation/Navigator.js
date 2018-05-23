@@ -5,7 +5,7 @@ import Routes from './routes/RootRoutes';
 
 const Navigator = DrawerNavigator;
 const config = {
-  // initialRouteName: screens.AccountsRoot,
+  // initialRouteName: screens.TransactionsRoot,
   contentComponent: Drawer,
 };
 

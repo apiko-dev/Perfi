@@ -28,6 +28,7 @@ const AccountEditor = ({
   setDate,
   onSubmit,
   accounts,
+  account,
   categoryName,
   categoryIcon,
   onUpdateNote,
@@ -48,6 +49,7 @@ const AccountEditor = ({
         </Text>
         <Select
           isAccount
+          selectOption={account}
           options={accounts}
           containerStyle={s.selectorContainer}
           style={s.selector}
@@ -119,6 +121,7 @@ AccountEditor.propTypes = {
   onUpdateNote: T.func,
   note: T.string,
   accounts: T.array,
+  account: T.string,
   onChangeAccount: T.func,
   expenseCategories: T.array,
   incomeCategories: T.array,

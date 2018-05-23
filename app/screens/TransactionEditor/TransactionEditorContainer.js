@@ -16,33 +16,32 @@ import { getAccounts } from '../../modules/accounts/selectors';
 import { transactionsOperations } from '../../modules/transactions';
 import { getExpenseCategory, getIncomeCategory } from '../../modules/categories/selectors';
 import { colors } from '../../styles';
-// import screens from '../../constants/screens';
-
-
-const transactionProp = (propName, def) => R.pathOr(def, ['transaction', propName]);
 
 const requiredProps = ['value', 'account', 'category', 'date'];
 
 const isFieldsFilled = R.pipe(R.props, R.none(R.isNil));
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, { navigation }) => ({
   accounts: getAccounts(state),
+  accountsById: state.accounts.byId,
+  categoriesById: state.categories.byId,
   expenseCategories: getExpenseCategory(state.categories),
   incomeCategories: getIncomeCategory(state.categories),
+  transaction: R.pathOr(null, ['transactions', 'byId', getParam('id')(navigation)], state),
 });
 
 const enhance = compose(
 
   connect(mapStateToProps, transactionsOperations),
 
-  withState('date', 'setDate', transactionProp('date', new Date())),
-  withState('value', 'setValue', transactionProp('value', 0)),
+  withState('date', 'setDate', new Date()),
+  withState('value', 'setValue', 'value', 0),
   withState('isVisibleModal', 'setVisibleModal', false),
 
-  withState('account', 'setAccount', transactionProp('account')),
-  withState('category', 'setCategory', transactionProp('category')),
+  withState('account', 'setAccount', ''),
+  withState('category', 'setCategory', ''),
   withState('isSelectedCategory', 'setSelectedCategory', false),
-  withState('note', 'updateNote', transactionProp('note')),
+  withState('note', 'updateNote', ''),
 
   withPropsOnChange(
     requiredProps,
@@ -60,33 +59,31 @@ const enhance = compose(
       color: R.pathOr(colors.greyDarker, ['color'], account),
     },
   })),
-
+  withProps(({
+               account,
+  }) => {
+    console.log('account', account);
+  }),
   withHandlers({
     onUpdateNote: ({ updateNote }) => (text) => { updateNote(text); },
     onChangeAccount: ({ setAccount }) => (id, account) => { setAccount(account); },
     onSubmit: ({
       submit, transaction, account, category, navigation, ...props
     }) => () => {
-      const editedProps = {
+      let editedProps = {
         ...R.pick(['value', 'date', 'note'], props),
         account: account && account.id,
         category: category && category.id,
       };
-      const propsToSubmit = transaction ? { id: transaction.id, ...editedProps } : editedProps;
 
-      submit(propsToSubmit);
+      if (transaction) editedProps = { id: transaction.id, ...editedProps };
 
-      // navigation.dispatch(NavigationActions.reset({
-      //   index: 0,
-      //   actions: [
-      //     NavigationActions.navigate({
-      //       routeName: screens.Transactions,
-      //     }),
-      //   ],
-      // }));
+      submit(editedProps);
 
       navigation.dispatch(NavigationActions.back());
       navigation.dispatch(NavigationActions.back());
+
+      // navigation.dispatch({ type: types.RESET_TO_TRANSACTION});
     },
     onToggleModal: ({ setVisibleModal, isVisibleModal }) => () => {
       setVisibleModal(!isVisibleModal);
@@ -103,7 +100,30 @@ const enhance = compose(
 
   lifecycle({
     componentDidMount() {
-      this.props.setValue(getParam('value')(this.props.navigation));
+      const {
+        navigation,
+        setValue,
+        setDate,
+        setAccount,
+        setCategory,
+        updateNote,
+        transaction,
+        accountsById,
+        categoriesById,
+        setSelectedCategory,
+      } = this.props;
+
+      setValue(getParam('value')(navigation));
+
+      if (transaction) {
+        const { date, account, category, note } = transaction;
+
+        setDate(date);
+        setAccount(accountsById[account]);
+        setCategory(categoriesById[category]);
+        setSelectedCategory(true);
+        updateNote(note);
+      }
     },
   }),
 );

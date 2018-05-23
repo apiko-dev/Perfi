@@ -6,11 +6,13 @@ export default {
   TransactionEditorRoot: 'TransactionEditorRoot',
   TransactionEditor: 'TransactionEditor',
   TransactionsStatistics: 'TransactionsStatistics',
+  TransactionDetail: 'TransactionDetail',
 
   AccountsRoot: 'AccountsRoot',
   Accounts: 'Accounts',
   AccountEditor: 'AccountEditor',
   TransferEditor: 'TransferEditor',
+  TransferDetail: 'TransferDetail',
 
   CategoriesRoot: 'CategoriesRoot',
   Categories: 'Categories',

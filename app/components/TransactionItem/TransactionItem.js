@@ -1,8 +1,8 @@
 import React from 'react';
 import T from 'prop-types';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Swipeout from 'react-native-swipeout';
-import { NavIcon, RoundIcon } from '../index';
+import { NavIcon, RoundIcon, Value } from '../index';
 import s from './styles';
 
 import { dateWithTime } from '../../utils/dateHelpers';
@@ -27,6 +27,7 @@ const TransactionItem = ({
   isFavourites,
   onAddToFavourite,
   onDeleteFromFavourites,
+  onPress,
   percent,
 }) => {
   const swipeoutBtns = {
@@ -43,47 +44,41 @@ const TransactionItem = ({
   };
 
   return (<View>
-    {isSimpleItem ?
-      <View style={s.container}>
-        <View style={s.icon}>
-          <RoundIcon
-            name={categoryIconName}
-            backgroundColor={value > 0 ? colors.green : colors.red}
-          />
-        </View>
-        <View style={s.mainContentContainer}>
-          <Text style={s.title}>{categoryName}</Text>
-        </View>
-        <View style={s.value}>
-          <Text style={[s.valueText, value > 0 ? s.incomeColor : s.expenseColor]}>
-            {value > 0 ? `+ $${value}` : `- $${value.toString()
-            .substr(1)}`}
-          </Text>
-          <Text style={s.percentText}> / {percent}%</Text>
-        </View>
-      </View>
-      :
-      <Swipeout
-        {...swipeoutBtns}
-        sensitivity={0}
-        autoClose
-      >
-        <View style={s.container}>
+    {isSimpleItem
+      ? (
+        <TouchableOpacity onPress={onPress} style={s.container}>
           <View style={s.icon}>
-            <RoundIcon name={categoryIconName} backgroundColor={accountColor} />
+            <RoundIcon
+              name={categoryIconName}
+              backgroundColor={value > 0 ? colors.green : colors.red}
+            />
           </View>
           <View style={s.mainContentContainer}>
             <Text style={s.title}>{categoryName}</Text>
-            <Text style={s.accountName}>{accountName}</Text>
-            <Text style={s.date}>{dateWithTime(date)}</Text>
           </View>
-          <View style={s.value}>
-            <Text style={[s.valueText, value > 0 ? s.incomeColor : s.expenseColor]}>
-              {value > 0 ? `+ $${value}` : `- $${value.toString().substr(1)}`}
-            </Text>
-          </View>
-        </View>
-      </Swipeout>
+          <Value value={value}>
+            <Text style={s.percentText}> / {percent}%</Text>
+          </Value>
+        </TouchableOpacity>
+      ) : (
+        <Swipeout
+          {...swipeoutBtns}
+          sensitivity={0}
+          autoClose
+        >
+          <TouchableOpacity onPress={onPress} style={s.container}>
+            <View style={s.icon}>
+              <RoundIcon name={categoryIconName} backgroundColor={accountColor} />
+            </View>
+            <View style={s.mainContentContainer}>
+              <Text style={s.title}>{categoryName}</Text>
+              <Text style={s.accountName}>{accountName}</Text>
+              <Text style={s.date}>{dateWithTime(date)}</Text>
+            </View>
+            <Value value={value} />
+          </TouchableOpacity>
+        </Swipeout>
+      )
     }
 
   </View>);
@@ -97,9 +92,10 @@ TransactionItem.propTypes = {
   accountColor: T.string,
   categoryIconName: T.string,
   categoryName: T.string,
-  onDelete: T.func,
   onAddToFavourite: T.func,
+  onDelete: T.func,
   onDeleteFromFavourites: T.func,
+  onPress: T.func,
   isFavourites: T.bool,
   isSimpleItem: T.bool,
 };

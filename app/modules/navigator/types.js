@@ -1,0 +1,3 @@
+export default {
+  RESET_TO_TRANSACTION: 'RESET_TO_TRANSACTION',
+};

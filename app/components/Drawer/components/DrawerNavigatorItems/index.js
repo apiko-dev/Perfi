@@ -21,8 +21,8 @@ const DrawerNavigatorItems = (
       const color = focused ? colors.green : colors.black;
       const backgroundColor = focused ? activeBackgroundColor : inactiveBackgroundColor;
       const scene = {
- route, index, focused, tintColor: color,
-};
+        route, index, focused, tintColor: color,
+      };
       const icon = renderIcon(scene);
       const label = getLabel(scene);
       return (

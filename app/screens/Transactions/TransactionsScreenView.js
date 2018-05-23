@@ -22,6 +22,7 @@ const Transactions = ({
   onDeleteTransaction,
   onAddTransactionToFavourite,
   onDeleteFromFavourites,
+  onGoToDetail,
   dateForFiltering,
   setDateForFiltering,
   setListRef,
@@ -37,6 +38,7 @@ const Transactions = ({
       onAddToFavourite={() => onAddTransactionToFavourite(item.id)}
       onDeleteFromFavourites={() => onDeleteFromFavourites(item.id)}
       isFavourites={item.isFavourites}
+      onPress={() => onGoToDetail({ id: item.id, isTransaction: true })}
     />
 );
 
@@ -83,6 +85,7 @@ Transactions.propTypes = {
   onDeleteTransaction: T.func,
   onAddTransactionToFavourite: T.func,
   onDeleteFromFavourites: T.func,
+  onGoToDetail: T.func,
   dateForFiltering: T.object,
   setDateForFiltering: T.func,
   setListRef: T.func,
