@@ -54,6 +54,7 @@ import TransactionItem from './TransactionItem';
 import DateFilter from './DateFilter';
 import AddTransactionButton from './AddTransactionButton';
 import CategoryIcon from './CategoryIcon';
+import ColorPicker from './ColorPicker';
 
 
 export {
@@ -66,6 +67,7 @@ export {
   Card,
   CategoryTypeSelector,
   CustomListItem,
+  ColorPicker,
   DateIntervalSelector,
   Drawer,
   FormInputWithIcon,

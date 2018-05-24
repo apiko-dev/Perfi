@@ -6,7 +6,7 @@ import Text from '../Text';
 import TouchableItem from '../TouchableItem';
 import s from './styles';
 
-const Button = (props) => {
+const Button = props => {
   const {
     backgroundColor,
     color,
