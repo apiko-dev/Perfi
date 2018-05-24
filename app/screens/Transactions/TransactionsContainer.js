@@ -4,13 +4,16 @@ import {
   withState,
   hoistStatics,
   lifecycle,
+  withProps,
 } from 'recompose';
 import R from 'ramda';
 import { connect } from 'react-redux';
 import { Animated, Platform } from 'react-native';
 import TransactionsScreenView from './TransactionsScreenView';
 import { transactionsOperations } from '../../modules/transactions';
+import { transfersOperations } from '../../modules/transfers';
 import { getTransactions } from '../../modules/transactions/selectors';
+import { getTransfers } from '../../modules/transfers/selectors';
 import { getTotalBalance } from '../../modules/accounts/selectors';
 import { startOfDay } from '../../utils/dateHelpers';
 import screens from '../../constants/screens';
@@ -19,12 +22,19 @@ import { dimensions } from '../../styles';
 
 const mapStateToProps = (state, props) => ({
   transactions: getTransactions(state, props),
+  transfers: getTransfers(state, props),
   totalBalance: getTotalBalance(state),
 });
 
 const enhance = compose(
   withState('dateForFiltering', 'setDateForFiltering', startOfDay),
-  connect(mapStateToProps, transactionsOperations),
+  connect(
+    mapStateToProps,
+    {
+      ...transactionsOperations,
+      ...transfersOperations,
+    }
+  ),
 
   withState('listRef', 'setListRef', null),
   withState('isScrollEnabled', 'setScrollEnabled', true),
@@ -32,19 +42,35 @@ const enhance = compose(
     new Animated.Value(Platform.OS === 'ios' ? -dimensions.headerMaxHeight : 0)),
 
   withHandlers({
-    onDeleteTransaction: props => id => props.deleteTransaction(id),
-    onAddTransactionToFavourite: props => id => props.addTransactionToFavourites(id),
-    onDeleteFromFavourites: props => id => props.onDeleteFromFavourites(id),
+    onAddToFavourite: props => ({ isTransaction, id }) => {
+      isTransaction
+      ? props.addTransactionToFavourites(id)
+      : props.addTransferToFavourites(id);
+    },
+    onDeleteFromFavourites: props => ({ isTransaction, id }) => {
+      isTransaction
+        ? props.onDeleteFromFavourites(id)
+        : props.onDeleteTransferFromFavourites(id);
+    },
+    onDelete: props => ({ isTransaction, id }) => {
+      isTransaction
+        ? props.deleteTransaction(id)
+        : props.deleteTransfer(id);
+    },
     onGoToDetail: ({ navigation }) => ({ isTransaction, id }) => {
-      if (isTransaction) navigation.navigate(screens.TransactionDetail, { id });
+      navigation.navigate(isTransaction
+        ? screens.TransactionDetail
+        : screens.TransferDetail,
+        { id });
     },
     onAllowScroll: props => isScrollEnabled => props.setScrollEnabled(isScrollEnabled),
   }),
+
+  withProps(props => ({
+    concatenatedData: R.sortWith(
+      [R.descend(R.prop('date'))], R.concat(props.transactions, props.transfers)),
+  })),
   lifecycle({
-    componentDidMount() {
-      const params = R.pick(['isChartShown', 'onToggleChart'], this.props);
-      this.props.navigation.setParams(params);
-    },
     // componentDidUpdate(prevProps) {
     //   const newTrans = this.props.transactions;
     //   const oldTrans = prevProps.transactions;

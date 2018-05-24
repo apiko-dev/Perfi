@@ -55,6 +55,9 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.small,
     fontWeight: fontWeights.extraLight,
   },
+  value: {
+    fontSize: fontSizes.big,
+  },
 });
 
 export default styles;

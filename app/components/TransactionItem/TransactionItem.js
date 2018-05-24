@@ -8,7 +8,6 @@ import s from './styles';
 import { dateWithTime } from '../../utils/dateHelpers';
 import { colors } from '../../styles/index';
 
-
 const ButtonView = ({ name }) => ( // eslint-disable-line
   <View style={s.buttonIcon}>
     <NavIcon name={name} tintColor={colors.white} />
@@ -16,20 +15,21 @@ const ButtonView = ({ name }) => ( // eslint-disable-line
 );
 
 const TransactionItem = ({
+  entity,
   isSimpleItem,
-  date,
-  value,
   accountName,
   accountColor,
   categoryIconName,
   categoryName,
   onDelete,
-  isFavourites,
+  isFavourite,
   onAddToFavourite,
   onDeleteFromFavourites,
   onPress,
-  percent,
   onAllowScroll,
+  isTransfer,
+  fromName,
+  toName,
 }) => {
   const swipeoutBtns = {
     right: onDelete ? [{
@@ -38,58 +38,60 @@ const TransactionItem = ({
       component: <ButtonView name="trash" />,
     }] : undefined,
     left: onAddToFavourite ? [{
-      backgroundColor: isFavourites ? colors.yellow : colors.grey,
-      onPress: isFavourites ? onDeleteFromFavourites : onAddToFavourite,
+      backgroundColor: isFavourite ? colors.yellow : colors.grey,
+      onPress: isFavourite ? onDeleteFromFavourites : onAddToFavourite,
       component: <ButtonView name="star" />,
     }] : undefined,
   };
 
   return (<View>
-    {isSimpleItem
-      ? (
+
+    {isSimpleItem ?
+      <TouchableOpacity onPress={onPress} style={s.container}>
+        <View style={s.icon}>
+          <RoundIcon
+            name={categoryIconName}
+            backgroundColor={entity.value > 0 ? colors.green : colors.red}
+          />
+        </View>
+        <View style={s.mainContentContainer}>
+          <Text style={s.title}>{entity.name}</Text>
+        </View>
+        <Value value={entity.value} >
+          <Text style={s.percentText}> / {entity.percent}%</Text>
+        </Value>
+      </TouchableOpacity>
+      :
+      <Swipeout
+        {...swipeoutBtns}
+        sensitivity={20}
+        autoClose
+        scroll={onAllowScroll}
+      >
         <TouchableOpacity onPress={onPress} style={s.container}>
           <View style={s.icon}>
-            <RoundIcon
-              name={categoryIconName}
-              backgroundColor={value > 0 ? colors.green : colors.red}
-            />
+            {isTransfer
+              ? <RoundIcon name="shuffle-disabled" backgroundColor={colors.green} />
+              : <RoundIcon name={categoryIconName} backgroundColor={accountColor} />
+            }
           </View>
           <View style={s.mainContentContainer}>
-            <Text style={s.title}>{categoryName}</Text>
+            <Text style={s.title}>{isTransfer ? 'Transfer' : categoryName}</Text>
+            <Text style={s.accountName}>
+              {isTransfer ? `From ${fromName} ››› to ${toName}` : accountName}
+            </Text>
+            <Text style={s.date}>{dateWithTime(entity.date)}</Text>
           </View>
-          <Value value={value} >
-            <Text style={s.percentText}> / {percent}%</Text>
-          </Value>
+          <Value value={entity.value} isTransfer={isTransfer} />
         </TouchableOpacity>
-      ) : (
-        <Swipeout
-          {...swipeoutBtns}
-          sensitivity={0}
-          autoClose
-          scroll={onAllowScroll}
-        >
-          <TouchableOpacity onPress={onPress} style={s.container}>
-            <View style={s.icon}>
-              <RoundIcon name={categoryIconName} backgroundColor={accountColor} />
-            </View>
-            <View style={s.mainContentContainer}>
-              <Text style={s.title}>{categoryName}</Text>
-              <Text style={s.accountName}>{accountName}</Text>
-              <Text style={s.date}>{dateWithTime(date)}</Text>
-            </View>
-            <Value value={value} />
-          </TouchableOpacity>
-        </Swipeout>
-      )
+      </Swipeout>
     }
 
   </View>);
 };
 
 TransactionItem.propTypes = {
-  date: T.object,
-  value: T.number,
-  percent: T.number,
+  entity: T.object,
   accountName: T.string,
   accountColor: T.string,
   categoryIconName: T.string,
@@ -99,8 +101,11 @@ TransactionItem.propTypes = {
   onDeleteFromFavourites: T.func,
   onPress: T.func,
   onAllowScroll: T.func,
-  isFavourites: T.bool,
+  isFavourite: T.bool,
   isSimpleItem: T.bool,
+  isTransfer: T.bool,
+  fromName: T.string,
+  toName: T.string,
 };
 
 export default TransactionItem;
