@@ -5,7 +5,7 @@ import T from 'prop-types';
 import {
   ScreenWrapper,
   HeaderTitle,
-  Button,
+  NavigationButton,
   CategoryIcon,
   Value,
   Separator,
@@ -15,7 +15,6 @@ import { getParam } from '../../utils/navHelpers';
 import { dimensions, colors } from '../../styles';
 import { dateWithTime } from '../../utils/dateHelpers';
 import fontSizes from '../../styles/fontSizes';
-import screens from '../../constants/screens';
 
 const TransactionDetail = ({
  account,
@@ -59,18 +58,12 @@ const TransactionDetail = ({
 TransactionDetail.navigationOptions = ({ navigation }) => ({
   headerTitle: <HeaderTitle title="Income detail" />,
   headerRight:
-  <Button
-    titleStyle={s.headerRight}
-    containerStyle={s.headerContainerRight}
+  <NavigationButton
     title="Edit"
-    onPress={
-      () => navigation.navigate(
-        screens.Calculator,
-        { id: getParam('id')(navigation),
-          type: getParam('type')(navigation),
-        })
-    }
+    titleStyle={s.headerRight}
+    onPress={getParam('onEditPress')(navigation)}
   />,
+
 });
 
 TransactionDetail.propTypes = {

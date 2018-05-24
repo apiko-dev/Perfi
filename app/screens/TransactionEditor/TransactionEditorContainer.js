@@ -60,11 +60,6 @@ const enhance = compose(
       color: R.pathOr(colors.greyDarker, ['color'], account),
     },
   })),
-  withProps(({
-               account,
-  }) => {
-    console.log('account', account);
-  }),
   withHandlers({
     onUpdateNote: ({ updateNote }) => (text) => { updateNote(text); },
     onChangeAccount: ({ setAccount }) => (id, account) => { setAccount(account); },
