@@ -3,7 +3,7 @@ import { colors, dimensions } from '../../styles/index';
 import fontSizes from '../../styles/fontSizes';
 import fontWeights from '../../styles/fontWeights';
 
-const { indent } = dimensions;
+const { halfIndent, indent } = dimensions;
 
 export default StyleSheet.create({
   root: {
@@ -13,25 +13,33 @@ export default StyleSheet.create({
   },
   container: {
     backgroundColor: colors.white,
-    paddingHorizontal: indent * 1.5,
+    padding: halfIndent,
+    justifyContent: 'center',
+    alignItems: 'center',
     flex: 0,
     width: '90%',
-    minHeight: '55%',
+    maxHeight: '55%',
   },
   containerTitle: {
     flex: 1.5,
     justifyContent: 'center',
   },
   title: {
+    paddingLeft: indent,
     color: colors.greyVeryDarker,
     fontSize: fontSizes.big,
     fontWeight: fontWeights.semiBold,
   },
   containerContent: {
     flex: 4,
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
+  secondContainerContent: {
     flexWrap: 'wrap',
     flexDirection: 'row',
     alignItems: 'center',
+    paddingLeft: halfIndent,
   },
   containerButton: {
     flex: 1,

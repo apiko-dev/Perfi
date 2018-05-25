@@ -24,22 +24,26 @@ const ColorPicker = ({
     onBackdropPress={onBackdropPress}
   >
     <View style={s.container}>
-      <View style={s.containerTitle}>
-        <Text style={s.title}>Pick Color</Text>
-      </View>
-      <View style={s.containerContent}>
-        {arrChartPalette.map(item => (
-          <Item
-            key={item}
-            color={item}
-            onPress={setSelectedColor}
-            isSelected={selectedColor === item}
-          />
-        ))}
-      </View>
-      <View style={s.containerButton}>
-        <Button title="CANCEL" onPress={onBackdropPress} />
-        <Button title="OK" onPress={() => onSelectColor(selectedColor)} />
+      <View style={s.secondContainer}>
+        <View style={s.containerTitle}>
+          <Text style={s.title}>Pick Color</Text>
+        </View>
+        <View style={s.containerContent}>
+          <View style={s.secondContainerContent}>
+            {arrChartPalette.map(item => (
+              <Item
+                key={item}
+                color={item}
+                onPress={setSelectedColor}
+                isSelected={selectedColor === item}
+              />
+            ))}
+          </View>
+        </View>
+        <View style={s.containerButton}>
+          <Button title="CANCEL" onPress={onBackdropPress} />
+          <Button title="OK" onPress={() => onSelectColor(selectedColor)} />
+        </View>
       </View>
     </View>
   </Modal>
