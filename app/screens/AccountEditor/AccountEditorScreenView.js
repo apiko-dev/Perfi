@@ -31,8 +31,8 @@ const AccountEditor = ({
     <ScreenWrapper>
       <ColorPicker
         isVisible={isColorPickerVisible}
-        onColorSelected={onSelectColor}
-        defaultColor={color}
+        color={color}
+        onSelectColor={onSelectColor}
         onBackdropPress={onToggleColorPicker}
       />
       <View style={s.container}>

@@ -19,7 +19,10 @@ import screens from '../../constants/screens';
 
 const TransactionDetail = ({
  account,
- category,
+ category: {
+   name = '-',
+   icon = null,
+ },
  transaction,
 }) => (
   <View style={s.root}>
@@ -27,13 +30,13 @@ const TransactionDetail = ({
       <CategoryIcon
         size={dimensions.iconSize * 1.5}
         tintColor={colors.white}
-        name={category.icon}
+        name={icon}
       />
     </View>
     <ScreenWrapper style={s.withoutPadding}>
       <View style={s.container}>
         <View style={s.mainContentContainer}>
-          <Text style={s.title}>{category.name}</Text>
+          <Text style={s.title}>{name}</Text>
           <Text style={s.accountName}>{account.name}</Text>
           <Text style={s.regular}>{dateWithTime(transaction.date)}</Text>
         </View>
