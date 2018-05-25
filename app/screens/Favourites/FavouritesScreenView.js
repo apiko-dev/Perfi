@@ -10,21 +10,11 @@ import {
 } from '../../components';
 import s from './styles';
 
-const _renderItem = onDeleteFromFavourites => ({
-  item: { account, category, date, value, id }, // eslint-disable-line
-}) => (
-  <TransactionItem
-    accountId={account}
-    categoryId={category}
-    date={date}
-    value={value}
-    onDelete={() => onDeleteFromFavourites(id)}
-  />
-);
 
 const Favourites = ({
-  data,
+  concatenatedData,
   onDeleteFromFavourites,
+                      onGoToDetail,
   dateForFiltering,
   setDateForFiltering,
   setListRef,
@@ -40,8 +30,14 @@ const Favourites = ({
     />
     <Separator withShadow />
     <FlatList
-      data={data}
-      renderItem={_renderItem(onDeleteFromFavourites)}
+      data={concatenatedData}
+      renderItem={({ item }) =>
+        <TransactionItem
+          entity={item}
+          onDelete={() => onDeleteFromFavourites({ id: item.id, isTransaction: !!item.account })}
+          onPress={() => onGoToDetail({ id: item.id, isTransaction: !!item.account })}
+        />
+      }
       listEmptyText="You don't have any favourites"
       flatListRef={setListRef}
     />
@@ -49,8 +45,9 @@ const Favourites = ({
 );
 
 Favourites.propTypes = {
-  data: T.array,
+  concatenatedData: T.array,
   onDeleteFromFavourites: T.func,
+  onGoToDetail: T.func,
   setDateForFiltering: T.func,
   dateForFiltering: T.object,
   setListRef: T.func,

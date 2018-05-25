@@ -8,12 +8,13 @@ import TransferDetailScreenView from './TransferDetailScreenView';
 import { withPickParams } from '../../utils/enhancers';
 
 const mapStateToProps = (state, props) => {
-  const transaction = R.pathOr({}, ['transactions', 'byId', props.id], state);
-  const accountId = R.pathOr(null, ['account'], transaction);
-  const account = state.accounts.byId[accountId];
-  const category = state.categories.byId[transaction.category];
+  const transfer = R.pathOr({}, ['transfers', 'byId', props.id], state);
+  const fromId = R.pathOr('', ['from'], transfer);
+  const fromName = state.accounts.byId[fromId].name;
+  const toId = R.pathOr('', ['to'], transfer);
+  const toName = state.accounts.byId[toId].name;
 
-  return ({ transaction, account, category });
+  return ({ transfer, fromName, toName });
 };
 
 const enhance = compose(

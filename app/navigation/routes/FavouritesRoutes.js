@@ -1,5 +1,5 @@
 import screens from '../../constants/screens';
-import { Favourites, CategoryEditor } from '../../screens';
+import { Favourites, CategoryEditor, TransactionDetail, TransferDetail } from '../../screens';
 import headerOptions from '../../utils/stackHeaderOptions';
 
 const Routes = {
@@ -9,6 +9,12 @@ const Routes = {
   },
   [screens.CategoryEditor]: {
     screen: CategoryEditor,
+  },
+  [screens.TransactionDetail]: {
+    screen: TransactionDetail,
+  },
+  [screens.TransferDetail]: {
+    screen: TransferDetail,
   },
 };
 

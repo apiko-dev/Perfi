@@ -7,6 +7,8 @@ import R from 'ramda';
 import { connect } from 'react-redux';
 import TransactionDetailScreenView from './TransactionDetailScreenView';
 import { withPickParams } from '../../utils/enhancers';
+import screens from '../../constants/screens';
+import { getParam } from '../../utils/navHelpers';
 
 const mapStateToProps = (state, props) => {
   const transaction = R.pathOr({}, ['transactions', 'byId', props.id], state);
@@ -23,7 +25,11 @@ const enhance = compose(
   lifecycle({
     componentDidMount() {
       const type = this.props.transaction.value > 0 ? 'income' : 'expense';
-      this.props.navigation.setParams({ type });
+      const nav = this.props.navigation;
+
+      nav.setParams({
+        onEditPress: () => nav.navigate(screens.Calculator, { id: getParam('id')(nav), type }),
+      });
     },
   })
 );

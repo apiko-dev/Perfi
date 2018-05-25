@@ -4,7 +4,6 @@ import { compose, withProps, pure } from 'recompose';
 import TransactionItem from './TransactionItem';
 import { accountsOperations } from '../../modules/accounts/index';
 import { colors } from '../../styles/index';
-import { isIncome } from '../../constants/categories';
 
 const mapStateToProps = ({ accounts, categories }) => ({
   accountsEntities: accounts.byId,
@@ -14,14 +13,17 @@ const mapStateToProps = ({ accounts, categories }) => ({
 const enhance = compose(
   connect(mapStateToProps, accountsOperations),
 
-  withProps(({
-    accountsEntities, accountId, categoriesEntities, categoryId,
-  }) => ({
-    accountName: R.pathOr('Account deleted', [accountId, 'name'], accountsEntities),
-    accountColor: R.pathOr(colors.greyDarker, [accountId, 'color'], accountsEntities),
-    categoryIconName: R.pathOr('shopping', [categoryId, 'icon'], categoriesEntities),
-    categoryName: R.pathOr('Other', [categoryId, 'name'], categoriesEntities),
-    isIncome: isIncome(categoriesEntities[categoryId].type),
+  withProps(({ entity, accountsEntities, categoriesEntities }) => ({
+    accountName: R.pathOr('Account deleted', [entity.account, 'name'], accountsEntities),
+    isTransfer: !!entity.from,
+    fromName: R.pathOr('', [entity.from, 'name'], accountsEntities),
+    toName: R.pathOr('', [entity.to, 'name'], accountsEntities),
+    accountColor: R.pathOr(colors.greyDarker, [entity.account, 'color'], accountsEntities),
+    categoryIconName: R.pathOr('shopping', [entity.category
+      ? entity.category
+      : entity.id,
+      'icon'], categoriesEntities),
+    categoryName: R.pathOr('Other', [entity.category, 'name'], categoriesEntities),
   })),
 );
 

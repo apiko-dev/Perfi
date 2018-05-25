@@ -5,45 +5,42 @@ import T from 'prop-types';
 import {
   ScreenWrapper,
   HeaderTitle,
-  Button,
   CategoryIcon,
   Value,
   Separator,
 } from '../../components';
 import s from './styles';
-import { getParam } from '../../utils/navHelpers';
 import { dimensions, colors } from '../../styles';
 import { dateWithTime } from '../../utils/dateHelpers';
-import fontSizes from '../../styles/fontSizes';
 
 const TransferDetail = ({
- account,
- category,
- transaction,
+  fromName,
+  toName,
+  transfer,
 }) => (
   <View style={s.root}>
-    <View style={[s.iconContainer, { backgroundColor: account.color }]}>
+    <View style={[s.iconContainer, { backgroundColor: colors.green }]}>
       <CategoryIcon
         size={dimensions.iconSize * 1.5}
         tintColor={colors.white}
-        name={category.icon}
+        name="shuffle-disabled"
       />
     </View>
     <ScreenWrapper style={s.withoutPadding}>
       <View style={s.container}>
         <View style={s.mainContentContainer}>
-          <Text style={s.title}>{category.name}</Text>
-          <Text style={s.accountName}>{account.name}</Text>
-          <Text style={s.regular}>{dateWithTime(transaction.date)}</Text>
+          <Text style={s.title}>Transfer</Text>
+          <Text style={s.accountName}>{`Transfer money from ${fromName} to ${toName}`}</Text>
+          <Text style={s.regular}>{dateWithTime(transfer.date)}</Text>
         </View>
-        <Value size={fontSizes.big} value={transaction.value} />
+        <Value style={s.value} value={transfer.value} isTransfer />
       </View>
       <Separator />
       {
-        transaction.note && (
+        transfer.note && (
           <View style={s.secondContainer}>
             <Text style={s.secondTitle}>Notes</Text>
-            <Text style={s.regular}>{transaction.note}</Text>
+            <Text style={s.regular}>{transfer.note}</Text>
           </View>
         )
       }
@@ -51,21 +48,14 @@ const TransferDetail = ({
   </View>
 );
 
-TransferDetail.navigationOptions = ({ navigation }) => ({
-  headerTitle: <HeaderTitle title="Income detail" />,
-  headerRight:
-  <Button
-    titleStyle={s.headerRight}
-    containerStyle={s.headerContainerRight}
-    title="Edit"
-    onPress={() => console.log('Edit', getParam('id')(navigation))}
-  />,
-});
+TransferDetail.navigationOptions = {
+  headerTitle: <HeaderTitle title="Transfer detail" />,
+};
 
 TransferDetail.propTypes = {
-  account: T.object,
-  category: T.object,
-  transaction: T.object,
+  fromName: T.string,
+  toName: T.string,
+  transfer: T.object,
 };
 
 export default TransferDetail;
