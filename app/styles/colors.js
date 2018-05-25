@@ -56,7 +56,7 @@ export default {
 
 export const chartPalette = {
   blue500: '#2196F3',
-  green500: '#32854b',
+  darkSalmon500: '#E9967A',
   orange500: '#f39c12',
   grey500: '#D7DFE3',
   lightBlue500: '#03A9F4',

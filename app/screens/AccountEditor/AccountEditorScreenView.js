@@ -79,7 +79,7 @@ const AccountEditor = ({
 
 AccountEditor.navigationOptions = ({ navigation }) => ({
   headerTitle:
-  <HeaderTitle title={getParam('account')(navigation) ? 'Edit account' : 'New account'} />,
+     <HeaderTitle title={getParam('account')(navigation) ? 'Edit account' : 'New account'} />,
   headerRight: <DeleteButton navigation={navigation} />,
 });
 
