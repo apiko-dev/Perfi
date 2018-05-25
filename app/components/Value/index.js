@@ -2,14 +2,14 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import s from './styles';
 
-export default ({ children, style, value, isTransfer, withoutPlus }) => { // eslint-disable-line
+export default ({ children, style, value, isTransfer, withoutPlus, containerStyle }) => { // eslint-disable-line
 
   const type = (+value === 0 || isTransfer) ? 'other' : Number(value) > 0 ? 'income' : 'expense';
 
   const incomeText = withoutPlus ? `$${value}` : `+ $${value}`;
 
   return (
-    <View style={s.value}>
+    <View style={[s.value, containerStyle]}>
       {(() => {
         switch (type) {
           case 'other':

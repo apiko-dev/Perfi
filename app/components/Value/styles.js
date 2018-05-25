@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   text: {
-    color: colors.green,
+    color: colors.white,
     fontSize: fontSizes.xmedium,
     fontWeight: fontWeights.extraBold,
   },

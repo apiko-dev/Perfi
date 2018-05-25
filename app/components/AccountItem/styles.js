@@ -18,10 +18,13 @@ const styles = StyleSheet.create({
     borderColor: colors.greyDarker,
     borderStyle: 'dashed',
   },
-  title: {
+  value: {
     fontSize: fontSizes.big,
     color: colors.white,
     fontWeight: fontWeights.heavy,
+  },
+  valueContainer: {
+    padding: dimensions.halfIndent,
   },
   subtitle: {
     fontSize: fontSizes.verySmall,

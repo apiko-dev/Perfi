@@ -16,21 +16,21 @@ const createTransaction = (props) => {
 
 const defaultAccounts = [
   createTransaction({
-    value: 10,
+    value: -4000000,
     account: '1',
     category: '1',
     date: moment().subtract(10, 'days'),
     isFavourite: true,
   }),
   createTransaction({
-    value: 40,
+    value: 400000,
     account: '2',
     category: '2',
     date: moment().subtract(4, 'days'),
     isFavourite: true,
   }),
   createTransaction({
-    value: -30,
+    value: 50000,
     account: '3',
     category: '3',
     date: moment().subtract(3, 'days'),
