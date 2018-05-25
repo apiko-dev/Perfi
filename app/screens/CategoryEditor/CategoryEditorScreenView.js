@@ -13,7 +13,7 @@ import {
   HeaderTitle,
   IconsPickerModal,
   BigRoundIconButton,
-} from '../../components/index';
+} from '../../components';
 import s from './styles';
 import { colors, dimensions } from '../../styles';
 

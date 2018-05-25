@@ -24,9 +24,9 @@ const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 const Transactions = ({
   navigation,
   totalBalance,
-  transactions,
-  onDeleteTransaction,
-  onAddTransactionToFavourite,
+  concatenatedData,
+  onDelete,
+  onAddToFavourite,
   onDeleteFromFavourites,
   onGoToDetail,
   dateForFiltering,
@@ -37,20 +37,20 @@ const Transactions = ({
   isScrollEnabled,
 }) => {
   /* eslint-disable react/prop-types */
-  const _renderItem = ({ item }) => (
-    <TransactionItem
-      accountId={item.account}
-      categoryId={item.category}
-      date={item.date}
-      value={item.value}
-      onDelete={() => onDeleteTransaction(item.id)}
-      onAddToFavourite={() => onAddTransactionToFavourite(item.id)}
-      onDeleteFromFavourites={() => onDeleteFromFavourites(item.id)}
-      isFavourites={item.isFavourites}
-      onPress={() => onGoToDetail({ id: item.id, isTransaction: true })}
-      onAllowScroll={onAllowScroll}
-    />
-);
+  const _renderItem = ({ item }) => {
+    const param = { id: item.id, isTransaction: !!item.account };
+    return (
+      <TransactionItem
+        entity={item}
+        onDelete={() => onDelete(param)}
+        onAddToFavourite={() => onAddToFavourite(param)}
+        onDeleteFromFavourites={() => onDeleteFromFavourites(param)}
+        isFavourite={item.isFavourite}
+        onPress={() => onGoToDetail(param)}
+        onAllowScroll={onAllowScroll}
+      />
+    );
+  };
 
   const headerTranslate = scrollY.interpolate({
     inputRange: [0, HEADER_SCROLL_DISTANCE],
@@ -63,7 +63,7 @@ const Transactions = ({
       <Animated.View
         style={[
           s.header,
-          transactions.length > 5 && { transform: [{ translateY: headerTranslate }] },
+          concatenatedData.length > 5 && { transform: [{ translateY: headerTranslate }] },
         ]}
       >
         <Subtitle
@@ -98,7 +98,7 @@ const Transactions = ({
         contentInset={{ top: HEADER_MAX_HEIGHT }}
         contentOffset={{ y: -HEADER_MAX_HEIGHT }}
         scrollEnabled={isScrollEnabled}
-        data={transactions}
+        data={concatenatedData}
         renderItem={_renderItem}
         ref={setListRef}
         contentContainerStyle={s.scrollViewContent}
@@ -106,7 +106,7 @@ const Transactions = ({
         ItemSeparatorComponent={Separator}
         ListEmptyComponent={<Text style={s.emptyText}>{'You don\'t have any transactions'}</Text>}
         ListFooterComponent={
-          transactions.length ? <View style={s.paddingBottom}><Separator /></View> : null
+          concatenatedData.length ? <View style={s.paddingBottom}><Separator /></View> : null
         }
       />
       <AddTransactionButton navigation={navigation} />
@@ -118,9 +118,9 @@ const Transactions = ({
 Transactions.propTypes = {
   navigation: T.object,
   totalBalance: T.number,
-  transactions: T.array,
-  onDeleteTransaction: T.func,
-  onAddTransactionToFavourite: T.func,
+  concatenatedData: T.array,
+  onDelete: T.func,
+  onAddToFavourite: T.func,
   onDeleteFromFavourites: T.func,
   onGoToDetail: T.func,
   dateForFiltering: T.object,

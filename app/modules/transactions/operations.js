@@ -7,14 +7,14 @@ import {
 
 const addTransactionToFavourites = id => async (dispatch, getState) => {
   const transaction = getState().transactions.byId[id];
-  const updated = { ...transaction, isFavourites: true };
+  const updated = { ...transaction, isFavourite: true };
   dispatch(updateTransaction(updated));
 };
 
 
 const onDeleteFromFavourites = id => async (dispatch, getState) => {
   const transaction = getState().transactions.byId[id];
-  const updated = { ...transaction, isFavourites: false };
+  const updated = { ...transaction, isFavourite: false };
   dispatch(updateTransaction(updated));
 };
 

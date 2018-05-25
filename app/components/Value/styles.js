@@ -8,18 +8,18 @@ const styles = StyleSheet.create({
     padding: dimensions.indent,
     flexDirection: 'row',
   },
-  valueText: {
-    color: colors.green,
+  text: {
+    color: colors.white,
     fontSize: fontSizes.xmedium,
     fontWeight: fontWeights.extraBold,
   },
-  incomeColor: {
+  income: {
     color: colors.green,
   },
-  expenseColor: {
+  expense: {
     color: colors.red,
   },
-  nullColor: {
+  other: {
     color: colors.darkGrey,
   },
 });

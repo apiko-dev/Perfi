@@ -49,10 +49,8 @@ const TransactionsStatistics = ({
       data={dataForList}
       renderItem={({ item }) => (
         <TransactionItem
+          entity={item}
           isSimpleItem
-          categoryId={item.id}
-          value={item.value}
-          percent={item.percent}
         />
         )}
       listEmptyText="You don't have any transactions"

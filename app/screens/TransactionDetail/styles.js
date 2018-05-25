@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     padding: indent,
   },
   headerRight: {
-    fontSize: fontSizes.verySmall,
     color: colors.green,
   },
   iconContainer: {

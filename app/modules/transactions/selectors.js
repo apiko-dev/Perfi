@@ -37,7 +37,7 @@ export const getFavouritesTransactions = createSelector(
       const transaction = entities[id];
       const period = !date.format ?
         date : { from: +date.startOf('day'), to: +date.endOf('day') };
-      if (inPeriod(period, transaction.date) && transaction.isFavourites) {
+      if (inPeriod(period, transaction.date) && transaction.isFavourite) {
         newArray.push(transaction);
       }
     });

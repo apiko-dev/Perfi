@@ -15,6 +15,7 @@ import {
 import s from './styles';
 
 const AccountEditor = ({
+   navigation,
    name,
    onSubmit,
    isValid,
@@ -51,15 +52,18 @@ const AccountEditor = ({
           containerStyle={s.root}
         />
       </View>
-      <Input
-        isValid
-        placeholder="Initial balance"
-        value={initialBalance ? initialBalance.toString() : ''}
-        onChangeText={onChangeBalance}
-        keyboardType="phone-pad"
-        containerStyle={s.balanceContainer}
-        iconRight={icon}
-      />
+      {!getParam('account')(navigation) &&
+        <Input
+          isValid
+          placeholder="Initial balance"
+          value={initialBalance ? initialBalance.toString() : ''}
+          onChangeText={onChangeBalance}
+          keyboardType="phone-pad"
+          containerStyle={s.balanceContainer}
+          iconRight={icon}
+        />
+
+      }
     </ScreenWrapper>
     <KeyboardAvoidingView withHeader>
       {isValid &&
@@ -73,22 +77,6 @@ const AccountEditor = ({
   </View>
 );
 
-/*
-<Modal
-  animationIn="fadeIn"
-  animationOut="fadeOut"
-  isVisible={isColorPickerVisible}
-  onBackdropPress={onToggleColorPicker}
->
-  <ColorPicker
-    style={s.modal}
-    onColorSelected={onSelectColor}
-    defaultColor={color}
-    hideSliders
-  />
-</Modal>
-*/
-
 AccountEditor.navigationOptions = ({ navigation }) => ({
   headerTitle:
   <HeaderTitle title={getParam('account')(navigation) ? 'Edit account' : 'New account'} />,
@@ -96,6 +84,7 @@ AccountEditor.navigationOptions = ({ navigation }) => ({
 });
 
 AccountEditor.propTypes = {
+  navigation: T.object,
   name: T.string,
   onSubmit: T.func,
   isValid: T.bool,
