@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
   valueText: {
     fontSize: fontSizes.xbig,
     fontWeight: fontWeights.extraBold,
-    color: colors.red,
     alignSelf: 'center',
     paddingTop: dimensions.verticalIndent,
     paddingBottom: dimensions.verticalIndent * 2,

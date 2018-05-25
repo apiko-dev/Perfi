@@ -12,7 +12,7 @@ const AccauntsSwiper = ({ groupedAccounts, onAccountPress }) => {
       key={item.id}
       accountId={item.id}
       name={item.name}
-      initialBalance={item.balance}
+      balance={item.balance}
       color={item.color}
       onPress={onAccountPress}
       isAddButton={item.isAddButton}

@@ -16,6 +16,7 @@ import {
 import s from './styles';
 
 const AccountEditor = ({
+   navigation,
    name,
    onSubmit,
    isValid,
@@ -62,16 +63,18 @@ const AccountEditor = ({
         />
       </View>
 
-      <Input
-        isValid
-        placeholder="Initial balance"
-        value={initialBalance ? initialBalance.toString() : ''}
-        onChangeText={onChangeBalance}
-        keyboardType="phone-pad"
-        containerStyle={s.balanceContainer}
-        iconRight={icon}
-      />
+      {!getParam('account')(navigation) &&
+        <Input
+          isValid
+          placeholder="Initial balance"
+          value={initialBalance ? initialBalance.toString() : ''}
+          onChangeText={onChangeBalance}
+          keyboardType="phone-pad"
+          containerStyle={s.balanceContainer}
+          iconRight={icon}
+        />
 
+      }
     </ScreenWrapper>
 
 
@@ -97,6 +100,7 @@ AccountEditor.navigationOptions = ({ navigation }) => ({
 });
 
 AccountEditor.propTypes = {
+  navigation: T.object,
   name: T.string,
   onSubmit: T.func,
   isValid: T.bool,

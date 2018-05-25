@@ -1,10 +1,20 @@
 import React from 'react';
 import T from 'prop-types';
 import { View, ViewPropTypes } from 'react-native';
-import { Text, NavIcon, TouchableItem } from '../../components';
-import { colors } from '../../styles';
+import { Text, NavIcon, TouchableItem, Value } from '../../components';
+import { colors, fontSizes } from '../../styles';
 import s from './styles';
 
+const calcValueSize = val => {
+  const length = val.toString().length;
+  return length > 7
+    ? fontSizes.verySmall
+    : length > 5
+      ? fontSizes.small
+      : fontSizes.big;
+};
+
+const calSubTitle = val => fontSizes.verySmall - (val.length > 12 ? (val.length - 12) / 1.5 : 0);
 
 const AccountItem = ({
   accountId,
@@ -14,7 +24,7 @@ const AccountItem = ({
   color,
   isAddButton,
   onPress,
-  initialBalance,
+  balance,
   ...props
 }) => (
   <TouchableItem
@@ -35,10 +45,20 @@ const AccountItem = ({
           size={40}
           tintColor={colors.greyDarker}
         />
-      :
-        <Text style={s.title}>${initialBalance}</Text>}
+        :
+        <Value
+          style={[s.value, { fontSize: calcValueSize(balance) }]}
+          containerStyle={s.valueContainer}
+          value={balance}
+          withoutPlus
+        />
+      }
       <View style={s.subtitleContainer}>
-        <Text style={isAddButton ? s.addButtonSubtitle : s.subtitle}>{name}</Text>
+        <Text
+          style={isAddButton ? s.addButtonSubtitle : [s.subtitle, { fontSize: calSubTitle(name) }]}
+        >
+          {name}
+        </Text>
       </View>
     </View>
 
@@ -50,7 +70,7 @@ AccountItem.propTypes = {
   containerStyle: ViewPropTypes.style,
   name: T.string,
   accountId: T.string,
-  initialBalance: T.number,
+  balance: T.number,
   color: T.string,
   onPress: T.func,
   isAddButton: T.bool,
