@@ -2,13 +2,12 @@ import React from 'react';
 import { View, ScrollView } from 'react-native';
 import T from 'prop-types';
 import { getParam } from '../../utils/navHelpers';
-import { dimensions, colors } from '../../styles';
+import { dimensions } from '../../styles';
 // import dateFormat from '../../constants/dateFormat';
 
 import {
   Input,
   Button,
-  Text,
   KeyboardAvoidingView,
   DatePicker,
   ScreenWrapper,
@@ -16,6 +15,7 @@ import {
   Select,
   FormInput,
   CategoriesList,
+  Value,
 } from '../../components';
 import s from './styles';
 
@@ -45,9 +45,7 @@ const AccountEditor = ({
   <View style={s.root}>
     <ScreenWrapper style={s.withoutPaddingBot}>
       <ScrollView>
-        <Text style={[s.valueText, { color: isIncome ? colors.green : colors.red }]}>
-          {`${isIncome ? '+' : '-'} $${Math.abs(value)}`}
-        </Text>
+        <Value value={value} style={s.valueText} />
         <Select
           isAccount
           selectOption={account}
@@ -103,8 +101,6 @@ const AccountEditor = ({
       onToggleModal={onToggleModal}
     />
   </View>
-
-
 );
 
 AccountEditor.navigationOptions = ({ navigation }) => ({
