@@ -15,7 +15,7 @@ export const AccountSelect = withProps({
   containerStyle: s.marginVertical,
   style: s.selector,
   defaultValue: 'Account',
-  selectorsWidth: dimensions.containerWidth,
+  selectorsWidth: dimensions.containerWidth - dimensions.indent,
   textStyle: s.selectTextStyle,
   optionHeight: dimensions.verticalIndent * 2.8,
   selectedInputStile: s.selectedInputStile,

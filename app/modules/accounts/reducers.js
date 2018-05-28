@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import types from './types';
-import { colors } from '../../styles';
+import { chartPalette } from '../../styles';
 import { insert, insertAll, update, remove } from '../../utils/stateHelper';
 
 
@@ -10,7 +10,7 @@ const createAccount = (props) => {
     icon,
     initialBalance = 10,
     initialDate = new Date(),
-    color = colors.yellow,
+    color = chartPalette.yellow500,
     isAddButton = false,
   } = props;
 
@@ -69,9 +69,9 @@ const createAccount = (props) => {
 
 
 const defaultAccounts = [
-  createAccount({ name: 'Card', icon: 'credit-card', color: colors.orange }),
-  createAccount({ name: 'Cash', icon: 'cash-multiple', color: colors.blue }),
-  createAccount({ name: 'Test 1', icon: 'cash-multiple', color: colors.purple }),
+  createAccount({ name: 'Card', icon: 'credit-card', color: chartPalette.blueGray500 }),
+  createAccount({ name: 'Cash', icon: 'cash-multiple', color: chartPalette.orange500 }),
+  createAccount({ name: 'Test 1', icon: 'cash-multiple', color: chartPalette.grey500 }),
   createAccount({ name: 'Test 2', icon: 'cash-multiple' }),
 ];
 
