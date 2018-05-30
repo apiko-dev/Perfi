@@ -4,7 +4,7 @@ import T from 'prop-types';
 import s from './styles';
 
 const Value = ({
-  currency,
+  currency: { sign },
   children,
   containerStyle,
   style,
@@ -12,14 +12,14 @@ const Value = ({
   type,
   withoutPlus,
 }) => {
-  const incomeText = `${withoutPlus ? '' : '+ '}${currency.sign}${value}`;
+  const incomeText = `${withoutPlus ? '' : '+ '}${sign}${value}`;
 
   return (
     <View style={[s.value, containerStyle]}>
       {{
-        other: <Text style={[s.text, s.other, style]}>${Math.abs(value)}</Text>,
+        other: <Text style={[s.text, s.other, style]}>{sign + value}</Text>,
         income: <Text style={[s.text, s.income, style]}>{incomeText}</Text>,
-        expense: <Text style={[s.text, s.expense, style]}>- ${Math.abs(value)}</Text>,
+        expense: <Text style={[s.text, s.expense, style]}>- {sign + value}</Text>,
       }[type]}
       {children}
     </View>

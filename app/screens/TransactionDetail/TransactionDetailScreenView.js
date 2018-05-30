@@ -40,7 +40,7 @@ const TransactionDetail = ({
           <Text style={s.regular}>{dateWithTime(transaction.date)}</Text>
         </View>
         <Value
-          style={{ fontSize: fontSizes.big}}
+          style={s.value}
           value={transaction.value}
         />
       </View>
