@@ -35,11 +35,11 @@ const enhance = compose(
   connect(mapStateToProps, transactionsOperations),
 
   withState('date', 'setDate', new Date()),
-  withState('value', 'setValue', 'value', 0),
+  withState('value', 'setValue', 0),
   withState('isIncome', 'setIsIncome', true),
   withState('isVisibleModal', 'setVisibleModal', false),
 
-  withState('account', 'setAccount', ''),
+  withState('account', 'setAccount', {}),
   withState('category', 'setCategory', ''),
   withState('isSelectedCategory', 'setSelectedCategory', false),
   withState('note', 'updateNote', ''),
@@ -110,7 +110,8 @@ const enhance = compose(
         setIsIncome,
       } = this.props;
 
-      setValue(getParam('value')(navigation));
+      console.log('getParam(\'value\')(navigation)', getParam('value')(navigation));
+      setValue(Number(getParam('value')(navigation)));
       setIsIncome(getParam('isIncome')(navigation));
 
       if (transaction) {

@@ -23,7 +23,7 @@ const TransferDetail = ({
       <CategoryIcon
         size={dimensions.iconSize * 1.5}
         tintColor={colors.white}
-        name="shuffle-disabled"
+        name="shuffle-disableddisabled"
       />
     </View>
     <ScreenWrapper style={s.withoutPadding}>
