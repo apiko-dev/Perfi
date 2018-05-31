@@ -9,7 +9,7 @@ import CustomListItem from './CustomListItem';
 import DateIntervalSelector from './DateIntervalSelector';
 import NavButton from './NavButton';
 import SelectBox from './selectBox';
-import Drawer from './Drawer/Drawer';
+import Drawer from './Drawer';
 import FormInputWithIcon from './FormInputWithIcon';
 import HeaderIcon from './HeaderIcon';
 import IconsPickerModal from './IconsPickerModal';
@@ -54,6 +54,7 @@ import TransactionItem from './TransactionItem';
 import DateFilter from './DateFilter';
 import AddTransactionButton from './AddTransactionButton';
 import CategoryIcon from './CategoryIcon';
+import SimpleDateFilter from './SimpleDateFilter';
 
 
 export {
@@ -113,4 +114,5 @@ export {
   DateFilter,
   TabContainer,
   AddTransactionButton,
+  SimpleDateFilter,
 };
