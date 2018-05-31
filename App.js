@@ -1,13 +1,15 @@
 import React from 'react';
 import { StatusBar, View } from 'react-native';
 import { MenuProvider } from 'react-native-popup-menu';
+import { PersistGate } from 'redux-persist/es/integration/react';
 import { Provider } from 'react-redux';
 import { lifecycle } from 'recompose';
-import store from './app/store';
+import { store, persistor } from './app/store';
 import Navigator from './app/navigation/NavigatorContainer';
 import styles from './app/styles/AppStyles';
 import colors from './app/styles/colors';
 import { appOperations } from './app/modules/app';
+import settingsOperations from './app/modules/settings/operations';
 
 console.ignoredYellowBox = ['MenuContext'];
 
@@ -19,7 +21,9 @@ const App = () => (
         backgroundColor={colors.white}
       />
       <Provider store={store}>
-        <Navigator />
+        <PersistGate persistor={persistor}>
+          <Navigator />
+        </PersistGate>
       </Provider>
     </View>
   </MenuProvider>
@@ -28,6 +32,7 @@ const App = () => (
 const enhance = lifecycle({
   componentDidMount() {
     store.dispatch(appOperations.loadAssets());
+    store.dispatch(settingsOperations.checkSettings());
   },
 });
 

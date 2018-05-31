@@ -1,13 +1,20 @@
-import { DrawerNavigator } from 'react-navigation';
-import { Drawer } from '../components';
-import Routes from './routes/RootRoutes';
+import { StackNavigator } from 'react-navigation';
 import screens from '../constants/screens';
+import { OnBoarding } from '../screens';
+import NavigatorDrawer from './NavigatorDrawer';
 
-
-const Navigator = DrawerNavigator;
-const config = {
-  initialRouteName: screens.AccountsRoot,
-  contentComponent: Drawer,
+const routes = {
+  [screens.OnBoarding]: {
+    screen: OnBoarding,
+    headerMode: 'screen',
+  },
+  [screens.DrawerRoot]: {
+    screen: NavigatorDrawer,
+    headerMode: 'screen',
+    navigationOptions: {
+      header: null,
+    },
+  },
 };
 
-export default Navigator(Routes, config);
+export default StackNavigator(routes);

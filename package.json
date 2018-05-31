@@ -65,7 +65,7 @@
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
-    "redux-persist": "^4.6.0",
+    "redux-persist": "^5.6.11",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "uuid": "^3.2.1",
