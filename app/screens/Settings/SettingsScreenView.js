@@ -15,7 +15,6 @@ const Settings = ({
 }) => (
   <ScreenWrapper style={s.container}>
     <View>
-      {console.log('currency', currency)}
       <Subtitle leftText="Settings" />
       <Select
         options={[currencies.dollar, currencies.euro, currencies.hryvnia]}
