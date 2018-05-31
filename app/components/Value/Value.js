@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, ViewPropTypes } from 'react-native';
 import T from 'prop-types';
 import s from './styles';
+import currencies from '../../constants/currencies';
 
 const Value = ({
   currency: { sign },
@@ -12,14 +13,15 @@ const Value = ({
   type,
   withoutPlus,
 }) => {
-  const incomeText = `${withoutPlus ? '' : '+ '}${sign}${value}`;
+  const text = currencies.hryvnia.sign === sign ? value + sign : sign + value;
+  const incomeText = `${withoutPlus ? '' : '+ '}${text}`;
 
   return (
     <View style={[s.value, containerStyle]}>
       {{
-        other: <Text style={[s.text, s.other, style]}>{sign + value}</Text>,
+        other: <Text style={[s.text, s.other, style]}>{text}</Text>,
         income: <Text style={[s.text, s.income, style]}>{incomeText}</Text>,
-        expense: <Text style={[s.text, s.expense, style]}>- {sign + value}</Text>,
+        expense: <Text style={[s.text, s.expense, style]}>- {text}</Text>,
       }[type]}
       {children}
     </View>

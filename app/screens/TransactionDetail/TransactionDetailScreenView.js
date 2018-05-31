@@ -14,7 +14,6 @@ import s from './styles';
 import { getParam } from '../../utils/navHelpers';
 import { dimensions, colors } from '../../styles';
 import { dateWithTime } from '../../utils/dateHelpers';
-import fontSizes from '../../styles/fontSizes';
 
 const TransactionDetail = ({
  account,
