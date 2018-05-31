@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import NavigatorView from './NavigatorView';
 
-const NavigatorContainer = connect(({ navigator, storage, app }) => ({
+const NavigatorContainer = connect(({ navigator, app }) => ({
   navigator,
-  isReady: storage.isReady && app.isImagesLoaded && app.isFontsLoaded,
+  isReady: app.isImagesLoaded && app.isFontsLoaded,
 }))(NavigatorView);
 
 export default NavigatorContainer;
