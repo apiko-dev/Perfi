@@ -5,7 +5,7 @@ import { scalingUtils, dimensions, fontSizes, fontWeights } from '../../../../st
 
 const styles = StyleSheet.create({
   wrapper: {
-    height: scalingUtils.verticalScale(120),
+    height: scalingUtils.verticalScale(150),
   },
   swiperButtons: {
     backgroundColor: 'transparent',
