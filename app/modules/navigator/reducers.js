@@ -2,6 +2,7 @@ import Navigator from '../../navigation/Navigator';
 import settingTypes from '../settings/types';
 import { getResetAction } from '../../utils/navHelpers';
 import screens from '../../constants/screens';
+import types from './types';
 
 
 const getResetState = (state, routeName) =>
@@ -11,7 +12,9 @@ const getResetState = (state, routeName) =>
   );
 
 const navigatorReducer = (state, action) => {
+
   switch (action.type) {
+    case types.GO_TO_INITIAL_SCREEN:
     case settingTypes.SIGN_IN:
       return getResetState(state, screens.DrawerRoot);
     default:

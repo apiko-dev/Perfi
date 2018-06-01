@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
   },
-  withoutPadding: {
+  withoutPaddingBottom: {
     padding: 0,
   },
   headerContainerRight: {
