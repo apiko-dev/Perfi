@@ -9,13 +9,13 @@ import {
 } from 'recompose';
 import R from 'ramda';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
 import TransactionEditorScreenView from './TransactionEditorScreenView';
 import { getParam } from '../../utils/navHelpers';
 import { getAccounts } from '../../modules/accounts/selectors';
 import { transactionsOperations } from '../../modules/transactions';
 import { getExpenseCategory, getIncomeCategory } from '../../modules/categories/selectors';
 import { colors } from '../../styles';
+import types from '../../modules/navigator/types';
 
 const requiredProps = ['value', 'account', 'category', 'date'];
 
@@ -75,11 +75,7 @@ const enhance = compose(
       if (transaction) editedProps = { id: transaction.id, ...editedProps };
 
       submit(editedProps);
-
-      navigation.dispatch(NavigationActions.back());
-      navigation.dispatch(NavigationActions.back());
-
-      // navigation.dispatch({ type: types.RESET_TO_TRANSACTION});
+      navigation.dispatch({ type: types.GO_TO_INITIAL_SCREEN });
     },
     onToggleModal: ({ setVisibleModal, isVisibleModal }) => () => {
       setVisibleModal(!isVisibleModal);
