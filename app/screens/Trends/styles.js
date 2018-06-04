@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   chartContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
   pieContainer: {
     margin: dimensions.indent,
@@ -41,9 +41,39 @@ const styles = StyleSheet.create({
     paddingTop: dimensions.verticalIndent,
     marginBottom: dimensions.verticalIndent / 2,
   },
+  mainContainer: {
+    flex: 1,
+    justifyContent: 'space-around',
+  },
   subtitle: {
     marginHorizontal: dimensions.indent,
     paddingTop: dimensions.indent,
+  },
+  totalContainer: {
+    paddingHorizontal: dimensions.indent,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  valueContainer: {
+    paddingHorizontal: 0,
+    paddingVertical: 2,
+  },
+  valueText: {
+    fontSize: fontSizes.small,
+  },
+  totalText: {
+    fontSize: fontSizes.medium,
+  },
+  totalValueContainer: {
+    paddingVertical: 5,
+  },
+  verticalAxisContainer: {
+    position: 'absolute',
+    top: 1,
+    bottom: 5,
+    width: 50,
+    backgroundColor: colors.white,
   },
 });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 // import T from 'prop-types';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
 import {
   VictoryGroup,
   VictoryChart,
@@ -11,20 +11,21 @@ import {
 import {
   Subtitle,
   Separator,
-  TransactionItem,
-  FlatList,
   SimpleDateFilter,
+  Value,
 } from '../../components';
 import s from './styles';
-import colors from '../../styles/colors';
+import { colors, fontSizes } from '../../styles';
+import { formatMonthWithYear } from '../../utils/dateHelpers';
 
+const chartHeight = 375;
+
+const getChartWidth = width => width * 60 + 60 < 400 ? 330 : width * 60 + 60;
 
 const Trends = ({
     dateForFiltering,
     setDateForFiltering,
-    dataForList,
-
-                                  stats,
+    stats,
 }) => (
   <View style={s.root}>
     <SimpleDateFilter
@@ -35,115 +36,130 @@ const Trends = ({
       style={s.subtitle}
       withLittlePadding
       leftText="Trends"
+      date={dateForFiltering}
     />
-    <Separator withShadow />
-    <FlatList
-      data={dataForList}
-      renderItem={({ item }) => (
-        <TransactionItem
-          entity={item}
-          isSimpleItem
-        />
-        )}
-      listEmptyText="You don't have any transactions"
-      ListHeaderComponent={
-        <View>
-          <View style={s.chartContainer}>
-            <ScrollView horizontal>
-              <VictoryChart
-                padding={{ top: 30, left: 50, bottom: 30, right: 40 }}
-              // width={700}
-              // width={700}
-                width={stats.tickValues.length * 17}
-                domain={{ x: [1, 12] }}
-              >
-                <VictoryAxis
-                  tickValues={stats.tickValues}
-                // width={1000}
-                  width={stats.tickValues.length * 17}
-                  tickLabelComponent={<VictoryLabel dy={5} angle={45} />}
-                  style={{
-                  // axis: { stroke: 'transparent' },
-                    grid: { stroke: colors.grey, strokeWidth: 0.5 },
-                    tickLabels: {
-                      fontSize: 14,
-                      stroke: colors.grey,
-                      fill: colors.greyVeryDarker,
-                      strokeWidth: 0.5,
-                      padding: 5,
-                      angle: 1800,
-                    },
-                    axisLabel: { fontSize: 20, padding: 30, angle: 90 },
-                  }}
-                />
-                <VictoryAxis
-                  dependentAxis
-                  domain={[0, 3000]}
-                  style={{
-                    grid: { stroke: colors.grey, strokeWidth: 0.5 },
-                  // tickLabels: {
-                  //   fontSize: 14,
-                  //   stroke: colors.grey,
-                  //   fill: colors.greyVeryDarker,
-                  //   strokeWidth: 0.5,
-                  // },
-                    axisLabel: { fontSize: 20, padding: 30, angle: 90 },
-                    tickLabels: { fontSize: 15, padding: 5, angle: 59 },
-                  }}
-                />
-                <VictoryGroup
-                  // width={3000}
-                  height={375}
-                  offset={18}
-                >
-                  <VictoryBar
-                    data={stats.Expense}
-                    // barRatio={0.7}
+    <Separator />
 
-                    style={{
-                      labels: { fill: 'black' },
-                      data: {
-                        fill: colors.red,
-                        width: 13,
-                      },
-                    }}
+    <View style={s.mainContainer}>
+      <View style={s.chartContainer}>
 
-                    animate={{
-                      duration: 2000,
-                      onLoad: { duration: 1000 },
-                    }}
+        <ScrollView horizontal style={{ paddingLeft: 50 }} bounces={false}>
+          <VictoryChart
+            height={chartHeight}
+            padding={{ top: 25, bottom: 50, right: 40 }}
+            width={getChartWidth(stats.tickValues.length)}
+            domainPadding={{ x: [50, 60] }}
+          >
+            <VictoryAxis
+              height={chartHeight}
+              dependentAxis
+              domain={[1, stats.maxValue]}
+              width={48}
+              style={{
+                grid: { stroke: colors.grey, strokeWidth: 0.5 },
+              }}
+            />
+            <VictoryAxis
+              height={chartHeight}
+              tickValues={stats.tickValues}
+              tickFormat={(d) => formatMonthWithYear(d)}
+              style={{
+                grid: { stroke: colors.grey, strokeWidth: 0.5 },
+                tickLabels: {
+                  fontSize: fontSizes.verySmall,
+                  stroke: colors.grey,
+                  fill: colors.greyVeryDarker,
+                  strokeWidth: 0.5,
+                },
+              }}
+            />
+            <VictoryGroup height={chartHeight} offset={22}>
+              <VictoryBar
+                data={stats.Expense}
+                labels={(d) => d.y !== 0 ? `-${d.y}` : ''}
+                style={{
+                  labels: {
+                    fill: (d) => stats.maxValue / d.y < 3.5 ? colors.white : colors.red,
+                    fontSize: 12 },
+                  data: {
+                    fill: colors.red,
+                    width: 18,
+                  },
+                }}
+                labelComponent={
+                  <VictoryLabel
+                    dy={6}
+                    angle={90}
+                    dx={d => stats.maxValue / d.y < 3.5 ? (chartHeight * d.y / 4100 / 2) : -5}
                   />
-                  <VictoryBar
-                    data={stats.Income}
-                    labels={(d) => d.y}
-                    style={{
-                      labels: { fill: 'black' },
-                      data: {
-                        fill: colors.green,
-                        width: 13,
-                      },
-                    }}
-                    labelComponent={<VictoryLabel dy={0} style={{ angle: 45 }} />}
-                    animate={{
-                      duration: 2000,
-                      onLoad: { duration: 1000 },
-                    }}
-                  />
-                </VictoryGroup>
-              </VictoryChart>
-            </ScrollView>
+                }
+                animate={{ duration: 500, onLoad: { duration: 200 } }}
+              />
+              <VictoryBar
+                data={stats.Income}
+                labels={(d) => d.y !== 0 ? `+${d.y}` : ''}
+                style={{
+                  labels: {
+                    fill: (d) => stats.maxValue / d.y < 3.5 ? colors.white : colors.green,
+                    fontSize: 12 },
+                  data: {
+                    fill: colors.green,
+                    width: 18,
+                  },
+                }}
+                labelComponent={<VictoryLabel
+                  dy={6}
+                  angle={90}
+                  dx={d => stats.maxValue / d.y < 3.5 ? (chartHeight * d.y / 4100 / 2) : -5}
+                />}
+                animate={{ duration: 500, onLoad: { duration: 200 } }}
+              />
+            </VictoryGroup>
+          </VictoryChart>
+        </ScrollView>
 
 
-          </View>
-          <Subtitle
-            style={s.subtitle}
-            withLittlePadding
-            leftText="Statistic per category"
+        <View style={s.verticalAxisContainer}>
+          <VictoryAxis
+            height={chartHeight}
+            padding={{ top: 24, left: 50, bottom: 50 }}
+            dependentAxis
+            domain={[1, stats.maxValue]}
+            width={50}
+            style={{
+              grid: { stroke: colors.grey, strokeWidth: 0.5 },
+              tickLabels: {
+                fontSize: fontSizes.verySmall,
+                stroke: colors.grey,
+                fill: colors.greyVeryDarker,
+                strokeWidth: 0.5,
+              },
+            }}
           />
-          <Separator />
         </View>
-        }
-    />
+      </View>
+
+      <Separator />
+
+      <View style={s.totalContainer}>
+        <Text style={s.totalText}>Total: </Text>
+        <View style={s.totalValueContainer}>
+          <Value
+            containerStyle={s.valueContainer}
+            style={s.valueText}
+            value={stats.totalIncome}
+          />
+          <Value
+            containerStyle={s.valueContainer}
+            style={s.valueText}
+            value={stats.totalExpense}
+          />
+        </View>
+
+      </View>
+
+      <Separator />
+    </View>
   </View>
   );
 

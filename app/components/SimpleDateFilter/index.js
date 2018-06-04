@@ -10,11 +10,9 @@ import SimpleDateFilter from './SimpleDateFilter';
 import {
   startOfCurrentMonth,
   startOfHalfYearAgo,
+  startOfYear,
   startOf10YearsAgo,
 
-  startOfWeek,
-  startOfMonthAgo,
-  startOfYear,
   isYesterday,
   isToday,
 } from '../../utils/dateHelpers';
@@ -23,6 +21,7 @@ const enhance = compose(
   withState('isActiveCurrentMonth', 'setActiveCurrentMonth', false),
   withState('isActiveHalfYear', 'setActiveHalfYear', false),
   withState('isActiveAllTime', 'setActiveAllTime', false),
+  withState('isActiveLast12', 'setActiveLast12', true),
 
 
   withState('isActiveSelector', 'setActiveSelector', false),
@@ -38,10 +37,9 @@ const enhance = compose(
     setActive: props => (item) => {
       props.setActiveCurrentMonth(false);
       props.setActiveHalfYear(false);
+      props.setActiveLast12(false);
       props.setActiveAllTime(false);
 
-
-      // props.setActiveSelector(false);
       // props.setActiveCalendar(false);
       props[item](true);
     },
@@ -62,27 +60,6 @@ const enhance = compose(
       setDateForFiltering(date.to ? date : date.from);
     },
 
-    onChangeSelector: props => (res) => {
-      props.setActive('setActiveSelector');
-      const period = { from: null, to: moment().endOf('day') };
-
-      switch (res) {
-        case '0':
-          period.from = startOfWeek;
-          break;
-        case '1':
-          period.from = startOfMonthAgo;
-          break;
-        case '2':
-          period.from = startOfYear;
-          break;
-        default:
-          break;
-      }
-
-      props.setDateForFiltering(period);
-    },
-
     onSetActiveCurrentMonth: props => () => {
       props.setActive('setActiveCurrentMonth');
       if (!props.isActiveCurrentMonth) {
@@ -93,6 +70,12 @@ const enhance = compose(
       props.setActive('setActiveHalfYear');
       if (!props.isActiveHalfYear) {
         props.setDateForFiltering({ from: startOfHalfYearAgo, to: moment().endOf('day') });
+      }
+    },
+    onSetActiveLast12: props => () => {
+      props.setActive('setActiveLast12');
+      if (!props.isActiveLast12) {
+        props.setDateForFiltering({ from: startOfYear, to: moment().endOf('day') });
       }
     },
 

@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
+import moment from 'moment';
 import R from 'ramda';
 import { inPeriod } from '../../utils/transactionsHelpers';
 import { categoriesTypes as types } from '../../constants/categories';
-import moment from 'moment';
 
 const getTransactionsIds = state => R.pathOr([], ['transactions', 'ids'], state);
 const getTransactionsEntities = state => R.pathOr({}, ['transactions', 'byId'], state);
@@ -81,23 +81,6 @@ export const getAccountsStats = createSelector(
   },
 );
 
-
-const def = {
-  1: 0,
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 0,
-  6: 0,
-  7: 0,
-  8: 0,
-  9: 0,
-  10: 0,
-  11: 0,
-  12: 0,
-};
-
-
 export const getTrendsStats = createSelector(
   [
     getTransactionsIds,
@@ -110,34 +93,45 @@ export const getTrendsStats = createSelector(
       Income: {},
       Expense: {},
       tickValues: [],
+      maxValue: 0,
+      totalIncome: 0,
+      totalExpense: 0,
     };
+
+    const diff = moment(date.to).diff(date.from, 'month');
+    const def = {};
+
+    if (diff <= 12) {
+      for (let i = 0; i <= diff; i++) {
+        const key = moment(date.to).subtract(i, 'months').startOf('month');
+        def[key] = 0;
+        data.tickValues.push(key.toString());
+      }
+      data.Income = def;
+      data.Expense = def;
+    }
+
     ids.forEach((id) => {
       const transaction = entities[id];
       const period = !date.format ? date : { from: +date.startOf('day'), to: +date.endOf('day') };
       if (inPeriod(period, transaction.date)) {
         const type = categorEnt[transaction.category].type;
 
-        // const diff = moment(period.to).diff(period.from, "month");
+        const startOfMonth = moment(transaction.date).startOf('month').toString();
 
-        const startOfMonth = +moment(transaction.date).startOf('month');
+        if (!data.tickValues.includes(startOfMonth.toString())) {
+          data.tickValues.push(startOfMonth.toString());
+        }
 
+        const value = Math.abs(transaction.value);
+        const currentValue = value + R.pathOr(0, [type, startOfMonth], data);
+        if (currentValue > data.maxValue) data.maxValue = currentValue;
 
-        // if (diff === 0) {
-        //
-        // } else if (diff <= 31) {
-        //   dateNumber = moment(transaction.date).startOf('month');
-        //   console.log("dateNumber" , dateNumber)
-        // } else {
-        //
-        // }
-
-        // const dateNumber = moment(transaction.date).startOf('month').format('M');
-
-        data.tickValues.push(moment(startOfMonth).format('MM/YYYY'));
+        data[`total${type}`] = data[`total${type}`] + value;
 
         data[type] = {
           ...data[type],
-          [startOfMonth]: Math.abs(transaction.value) + R.pathOr(0, [type, startOfMonth], data),
+          [startOfMonth]: currentValue,
         };
       }
     });
@@ -145,38 +139,28 @@ export const getTrendsStats = createSelector(
     const Income = [];
     const Expense = [];
 
-    R.forEachObjIndexed((val, key) => { Income.push({ y: val, date: +key }); }, data.Income);
-    R.forEachObjIndexed((val, key) => { Expense.push({ y: val, date: +key }); }, data.Expense);
+    R.forEachObjIndexed((val, key) => { Income.push({ y: val, date: key }); }, data.Income);
+    R.forEachObjIndexed((val, key) => { Expense.push({ y: val, date: key }); }, data.Expense);
 
+    Income.sort((a, b) => +moment(a.date) - +moment(b.date));
+    Expense.sort((a, b) => +moment(a.date) - +moment(b.date));
 
-    R.sortBy(R.prop('date'), Income);
-    R.sortBy(R.prop('date'), Expense);
+    data.tickValues.sort((a, b) => +moment(a) - +moment(b));
 
-    Income.sort((a, b) => a.date - b.date);
-    Expense.sort((a, b) => a.date - b.date);
-    data.tickValues.sort();
 
     Income.forEach((element, id) => element.x = id + 1);
     Expense.forEach((element, id) => element.x = id + 1);
 
-    // res {
-   //    "Expense": [
-   //       Object {
-   //         "x": "5",
-   //         "y": 1500,
-   //       },
-   //    ],
-   //     "Income": [
-   //       Object {
-   //         "x": "5",
-   //         "y": 1500,
-   //       },
-   //     ],
-   //   }
-
-    // console.log('res', { Income, Expense });
-    console.log("{ Income, Expense, tickValues: data.tickValues }", { Income, Expense, tickValues: data.tickValues })
-    return { Income, Expense, tickValues: data.tickValues };
+    console.log("dataValue", data.totalIncome, data.totalExpense )
+    // console.log('{ Income, Expense, tickValues: data.tickValues }', { Income, Expense, tickValues: data.tickValues });
+    return {
+      Income,
+      Expense,
+      tickValues: data.tickValues,
+      maxValue: data.maxValue + 300,
+      totalIncome: data.totalIncome,
+      totalExpense: -data.totalExpense,
+    };
   },
 );
 
