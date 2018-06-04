@@ -1,8 +1,11 @@
 {
-  "name": "Perfi",
-  "version": "0.0.1",
+  "name": "Perfi.v2",
+  "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "react-native-scripts": "1.14.0",
+    "jest-expo": "~27.0.0",
+    "react-test-renderer": "16.3.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-formatter-pretty": "^1.1.0",
@@ -11,36 +14,31 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "eslint-plugin-react-native": "^2.3.1",
-    "jest-expo": "^25.0.0",
     "react-devtools": "^3.1.0",
-    "react-native-scripts": "^1.11.1",
-    "react-test-renderer": "^16.2.0",
     "remote-redux-devtools": "^0.5.12"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-native-scripts start ./app/App.js",
+    "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js --watch",
-    "lint": "eslint --ignore-path .gitignore --format=node_modules/eslint-formatter-pretty .",
-    "devtools": "react-devtools"
+    "test": "jest"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
+    "expo": "^27.0.1",
+    "react": "16.3.1",
+    "react-native": "~0.55.2",
     "@expo/vector-icons": "^6.2.2",
     "babel-polyfill": "^6.26.0",
-    "expo": "^25.0.0",
     "expr-eval": "^1.2.1",
     "moment": "^2.20.1",
     "paths-js": "^0.4.5",
     "prop-types": "^15.6.0",
     "ramda": "^0.25.0",
-    "react": "^16.2.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
     "react-native-action-button": "^2.8.4",
     "react-native-calendar-picker": "^5.18.0",
     "react-native-color-picker": "^0.4.0",
@@ -69,6 +67,6 @@
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "uuid": "^3.2.1",
-    "victory-native": "^0.17.4"
+    "victory-native": "^0.16.0"
   }
 }

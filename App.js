@@ -9,7 +9,7 @@ import styles from './app/styles/AppStyles';
 import colors from './app/styles/colors';
 import { appOperations } from './app/modules/app';
 
-console.ignoredYellowBox = ['MenuContext'];
+console.ignoredYellowBox = ['MenuContext', 'Deprecation warning'];
 
 const App = () => (
   <MenuProvider>
