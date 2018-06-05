@@ -48,9 +48,9 @@ const enhance = compose(
 
       updateExpr(newExpr);
     },
-    onSubmitResult: ({ expr, navigation, id }) => () => {
+    onSubmitResult: ({ expr, navigation, id, isIncome }) => () => {
       navigation.navigate(
-        screens.TransactionEditor, { value: expr, id });
+        screens.TransactionEditor, { value: expr, id, isIncome });
     },
   }),
 

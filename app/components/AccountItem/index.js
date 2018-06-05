@@ -5,14 +5,17 @@ import { Text, NavIcon, TouchableItem, Value } from '../../components';
 import { colors, fontSizes } from '../../styles';
 import s from './styles';
 
-const calcValueSize = val => {
-  const length = val.toString().length;
-  return length > 7
-    ? fontSizes.verySmall
-    : length > 5
-      ? fontSizes.small
-      : fontSizes.big;
+const calcValueSize = value => {
+  const length = value.toString().length;
+  if (length > 8) return fontSizes.verySmall - 2;
+  if (length === 8) return fontSizes.verySmall;
+  if (length === 7) return fontSizes.small;
+  if (length === 6) return fontSizes.medium;
+  if (length === 5) return fontSizes.xmedium;
+  if (length === 4) return fontSizes.xxmedium;
+  return fontSizes.big;
 };
+
 
 const calSubTitle = val => fontSizes.verySmall - (val.length > 12 ? (val.length - 12) / 1.5 : 0);
 

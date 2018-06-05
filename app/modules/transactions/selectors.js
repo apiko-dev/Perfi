@@ -81,6 +81,7 @@ export const getAccountsStats = createSelector(
   },
 );
 
+// TODO Refactor this function
 export const getTrendsStats = createSelector(
   [
     getTransactionsIds,
@@ -102,7 +103,7 @@ export const getTrendsStats = createSelector(
     const def = {};
 
     if (diff <= 12) {
-      for (let i = 0; i <= diff; i++) {
+      for (let i = 0; i <= diff; i++) { // eslint-disable-line
         const key = moment(date.to).subtract(i, 'months').startOf('month');
         def[key] = 0;
         data.tickValues.push(key.toString());
@@ -148,18 +149,15 @@ export const getTrendsStats = createSelector(
     data.tickValues.sort((a, b) => +moment(a) - +moment(b));
 
 
-    Income.forEach((element, id) => element.x = id + 1);
-    Expense.forEach((element, id) => element.x = id + 1);
+    Income.forEach((element, id) => element.x = id + 1); // eslint-disable-line
+    Expense.forEach((element, id) => element.x = id + 1); // eslint-disable-line
 
-    console.log("dataValue", data.totalIncome, data.totalExpense )
-    // console.log('{ Income, Expense, tickValues: data.tickValues }', { Income, Expense, tickValues: data.tickValues });
     return {
       Income,
       Expense,
       tickValues: data.tickValues,
-      maxValue: data.maxValue + 300,
+      maxValue: data.maxValue + 200,
       totalIncome: data.totalIncome,
-      totalExpense: -data.totalExpense,
     };
   },
 );
