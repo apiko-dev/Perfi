@@ -1,22 +1,31 @@
-import { combineReducers } from 'redux';
+import AsyncStorage from 'redux-persist/es/storage';
+import { persistCombineReducers } from 'redux-persist';
 import app from './app';
 import accounts from './accounts';
 import categories from './categories';
-import storage from './storage';
 import transactions from './transactions';
 import transfers from './transfers';
 import navigator from './navigator';
 import settings from './settings';
 
-const appReducer = combineReducers({
+
+const config = {
+  key: 'root',
+  whitelist: [
+    'settings',
+  ],
+  storage: AsyncStorage,
+};
+
+const appReducer = {
   app,
   accounts,
   categories,
-  storage,
   transactions,
   transfers,
   navigator,
   settings,
-});
+};
 
-export default appReducer;
+
+export default persistCombineReducers(config, appReducer);

@@ -9,13 +9,13 @@ import {
 } from 'recompose';
 import R from 'ramda';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
 import TransactionEditorScreenView from './TransactionEditorScreenView';
 import { getParam } from '../../utils/navHelpers';
 import { getAccounts } from '../../modules/accounts/selectors';
 import { transactionsOperations } from '../../modules/transactions';
 import { getExpenseCategory, getIncomeCategory } from '../../modules/categories/selectors';
 import { colors } from '../../styles';
+import types from '../../modules/navigator/types';
 
 const requiredProps = ['value', 'account', 'category', 'date'];
 
@@ -35,11 +35,11 @@ const enhance = compose(
   connect(mapStateToProps, transactionsOperations),
 
   withState('date', 'setDate', new Date()),
-  withState('value', 'setValue', 'value', 0),
+  withState('value', 'setValue', 0),
   withState('isIncome', 'setIsIncome', true),
   withState('isVisibleModal', 'setVisibleModal', false),
 
-  withState('account', 'setAccount', ''),
+  withState('account', 'setAccount', {}),
   withState('category', 'setCategory', ''),
   withState('isSelectedCategory', 'setSelectedCategory', false),
   withState('note', 'updateNote', ''),
@@ -75,11 +75,7 @@ const enhance = compose(
       if (transaction) editedProps = { id: transaction.id, ...editedProps };
 
       submit(editedProps);
-
-      navigation.dispatch(NavigationActions.back());
-      navigation.dispatch(NavigationActions.back());
-
-      // navigation.dispatch({ type: types.RESET_TO_TRANSACTION});
+      navigation.dispatch({ type: types.GO_TO_INITIAL_SCREEN });
     },
     onToggleModal: ({ setVisibleModal, isVisibleModal }) => () => {
       setVisibleModal(!isVisibleModal);
@@ -110,7 +106,8 @@ const enhance = compose(
         setIsIncome,
       } = this.props;
 
-      setValue(getParam('value')(navigation));
+      console.log('getParam(\'value\')(navigation)', getParam('value')(navigation));
+      setValue(Number(getParam('value')(navigation)));
       setIsIncome(getParam('isIncome')(navigation));
 
       if (transaction) {

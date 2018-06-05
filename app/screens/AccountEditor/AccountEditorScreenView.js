@@ -1,18 +1,17 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import T from 'prop-types';
-import Modal from 'react-native-modal';
-import { ColorPicker } from 'react-native-color-picker';
 import { getParam } from '../../utils/navHelpers';
 import DeleteButton from './DeleteButton';
 import {
   Input,
   Button,
+  ColorPicker,
   Text,
   KeyboardAvoidingView,
   ScreenWrapper,
   HeaderTitle,
-} from '../../components/index';
+} from '../../components';
 import s from './styles';
 
 const AccountEditor = ({
@@ -31,20 +30,12 @@ const AccountEditor = ({
 }) => (
   <View style={s.root}>
     <ScreenWrapper>
-      <Modal
-        animationIn="fadeIn"
-        animationOut="fadeOut"
+      <ColorPicker
         isVisible={isColorPickerVisible}
+        color={color}
+        onSelectColor={onSelectColor}
         onBackdropPress={onToggleColorPicker}
-      >
-        <ColorPicker
-          style={s.modal}
-          onColorSelected={onSelectColor}
-          defaultColor={color}
-          hideSliders
-        />
-      </Modal>
-
+      />
       <View style={s.container}>
         <View style={s.secondContainer}>
           <TouchableOpacity
@@ -53,7 +44,6 @@ const AccountEditor = ({
           />
           <Text style={s.label}>Choose color</Text>
         </View>
-
         <Input
           isValid
           placeholder="Account name"
@@ -62,7 +52,6 @@ const AccountEditor = ({
           containerStyle={s.root}
         />
       </View>
-
       {!getParam('account')(navigation) &&
         <Input
           isValid
@@ -76,8 +65,6 @@ const AccountEditor = ({
 
       }
     </ScreenWrapper>
-
-
     <KeyboardAvoidingView withHeader>
       {isValid &&
       <Button
@@ -87,10 +74,7 @@ const AccountEditor = ({
       />
       }
     </KeyboardAvoidingView>
-
   </View>
-
-
 );
 
 AccountEditor.navigationOptions = ({ navigation }) => ({

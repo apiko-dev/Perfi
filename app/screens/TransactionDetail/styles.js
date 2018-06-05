@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
   },
-  withoutPadding: {
+  withoutPaddingBottom: {
     padding: 0,
   },
   headerContainerRight: {
@@ -54,6 +54,10 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.small,
     fontWeight: fontWeights.extraLight,
   },
+  value: {
+    fontSize: fontSizes.big,
+  },
 });
+
 
 export default styles;

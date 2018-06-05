@@ -26,7 +26,7 @@ const TransferDetail = ({
         name="shuffle-disabled"
       />
     </View>
-    <ScreenWrapper style={s.withoutPadding}>
+    <ScreenWrapper style={s.withoutPaddingBottom}>
       <View style={s.container}>
         <View style={s.mainContentContainer}>
           <Text style={s.title}>Transfer</Text>

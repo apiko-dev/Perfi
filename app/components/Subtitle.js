@@ -2,7 +2,7 @@ import React from 'react';
 import T from 'prop-types';
 import { StyleSheet, View, ViewPropTypes } from 'react-native';
 import { fontSizes, dimensions, colors, fontWeights } from '../styles';
-import { Text } from '../components';
+import { Text, Value } from '../components';
 import { formatDateForSubtitle } from '../utils/dateHelpers';
 
 const styles = StyleSheet.create({
@@ -17,15 +17,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  withoutPadding: {
+  withoutPaddingBottom: {
     paddingBottom: 0,
+  },
+  withoutPadding: {
+    padding: 0,
   },
   rightContainer: {
     flexDirection: 'row',
-  },
-  total: {
-    color: colors.green,
-    fontWeight: fontWeights.extraBold,
   },
   date: {
     color: colors.greyDarker,
@@ -35,12 +34,16 @@ const styles = StyleSheet.create({
 });
 
 const Subtitle = ({ style, leftText, totalBalance, date, withoutPadding }) => (
-  <View style={[styles.textContainer, style, withoutPadding && styles.withoutPadding]}>
+  <View style={[styles.textContainer, style, withoutPadding && styles.withoutPaddingBottom]}>
     <Text style={styles.leftText}>{leftText}</Text>
     {totalBalance &&
       <View style={styles.rightContainer}>
         <Text style={styles.rightText}>Total: </Text>
-        <Text style={[styles.rightText, styles.total]}>${totalBalance}</Text>
+        <Value
+          value={totalBalance}
+          style={styles.rightText}
+          containerStyle={styles.withoutPadding}
+        />
       </View>
     }
     {date &&

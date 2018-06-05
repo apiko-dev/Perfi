@@ -13,7 +13,7 @@ import { getParam } from '../../utils/navHelpers';
 const mapStateToProps = (state, props) => {
   const transaction = R.pathOr({}, ['transactions', 'byId', props.id], state);
   const accountId = R.pathOr(null, ['account'], transaction);
-  const account = state.accounts.byId[accountId];
+  const account = R.pathOr({}, ['accounts', 'byId', accountId], state);
   const category = state.categories.byId[transaction.category];
 
   return ({ transaction, account, category });

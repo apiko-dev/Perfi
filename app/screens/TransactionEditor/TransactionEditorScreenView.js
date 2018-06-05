@@ -118,7 +118,7 @@ AccountEditor.propTypes = {
   onUpdateNote: T.func,
   note: T.string,
   accounts: T.array,
-  account: T.string,
+  account: T.object,
   onChangeAccount: T.func,
   expenseCategories: T.array,
   incomeCategories: T.array,

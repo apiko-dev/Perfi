@@ -79,6 +79,18 @@ export default {
       </G>
     ),
     viewBox: "0 0 19 19"
-  }
+  },
 
+  'shape': {
+    svg: (
+      <G fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+        <G id="Core">
+          <G id="check">
+            <Path d="M6,10.2 L1.8,6 L0.4,7.4 L6,13 L18,1 L16.6,-0.4 L6,10.2 Z" id="Shape"/>
+          </G>
+        </G>
+      </G>
+    ),
+    viewBox: "0 0 18 15"
+  }
 };

@@ -15,6 +15,7 @@ import TransferEditor from './TransferEditor';
 import TransactionDetail from './TransactionDetail';
 import Favourites from './Favourites';
 import TransferDetail from './TransferDetail';
+import OnBoarding from './OnBoarding';
 
 export {
   Accounts,
@@ -33,4 +34,5 @@ export {
   TransferEditor,
   TransferDetail,
   Favourites,
+  OnBoarding,
 };

@@ -1,3 +1,4 @@
+
 export default {
   TransactionsRoot: 'TransactionsRoot',
   Transactions: 'Transactions',
@@ -32,4 +33,7 @@ export default {
 
   DrawerOpen: 'DrawerOpen',
   DrawerClose: 'DrawerClose',
+
+  DrawerRoot: 'DrawerRoot',
+  OnBoarding: 'OnBoarding',
 };
