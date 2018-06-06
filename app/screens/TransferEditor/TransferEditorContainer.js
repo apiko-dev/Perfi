@@ -12,8 +12,6 @@ import { getAccounts, getTotalBalance } from '../../modules/accounts/selectors';
 import { transfersOperations } from '../../modules/transfers';
 import { withSetter, checkReadyForSubmit } from '../../utils/enhancersForm';
 
-// TODO: на андроїді не відображає рамки з тире
-
 const fields = ['from', 'value', 'to', 'date', 'note'];
 const msg = 'There is not enough money';
 

@@ -14,7 +14,7 @@ export default {
   red: '#ef1f28',
   yellow: '#F5C94E',
   purple: '#933DA8',
-
+  salmon: '#FC714E',
 
   primary: '#504B4B',
   primaryDarken: '#323131',
@@ -55,16 +55,17 @@ export default {
 };
 
 export const chartPalette = {
-  blue500: '#2196F3',
+  blue500: '#2980b9',
   darkSalmon500: '#E9967A',
   orange500: '#f39c12',
+  salmon500: '#FC714E',
   grey500: '#D7DFE3',
   lightBlue500: '#03A9F4',
   pink500: '#E91E63',
   lime500: '#CDDC39',
   cyan500: '#00BCD4',
-  purple500: '#9C27B0',
-  yellow500: '#FFEB3B',
+  purple500: '#933DA8',
+  yellow500: '#F5C94E',
   blueGray500: '#607D8B',
 };
 

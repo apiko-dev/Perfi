@@ -5,7 +5,7 @@ import { Keyboard } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import AccountEditorScreenView from './AccountEditorScreenView';
 import { getParam } from '../../utils/navHelpers';
-import { colors, dimensions } from '../../styles';
+import { dimensions, chartPalette } from '../../styles';
 import { accountsOperations } from '../../modules/accounts/index';
 
 
@@ -23,8 +23,8 @@ const withSubmitEvent = withProps(({ account, createAccount, updateAccount }) =>
   submit: account ? updateAccount : createAccount,
 }));
 
-const onChangeBalance = ({ onInitialBalanceChange }) => (value) => {
-  onInitialBalanceChange(+value.replace(/[^\d]/g, ''));
+const onChangeBalance = ({ setInitialBalance }) => (value) => {
+  setInitialBalance(+value.replace(/[^\d]/g, ''));
 };
 
 const onToggleColorPicker = ({ toggleColorPicker, isColorPickerVisible }) => () => {
@@ -52,15 +52,15 @@ const enhance = compose(
   withAccount,
   withSubmitEvent,
   withState('name', 'onNameChange', accountProp('name')),
-  withState('initialBalance', 'onInitialBalanceChange', accountProp('initialBalance', 0)),
+  withState('initialBalance', 'setInitialBalance', accountProp('initialBalance', 0)),
   withState('balance', 'setBalance', accountProp('balance')),
-  withState('color', 'setColor', accountProp('color', colors.green)),
+  withState('color', 'setColor', accountProp('color', chartPalette.salmon500)),
   withState('isColorPickerVisible', 'toggleColorPicker', false),
 
   defaultProps({
     onClear: () => null,
     icon: {
-      name: 'currency-usd',
+      name: 'cash-multiple',
       size: dimensions.iconSize,
     },
   }),

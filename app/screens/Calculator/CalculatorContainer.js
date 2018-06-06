@@ -50,7 +50,7 @@ const enhance = compose(
     },
     onSubmitResult: ({ expr, navigation, id, isIncome }) => () => {
       navigation.navigate(
-        screens.TransactionEditor, { value: expr, id, isIncome });
+        screens.TransactionEditor, { value: isIncome ? +expr : -expr, id, isIncome });
     },
   }),
 

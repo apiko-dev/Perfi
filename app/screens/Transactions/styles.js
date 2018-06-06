@@ -1,5 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
-import { dimensions, colors, scalingUtils } from '../../styles';
+import { dimensions, colors, scalingUtils, fontSizes } from '../../styles';
 
 
 const styles = StyleSheet.create({
@@ -24,9 +24,14 @@ const styles = StyleSheet.create({
     height: dimensions.headerMaxHeight,
     zIndex: 1,
   },
-
   scrollViewContent: {
     paddingTop: Platform.OS !== 'ios' ? dimensions.headerMaxHeight : 0,
+  },
+  emptyText: {
+    paddingTop: dimensions.halfIndent,
+    textAlign: 'center',
+    fontSize: fontSizes.small,
+    color: colors.greyDarker,
   },
 
 });

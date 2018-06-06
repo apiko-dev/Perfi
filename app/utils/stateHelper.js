@@ -20,6 +20,11 @@ export const remove = ({ byId, ids }, id) => ({
   ids: R.reject(R.equals(id), ids),
 });
 
+export const removeId = ({ byId, ids }, id) => ({
+  byId,
+  ids: R.reject(R.equals(id), ids),
+});
+
 export const update = (state, id, props) => {
   const { byId } = state;
   const item = byId[id];
