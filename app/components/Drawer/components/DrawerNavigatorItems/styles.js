@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginLeft: dimensions.indent,
-    marginRight: dimensions.indent / 1.5,
+    marginRight: dimensions.indent,
     alignItems: 'center',
   },
   inactiveIcon: {
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     borderLeftColor: colors.green,
   },
   label: {
-    fontSize: fontSizes.medium,
+    fontSize: fontSizes.small,
     color: colors.black,
     fontWeight: fontWeights.normal,
   },

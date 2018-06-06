@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     borderBottomWidth: 1,
     borderBottomColor: colors.grey,
-    paddingLeft: dimensions.indent,
+    paddingLeft: dimensions.indent * 1.5,
     paddingBottom: dimensions.indent,
   },
 });
