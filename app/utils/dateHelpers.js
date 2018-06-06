@@ -55,7 +55,9 @@ export const startOfYesterday = moment().subtract(1, 'days').startOf('day');
 export const startOfWeek = moment().subtract(7, 'days').startOf('day');
 export const startOfMonthAgo = moment().subtract(1, 'months').startOf('day');
 export const startOfYear = moment().subtract(11, 'months').startOf('month');
+export const startOfCurrentWeek = moment().startOf('week');
 export const startOfCurrentMonth = moment().startOf('month');
+export const startOfCurrentYear = moment().startOf('year');
 export const startOfHalfYearAgo = moment().subtract(5, 'months').startOf('month');
 export const startOf10YearsAgo = moment().subtract(10, 'years').startOf('month');
 

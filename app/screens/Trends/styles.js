@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { dimensions, colors, fontSizes, fontWeights } from '../../styles';
+import { dimensions, colors, fontSizes } from '../../styles';
+import fontWeights from '../../styles/fontWeights';
 
 const styles = StyleSheet.create({
   root: {
@@ -9,39 +10,9 @@ const styles = StyleSheet.create({
   chartContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    // justifyContent: 'center',
-  },
-  pieContainer: {
-    margin: dimensions.indent,
-    marginRight: dimensions.halfIndent,
-  },
-  pieTotalValue: {
-    color: colors.green,
-    fontSize: fontSizes.xmedium,
-    fontWeight: fontWeights.bold,
-    marginBottom: 3,
-  },
-  pieDate: {
-    color: colors.greyDarker,
-    fontSize: fontSizes.verySmall,
-    fontWeight: fontWeights.bold,
-  },
-  pieTextContainer: {
-    flex: 1,
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginBottom: dimensions.indent,
   },
   container: {
-    paddingHorizontal: dimensions.indent,
-    paddingTop: dimensions.verticalIndent,
-    marginBottom: dimensions.verticalIndent / 2,
-  },
-  mainContainer: {
     flex: 1,
     justifyContent: 'space-around',
   },
@@ -50,6 +21,7 @@ const styles = StyleSheet.create({
     paddingTop: dimensions.indent,
   },
   totalContainer: {
+    flex: 1,
     paddingHorizontal: dimensions.indent,
     flexDirection: 'row',
     alignItems: 'center',
@@ -57,13 +29,14 @@ const styles = StyleSheet.create({
   },
   valueContainer: {
     paddingHorizontal: 0,
-    paddingVertical: 2,
+    paddingVertical: 4,
   },
   valueText: {
-    fontSize: fontSizes.small,
+    fontSize: fontSizes.medium,
   },
   totalText: {
-    fontSize: fontSizes.medium,
+    fontSize: fontSizes.xmedium,
+    fontWeight: fontWeights.medium,
   },
   totalValueContainer: {
     paddingVertical: 5,
@@ -71,8 +44,9 @@ const styles = StyleSheet.create({
   verticalAxisContainer: {
     position: 'absolute',
     top: 1,
-    bottom: 5,
+    bottom: 47,
     width: 50,
+    opacity: 0.9,
     backgroundColor: colors.white,
   },
 });
