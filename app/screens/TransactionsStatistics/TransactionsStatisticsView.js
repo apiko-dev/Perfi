@@ -59,7 +59,7 @@ const TransactionsStatistics = ({
           <View style={s.chartContainer}>
             <View style={s.pieContainer}>
               <VictoryPie
-                data={dataForChart}
+                data={dataForChart.length ? dataForChart : [{ y: 1, fill: colors.greyDarker }]}
                 animate={{ duration: 800 }}
                 padding={0}
                 width={185}
