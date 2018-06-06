@@ -30,6 +30,7 @@ const CategoryEditor = (props) => {
     togglePicker,
     isPickerVisible,
     onSelectCategory,
+    navigation,
   } = props;
 
   return (
@@ -56,16 +57,20 @@ const CategoryEditor = (props) => {
               containerStyle={s.root}
             />
           </View>
-          <Select
-            options={['Expense', 'Income']}
-            containerStyle={s.selectorContainer}
-            style={s.selector}
-            defaultValue="Choose transaction type"
-            selectorsWidth={dimensions.containerWidth}
-            onSelect={onSelectCategory}
-            textStyle={s.selectTextStyle}
-            optionHeight={dimensions.verticalIndent * 2.8}
-          />
+
+          {!getParam('category')(navigation) &&
+            <Select
+              options={['Expense', 'Income']}
+              containerStyle={s.selectorContainer}
+              style={s.selector}
+              defaultValue="Choose transaction type"
+              selectorsWidth={dimensions.containerWidth}
+              onSelect={onSelectCategory}
+              textStyle={s.selectTextStyle}
+              optionHeight={dimensions.verticalIndent * 2.8}
+            />
+          }
+
         </View>
         <IconsPickerModal
           icons={icons}
@@ -107,6 +112,7 @@ CategoryEditor.propTypes = {
   togglePicker: T.func,
   isPickerVisible: T.bool,
   onSelectCategory: T.func,
+  navigation: T.object,
 };
 
 export default CategoryEditor;
