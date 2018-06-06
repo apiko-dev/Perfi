@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
   btnContainer: {
     height: undefined,
     borderRadius: 4,
-    // width: scalingUtils.moderateScale(75),
     borderColor: colors.grey,
     borderWidth: 1,
     backgroundColor: colors.white,
@@ -27,7 +26,7 @@ const styles = StyleSheet.create({
   },
   btTitleStyle: {
     height: undefined,
-    fontSize: fontSizes.verySmall - 1.5,
+    fontSize: fontSizes.verySmall - 1,
     color: colors.greyDarker,
     fontWeight: fontWeights.normal,
   },

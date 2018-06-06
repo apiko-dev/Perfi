@@ -1,9 +1,9 @@
 import React from 'react';
 import T from 'prop-types';
 import { StyleSheet, View, ViewPropTypes } from 'react-native';
-import { fontSizes, dimensions, colors, fontWeights } from '../styles';
-import { Text, Value } from '../components';
-import { formatDateForSubtitle } from '../utils/dateHelpers';
+import { fontSizes, dimensions, colors, fontWeights } from '../../styles';
+import { Text, Value } from '../../components';
+import { formatDateForSubtitle } from '../../utils/dateHelpers';
 
 const styles = StyleSheet.create({
   leftText: {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, ViewPropTypes } from 'react-native';
 import { CircleSnail } from 'react-native-progress';
-import colors from '../styles/colors';
+import colors from '../../styles/colors';
 
 const styles = StyleSheet.create({
   rootStyle: {

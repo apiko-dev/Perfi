@@ -1,8 +1,8 @@
 import React from 'react';
 import T from 'prop-types';
 import { StyleSheet, View, Platform } from 'react-native';
-import CategoryIcon from './CategoryIcon';
-import { colors, dimensions } from '../styles';
+import CategoryIcon from '../CategoryIcon';
+import { colors, dimensions } from '../../styles';
 
 
 const styles = StyleSheet.create({

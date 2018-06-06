@@ -93,7 +93,8 @@ Input.propTypes = {
   style: Text.propTypes.style,
   onFocus: T.func,
   onBlur: T.func,
-  value: T.string,
+  // value: T.string,
+  value: T.oneOfType([T.string, T.number]),
 };
 
 export default Input;

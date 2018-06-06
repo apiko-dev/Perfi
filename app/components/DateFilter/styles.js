@@ -4,7 +4,7 @@ import { colors, dimensions, fontSizes, fontWeights, scalingUtils } from '../../
 const styles = StyleSheet.create({
   dateSelector: {
     alignItems: 'center',
-    width: scalingUtils.moderateScale(100),
+    width: scalingUtils.moderateScale(105),
     borderRadius: 4,
   },
   selectors: {

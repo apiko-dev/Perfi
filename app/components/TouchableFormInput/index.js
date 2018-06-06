@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import T from 'prop-types';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import appStyles from '../styles/AppStyles';
-import { colors, dimensions } from '../styles';
+import appStyles from '../../styles/AppStyles';
+import { colors, dimensions } from '../../styles';
 
 const { indent, verticalIndent } = dimensions;
 
@@ -41,37 +41,9 @@ const TouchableFormInput = ({
 );
 
 TouchableFormInput.propTypes = {
-  onPress: PropTypes.func,
+  onPress: T.func,
+  containerStyle: T.any,
+  icon: T.any,
 };
 
 export default TouchableFormInput;
-
-
-// const FormInputWithIcon = (props) => {
-//   const { containerStyle, icon, iconStyle, inputStyle, ...inputProps } = props;
-//
-//   return (
-//     <View style={[containerStyle, icon && styles.containerWithIconStyle]}>
-//       {icon && (
-//         <MaterialCommunityIcons
-//           style={[appStyles.iconStyle, iconStyle]}
-//           name={icon}
-//         />
-//       )}
-//       <FormInput
-//         containerStyle={[icon && styles.inputWithIconStyle, inputStyle]}
-//         inputStyle={appStyles.formInputStyle}
-//         {...inputProps}
-//       />
-//     </View>
-//   );
-// };
-//
-// FormInputWithIcon.propTypes = {
-//   containerStyle: ViewPropTypes.style,
-//   iconStyle: ViewPropTypes.style,
-//   inputStyle: ViewPropTypes.style,
-//   icon: PropTypes.string,
-// };
-//
-// export default FormInputWithIcon;

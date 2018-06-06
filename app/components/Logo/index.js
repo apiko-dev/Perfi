@@ -1,12 +1,12 @@
 import React from 'react';
-import Icon from './Icon';
+import Icon from '../Icon';
 
 
 const Logo = () => (
   <Icon
     name="logo"
-    width={90}
-    height={22}
+    width={80}
+    height={20}
   />
 );
 
