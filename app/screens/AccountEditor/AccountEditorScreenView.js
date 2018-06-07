@@ -64,7 +64,7 @@ const AccountEditor = ({
           containerStyle={s.balanceContainer}
           iconRight={icon}
         />
-s
+
       }
     </ScreenWrapper>
     <KeyboardAvoidingView withHeader>
