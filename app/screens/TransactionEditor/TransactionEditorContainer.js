@@ -106,7 +106,6 @@ const enhance = compose(
         setIsIncome,
       } = this.props;
 
-      console.log('getParam(\'value\')(navigation)', getParam('value')(navigation));
       setValue(Number(getParam('value')(navigation)));
       setIsIncome(getParam('isIncome')(navigation));
 

@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import moment from 'moment';
 import R from 'ramda';
 import { inPeriod } from '../../utils/transactionsHelpers';
 import { categoriesTypes as types } from '../../constants/categories';
@@ -14,10 +15,10 @@ const getAccountId = (_, props) => R.pathOr('0', ['accountId'], props);
 
 export const getTransactions = createSelector(
   [getTransactionsIds, getTransactionsEntities, getDateForFiltering],
-  (ids, entities, date) => {
+  (transIds, transEnt, date) => {
     const newArray = [];
-    ids.forEach((id) => {
-      const transaction = entities[id];
+    transIds.forEach((id) => {
+      const transaction = transEnt[id];
       const period = !date.format ?
         date : { from: +date.startOf('day'), to: +date.endOf('day') };
       if (inPeriod(period, transaction.date)) {
@@ -31,10 +32,10 @@ export const getTransactions = createSelector(
 
 export const getFavouritesTransactions = createSelector(
   [getTransactionsIds, getTransactionsEntities, getDateForFiltering],
-  (ids, entities, date) => {
+  (transIds, transEnt, date) => {
     const newArray = [];
-    ids.forEach((id) => {
-      const transaction = entities[id];
+    transIds.forEach((id) => {
+      const transaction = transEnt[id];
       const period = !date.format ?
         date : { from: +date.startOf('day'), to: +date.endOf('day') };
       if (inPeriod(period, transaction.date) && transaction.isFavourite) {
@@ -55,11 +56,11 @@ export const getAccountsStats = createSelector(
     getCategoryTypeForFiltering,
     getAccountsEntities,
   ],
-  (ids, entities, date, categorEnt, categorType, accountsEnt) => {
+  (transIds, transEnt, date, categorEnt, categorType, accountsEnt) => {
     const data = {};
     const type = categorType === 0 ? types.income : types.expense;
-    ids.forEach((id) => {
-      const transaction = entities[id];
+    transIds.forEach((id) => {
+      const transaction = transEnt[id];
       const period = !date.format ? date : { from: +date.startOf('day'), to: +date.endOf('day') };
       if (inPeriod(period, transaction.date) && categorEnt[transaction.category].type === type) {
         data[transaction.account] = {
@@ -80,6 +81,100 @@ export const getAccountsStats = createSelector(
   },
 );
 
+// TODO Refactor selectors
+export const getTrendsStats = createSelector(
+  [
+    getTransactionsIds,
+    getTransactionsEntities,
+    getDateForFiltering,
+    getCategoriesEntities,
+  ],
+  (transIds, transEnt, date, categorEnt) => {
+    const data = {
+      Income: {},
+      Expense: {},
+      tickValues: [],
+      maxValue: 0,
+      totalIncome: 0,
+      totalExpense: 0,
+    };
+
+    // If the difference between months is more than 12,
+    // then miss months in which both, total expense and total income equal 0.
+    const monthsDiff = moment(date.to).diff(date.from, 'month');
+    const initialValue = {};
+
+    if (monthsDiff <= 12) {
+      for (let i = 0; i <= monthsDiff; i++) { // eslint-disable-line
+        const key = moment(date.to).subtract(i, 'months').startOf('month');
+        initialValue[key] = 0;
+        data.tickValues.push(key.toString());
+      }
+      data.Income = initialValue;
+      data.Expense = initialValue;
+    }
+
+    transIds.forEach((id) => {
+      const transaction = transEnt[id];
+      const period = !date.format ? date : { from: +date.startOf('day'), to: +date.endOf('day') };
+      if (inPeriod(period, transaction.date)) {
+        const type = categorEnt[transaction.category].type;
+
+        const startOfMonth = moment(transaction.date).startOf('month').toString();
+
+        if (!data.tickValues.includes(startOfMonth.toString())) {
+          data.tickValues.push(startOfMonth.toString());
+        }
+
+        const value = Math.abs(transaction.value);
+        const currentValue = value + R.pathOr(0, [type, startOfMonth], data);
+        if (currentValue > data.maxValue) data.maxValue = currentValue;
+
+        data[`total${type}`] = data[`total${type}`] + value;
+
+        data[type] = {
+          ...data[type],
+          [startOfMonth]: currentValue,
+        };
+
+        const otherType = type === types.income ? types.expense : types.income;
+        if (!R.pathOr(false, [otherType, startOfMonth], data)) {
+          data[otherType] = {
+            ...data[otherType],
+            [startOfMonth]: 0,
+          };
+        }
+      }
+    });
+
+    const Income = [];
+    const Expense = [];
+
+    R.forEachObjIndexed((val, key) => { Income.push({ y: val, date: key }); }, data.Income);
+    R.forEachObjIndexed((val, key) => { Expense.push({ y: val, date: key }); }, data.Expense);
+
+    Income.sort((a, b) => +moment(a.date) - +moment(b.date));
+    Expense.sort((a, b) => +moment(a.date) - +moment(b.date));
+
+    data.tickValues.sort((a, b) => +moment(a) - +moment(b));
+
+
+    Income.forEach((element, id) => element.x = id + 1); // eslint-disable-line
+    Expense.forEach((element, id) => element.x = id + 1); // eslint-disable-line
+
+    const maxValue = data.maxValue + data.maxValue / 12;
+
+    return {
+      Income,
+      Expense,
+      tickValues: data.tickValues,
+      maxValue,
+      totalIncome: data.totalIncome,
+      totalExpense: -data.totalExpense,
+    };
+  },
+);
+
 export const getCategoriesStats = createSelector(
   [
     getTransactionsIds,
@@ -88,12 +183,12 @@ export const getCategoriesStats = createSelector(
     getCategoriesEntities,
     getCategoryTypeForFiltering,
   ],
-  (ids, entities, date, categorEnt, categorType) => {
+  (transIds, transEnt, date, categorEnt, categorType) => {
     const data = {};
     let total = 0;
     const type = categorType === 0 ? types.income : types.expense;
-    ids.forEach((id) => {
-      const transaction = entities[id];
+    transIds.forEach((id) => {
+      const transaction = transEnt[id];
       const period = !date.format ? date : { from: +date.startOf('day'), to: +date.endOf('day') };
       if (inPeriod(period, transaction.date) && categorEnt[transaction.category].type === type) {
         data[transaction.category] = {
@@ -110,7 +205,7 @@ export const getCategoriesStats = createSelector(
           id: key,
           name: val.name,
           value: val.value,
-          percent: Math.round(val.value * 100 / total),
+          percent: Math.round(val.value * 1000 / total) / 10,
         });
       }, data
     );
@@ -125,10 +220,10 @@ export const getCurrentAccountTransaction = createSelector(
     getDateForFiltering,
     getAccountId,
   ],
-  (ids, entities, date, accId) => {
+  (transIds, transEnt, date, accId) => {
     const newArray = [];
-    ids.forEach((id) => {
-      const transaction = entities[id];
+    transIds.forEach((id) => {
+      const transaction = transEnt[id];
       const period = !date.format ?
         date : { from: +date.startOf('day'), to: +date.endOf('day') };
       if (inPeriod(period, transaction.date) && transaction.account === accId) {

@@ -9,7 +9,7 @@ import CategoryEditor from './CategoryEditor';
 import Calculator from './Calculator';
 
 import Settings from './Settings';
-import Trends from './trends/TrendsScreen';
+import Trends from './Trends';
 import TransferEditor from './TransferEditor';
 import TransactionDetail from './TransactionDetail';
 import Favourites from './Favourites';

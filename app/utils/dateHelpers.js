@@ -37,6 +37,7 @@ export const startOfNextMonth = (d = new Date()) =>
 export const endOfMonth = (d = new Date()) => moment(d).endOf('month').toDate();
 
 export const formatMonth = (d, f = timeFormats.monthShort) => moment(d).format(f);
+export const formatMonthWithYear = (d, f = timeFormats.month) => moment(d).format(f);
 
 export const addDays = (date, daysNumber) => moment(date).add(daysNumber, 'days').toDate();
 
@@ -53,7 +54,12 @@ export const startOfDay = moment().startOf('day');
 export const startOfYesterday = moment().subtract(1, 'days').startOf('day');
 export const startOfWeek = moment().subtract(7, 'days').startOf('day');
 export const startOfMonthAgo = moment().subtract(1, 'months').startOf('day');
-export const startOfYear = moment().subtract(1, 'years').startOf('day');
+export const startOfYear = moment().subtract(11, 'months').startOf('month');
+export const startOfCurrentWeek = moment().startOf('week');
+export const startOfCurrentMonth = moment().startOf('month');
+export const startOfCurrentYear = moment().startOf('year');
+export const startOfHalfYearAgo = moment().subtract(5, 'months').startOf('month');
+export const startOf10YearsAgo = moment().subtract(10, 'years').startOf('month');
 
 
 export const isToday = date => date.startOf('day').isSame(moment().startOf('day'));

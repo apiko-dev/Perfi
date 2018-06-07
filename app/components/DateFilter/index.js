@@ -10,9 +10,9 @@ import DateFilter from './DateFilter';
 import {
   startOfDay,
   startOfYesterday,
-  startOfWeek,
-  startOfMonthAgo,
-  startOfYear,
+  startOfCurrentWeek,
+  startOfCurrentMonth,
+  startOfCurrentYear,
   isYesterday,
   isToday,
 } from '../../utils/dateHelpers';
@@ -59,13 +59,13 @@ const enhance = compose(
 
       switch (res) {
         case '0':
-          period.from = startOfWeek;
+          period.from = startOfCurrentWeek;
           break;
         case '1':
-          period.from = startOfMonthAgo;
+          period.from = startOfCurrentMonth;
           break;
         case '2':
-          period.from = startOfYear;
+          period.from = startOfCurrentYear;
           break;
         default:
           break;

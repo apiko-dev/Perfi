@@ -11,7 +11,7 @@ import colors from './app/styles/colors';
 import { appOperations } from './app/modules/app';
 import settingsOperations from './app/modules/settings/operations';
 
-console.ignoredYellowBox = ['MenuContext'];
+console.ignoredYellowBox = ['MenuContext', 'Deprecation warning'];
 
 const App = () => (
   <MenuProvider>

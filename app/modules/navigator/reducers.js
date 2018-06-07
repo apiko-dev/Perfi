@@ -12,7 +12,6 @@ const getResetState = (state, routeName) =>
   );
 
 const navigatorReducer = (state, action) => {
-
   switch (action.type) {
     case types.GO_TO_INITIAL_SCREEN:
     case settingTypes.SIGN_IN:
