@@ -34,6 +34,7 @@ const Calendar = ({
       animationIn="fadeIn"
       animationOut="fadeOut"
       isVisible={isVisible}
+      transparent={false}
       onBackdropPress={onToggleCalendar}
     >
       <View style={s.container}>

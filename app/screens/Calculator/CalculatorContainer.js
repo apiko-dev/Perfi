@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import R from 'ramda';
 import CalculatorScreenView from './CalculatorScreenView';
 import screens from '../../constants/screens';
-import { withPickParams } from '../../utils/enhancers';
+import { withPickParams, withPaschal } from '../../utils/enhancers';
 
 const defaultExpr = '0';
 
@@ -33,7 +33,7 @@ const enhance = compose(
     onPressToken: ({ expr, updateExpr }) => (token) => {
       const lastToken = R.last(expr);
       let newExpr = expr;
-
+      if (newExpr > 99999 || newExpr > 9999 && token === '00') return;
       if (token === '.' && !hasDotInLastNumber(expr)) {
         newExpr += token;
       } else if (token === '00' && !isNaN(lastToken)) {
@@ -49,6 +49,7 @@ const enhance = compose(
       updateExpr(newExpr);
     },
     onSubmitResult: ({ expr, navigation, id, isIncome }) => () => {
+      withPaschal(expr);
       navigation.navigate(
         screens.TransactionEditor, { value: isIncome ? +expr : -expr, id, isIncome });
     },

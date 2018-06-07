@@ -39,10 +39,10 @@ const enhance = compose(
   withState('isIncome', 'setIsIncome', true),
   withState('isVisibleModal', 'setVisibleModal', false),
 
-  withState('account', 'setAccount', {}),
-  withState('category', 'setCategory', ''),
+  withState('account', 'setAccount', null),
+  withState('category', 'setCategory', null),
   withState('isSelectedCategory', 'setSelectedCategory', false),
-  withState('note', 'updateNote', ''),
+  withState('note', 'setNote', ''),
 
   withPropsOnChange(
     requiredProps,
@@ -61,7 +61,7 @@ const enhance = compose(
     },
   })),
   withHandlers({
-    onUpdateNote: ({ updateNote }) => (text) => { updateNote(text); },
+    onUpdateNote: ({ setNote }) => (text) => { setNote(text); },
     onChangeAccount: ({ setAccount }) => (id, account) => { setAccount(account); },
     onSubmit: ({
       submit, transaction, account, category, navigation, ...props
@@ -98,7 +98,7 @@ const enhance = compose(
         setDate,
         setAccount,
         setCategory,
-        updateNote,
+        setNote,
         transaction,
         accountsById,
         categoriesById,
@@ -116,7 +116,7 @@ const enhance = compose(
         setAccount(accountsById[account]);
         setCategory(categoriesById[category]);
         setSelectedCategory(true);
-        updateNote(note);
+        setNote(note);
       }
     },
   }),

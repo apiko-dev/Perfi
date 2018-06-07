@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     borderStyle: 'dashed',
-    borderColor: colors.darkGrey,
+    borderColor: colors.greyVeryDarker,
     padding: dimensions.halfVerticalIndent,
   },
   withoutPaddingBottom: {

@@ -6,10 +6,13 @@ import {
 import Input from './Input';
 import { withToggle } from '../../utils/enhancers';
 
+/**
+ * velue must be only string, not Number!
+ */
 const enhance = compose(
-  // withProps(({ value }) => ({
-  //   value: String(value),
-  // })),
+  withProps(({ value }) => ({
+    value: String(value),
+  })),
   defaultProps({
     isValid: true,
   }),

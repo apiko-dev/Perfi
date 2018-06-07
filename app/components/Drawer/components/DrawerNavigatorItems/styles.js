@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: fontSizes.small,
-    color: colors.black,
+    color: colors.greyVeryDarker,
     fontWeight: fontWeights.normal,
   },
 

@@ -11,6 +11,7 @@ const IconsPickerModal = ({
   <TouchableWithoutFeedback onPress={hideModal}>
     <Modal
       isVisible={isVisible}
+      transparent={false}
       onBackButtonPress={hideModal}
       onBackdropPress={hideModal}
       style={s.modalStyle}

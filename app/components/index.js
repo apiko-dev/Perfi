@@ -74,5 +74,5 @@ export {
   TabContainer,
   AddTransactionButton,
   SimpleDateFilter,
-  DrawerIcon,
+  SimpleDateFilter,
 };

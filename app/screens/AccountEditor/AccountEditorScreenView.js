@@ -46,6 +46,7 @@ const AccountEditor = ({
         </View>
         <Input
           isValid
+          maxLength={18}
           placeholder="Account name"
           value={name}
           onChangeText={onNameChange}
@@ -55,14 +56,15 @@ const AccountEditor = ({
       {!getParam('account')(navigation) &&
         <Input
           isValid
+          maxLength={6}
           placeholder="Initial balance"
           value={initialBalance ? initialBalance.toString() : ''}
           onChangeText={onChangeBalance}
-          keyboardType="phone-pad"
+          keyboardType="numeric"
           containerStyle={s.balanceContainer}
           iconRight={icon}
         />
-
+s
       }
     </ScreenWrapper>
     <KeyboardAvoidingView withHeader>

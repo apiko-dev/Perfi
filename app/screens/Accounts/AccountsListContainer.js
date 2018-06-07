@@ -20,7 +20,7 @@ const enhance = compose(
   connect(mapStateToProps),
 
   withProps(props => ({
-    accounts: props.accounts.concat({ name: 'Add an account', isAddButton: true }),
+    accounts: props.accounts.concat({ isAddButton: true }),
     onSelectAccount: getParam('onSelectAccount')(props.navigation) ||
     goEditAccount(props.navigation),
     onAddAccount: onNavigate(props.navigation, screens.AccountEditor, { title: 'Add an account' }),

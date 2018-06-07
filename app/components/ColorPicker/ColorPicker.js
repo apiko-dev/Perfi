@@ -21,6 +21,7 @@ const ColorPicker = ({
     animationOut="fadeOut"
     style={s.root}
     isVisible={isVisible}
+    transparent={false}
     onBackdropPress={onBackdropPress}
   >
     <View style={s.container}>

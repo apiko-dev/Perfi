@@ -162,7 +162,8 @@ export const getTrendsStats = createSelector(
     Income.forEach((element, id) => element.x = id + 1); // eslint-disable-line
     Expense.forEach((element, id) => element.x = id + 1); // eslint-disable-line
 
-    const maxValue = data.maxValue + data.maxValue / 12;
+    const coeff = +`1${R.join('', R.repeat('0', data.maxValue.toString().length - 1))}`;
+    const maxValue = Math.ceil(data.maxValue / coeff) * coeff;
 
     return {
       Income,

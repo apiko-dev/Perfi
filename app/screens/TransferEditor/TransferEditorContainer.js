@@ -20,6 +20,8 @@ const checkValidValue = (value, { from: { balance } }) => ({
   message: `${msg}, available - ${balance}`,
 });
 
+const onChangeBalance = (value) => +value.replace(/[^\d]/g, '');
+
 const mapStateToProps = state => ({
   accountsArr: getAccounts(state),
   accounts: R.pathOr({}, ['accounts', 'byId'], state),
@@ -30,7 +32,7 @@ const enhance = compose(
   connect(mapStateToProps, transfersOperations),
 
   withSetter('from', {}, R.length),
-  withSetter('value', '', checkValidValue, Number),
+  withSetter('value', '', checkValidValue, onChangeBalance),
   withSetter('to', {}, R.length),
   withSetter('date', new Date()),
   withSetter('note', ''),

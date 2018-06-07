@@ -4,6 +4,7 @@ import withStyle from './withStyle';
 import withToggleOld from './withToggleOld';
 import withToggle from './withToggle';
 import withPickParams from './withPickParams';
+import withPaschal from './withPaschal';
 
 export {
   withDataSource,
@@ -12,4 +13,5 @@ export {
   withToggleOld,
   withToggle,
   withPickParams,
+  withPaschal,
 };
