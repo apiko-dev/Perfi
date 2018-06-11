@@ -15,7 +15,6 @@ const navigatorReducer = (state, action) => {
   switch (action.type) {
     case types.GO_TO_INITIAL_SCREEN:
     case settingTypes.SIGN_IN:
-      console.log('aaaa', settingTypes.SIGN_IN);
       return getResetState(state, screens.DrawerRoot);
     default:
       return Navigator.router.getStateForAction(action, state);
