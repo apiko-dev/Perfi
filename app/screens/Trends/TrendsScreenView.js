@@ -85,7 +85,7 @@ const Trends = ({
             <VictoryGroup height={chartHeight} offset={22}>
               <VictoryBar
                 data={stats.Expense}
-                labels={d => (d.y !== 0 ? `-${d.y}` : '')}
+                labels={d => (d.y !== 0 ? `-${Math.round(d.y)}` : '')}
                 style={{
                   labels: {
                     fill: d => (stats.maxValue / d.y < 3.5 ? colors.white : colors.red),
@@ -103,7 +103,7 @@ const Trends = ({
               />
               <VictoryBar
                 data={stats.Income}
-                labels={d => (d.y !== 0 ? `+${d.y}` : '')}
+                labels={d => (d.y !== 0 ? `+${Math.round(d.y)}` : '')}
                 style={{
                   labels: {
                     fill: d => (stats.maxValue / d.y < 3.5 ? colors.white : colors.green),
@@ -172,7 +172,14 @@ const Trends = ({
 Trends.propTypes = {
   dateForFiltering: T.object,
   setDateForFiltering: T.func,
-  stats: T.object,
+  stats: T.shape({
+    Income: T.array,
+    Expense: T.array,
+    tickValues: T.array,
+    maxValue: T.number,
+    totalIncome: T.number,
+    totalExpense: T.number,
+  }),
 };
 
 export default Trends;

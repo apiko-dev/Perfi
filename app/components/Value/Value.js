@@ -37,7 +37,7 @@ Value.propTypes = {
   containerStyle: ViewPropTypes.style,
   style: Text.propTypes.style,
   type: T.oneOf(['other', 'income', 'expense']),
-  value: T.number,
+  value: T.oneOf(['string', 'number']),
   withoutPlus: T.bool,
 };
 

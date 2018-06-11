@@ -5,6 +5,7 @@ import {
   hoistStatics,
   lifecycle,
   withProps,
+  pure,
 } from 'recompose';
 import R from 'ramda';
 import { connect } from 'react-redux';
@@ -70,7 +71,11 @@ const enhance = compose(
     concatenatedData: R.sortWith(
       [R.descend(R.prop('date'))], R.concat(props.transactions, props.transfers)),
   })),
+
   lifecycle({
+    shouldComponentUpdate(nextProps) {
+      return this.props.concatenatedData.length !== nextProps.concatenatedData.length;
+    },
     // componentDidUpdate(prevProps) {
     //   const newTrans = this.props.transactions;
     //   const oldTrans = prevProps.transactions;
@@ -79,6 +84,7 @@ const enhance = compose(
     //   }
     // },
   }),
+  pure,
 );
 
 export default hoistStatics(enhance)(TransactionsScreenView);

@@ -17,7 +17,7 @@
       "resizeMode": "cover"
     },
     "name": "Perfi",
-    "version": "0.0.1",
+    "version": "2.0.0",
     "slug": "apiko-perfi-app",
     "android": {
       "package": "com.apiko.perfi"

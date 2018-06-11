@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import { TouchableWithoutFeedback, Text } from 'react-native';
 import Modal from 'react-native-modal';
 import s from './styles';
-import IconsPickerList from '../iconsList/index';
+import IconsPickerList from '../iconsList';
 
 const IconsPickerModal = ({
   isVisible, onIconPick, hideModal, icons, selectedIconName,
 }) => (
-  <TouchableWithoutFeedback onPress={hideModal}>
+  <TouchableWithoutFeedback onPress={hideModal}z>
     <Modal
       isVisible={isVisible}
-      transparent={false}
       onBackButtonPress={hideModal}
       onBackdropPress={hideModal}
       style={s.modalStyle}

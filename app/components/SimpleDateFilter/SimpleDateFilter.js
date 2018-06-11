@@ -1,7 +1,6 @@
 import React from 'react';
-// import T from 'prop-types';
+import T from 'prop-types';
 import { View } from 'react-native';
-// import DatePicker from 'react-native-datepicker';
 import { Button } from '../../components';
 import s from './styles';
 import { colors } from '../../styles';
@@ -18,12 +17,6 @@ const ButtonFiler = props => (
 );
 
 const SimpleDateFilter = ({
-  // onToggleCalendar,
-  // isVisibleCalendar,
-  // onChangeCalendar,
-  // isActiveCalendar,
-  // dateForFiltering,
-  // onChangeSelector,
   isActiveCurrentMonth,
   isActiveHalfYear,
   isActiveLast12,
@@ -34,22 +27,6 @@ const SimpleDateFilter = ({
   onSetActiveAllTime,
 }) => (
   <View>
-    {/*<View style={s.rangeContainer}>*/}
-      {/*<DatePicker*/}
-        {/*isSelected*/}
-        {/*// onDateChange={val => setDate(val)}*/}
-        {/*// defaultValue={data}*/}
-        {/*// format={dateFormat.newAccountDateFormat}*/}
-        {/*// date={date}*/}
-      {/*/>*/}
-      {/*<DatePicker*/}
-        {/*isSelected*/}
-        {/*// onDateChange={val => setDate(val)}*/}
-        {/*// defaultValue={data}*/}
-        {/*// format={dateFormat.newAccountDateFormat}*/}
-        {/*// date={date}*/}
-      {/*/>*/}
-    {/*</View>*/}
     <View style={s.selectors}>
       <ButtonFiler
         title="Current month"
@@ -76,7 +53,14 @@ const SimpleDateFilter = ({
 );
 
 SimpleDateFilter.propTypes = {
-
+  isActiveCurrentMonth: T.bool,
+  isActiveHalfYear: T.bool,
+  isActiveLast12: T.bool,
+  isActiveAllTime: T.bool,
+  onSetActiveCurrentMonth: T.func,
+  onSetActiveHalfYear: T.func,
+  onSetActiveLast12: T.func,
+  onSetActiveAllTime: T.func,
 };
 
 

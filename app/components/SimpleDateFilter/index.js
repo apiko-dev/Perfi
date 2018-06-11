@@ -12,26 +12,14 @@ import {
   startOfHalfYearAgo,
   startOfYear,
   startOf10YearsAgo,
-
-  isYesterday,
-  isToday,
 } from '../../utils/dateHelpers';
 
 const enhance = compose(
-  withState('isActiveCurrentMonth', 'setActiveCurrentMonth', false),
+  withState('isActiveCurrentMonth', 'setActiveCurrentMonth', true),
   withState('isActiveHalfYear', 'setActiveHalfYear', false),
   withState('isActiveAllTime', 'setActiveAllTime', false),
-  withState('isActiveLast12', 'setActiveLast12', true),
+  withState('isActiveLast12', 'setActiveLast12', false),
 
-
-  withState('isActiveSelector', 'setActiveSelector', false),
-  withState('isActiveWeek', 'setActiveWeek', true),
-  withState('isActiveCalendar', 'setActiveCalendar', false),
-  withState('isVisibleCalendar', 'toggleCalendar', false),
-
-  withState('isChartShown', 'setChartShow', false),
-
-  withState('listRef', 'setListRef', null),
 
   withHandlers({
     setActive: props => (item) => {
@@ -40,26 +28,11 @@ const enhance = compose(
       props.setActiveLast12(false);
       props.setActiveAllTime(false);
 
-      // props.setActiveCalendar(false);
       props[item](true);
     },
   }),
 
   withHandlers({
-    onToggleCalendar: props => () => {
-      props.toggleCalendar(!props.isVisibleCalendar);
-    },
-    onChangeCalendar: ({ setActive, setDateForFiltering }) => (date) => {
-      if (!date.from && !date.to) return;
-
-      setActive('setActiveCalendar');
-      if (!date.to) {
-        if (isToday(date.from)) setActive('setActiveToday');
-        else if (isYesterday(date.from)) setActive('setActiveYesterday');
-      }
-      setDateForFiltering(date.to ? date : date.from);
-    },
-
     onSetActiveCurrentMonth: props => () => {
       props.setActive('setActiveCurrentMonth');
       if (!props.isActiveCurrentMonth) {
@@ -78,16 +51,11 @@ const enhance = compose(
         props.setDateForFiltering({ from: startOfYear, to: moment().endOf('day') });
       }
     },
-
     onSetActiveAllTime: props => () => {
       props.setActive('setActiveAllTime');
       if (!props.isActiveAllTime) {
         props.setDateForFiltering({ from: startOf10YearsAgo, to: moment().endOf('day') });
       }
-    },
-
-    onToggleChart: props => () => {
-      props.setChartShow(!props.isChartShown);
     },
   }),
 );

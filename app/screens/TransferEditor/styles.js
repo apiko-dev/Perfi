@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     borderStyle: 'dashed',
-    borderColor: colors.greyVeryDarker,
+    borderColor: colors.grey,
     padding: dimensions.halfVerticalIndent,
   },
   withoutPaddingBottom: {
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     borderColor: colors.white,
   },
   inputText: {
-    color: colors.black,
+    color: colors.greyVeryDarker,
   },
   error: {
     fontSize: fontSizes.small,

@@ -4,9 +4,10 @@ import {
   hoistStatics,
 } from 'recompose';
 import { connect } from 'react-redux';
+import { ToastAndroid } from 'react-native'; //eslint-disable-line
 import SettingsScreenView from './SettingsScreenView';
 import { settingsOperations } from '../../modules/settings';
-// import { getExpenseCategory, getIncomeCategory } from '../../modules/categories/selectors';
+import types from '../../modules/navigator/types';
 
 
 const mapStateToProps = state => ({
@@ -19,6 +20,11 @@ const enhance = compose(
   withHandlers({
     onChangeCurrency: props => (index, val) => {
       props.changeCurrency(val);
+    },
+    onGenerateData: props => () => {
+      props.generateData();
+      props.navigation.dispatch({ type: types.GO_TO_INITIAL_SCREEN });
+      ToastAndroid.show('Data was successfully generated', ToastAndroid.SHORT);
     },
   })
 

@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import types from './types';
-import { insert, update, remove, insertAll } from '../../utils/stateHelper';
+import { insertWithUUID, update, remove, insertAllWithUUID } from '../../utils/stateHelper';
 
 //  {
 //        {
@@ -34,13 +34,14 @@ const defaultTransactions = [
 ];
 
 
-const initialState = insertAll({}, defaultTransactions);
+const initialState = {};
 
 
 const transfersReducer = handleActions({
-  [types.CREATE_TRANSFER]: (state, { payload }) => insert(state, createTransfer(payload)),
+  [types.CREATE_TRANSFER]: (state, { payload }) => insertWithUUID(state, createTransfer(payload)),
   [types.UPDATE_TRANSFER]: (state, { payload }) => update(state, payload.id, payload),
   [types.DELETE_TRANSFER]: (state, { payload }) => remove(state, payload),
+  [types.GENERATE_MOCK_DATA]: (state) => insertAllWithUUID(state, defaultTransactions),
 }, initialState);
 
 export default transfersReducer;

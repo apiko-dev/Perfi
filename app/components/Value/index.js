@@ -6,11 +6,11 @@ const enhance = compose(
   connect(state => ({
     currency: state.settings.currency,
   })),
-  withProps(({ value, isTransfer }) => {
-    const val = Number(value);
+  withProps(({ value, isTransfer, type }) => {
+    const val = type ? value : Number(value);
     return ({
-      value: Math.abs(val),
-      type: (val === 0 || isTransfer) ? 'other' : val > 0 ? 'income' : 'expense',
+      value: type ? val : Math.abs(val),
+      type: type || ((val === 0 || isTransfer) ? 'other' : val > 0 ? 'income' : 'expense'),
     });
   }),
 );

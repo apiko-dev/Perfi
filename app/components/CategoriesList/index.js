@@ -3,7 +3,7 @@ import T from 'prop-types';
 import { View, FlatList, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
 import { Text, Separator } from '../index';
-import { CategoryItem } from './components/index';
+import { CategoryItem } from './components';
 import s from './styles';
 
 

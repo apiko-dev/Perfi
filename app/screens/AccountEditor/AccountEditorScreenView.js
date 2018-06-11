@@ -70,7 +70,7 @@ const AccountEditor = ({
     <KeyboardAvoidingView withHeader>
       {isValid &&
       <Button
-        secondaryOpacity
+        borderless
         title="Save"
         onPress={onSubmit}
       />

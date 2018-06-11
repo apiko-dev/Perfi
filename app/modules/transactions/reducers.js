@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 import moment from 'moment';
 import types from './types';
-import { insert, insertAll, update, remove } from '../../utils/stateHelper';
+import { insertWithUUID, insertAllWithUUID, update, remove } from '../../utils/stateHelper';
 
 const createTransaction = (props) => {
   const {
@@ -100,28 +100,26 @@ const defaultAccounts = [
     date: moment().subtract(120, 'days'),
   }),
 
-  createTransaction({ value: -1000, account: '1', category: '7', date: new Date() }),
   createTransaction({ value: -99, account: '1', category: '7', date: new Date() }),
   createTransaction({ value: -100, account: '0', category: '3', date: new Date() }),
   createTransaction({ value: 50, account: '3', category: '0', date: new Date() }),
-  createTransaction({ value: -40, account: '1', category: '3', date: new Date() }),
-  createTransaction({ value: 1300, account: '2', category: '2', date: new Date() }),
-  createTransaction({ value: 30, account: '2', category: '2', date: new Date() }),
-  createTransaction({ value: 30, account: '2', category: '2', date: new Date() }),
+  createTransaction({ value: 30, account: '2', category: '2', date: moment().subtract(1, 'days') }),
+  createTransaction({ value: 56, account: '1', category: '0', date: moment().subtract(1, 'days') }),
+  createTransaction({ value: -54, account: '2', category: '9', date: moment().subtract(1, 'days') }),
   createTransaction({ value: 600, account: '3', category: '1', date: new Date() }),
-  createTransaction({ value: -360, account: '3', category: '3', date: new Date() }),
   createTransaction({ value: 760, account: '1', category: '2', date: new Date() }),
 ];
 
-const initialState = insertAll({}, defaultAccounts);
+const initialState = {};
 
 const transactionsReducer = handleActions({
-  [types.CREATE_TRANSACTION]: (state, { payload }) => insert(
+  [types.CREATE_TRANSACTION]: (state, { payload }) => insertWithUUID(
     state,
     createTransaction(payload),
   ),
   [types.UPDATE_TRANSACTION]: (state, { payload }) => update(state, payload.id, payload),
   [types.DELETE_TRANSACTION]: (state, { payload }) => remove(state, payload),
+  [types.GENERATE_MOCK_DATA]: (state) => insertAllWithUUID(state, defaultAccounts),
 }, initialState);
 
 export default transactionsReducer;

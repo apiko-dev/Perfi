@@ -33,7 +33,7 @@ const enhance = compose(
     onPressToken: ({ expr, updateExpr }) => (token) => {
       const lastToken = R.last(expr);
       let newExpr = expr;
-      if (newExpr > 99999 || newExpr > 9999 && token === '00') return;
+      if (newExpr > 99999 || newExpr.length > 5 || newExpr > 9999 && token === '00') return;
       if (token === '.' && !hasDotInLastNumber(expr)) {
         newExpr += token;
       } else if (token === '00' && !isNaN(lastToken)) {

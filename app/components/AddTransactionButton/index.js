@@ -3,7 +3,6 @@ import T from 'prop-types';
 import ActionButton from 'react-native-action-button';
 import screens from '../../constants/screens';
 import { colors } from '../../styles';
-
 import { NavIcon } from '../index';
 
 

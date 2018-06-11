@@ -1,8 +1,8 @@
 import React from 'react';
 import T from 'prop-types';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 import Swipeout from 'react-native-swipeout';
-import { NavIcon, RoundIcon, Value } from '../index';
+import { NavIcon, RoundIcon, Value, TouchableItem } from '../index';
 import s from './styles';
 
 import { dateWithTime } from '../../utils/dateHelpers';
@@ -15,6 +15,7 @@ const ButtonView = ({ name }) => ( // eslint-disable-line
 );
 
 const TransactionItem = ({
+  id,
   entity,
   isSimpleItem,
   accountName,
@@ -44,10 +45,10 @@ const TransactionItem = ({
     }] : undefined,
   };
 
-  return (<View>
+  return (<View key={id}>
 
     {isSimpleItem ?
-      <TouchableOpacity onPress={onPress} style={s.container}>
+      <TouchableItem onPress={onPress} style={s.container}>
         <View style={s.icon}>
           <RoundIcon
             name={categoryIconName}
@@ -60,7 +61,7 @@ const TransactionItem = ({
         <Value value={entity.value} >
           <Text style={s.percentText}> / {entity.percent}%</Text>
         </Value>
-      </TouchableOpacity>
+      </TouchableItem>
       :
       <Swipeout
         {...swipeoutBtns}
@@ -68,7 +69,7 @@ const TransactionItem = ({
         autoClose
         scroll={onAllowScroll}
       >
-        <TouchableOpacity onPress={onPress} style={s.container}>
+        <TouchableItem onPress={onPress} style={s.container}>
           <View style={s.icon}>
             {isTransfer
               ? <RoundIcon name="shuffle-disabled" backgroundColor={colors.green} />
@@ -83,7 +84,7 @@ const TransactionItem = ({
             <Text style={s.date}>{dateWithTime(entity.date)}</Text>
           </View>
           <Value value={entity.value} isTransfer={isTransfer} />
-        </TouchableOpacity>
+        </TouchableItem>
       </Swipeout>
     }
 
@@ -91,6 +92,7 @@ const TransactionItem = ({
 };
 
 TransactionItem.propTypes = {
+  id: T.string,
   entity: T.object,
   accountName: T.string,
   accountColor: T.string,

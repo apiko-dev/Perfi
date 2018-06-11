@@ -20,7 +20,7 @@ const PieLegend = ({ data, containerStyle }) => (
         </View>
         )}
       keyExtractor={R.prop('x')}
-      ListEmptyComponent={<Text style={s.emptyText}>No data</Text>}
+      ListEmptyComponent={<Text style={s.emptyText}>No statistics</Text>}
     />
   </View>
 );

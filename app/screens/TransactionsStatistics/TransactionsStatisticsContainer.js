@@ -5,7 +5,7 @@ import {
   withProps,
 } from 'recompose';
 import { connect } from 'react-redux';
-import TransactionsScreenView from './TransactionsStatisticsView';
+import TransactionsStatisticsScreenView from './TransactionsStatisticsScreenView';
 import { transactionsOperations } from '../../modules/transactions';
 import {
   getAccountsStats,
@@ -32,4 +32,4 @@ const enhance = compose(
   })),
 );
 
-export default hoistStatics(enhance)(TransactionsScreenView);
+export default hoistStatics(enhance)(TransactionsStatisticsScreenView);

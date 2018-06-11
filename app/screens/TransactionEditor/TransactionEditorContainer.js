@@ -116,7 +116,7 @@ const enhance = compose(
         setAccount(accountsById[account]);
         setCategory(categoriesById[category]);
         setSelectedCategory(true);
-        setNote(note);
+        setNote(note || '');
       }
     },
   }),
