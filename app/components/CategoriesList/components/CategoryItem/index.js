@@ -1,13 +1,14 @@
 import React from 'react';
 import T from 'prop-types';
 import { View, Text } from 'react-native';
+import { pure } from 'recompose';
 import { RoundIcon, TouchableItem } from '../../../index';
 import s from './styles';
 
 import { colors } from '../../../../styles';
 
 
-const TransactionItem = ({
+const CategoryItem = ({
   item,
   onSelect,
 }) => (
@@ -29,11 +30,11 @@ const TransactionItem = ({
   </TouchableItem>
 );
 
-TransactionItem.propTypes = {
+CategoryItem.propTypes = {
   item: T.object,
   onSelect: T.func,
 
 };
 
-export default TransactionItem;
+export default pure(CategoryItem);
 

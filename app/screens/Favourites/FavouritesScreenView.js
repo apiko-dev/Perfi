@@ -30,6 +30,7 @@ const Favourites = ({
     />
     <Separator withShadow />
     <FlatList
+      isSimpleEmptyText={!!concatenatedData.length}
       data={concatenatedData}
       renderItem={({ item }) =>
         <TransactionItem

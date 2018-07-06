@@ -13,6 +13,10 @@ const config = {
   key: 'root',
   whitelist: [
     'settings',
+    'accounts',
+    'categories',
+    'transactions',
+    'transfers',
   ],
   storage: AsyncStorage,
 };

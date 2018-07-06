@@ -1,8 +1,8 @@
 import React from 'react';
 import T from 'prop-types';
-import { View, ViewPropTypes } from 'react-native';
-import { Text, NavIcon, TouchableItem, Value } from '../../components';
-import { colors, fontSizes } from '../../styles';
+import { View, ViewPropTypes, Image } from 'react-native';
+import { Text, TouchableItem, Value } from '../../components';
+import { fontSizes } from '../../styles';
 import s from './styles';
 
 const calcValueSize = value => {
@@ -16,6 +16,7 @@ const calcValueSize = value => {
   return fontSizes.big;
 };
 
+const addAccount = require('../../assets/images/add-account.png');
 
 const calSubTitle = val => fontSizes.verySmall - (val.length > 12 ? (val.length - 12) / 1.5 : 0);
 
@@ -31,6 +32,7 @@ const AccountItem = ({
   ...props
 }) => (
   <TouchableItem
+    useForeground
     onPress={() => onPress(accountId)}
     style={[s.container, containerStyle]}
     {...props}
@@ -39,22 +41,28 @@ const AccountItem = ({
       style={[
         s.accountContainer,
         style,
-        isAddButton ? s.addButtonContainer : { backgroundColor: color },
+        !isAddButton && { backgroundColor: color },
       ]}
     >
       {isAddButton ?
-        <NavIcon
-          name="plus"
-          size={40}
-          tintColor={colors.greyDarker}
+        <Image
+          style={s.image}
+          resizeMode="stretch"
+          source={addAccount}
         />
         :
-        <Value
-          style={[s.value, { fontSize: calcValueSize(balance) }]}
-          containerStyle={s.valueContainer}
-          value={balance}
-          withoutPlus
-        />
+        <View>
+          {balance > 9999999 ?
+            <Text style={s.toLargeText}>Oops, too large money to display it 😁</Text>
+            :
+            <Value
+              style={[s.value, { fontSize: calcValueSize(Math.round(balance)) }]}
+              containerStyle={s.valueContainer}
+              value={Math.round(balance)}
+              withoutPlus
+            />
+        }
+        </View>
       }
       <View style={s.subtitleContainer}>
         <Text

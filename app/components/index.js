@@ -34,6 +34,8 @@ import AddTransactionButton from './AddTransactionButton';
 import CategoryIcon from './CategoryIcon';
 import SimpleDateFilter from './SimpleDateFilter';
 import ColorPicker from './ColorPicker';
+import DrawerIcon from './DrawerIcon';
+import EmptyList from './EmptyList';
 
 
 export {
@@ -73,4 +75,6 @@ export {
   TabContainer,
   AddTransactionButton,
   SimpleDateFilter,
+  DrawerIcon,
+  EmptyList,
 };

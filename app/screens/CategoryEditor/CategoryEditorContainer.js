@@ -34,7 +34,7 @@ const enhance = compose(
     submit: category ? updateCategory : createCategory,
   })),
   withState('icon', 'setIcon', accountProp('icon', icons[0])),
-  withState('name', 'setName', accountProp('name')),
+  withState('name', 'setName', accountProp('name', '')),
   withState('type', 'setType', accountProp('type', null)),
   withState('isPickerVisible', 'setPickerVisible', false),
   withHandlers({

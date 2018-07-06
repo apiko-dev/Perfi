@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 import R from 'ramda';
-import { Animated, View, FlatList, Text } from 'react-native';
+import { Animated, View, FlatList } from 'react-native';
 import screens from '../../constants/screens';
 import { AccauntsSwiper } from './components';
 import {
@@ -10,6 +10,7 @@ import {
   DateFilter,
   AddTransactionButton,
   TransactionItem,
+  EmptyList,
 } from '../../components';
 import s from './styles';
 import { colors, dimensions } from '../../styles';
@@ -41,6 +42,7 @@ const Transactions = ({
     const param = { id: item.id, isTransaction: !!item.account };
     return (
       <TransactionItem
+        id={item.id}
         entity={item}
         onDelete={() => onDelete(param)}
         onAddToFavourite={() => onAddToFavourite(param)}
@@ -88,13 +90,15 @@ const Transactions = ({
         />
         <Separator withShadow />
       </Animated.View>
-
       <AnimatedFlatList
-        scrollEventThrottle={1}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
           { useNativeDriver: true },
         )}
+        scrollEventThrottle={1}
+        initialNumToRender={5}
+        maxToRenderPerBatch={10}
+        windowSize={7}
         contentInset={{ top: HEADER_MAX_HEIGHT }}
         contentOffset={{ y: -HEADER_MAX_HEIGHT }}
         scrollEnabled={isScrollEnabled}
@@ -104,12 +108,12 @@ const Transactions = ({
         contentContainerStyle={s.scrollViewContent}
         keyExtractor={R.prop('id')}
         ItemSeparatorComponent={Separator}
-        ListEmptyComponent={<Text style={s.emptyText}>{'You don\'t have any transactions'}</Text>}
+        ListEmptyComponent={<EmptyList containerStyle={s.emptyList} />}
         ListFooterComponent={
           concatenatedData.length ? <View style={s.paddingBottom}><Separator /></View> : null
         }
       />
-      <AddTransactionButton navigation={navigation} />
+      <AddTransactionButton navigation={navigation} isShowTip />
     </View>
   );
 };

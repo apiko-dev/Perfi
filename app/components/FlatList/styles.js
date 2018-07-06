@@ -9,10 +9,15 @@ const styles = StyleSheet.create({
     paddingBottom: 85,
   },
   emptyText: {
-    paddingTop: dimensions.halfIndent,
+    paddingTop: dimensions.indent,
     textAlign: 'center',
     fontSize: fontSizes.small,
     color: colors.greyDarker,
+  },
+  listContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

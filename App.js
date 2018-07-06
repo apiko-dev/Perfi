@@ -9,7 +9,6 @@ import Navigator from './app/navigation/NavigatorContainer';
 import styles from './app/styles/AppStyles';
 import colors from './app/styles/colors';
 import { appOperations } from './app/modules/app';
-import settingsOperations from './app/modules/settings/operations';
 
 console.ignoredYellowBox = ['MenuContext', 'Deprecation warning'];
 
@@ -32,7 +31,6 @@ const App = () => (
 const enhance = lifecycle({
   componentDidMount() {
     store.dispatch(appOperations.loadAssets());
-    store.dispatch(settingsOperations.checkSettings());
   },
 });
 

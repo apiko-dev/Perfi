@@ -53,6 +53,7 @@ const TransactionsStatistics = ({
           isSimpleItem
         />
         )}
+      isSimpleEmptyText
       listEmptyText="You don't have any transactions"
       ListHeaderComponent={
         <View>
@@ -72,7 +73,7 @@ const TransactionsStatistics = ({
                   style={[
                     s.pieTotalValue, { color: selectedTabIndex === 0 ? colors.green : colors.red }]}
                 >
-                    ${totalValue}
+                    ${Math.round(totalValue)}
                 </Text>
                 <Text style={s.pieDate}>{date}</Text>
               </View>
