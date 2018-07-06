@@ -51,7 +51,7 @@ const enhance = compose(
   connect(null, accountsOperations),
   withAccount,
   withSubmitEvent,
-  withState('name', 'onNameChange', accountProp('name')),
+  withState('name', 'onNameChange', accountProp('name', '')),
   withState('initialBalance', 'setInitialBalance', accountProp('initialBalance', 0)),
   withState('balance', 'setBalance', accountProp('balance')),
   withState('color', 'setColor', accountProp('color', chartPalette.salmon500)),

@@ -84,6 +84,7 @@ const CategoryEditor = (props) => {
       <KeyboardAvoidingView withHeader>
         {isValid &&
         <Button
+          borderless
           secondaryOpacity
           title="Save"
           onPress={onSubmit}

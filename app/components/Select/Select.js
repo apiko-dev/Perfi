@@ -103,6 +103,7 @@ const Select = (props) => {
     icon,
     label,
     labelStyle,
+    isShowScroll,
     disabled = false,
   } = props;
 
@@ -125,6 +126,7 @@ const Select = (props) => {
         onLayout={onSetOptionWidth}
         onSelect={onSelect}
         options={options}
+        showsVerticalScrollIndicator={isShowScroll}
         renderRow={
           renderRow(optionHeight, keyToRender, isSelected, defaultValue, textStyle, isAccount)
         }
@@ -186,6 +188,7 @@ Select.propTypes = {
   icon: T.object,
   label: T.string,
   labelStyle: Text.propTypes.style,
+  isShowScroll: T.bool,
   disabled: T.bool,
 };
 

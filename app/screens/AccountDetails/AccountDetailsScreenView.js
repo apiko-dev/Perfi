@@ -62,11 +62,11 @@ const AccountDetails = ({
       <Separator withShadow />
 
       <FlatList
+        isSimpleEmptyText={!!concatenatedData.length}
         scrollEnabled={isScrollEnabled}
         data={concatenatedData}
         renderItem={_renderItem}
         flatListRef={setListRef}
-        listEmptyText="You don't have any transaction on this account"
       />
     </View>
   );

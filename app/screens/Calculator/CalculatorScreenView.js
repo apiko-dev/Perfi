@@ -36,7 +36,7 @@ const Calculator = (props) => {
           [s.expressionContainerStyle, { backgroundColor: colors[isIncome ? 'green' : 'red'] }]
         }
       >
-        <Value style={s.expressionStyle} value={isIncome ? +expr : -expr} />
+        <Value style={s.expressionStyle} value={expr} type={isIncome ? 'income' : 'expense'} />
       </View>
 
       <View style={s.keyboardContainer}>

@@ -8,7 +8,7 @@ const initialState = {
   isSignedIn: false,
 };
 
-const transfersReducer = handleActions({
+const settingsReducer = handleActions({
   [types.CHANGE_CURRENCY]: (state, { payload }) => ({
     ...state,
     currency: payload,
@@ -19,4 +19,4 @@ const transfersReducer = handleActions({
   }),
 }, initialState);
 
-export default transfersReducer;
+export default settingsReducer;

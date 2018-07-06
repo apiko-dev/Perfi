@@ -88,7 +88,7 @@ const AccountEditor = ({
               onSelectDate={(none, d) => onChangeDate(d)}
               containerStyle={s.marginVertical}
               format={dateFormat.newAccountDateFormat}
-              colorIsSelected={colors.darkGrey}
+              colorIsSelected={colors.grey}
               date={date}
             />
             <InputText

@@ -22,17 +22,25 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: colors.greyDarker,
   },
+  touchableContent: {
+    height: dimensions.bigIconSize,
+    width: dimensions.bigIconSize,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 
 const BigRoundIconButton = ({
   backgroundColor, tintColor = colors.white, border, onPress, containerStyle, ...props
 }) => (
-  <TouchableItem onPress={onPress} style={containerStyle}>
-    <View style={[styles.circle, { backgroundColor }, border]} >
-      <CategoryIcon tintColor={tintColor} {...props} />
+  <View style={containerStyle}>
+    <View style={[styles.circle, { backgroundColor }, border]}>
+      <TouchableItem borderless onPress={onPress} style={styles.touchableContent} >
+        <CategoryIcon tintColor={tintColor} {...props} />
+      </TouchableItem>
     </View>
-  </TouchableItem>
+  </View>
 );
 
 BigRoundIconButton.propTypes = {

@@ -25,6 +25,7 @@ const enhance = compose(
       'icon'], categoriesEntities),
     categoryName: R.pathOr('Other', [entity.category, 'name'], categoriesEntities),
   })),
+  pure,
 );
 
-export default enhance(pure(TransactionItem));
+export default enhance(TransactionItem);
