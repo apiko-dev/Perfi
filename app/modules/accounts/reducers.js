@@ -18,7 +18,6 @@ const createAccount = (props) => {
   };
 };
 
-
 //    "accounts": Object {
 //        "byId": Object {
 //            "0": Object {
@@ -46,11 +45,8 @@ const createAccount = (props) => {
 //          ],
 //      },
 
-
 const defaultAccounts = [
   createAccount({ name: 'Card 1', color: chartPalette.purple500 }),
-  createAccount({ name: 'Card 2', color: chartPalette.blue500 }),
-  createAccount({ name: 'Cash', color: chartPalette.orange500 }),
 ];
 
 
