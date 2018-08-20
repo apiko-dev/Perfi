@@ -1,13 +1,14 @@
 import React from 'react';
-import { NavIcon, PropsProxyHOC, Logo } from '../components';
+import { View } from 'react-native';
+import { PropsProxyHOC, Logo, DrawerIcon } from '../components';
 import styles from '../styles/AppStyles';
 
 
 const navOptions = ({ title, icon }) => ({
   navigationOptions: {
     title,
-    headerTitle: <Logo />,
-    drawerIcon: PropsProxyHOC(NavIcon, { name: icon }),
+    headerTitle: <View style={styles.logoContainer}><Logo /></View>,
+    drawerIcon: PropsProxyHOC(DrawerIcon, { name: icon }),
     headerStyle: styles.headerStyle,
     headerTitleStyle: styles.headerTitleStyle,
     headerBackTitle: null,

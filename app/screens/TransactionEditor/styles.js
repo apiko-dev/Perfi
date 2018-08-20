@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { dimensions, colors, fontSizes, fontWeights } from '../../styles';
+import { dimensions, fontSizes, fontWeights } from '../../styles';
 
 
 const styles = StyleSheet.create({
@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
   valueText: {
     fontSize: fontSizes.xbig,
     fontWeight: fontWeights.extraBold,
-    color: colors.red,
     alignSelf: 'center',
     paddingTop: dimensions.verticalIndent,
     paddingBottom: dimensions.verticalIndent * 2,

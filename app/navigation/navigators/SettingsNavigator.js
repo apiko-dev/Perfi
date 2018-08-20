@@ -12,7 +12,7 @@ const SettingsNavigator = StackNavigator({
 }, {
   ...navOptions({
     title: 'Settings',
-    icon: 'sliders',
+    icon: 'settings',
   }),
 });
 

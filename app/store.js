@@ -1,24 +1,24 @@
-import { autoRehydrate, persistStore } from 'redux-persist';
+import { persistStore } from 'redux-persist';
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import devToolsEnhancer from 'remote-redux-devtools';
-import { AsyncStorage } from 'react-native';
-// import appReducer from './reducers';
 import reducer from './modules';
 
-
 const enhancer = compose(
-  autoRehydrate(),
   applyMiddleware(thunk),
   devToolsEnhancer({ realtime: true }),
 );
 
-const store = createStore(
-  reducer,
-  undefined,
-  enhancer,
-);
+const configureStore = () => {
+  const store = createStore(
+    reducer,
+    undefined,
+    enhancer,
+  );
 
-persistStore(store, { storage: AsyncStorage }).purge();
+  const persistor = persistStore(store);
+  // persistor.purge();
+  return { persistor, store };
+};
 
-export default store;
+export const { persistor, store } = configureStore();

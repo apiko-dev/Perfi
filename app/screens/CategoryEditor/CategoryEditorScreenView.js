@@ -13,7 +13,7 @@ import {
   HeaderTitle,
   IconsPickerModal,
   BigRoundIconButton,
-} from '../../components/index';
+} from '../../components';
 import s from './styles';
 import { colors, dimensions } from '../../styles';
 
@@ -30,6 +30,7 @@ const CategoryEditor = (props) => {
     togglePicker,
     isPickerVisible,
     onSelectCategory,
+    navigation,
   } = props;
 
   return (
@@ -56,16 +57,20 @@ const CategoryEditor = (props) => {
               containerStyle={s.root}
             />
           </View>
-          <Select
-            options={['Expense', 'Income']}
-            containerStyle={s.selectorContainer}
-            style={s.selector}
-            defaultValue={'Choose transaction type'}
-            selectorsWidth={dimensions.containerWidth}
-            onSelect={onSelectCategory}
-            textStyle={s.selectTextStyle}
-            optionHeight={dimensions.verticalIndent * 2.8}
-          />
+
+          {!getParam('category')(navigation) &&
+            <Select
+              options={['Expense', 'Income']}
+              containerStyle={s.selectorContainer}
+              style={s.selector}
+              defaultValue="Choose transaction type"
+              selectorsWidth={dimensions.containerWidth}
+              onSelect={onSelectCategory}
+              textStyle={s.selectTextStyle}
+              optionHeight={dimensions.verticalIndent * 2.8}
+            />
+          }
+
         </View>
         <IconsPickerModal
           icons={icons}
@@ -79,6 +84,7 @@ const CategoryEditor = (props) => {
       <KeyboardAvoidingView withHeader>
         {isValid &&
         <Button
+          borderless
           secondaryOpacity
           title="Save"
           onPress={onSubmit}
@@ -104,10 +110,10 @@ CategoryEditor.propTypes = {
   icons: T.array,
   onChangeIcon: T.func,
   setName: T.func,
-  type: T.string,
   togglePicker: T.func,
   isPickerVisible: T.bool,
   onSelectCategory: T.func,
+  navigation: T.object,
 };
 
 export default CategoryEditor;

@@ -1,29 +1,26 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import T from 'prop-types';
-import Modal from 'react-native-modal';
-import { ColorPicker } from 'react-native-color-picker';
 import { getParam } from '../../utils/navHelpers';
 import DeleteButton from './DeleteButton';
 import {
   Input,
   Button,
+  ColorPicker,
   Text,
   KeyboardAvoidingView,
-  DatePicker,
   ScreenWrapper,
   HeaderTitle,
-} from '../../components/index';
+} from '../../components';
 import s from './styles';
 
 const AccountEditor = ({
+   navigation,
    name,
-   date,
    onSubmit,
    isValid,
    initialBalance,
    onNameChange,
-   onDateChange,
    onChangeBalance,
    onToggleColorPicker,
    isColorPickerVisible,
@@ -33,20 +30,12 @@ const AccountEditor = ({
 }) => (
   <View style={s.root}>
     <ScreenWrapper>
-      <Modal
-        animationIn="fadeIn"
-        animationOut="fadeOut"
+      <ColorPicker
         isVisible={isColorPickerVisible}
+        color={color}
+        onSelectColor={onSelectColor}
         onBackdropPress={onToggleColorPicker}
-      >
-        <ColorPicker
-          style={s.modal}
-          onColorSelected={onSelectColor}
-          defaultColor={color}
-          hideSliders
-        />
-      </Modal>
-
+      />
       <View style={s.container}>
         <View style={s.secondContainer}>
           <TouchableOpacity
@@ -55,48 +44,39 @@ const AccountEditor = ({
           />
           <Text style={s.label}>Choose color</Text>
         </View>
-
         <Input
           isValid
+          maxLength={18}
           placeholder="Account name"
           value={name}
           onChangeText={onNameChange}
           containerStyle={s.root}
         />
       </View>
+      {!getParam('account')(navigation) &&
+        <Input
+          isValid
+          maxLength={6}
+          placeholder="Initial balance"
+          value={initialBalance ? initialBalance.toString() : ''}
+          onChangeText={onChangeBalance}
+          keyboardType="numeric"
+          containerStyle={s.balanceContainer}
+          iconRight={icon}
+        />
 
-      <Input
-        isValid
-        placeholder="Initial balance"
-        value={initialBalance ? initialBalance.toString() : ''}
-        onChangeText={onChangeBalance}
-        keyboardType="phone-pad"
-        containerStyle={s.balanceContainer}
-        iconRight={icon}
-      />
-
-      <DatePicker
-        placeholder="Initial date"
-        onSelectDate={onDateChange}
-        defaultValue={date}
-      />
-
+      }
     </ScreenWrapper>
-
-
     <KeyboardAvoidingView withHeader>
       {isValid &&
       <Button
-        secondaryOpacity
+        borderless
         title="Save"
         onPress={onSubmit}
       />
       }
     </KeyboardAvoidingView>
-
   </View>
-
-
 );
 
 AccountEditor.navigationOptions = ({ navigation }) => ({
@@ -106,13 +86,12 @@ AccountEditor.navigationOptions = ({ navigation }) => ({
 });
 
 AccountEditor.propTypes = {
+  navigation: T.object,
   name: T.string,
-  date: T.any,
   onSubmit: T.func,
   isValid: T.bool,
   initialBalance: T.number,
   onNameChange: T.func,
-  onDateChange: T.func,
   onChangeBalance: T.func,
   onToggleColorPicker: T.func,
   isColorPickerVisible: T.bool,

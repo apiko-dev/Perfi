@@ -13,15 +13,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  addButtonContainer: {
-    borderWidth: scalingUtils.scale(2),
-    borderColor: colors.greyDarker,
-    borderStyle: 'dashed',
-  },
-  title: {
+  value: {
     fontSize: fontSizes.big,
     color: colors.white,
     fontWeight: fontWeights.heavy,
+  },
+  toLargeText: {
+    color: colors.white,
+    fontWeight: fontWeights.semiBold,
+    fontSize: fontSizes.verySmall,
+    textAlign: 'center',
+    paddingBottom: 10,
+  },
+  valueContainer: {
+    padding: dimensions.halfIndent,
   },
   subtitle: {
     fontSize: fontSizes.verySmall,
@@ -37,6 +42,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: scalingUtils.verticalScale(10),
   },
+
+  image: {
+    width: dimensions.length,
+    height: dimensions.length,
+  },
+
 });
 
 export default styles;

@@ -88,6 +88,8 @@ const Select = (props) => {
     onSetOptionWidth,
     optionHeight,
     selectorsWidth,
+    selectedInputStile = s.selectedInputStile,
+    selectedSecondInputContainer = s.selectedSecondInputContainer,
     options,
     keyToRender,
     placeholder,
@@ -97,9 +99,11 @@ const Select = (props) => {
     containerStyle,
     defaultValue,
     isSelected,
+    changeStyleIsSelected = true,
     icon,
     label,
     labelStyle,
+    isShowScroll,
     disabled = false,
   } = props;
 
@@ -122,6 +126,7 @@ const Select = (props) => {
         onLayout={onSetOptionWidth}
         onSelect={onSelect}
         options={options}
+        showsVerticalScrollIndicator={isShowScroll}
         renderRow={
           renderRow(optionHeight, keyToRender, isSelected, defaultValue, textStyle, isAccount)
         }
@@ -132,15 +137,19 @@ const Select = (props) => {
           containerStyle={style}
           secondContainerStyle={[s.secondInputContainer, disabled && {
             backgroundColor: colors.grey,
-          }, isSelected && s.selectedSecondInputContainer]}
-          style={[s.inputStyle, textStyle, isSelected && s.selectedInputStile]}
+          }, isSelected && changeStyleIsSelected && selectedSecondInputContainer]}
+          style={[
+            s.inputStyle,
+            textStyle,
+            isSelected && changeStyleIsSelected && selectedInputStile,
+          ]}
           isValid
           icon={isAccount ? renderAccountIcon(icon, isSelected) : renderIcon(icon, isDropped)}
 
           iconRight={{
             name: isDropped ? 'chevron-up' : 'chevron-down',
             size: dimensions.iconSize - 4,
-            color: isSelected ? colors.green : colors.grey,
+            color: isSelected && changeStyleIsSelected ? colors.green : colors.grey,
           }}
           rightIconStyle={s.rightIconStyle}
           leftIconStyle={s.leftIconStyle}
@@ -148,7 +157,7 @@ const Select = (props) => {
           pointerEvents="none"
           value={getOptionText(isSelected || defaultValue, keyToRender)}
           placeholder={disabled ? disabledPlaceholder : placeholder}
-          placeholderColor={disabled ? colors.green : null}
+          placeholderColor={disabled ? colors.gray : null}
         />
       </ModalDropdown>
     </View>
@@ -158,6 +167,7 @@ const Select = (props) => {
 Select.propTypes = {
   isDropped: T.bool,
   isAccount: T.bool,
+  changeStyleIsSelected: T.bool,
   maxOptionsToDisplay: T.number,
   onDropped: T.func,
   onSelect: T.func,
@@ -172,10 +182,13 @@ Select.propTypes = {
   containerStyle: ViewPropTypes.style,
   defaultValue: T.oneOfType([T.string, T.object]),
   isSelected: T.any,
+  selectedInputStile: ViewPropTypes.style,
+  selectedSecondInputContainer: ViewPropTypes.style,
   keyToRender: T.string,
   icon: T.object,
   label: T.string,
   labelStyle: Text.propTypes.style,
+  isShowScroll: T.bool,
   disabled: T.bool,
 };
 

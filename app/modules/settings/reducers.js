@@ -5,13 +5,18 @@ import currencies from '../../constants/currencies';
 
 const initialState = {
   currency: currencies.dollar,
+  isSignedIn: false,
 };
 
-const transfersReducer = handleActions({
+const settingsReducer = handleActions({
   [types.CHANGE_CURRENCY]: (state, { payload }) => ({
     ...state,
     currency: payload,
   }),
+  [types.SIGN_IN]: state => ({
+    ...state,
+    isSignedIn: true,
+  }),
 }, initialState);
 
-export default transfersReducer;
+export default settingsReducer;

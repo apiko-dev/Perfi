@@ -1,22 +1,22 @@
 import { handleActions } from 'redux-actions';
 import types from './types';
-import { colors } from '../../styles';
-import { insert, insertAll, update, remove } from '../../utils/stateHelper';
+import { chartPalette } from '../../styles';
+import { insert, insertAll, update, removeId } from '../../utils/stateHelper';
+import typesSettings from '../settings/types';
 
 
 const createAccount = (props) => {
   const {
     name,
-    icon,
-    initialBalance = 10,
+    initialBalance = 0,
     initialDate = new Date(),
-    color = colors.green,
-    isAddButton = false,
+    color = chartPalette.blue500,
   } = props;
 
-  return { name, icon, initialBalance, initialDate, color, isAddButton };
+  return {
+    name, initialBalance, initialDate, color,
+  };
 };
-
 
 //    "accounts": Object {
 //        "byId": Object {
@@ -26,7 +26,6 @@ const createAccount = (props) => {
 //                  "id": "0",
 //                  "initialBalance": 0,
 //                  "initialDate": 2018-04-17T13:29:18.248Z,
-//                  "isAddButton": false,
 //                  "name": "Card",
 //                },
 //            "1": Object {
@@ -35,26 +34,7 @@ const createAccount = (props) => {
 //                  "id": "1",
 //                  "initialBalance": 0,
 //                  "initialDate": 2018-04-17T13:29:18.248Z,
-//                  "isAddButton": false,
 //                  "name": "Cash",
-//                },
-//            "2": Object {
-//                "color": "#27ae60",
-//                  "icon": "cash-multiple",
-//                  "id": "2",
-//                  "initialBalance": 0,
-//                  "initialDate": 2018-04-17T13:29:18.248Z,
-//                  "isAddButton": false,
-//                  "name": "Test 1",
-//                },
-//            "3": Object {
-//                "color": "#27ae60",
-//                  "icon": "cash-multiple",
-//                  "id": "3",
-//                  "initialBalance": 0,
-//                  "initialDate": 2018-04-17T13:29:18.248Z,
-//                  "isAddButton": false,
-//                  "name": "Test 2",
 //                },
 //          },
 //        "ids": Array [
@@ -65,12 +45,15 @@ const createAccount = (props) => {
 //          ],
 //      },
 
-
 const defaultAccounts = [
-  createAccount({ name: 'Card', icon: 'credit-card', color: colors.orange }),
-  createAccount({ name: 'Cash', icon: 'cash-multiple', color: colors.blue }),
-  createAccount({ name: 'Test 1', icon: 'cash-multiple', color: colors.red }),
-  createAccount({ name: 'Test 2', icon: 'cash-multiple' }),
+  createAccount({ name: 'Card 1', color: chartPalette.purple500 }),
+];
+
+
+const generetedAccounts = [
+  createAccount({ name: 'Test Card', color: chartPalette.lightBlue500 }),
+  createAccount({ name: 'Test Cash', color: chartPalette.pink500 }),
+  createAccount({ name: 'Test Shares', color: chartPalette.yellow500 }),
 ];
 
 const initialState = insertAll({}, defaultAccounts);
@@ -81,7 +64,9 @@ const accountsReducer = handleActions({
     balance: payload.initialBalance,
   })),
   [types.UPDATE_ACCOUNT]: (state, { payload }) => update(state, payload.id, payload),
-  [types.DELETE_ACCOUNT]: (state, { payload }) => remove(state, payload),
+  [types.DELETE_ACCOUNT]: (state, { payload }) => removeId(state, payload),
+  [types.GENERATE_MOCK_DATA]: (state) => insertAll(state, generetedAccounts),
+  [typesSettings.RESET_DATA]: () => initialState,
 }, initialState);
 
 export default accountsReducer;

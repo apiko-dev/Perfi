@@ -1,82 +1,34 @@
-import { StyleSheet } from 'react-native';
-import { dimensions, colors, fontSizes, scalingUtils, fontWeights } from '../../styles';
+import { Platform, StyleSheet } from 'react-native';
+import { dimensions, colors, scalingUtils } from '../../styles';
 
-const { indent } = dimensions;
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
     backgroundColor: colors.white,
   },
-
   subtitle: {
     marginHorizontal: dimensions.indent,
     paddingTop: dimensions.indent,
-    paddingBottom: 0,
   },
-
-  paddingHorizontal: {
-    paddingLeft: dimensions.halfIndent,
-    paddingRight: dimensions.halfIndent,
-  },
-
-  list: {
-    marginTop: dimensions.halfIndent,
-  },
-
   paddingBottom: {
-    paddingBottom: 85,
+    paddingBottom: scalingUtils.verticalScale(Platform.OS === 'ios' ? 80 : 92),
   },
-
-  emptyText: {
-    paddingTop: dimensions.halfIndent,
-    alignSelf: 'center',
-    fontSize: fontSizes.small,
-    color: colors.greyDarker,
-  },
-
-  dateSelector: {
-    alignItems: 'center',
-    width: scalingUtils.moderateScale(100),
-    borderRadius: 4,
-
-  },
-
-  selectors: {
-    marginTop: dimensions.indent,
-    paddingHorizontal: indent,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-
-  btnContainer: {
-    height: undefined,
-    borderRadius: 4,
-    width: scalingUtils.moderateScale(75),
-    borderColor: colors.grey,
-    borderWidth: 1,
+  header: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
     backgroundColor: colors.white,
-
+    overflow: 'hidden',
+    height: dimensions.headerMaxHeight,
+    zIndex: 1,
   },
-
-  btTitleStyle: {
-    height: undefined,
-    fontSize: fontSizes.verySmall,
-    color: colors.greyDarker,
-    fontWeight: fontWeights.normal,
+  scrollViewContent: {
+    paddingTop: Platform.OS !== 'ios' ? dimensions.headerMaxHeight : 0,
   },
-
-  activeButtonBackgroundColor: {
-    backgroundColor: colors.green,
-    borderColor: colors.green,
-  },
-
-  activeButtonColor: {
-    color: colors.white,
-  },
-
-  separator: {
-    opacity: 0.2,
+  emptyList: {
+    paddingTop: dimensions.indent * 1.5,
   },
 
 });

@@ -2,13 +2,12 @@ import React from 'react';
 import { View, ScrollView } from 'react-native';
 import T from 'prop-types';
 import { getParam } from '../../utils/navHelpers';
-import { dimensions, colors } from '../../styles';
+import { dimensions } from '../../styles';
 // import dateFormat from '../../constants/dateFormat';
 
 import {
   Input,
   Button,
-  Text,
   KeyboardAvoidingView,
   DatePicker,
   ScreenWrapper,
@@ -16,40 +15,40 @@ import {
   Select,
   FormInput,
   CategoriesList,
+  Value,
 } from '../../components';
 import s from './styles';
 
 const AccountEditor = ({
-data,
-icon,
-date,
-value,
-note,
-setDate,
-onSubmit,
-accounts,
-categoryName,
-categoryIcon,
-onUpdateNote,
-onToggleModal,
-isVisibleModal,
-onChangeAccount,
-incomeCategories,
-onChangeCategory,
-isReadyForSubmit,
-expenseCategories,
-isSelectedCategory,
+  data,
+  icon,
+  date,
+  value,
+  note,
+  setDate,
+  onSubmit,
+  accounts,
+  account,
+  isIncome,
+  categoryName,
+  categoryIcon,
+  onUpdateNote,
+  onToggleModal,
+  isVisibleModal,
+  onChangeAccount,
+  incomeCategories,
+  onChangeCategory,
+  isReadyForSubmit,
+  expenseCategories,
+  isSelectedCategory,
 }) => (
   <View style={s.root}>
     <ScreenWrapper style={s.withoutPaddingBot}>
       <ScrollView>
-
-        <Text style={[s.valueText, { color: value < 0 ? colors.red : colors.green }]}>
-          {`${value < 0 ? '-' : '+'} $${Math.abs(value)}`}
-        </Text>
-
+        <Value value={value} style={s.valueText} />
         <Select
           isAccount
+          selectOption={account}
           options={accounts}
           containerStyle={s.selectorContainer}
           style={s.selector}
@@ -59,7 +58,6 @@ isSelectedCategory,
           textStyle={s.selectTextStyle}
           optionHeight={dimensions.verticalIndent * 2.8}
         />
-
         <FormInput
           style={s.selector}
           containerStyle={s.selectorContainer}
@@ -68,7 +66,6 @@ isSelectedCategory,
           icon={categoryIcon}
           onPress={onToggleModal}
         />
-
         <DatePicker
           isSelected
           placeholder="Initial date"
@@ -77,7 +74,6 @@ isSelectedCategory,
           // format={dateFormat.newAccountDateFormat}
           date={date}
         />
-
         <Input
           isValid
           placeholder="Note"
@@ -88,7 +84,6 @@ isSelectedCategory,
         />
       </ScrollView>
     </ScreenWrapper>
-
     <KeyboardAvoidingView withHeader>
       {isReadyForSubmit &&
       <Button
@@ -98,18 +93,14 @@ isSelectedCategory,
       />
       }
     </KeyboardAvoidingView>
-
     <CategoriesList
       isModal
       isVisible={isVisibleModal}
-      categories={value < 0 ? expenseCategories : incomeCategories}
+      categories={isIncome ? incomeCategories : expenseCategories}
       onSelect={onChangeCategory}
       onToggleModal={onToggleModal}
     />
-
   </View>
-
-
 );
 
 AccountEditor.navigationOptions = ({ navigation }) => ({
@@ -127,6 +118,7 @@ AccountEditor.propTypes = {
   onUpdateNote: T.func,
   note: T.string,
   accounts: T.array,
+  account: T.object,
   onChangeAccount: T.func,
   expenseCategories: T.array,
   incomeCategories: T.array,
@@ -135,6 +127,7 @@ AccountEditor.propTypes = {
   isSelectedCategory: T.bool,
   onChangeCategory: T.func,
   onToggleModal: T.func,
+  isIncome: T.bool,
   isVisibleModal: T.bool,
   isReadyForSubmit: T.bool,
 };

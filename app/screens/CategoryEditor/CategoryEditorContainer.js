@@ -34,7 +34,7 @@ const enhance = compose(
     submit: category ? updateCategory : createCategory,
   })),
   withState('icon', 'setIcon', accountProp('icon', icons[0])),
-  withState('name', 'setName', accountProp('name')),
+  withState('name', 'setName', accountProp('name', '')),
   withState('type', 'setType', accountProp('type', null)),
   withState('isPickerVisible', 'setPickerVisible', false),
   withHandlers({
@@ -45,7 +45,9 @@ const enhance = compose(
       setIcon(value);
       setPickerVisible(false);
     },
-    onSubmit: ({ submit, navigation, category, onClose, ...props }) => () => {
+    onSubmit: ({
+      submit, navigation, category, onClose, ...props
+    }) => () => {
       Keyboard.dismiss();
       const editedProps = R.pick(['name', 'icon', 'type'], props);
       const propsToSubmit = category ? { id: category.id, ...editedProps } : editedProps;

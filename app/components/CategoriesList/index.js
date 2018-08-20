@@ -1,19 +1,19 @@
 import React from 'react';
 import T from 'prop-types';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
-import { Text, TouchableItem, Separator } from '../index';
-import { CategoryItem } from './components/index';
+import { Text, Separator } from '../index';
+import { CategoryItem } from './components';
 import s from './styles';
 
 
 const CategoriesList = ({
-    categories,
-    isVisible,
-    onToggleModal,
-    onSelect,
-    isModal,
-  }) => {
+  categories,
+  isVisible,
+  onToggleModal,
+  onSelect,
+  isModal,
+}) => {
   const _keyExtractor = item => item.id;
 
   /* eslint-disable react/prop-types */
@@ -27,7 +27,7 @@ const CategoriesList = ({
 
     <View>
       <View style={s.calendarIcon}>
-        <TouchableItem onPress={onToggleModal} />
+        <TouchableOpacity onPress={onToggleModal} />
       </View>
 
       <Modal
@@ -53,7 +53,7 @@ const CategoriesList = ({
       </Modal>
     </View>
 
-        :
+    :
 
     <View style={s.listContainer}>
       <Separator />

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import colors from './colors';
-import { indent, doubleIndent, headerHeight } from './dimensions';
+import { indent, doubleIndent, headerHeight, halfIndent } from './dimensions';
 
 const styles = StyleSheet.create({
   blockStyle: {
@@ -17,10 +17,14 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: colors.greyDarker,
   },
+  logoContainer: {
+    marginHorizontal: halfIndent,
+  },
   headerStyle: {
     height: headerHeight,
-    borderBottomWidth: 0,
     elevation: 0,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.greyOpacity,
     backgroundColor: colors.white,
   },
   headerTextStyle: {

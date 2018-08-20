@@ -5,7 +5,7 @@ import { Keyboard } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import AccountEditorScreenView from './AccountEditorScreenView';
 import { getParam } from '../../utils/navHelpers';
-import { colors, dimensions } from '../../styles';
+import { dimensions, chartPalette } from '../../styles';
 import { accountsOperations } from '../../modules/accounts/index';
 
 
@@ -23,12 +23,8 @@ const withSubmitEvent = withProps(({ account, createAccount, updateAccount }) =>
   submit: account ? updateAccount : createAccount,
 }));
 
-const onDateChange = ({ setDate }) => (date) => {
-  setDate(date);
-};
-
-const onChangeBalance = ({ onInitialBalanceChange }) => (value) => {
-  onInitialBalanceChange(+value.replace(/[^\d]/g, ''));
+const onChangeBalance = ({ setInitialBalance }) => (value) => {
+  setInitialBalance(+value.replace(/[^\d]/g, ''));
 };
 
 const onToggleColorPicker = ({ toggleColorPicker, isColorPickerVisible }) => () => {
@@ -40,7 +36,9 @@ const onSelectColor = ({ setColor, toggleColorPicker }) => (color) => {
   setColor(color);
 };
 
-const onSubmit = ({ submit, account, navigation, ...props }) => () => {
+const onSubmit = ({
+  submit, account, navigation, ...props
+}) => () => {
   Keyboard.dismiss();
   const editedProps =
     R.pick(['name', 'currency', 'date', 'initialBalance', 'balance', 'color'], props);
@@ -53,23 +51,21 @@ const enhance = compose(
   connect(null, accountsOperations),
   withAccount,
   withSubmitEvent,
-  withState('name', 'onNameChange', accountProp('name')),
-  withState('initialBalance', 'onInitialBalanceChange', accountProp('initialBalance', 0)),
+  withState('name', 'onNameChange', accountProp('name', '')),
+  withState('initialBalance', 'setInitialBalance', accountProp('initialBalance', 0)),
   withState('balance', 'setBalance', accountProp('balance')),
-  withState('date', 'setDate', accountProp('date', new Date())),
-  withState('color', 'setColor', accountProp('color', colors.green)),
+  withState('color', 'setColor', accountProp('color', chartPalette.salmon500)),
   withState('isColorPickerVisible', 'toggleColorPicker', false),
 
   defaultProps({
     onClear: () => null,
     icon: {
-      name: 'attach-money',
+      name: 'cash-multiple',
       size: dimensions.iconSize,
     },
   }),
 
   withHandlers({
-    onDateChange,
     onChangeBalance,
     onToggleColorPicker,
     onSelectColor,

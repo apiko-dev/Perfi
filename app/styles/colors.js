@@ -3,6 +3,7 @@ export default {
   white: '#ffffff',
   black: '#131314',
   grey: '#D7DFE3',
+  greyOpacity: 'rgba(215, 223, 227, .3)',
   greyLighter: '#ececec',
   greyDarker: '#afb8bb',
   greyVeryDarker: '#666666',
@@ -11,15 +12,16 @@ export default {
   orange: '#f39c12',
   blue: '#2980b9',
   red: '#ef1f28',
-  yellow: '#FFC107',
-
+  yellow: '#F5C94E',
+  purple: '#933DA8',
+  salmon: '#FC714E',
 
   primary: '#504B4B',
   primaryDarken: '#323131',
   secondary: '#1CD493',
   secondaryOpacity: 'rgba(28, 212, 147, .4)',
-    // error: '#FF445B',
-    // white: '#FFFFFF',
+  // error: '#FF445B',
+  // white: '#FFFFFF',
   lightGrey: '#dbdbdb',
 
   darkGrey: '#7A7777',
@@ -53,15 +55,17 @@ export default {
 };
 
 export const chartPalette = {
-  blue500: '#2196F3',
-  red500: '#F44336',
-  green500: '#4CAF50',
+  blue500: '#2980b9',
+  darkSalmon500: '#E9967A',
+  orange500: '#f39c12',
+  salmon500: '#FC714E',
+  grey500: '#D7DFE3',
   lightBlue500: '#03A9F4',
   pink500: '#E91E63',
   lime500: '#CDDC39',
   cyan500: '#00BCD4',
-  purple500: '#9C27B0',
-  yellow500: '#FFEB3B',
+  purple500: '#933DA8',
+  yellow500: '#F5C94E',
   blueGray500: '#607D8B',
 };
 

@@ -1,8 +1,9 @@
 import { compose, withHandlers, withState, lifecycle, hoistStatics } from 'recompose';
+import { connect } from 'react-redux';
 import R from 'ramda';
 import CalculatorScreenView from './CalculatorScreenView';
-import { getParam } from '../../utils/navHelpers';
 import screens from '../../constants/screens';
+import { withPickParams, withPaschal } from '../../utils/enhancers';
 
 const defaultExpr = '0';
 
@@ -12,7 +13,13 @@ const hasDotInLastNumber = R.pipe(
   R.equals('.'),
 );
 
+const mapStateToProps = (state, props) => ({
+  value: R.pathOr('', ['transactions', 'byId', props.id, 'value'], state),
+});
+
 const enhance = compose(
+  withPickParams,
+  connect(mapStateToProps),
   withState('isIncome', 'setIsIncome', false),
 
   withState('expr', 'updateExpr', ({ value }) => value || defaultExpr),
@@ -26,7 +33,7 @@ const enhance = compose(
     onPressToken: ({ expr, updateExpr }) => (token) => {
       const lastToken = R.last(expr);
       let newExpr = expr;
-
+      if (newExpr > 99999 || newExpr.length > 5 || newExpr > 9999 && token === '00') return;
       if (token === '.' && !hasDotInLastNumber(expr)) {
         newExpr += token;
       } else if (token === '00' && !isNaN(lastToken)) {
@@ -41,14 +48,19 @@ const enhance = compose(
 
       updateExpr(newExpr);
     },
-    onSubmitResult: ({ expr, navigation, isIncome }) => () => {
-      navigation.navigate(screens.TransactionEditor, { value: isIncome ? +expr : -expr });
+    onSubmitResult: ({ expr, navigation, id, isIncome }) => () => {
+      withPaschal(expr);
+      navigation.navigate(
+        screens.TransactionEditor, { value: isIncome ? +expr : -expr, id, isIncome });
     },
   }),
 
   lifecycle({
     componentDidMount() {
-      this.props.setIsIncome(getParam('type')(this.props.navigation) === 'income');
+      const { setIsIncome, value, updateExpr, type } = this.props;
+
+      setIsIncome(type === 'income');
+      if (value) updateExpr(value);
     },
   }),
 );

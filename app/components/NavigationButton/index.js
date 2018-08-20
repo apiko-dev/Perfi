@@ -19,7 +19,7 @@ const NavigationButton = (props) => {
     navigation,
     backOnSuccess,
     isVisible = true,
-  ...iconProps
+    ...iconProps
   } = props;
 
   const onPressButton = () => {
@@ -63,7 +63,7 @@ NavigationButton.propTypes = {
   containerStyle: ViewPropTypes.style,
   title: T.string,
   iconName: T.string,
-  titleStyle: ViewPropTypes.style,
+  titleStyle: Text.propTypes.style,
 };
 
 export default NavigationButton;

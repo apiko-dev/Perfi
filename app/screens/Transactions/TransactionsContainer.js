@@ -4,129 +4,87 @@ import {
   withState,
   hoistStatics,
   lifecycle,
+  withProps,
+  pure,
 } from 'recompose';
-import moment from 'moment';
+import R from 'ramda';
 import { connect } from 'react-redux';
+import { Animated, Platform } from 'react-native';
 import TransactionsScreenView from './TransactionsScreenView';
 import { transactionsOperations } from '../../modules/transactions';
+import { transfersOperations } from '../../modules/transfers';
 import { getTransactions } from '../../modules/transactions/selectors';
+import { getTransfers } from '../../modules/transfers/selectors';
 import { getTotalBalance } from '../../modules/accounts/selectors';
-
-import {
-  startOfDay,
-  startOfYesterday,
-  startOfWeek,
-  startOfMonthAgo,
-  startOfYear,
-  isYesterday,
-  isToday,
-} from '../../utils/dateHelpers';
+import { startOfDay } from '../../utils/dateHelpers';
+import screens from '../../constants/screens';
+import { dimensions } from '../../styles';
 
 
-const mapStateToProps = (state, { dateForFiltering }) => ({
-  transactions: getTransactions(state.transactions, dateForFiltering),
+const mapStateToProps = (state, props) => ({
+  transactions: getTransactions(state, props),
+  transfers: getTransfers(state, props),
   totalBalance: getTotalBalance(state),
 });
 
 const enhance = compose(
   withState('dateForFiltering', 'setDateForFiltering', startOfDay),
-  connect(mapStateToProps, transactionsOperations),
-
-  withState('isActiveSelector', 'setActiveSelector', false),
-  withState('isActiveToday', 'setActiveToday', true),
-  withState('isActiveYesterday', 'setActiveYesterday', false),
-  withState('isActiveCalendar', 'setActiveCalendar', false),
-  withState('isVisibleCalendar', 'toggleCalendar', false),
-
-  withState('isChartShown', 'setChartShow', false),
+  connect(
+    mapStateToProps,
+    {
+      ...transactionsOperations,
+      ...transfersOperations,
+    }
+  ),
 
   withState('listRef', 'setListRef', null),
+  withState('isScrollEnabled', 'setScrollEnabled', true),
+  withState('scrollY', 'setScrollY',
+    new Animated.Value(Platform.OS === 'ios' ? -dimensions.headerMaxHeight : 0)),
 
   withHandlers({
-    setActive: props => (item) => {
-      props.setActiveToday(false);
-      props.setActiveYesterday(false);
-      props.setActiveSelector(false);
-      props.setActiveCalendar(false);
-      props[item](true);
+    onAddToFavourite: props => ({ isTransaction, id }) => {
+      isTransaction
+      ? props.addTransactionToFavourites(id)
+      : props.addTransferToFavourites(id);
     },
+    onDeleteFromFavourites: props => ({ isTransaction, id }) => {
+      isTransaction
+        ? props.onDeleteFromFavourites(id)
+        : props.onDeleteTransferFromFavourites(id);
+    },
+    onDelete: props => ({ isTransaction, id }) => {
+      isTransaction
+        ? props.deleteTransaction(id)
+        : props.deleteTransfer(id);
+    },
+    onGoToDetail: ({ navigation }) => ({ isTransaction, id }) => {
+      navigation.navigate(isTransaction
+        ? screens.TransactionDetail
+        : screens.TransferDetail,
+        { id });
+    },
+    onAllowScroll: props => isScrollEnabled => props.setScrollEnabled(isScrollEnabled),
   }),
 
-  withHandlers({
-    onDeleteTransaction: props => (id) => {
-      props.deleteTransaction(id);
-    },
-    onAddTransactionToFavourite: props => (id) => {
-      props.addTransactionToFavourite(id);
-    },
-
-    onToggleCalendar: props => () => {
-      props.toggleCalendar(!props.isVisibleCalendar);
-    },
-    onChangeCalendar: ({ setActive, setDateForFiltering }) => (date) => {
-      if (!date.from && !date.to) return;
-
-      setActive('setActiveCalendar');
-      if (!date.to) {
-        if (isToday(date.from)) setActive('setActiveToday');
-        else if (isYesterday(date.from)) setActive('setActiveYesterday');
-      }
-      setDateForFiltering(date.to ? date : date.from);
-    },
-
-    onChangeSelector: props => (res) => {
-      props.setActive('setActiveSelector');
-      const period = { from: null, to: moment().endOf('day') };
-
-      switch (res) {
-        case '0':
-          period.from = startOfWeek;
-          break;
-        case '1':
-          period.from = startOfMonthAgo;
-          break;
-        case '2':
-          period.from = startOfYear;
-          break;
-        default:
-          break;
-      }
-
-      props.setDateForFiltering(period);
-    },
-
-    onSetActiveToday: props => () => {
-      props.setActive('setActiveToday');
-      if (!props.isActiveToday) props.setDateForFiltering(startOfDay);
-    },
-
-    onSetActiveYesterday: props => () => {
-      props.setActive('setActiveYesterday');
-      if (!props.isActiveYesterday) props.setDateForFiltering(startOfYesterday);
-    },
-
-    onToggleChart: props => () => {
-      props.setChartShow(!props.isChartShown);
-    },
-
-  }),
+  withProps(props => ({
+    concatenatedData: R.sortWith(
+      [R.descend(R.prop('date'))], R.concat(props.transactions, props.transfers)),
+  })),
 
   lifecycle({
-    componentWillMount() {
-      this.props.navigation.setParams(
-        {
-          isChartShown: this.props.isChartShown,
-          onToggleChart: this.props.onToggleChart,
-        },
-      );
+    shouldComponentUpdate(nextProps) {
+      return this.props.concatenatedData.length !== nextProps.concatenatedData.length;
     },
-    componentDidUpdate(prevProps) {
-      if (this.props.transactions !== prevProps.transactions) {
-        setTimeout(() => this.props.listRef.scrollToOffset(0), 0);
-      }
-    },
+    // componentDidUpdate(prevProps) {
+    //   const newTrans = this.props.transactions;
+    //   const oldTrans = prevProps.transactions;
+    //   if (newTrans !== oldTrans && (oldTrans.length - newTrans.length) !== 1) {
+    //     setTimeout(() => this.props.listRef._listRef.scrollToOffset(0), 0);
+    //   }
+    // },
   }),
-
+  pure,
 );
 
 export default hoistStatics(enhance)(TransactionsScreenView);

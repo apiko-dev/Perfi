@@ -2,10 +2,15 @@ import React from 'react';
 import T from 'prop-types';
 import ActionButton from 'react-native-action-button';
 import screens from '../../constants/screens';
-import { ScreenWrapper, Subtitle, CategoriesList, SegmentedControl } from '../../components';
+import {
+  ScreenWrapper,
+  Subtitle,
+  CategoriesList,
+  SegmentedControl,
+  TabContainer,
+} from '../../components';
 import { getParam } from '../../utils/navHelpers';
 import { categoriesTypes as types } from '../../constants/categories';
-import { TabContainer } from './components';
 import s from './styles';
 import { colors } from '../../styles';
 
@@ -36,7 +41,7 @@ const Categories = ({
 
   return (
     <ScreenWrapper style={s.container}>
-      <Subtitle leftText="Categories" style={s.subTitle} />
+      <Subtitle leftText="Categories" withLittlePadding />
       <SegmentedControl
         values={tabs}
         selectedIndex={selectedTabIndex}
@@ -46,7 +51,7 @@ const Categories = ({
       <TabContainer
         selectedTabIndex={selectedTabIndex}
         tabIndex={0}
-        topOffset={95}
+        topOffset={90}
       >
         <CategoriesList
           categories={incomeCategories}
@@ -56,7 +61,7 @@ const Categories = ({
       <TabContainer
         selectedTabIndex={selectedTabIndex}
         tabIndex={1} // eslint-disable-line
-        topOffset={95}
+        topOffset={90}
       >
         <CategoriesList
           categories={expenseCategories}

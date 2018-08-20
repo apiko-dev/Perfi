@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from '../iconsPicker/styles';
+import styles from '../IconsPickerModal/styles';
 import BigRoundIconButton from '../BigRoundIconButton';
 import { colors } from '../../styles';
 
@@ -12,7 +12,7 @@ const IconsPickerItem = ({ name, isSelected, onIconPress }) => (
     containerStyle={styles.iconStyle}
     tintColor={isSelected ? colors.green : colors.greyDarker}
   />
-  );
+);
 
 IconsPickerItem.propTypes = {
   name: PropTypes.string,

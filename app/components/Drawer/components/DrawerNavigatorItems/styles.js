@@ -7,13 +7,13 @@ const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: colors.grey,
     height: 62,
   },
   icon: {
     marginLeft: dimensions.indent,
-    marginRight: dimensions.indent / 1.5,
+    marginRight: dimensions.indent,
     alignItems: 'center',
   },
   inactiveIcon: {
@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
     borderLeftColor: colors.green,
   },
   label: {
-    fontSize: fontSizes.medium,
-    color: colors.black,
+    fontSize: fontSizes.small,
+    color: colors.greyVeryDarker,
     fontWeight: fontWeights.normal,
   },
 

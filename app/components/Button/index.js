@@ -6,7 +6,7 @@ import Text from '../Text';
 import TouchableItem from '../TouchableItem';
 import s from './styles';
 
-const Button = (props) => {
+const Button = props => {
   const {
     backgroundColor,
     color,
@@ -47,9 +47,8 @@ const Button = (props) => {
             touchableProps.disabled && s.titleDisabled,
           ]}
         >
-          {title}
-        </Text>
-        }
+            {title}
+        </Text>}
         {!!iconRight && <MaterialIcons {...iconRight} />}
       </View>
 

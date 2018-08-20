@@ -15,6 +15,7 @@ const enhance = compose(
     keyToRender: 'name',
     optionHeight: 42,
     options: [],
+    selectOption: null,
   }),
 
   withState('isDropped', 'setDropped', false),
@@ -30,7 +31,7 @@ const enhance = compose(
   withHandlers({
     onSelect: props => (index, value) => {
       if (props.onSelect) props.onSelect(index, value);
-      props.selectItem(value);
+      if (!props.selectOption) props.selectItem(value);
     },
     onSetOptionWidth: props => event =>
       props.setOptionWidth(
@@ -38,7 +39,14 @@ const enhance = compose(
       ),
     onDropped: props => () => props.setDropped(!props.isDropped),
   }),
-
+  withPropsOnChange(['selectOption'], ({
+    selectOption, options, selectItem,
+  }) => {
+    if (selectOption) {
+      const index = options.findIndex(el => el.id === selectOption.id);
+      selectItem(options[index]);
+    }
+  }),
   lifecycle({
     componentWillReceiveProps(nextProps) {
       if (this.props.disabled !== nextProps.disabled &&
