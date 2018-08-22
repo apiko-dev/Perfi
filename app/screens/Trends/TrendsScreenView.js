@@ -21,18 +21,19 @@ import { formatMonthWithYear } from '../../utils/dateHelpers';
 const chartHeight = 375;
 const getChartWidth = length => (length * 60 + 60 < 400 ? 330 : length * 60 + 60);
 const getBarLabelPadding = (currentValue, maxValue) =>
-  (maxValue / currentValue < 3.5 ? ((chartHeight - 40) * currentValue / maxValue / 2) : -5);
+  (maxValue / currentValue < 3.5 ? ((chartHeight - 40) * currentValue / maxValue / 2) : -10);
 
 
 const Trends = ({
     dateForFiltering,
-    setDateForFiltering,
+    onSetDateForFiltering,
     stats,
+    setListRef,
 }) => (
   <View style={s.root}>
     <SimpleDateFilter
       dateForFiltering={dateForFiltering}
-      setDateForFiltering={setDateForFiltering}
+      setDateForFiltering={onSetDateForFiltering}
     />
     <Subtitle
       style={s.subtitle}
@@ -47,6 +48,7 @@ const Trends = ({
 
         <ScrollView
           horizontal
+          ref={setListRef}
           bounces={false}
           showsHorizontalScrollIndicator={stats.tickValues.length > 1}
         >
@@ -171,7 +173,8 @@ const Trends = ({
 
 Trends.propTypes = {
   dateForFiltering: T.object,
-  setDateForFiltering: T.func,
+  onSetDateForFiltering: T.func,
+  setListRef: T.func,
   stats: T.shape({
     Income: T.array,
     Expense: T.array,

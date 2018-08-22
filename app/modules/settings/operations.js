@@ -2,7 +2,7 @@ import {
   changeCurrency,
   signIn,
   generateMockData,
-  resetData
+  resetData,
 } from './actions';
 
 

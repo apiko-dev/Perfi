@@ -1,3 +1,3 @@
-import AccauntsSwiper from './AccauntsSwiper';
+import AccountsSwiper from './AccountsSwiper';
 
-export { AccauntsSwiper };
+export { AccountsSwiper };

@@ -3,7 +3,6 @@ import {
   withHandlers,
   withState,
   hoistStatics,
-  lifecycle,
   withProps,
   pure,
 } from 'recompose';
@@ -72,18 +71,22 @@ const enhance = compose(
       [R.descend(R.prop('date'))], R.concat(props.transactions, props.transfers)),
   })),
 
-  lifecycle({
-    shouldComponentUpdate(nextProps) {
-      return this.props.concatenatedData.length !== nextProps.concatenatedData.length;
-    },
-    // componentDidUpdate(prevProps) {
-    //   const newTrans = this.props.transactions;
-    //   const oldTrans = prevProps.transactions;
-    //   if (newTrans !== oldTrans && (oldTrans.length - newTrans.length) !== 1) {
-    //     setTimeout(() => this.props.listRef._listRef.scrollToOffset(0), 0);
-    //   }
-    // },
-  }),
+  /**
+   * committed because when edit transaction list don't update
+   */
+  // lifecycle({
+  //   shouldComponentUpdate(nextProps) {
+  //     return this.props.concatenatedData.length !== nextProps.concatenatedData.length;
+  //   },
+  //
+  //   // componentDidUpdate(prevProps) {
+  //   //   const newTrans = this.props.transactions;
+  //   //   const oldTrans = prevProps.transactions;
+  //   //   if (newTrans !== oldTrans && (oldTrans.length - newTrans.length) !== 1) {
+  //   //     setTimeout(() => this.props.listRef._listRef.scrollToOffset(0), 0);
+  //   //   }
+  //   // },
+  // }),
   pure,
 );
 

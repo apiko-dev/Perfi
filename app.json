@@ -1,5 +1,10 @@
 {
   "expo": {
+    "name": "Perfi",
+    "scheme": "perfi",
+    "description": "The best money manager",
+    "slug": "perfi",
+    "privacy": "public",
     "sdkVersion": "27.0.0",
     "packagerOpts": {
       "assetExts": ["ttf"]
@@ -13,14 +18,16 @@
     },
     "icon": "./app/assets/images/app-icon.png",
     "splash": {
-      "image": "./app/assets/icons/splash.png",
+      "image": "./app/assets/images/splash.png",
       "resizeMode": "cover"
     },
-    "name": "Perfi",
     "version": "2.0.0",
-    "slug": "apiko-perfi-app",
     "android": {
-      "package": "com.apiko.perfi"
+      "package": "com.apikodev.perfi"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.apiko.perfi"
     }
   }
 }

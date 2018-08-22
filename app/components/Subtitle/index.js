@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 const Subtitle = ({ style, leftText, totalBalance, date, withoutPadding }) => (
   <View style={[styles.textContainer, style, withoutPadding && styles.withoutPaddingBottom]}>
     <Text style={styles.leftText}>{leftText}</Text>
-    {totalBalance &&
+    {totalBalance ?
       <View style={styles.rightContainer}>
         <Text style={styles.rightText}>Total: </Text>
         <Value
@@ -45,11 +45,15 @@ const Subtitle = ({ style, leftText, totalBalance, date, withoutPadding }) => (
           containerStyle={styles.withoutPadding}
         />
       </View>
+      :
+      null
     }
-    {date &&
+    {date ?
       <View style={styles.rightContainer}>
         <Text style={[styles.rightText, styles.date]}>{formatDateForSubtitle(date)}</Text>
       </View>
+      :
+      null
     }
 
   </View>
