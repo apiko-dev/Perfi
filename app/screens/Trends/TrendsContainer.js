@@ -2,6 +2,7 @@ import {
   compose,
   withState,
   hoistStatics,
+  withHandlers,
 } from 'recompose';
 import moment from 'moment';
 import { connect } from 'react-redux';
@@ -20,7 +21,15 @@ const enhance = compose(
     'setDateForFiltering',
     { from: startOfCurrentMonth, to: moment().endOf('day') }
   ),
+  withState('listRef', 'setListRef', null),
   withState('selectedTabIndex', 'setSelectedTabIndex', 0),
+
+  withHandlers({
+    onSetDateForFiltering: props => val => {
+      setTimeout(() => props.listRef.scrollTo({ x: 0, y: 0, animated: true }));
+      props.setDateForFiltering(val);
+    },
+  }),
   connect(mapStateToProps, transactionsOperations),
 );
 

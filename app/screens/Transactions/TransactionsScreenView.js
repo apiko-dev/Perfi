@@ -3,7 +3,7 @@ import T from 'prop-types';
 import R from 'ramda';
 import { Animated, View, FlatList } from 'react-native';
 import screens from '../../constants/screens';
-import { AccauntsSwiper } from './components';
+import { AccountsSwiper } from './components';
 import {
   Subtitle,
   Separator,
@@ -75,7 +75,7 @@ const Transactions = ({
           totalBalance={totalBalance}
         />
         <View style={{ paddingLeft: dimensions.halfIndent, paddingRight: dimensions.halfIndent }}>
-          <AccauntsSwiper navigation={navigation} />
+          <AccountsSwiper navigation={navigation} />
         </View>
         <Separator withOpacity />
         <DateFilter

@@ -147,8 +147,8 @@ export const getTrendsStats = createSelector(
       }
     });
 
-    const Income = [];
-    const Expense = [];
+    let Income = [];
+    let Expense = [];
 
     R.forEachObjIndexed((val, key) => { Income.push({ y: val, date: key }); }, data.Income);
     R.forEachObjIndexed((val, key) => { Expense.push({ y: val, date: key }); }, data.Expense);
@@ -158,12 +158,26 @@ export const getTrendsStats = createSelector(
 
     data.tickValues.sort((a, b) => +moment(a) - +moment(b));
 
+  /**
+   * if don't have any statistic per all time,
+   * show on the chart only today data with
+   * expense and income which equals 0
+   */
+    if (R.isEmpty(Income) && R.isEmpty(Expense) && R.isEmpty(data.tickValues)) {
+      Income = [{ date: new Date(), x: 1, y: 0 }];
+      Expense = [{ date: new Date(), x: 1, y: 0 }];
+      data.tickValues = [new Date().toString()];
+    }
 
     Income.forEach((element, id) => element.x = id + 1); // eslint-disable-line
     Expense.forEach((element, id) => element.x = id + 1); // eslint-disable-line
 
     const coeff = +`1${R.join('', R.repeat('0', Math.round(data.maxValue).toString().length - 1))}`;
-    const maxValue = Math.ceil(data.maxValue / coeff) * coeff;
+
+    /**
+     * if maxValue = 0, set it 10 (for correct showing charts)
+     */
+    const maxValue = (Math.ceil(data.maxValue / coeff) * coeff) || 10;
 
     return {
       Income,

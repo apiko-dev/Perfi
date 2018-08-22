@@ -60,7 +60,7 @@ const enhance = compose(
       const { setIsIncome, value, updateExpr, type } = this.props;
 
       setIsIncome(type === 'income');
-      if (value) updateExpr(value);
+      if (value) updateExpr(Math.abs(value));
     },
   }),
 );

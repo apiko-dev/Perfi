@@ -19,13 +19,14 @@ const s = StyleSheet.create({
   },
   image: {
     height: 140,
+    opacity: 0.5,
   },
 
 });
 
 const sadSmile = require('../../assets/images/sadSmile.png');
 
-const EmptyList = ({ containerStyle, text = 'There is no transactions yet' }) => (
+const EmptyList = ({ containerStyle, text = 'There is no transactions' }) => (
   <View style={[s.container, containerStyle]}>
     <Image
       style={s.image}

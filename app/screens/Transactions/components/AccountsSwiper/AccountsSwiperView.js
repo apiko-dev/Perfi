@@ -6,7 +6,7 @@ import s from './styles';
 import { AccountItem } from '../../../../components/index';
 
 
-const AccauntsSwiper = ({ groupedAccounts, onAccountPress }) => {
+const AccountsSwiper = ({ groupedAccounts, onAccountPress }) => {
   const accountItem = item => (
     <AccountItem
       key={item.id}
@@ -44,9 +44,9 @@ const AccauntsSwiper = ({ groupedAccounts, onAccountPress }) => {
   );
 };
 
-AccauntsSwiper.propTypes = {
+AccountsSwiper.propTypes = {
   groupedAccounts: T.array,
   onAccountPress: T.func,
 };
 
-export default AccauntsSwiper;
+export default AccountsSwiper;

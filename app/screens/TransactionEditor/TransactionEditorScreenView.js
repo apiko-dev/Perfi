@@ -20,7 +20,6 @@ import {
 import s from './styles';
 
 const AccountEditor = ({
-  data,
   icon,
   date,
   value,
@@ -45,7 +44,7 @@ const AccountEditor = ({
   <View style={s.root}>
     <ScreenWrapper style={s.withoutPaddingBot}>
       <ScrollView>
-        <Value value={value} style={s.valueText} />
+        <Value value={value} style={s.valueText} type={isIncome ? 'income' : 'expense'} />
         <Select
           isAccount
           selectOption={account}
@@ -70,7 +69,7 @@ const AccountEditor = ({
           isSelected
           placeholder="Initial date"
           onSelectDate={val => setDate(val)}
-          defaultValue={data}
+          defaultValue={date}
           // format={dateFormat.newAccountDateFormat}
           date={date}
         />
@@ -112,7 +111,6 @@ AccountEditor.propTypes = {
   date: T.any,
   onSubmit: T.func,
   icon: T.object,
-  data: T.any,
   setDate: T.func,
   value: T.number,
   onUpdateNote: T.func,

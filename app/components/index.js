@@ -4,7 +4,6 @@ import Loading from './Loading';
 import NavIcon from './NavIcon';
 import PropsProxyHOC from './PropsProxyHOC';
 import ScreenWrapper from './ScreenWrapper';
-import TouchableFormInput from './TouchableFormInput';
 import Text from './Text';
 import AccountItem from './AccountItem';
 import Subtitle from './Subtitle';
@@ -46,7 +45,6 @@ export {
   NavIcon,
   PropsProxyHOC,
   ScreenWrapper,
-  TouchableFormInput,
   Text,
   AccountItem,
   Subtitle,

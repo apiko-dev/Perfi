@@ -111,8 +111,7 @@ const enhance = compose(
 
       if (transaction) {
         const { date, account, category, note } = transaction;
-
-        setDate(date);
+        setDate(new Date(date));
         setAccount(accountsById[account]);
         setCategory(categoriesById[category]);
         setSelectedCategory(true);

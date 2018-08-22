@@ -45,7 +45,7 @@ const TransactionDetail = ({
       </View>
       <Separator />
       {
-        transaction.note && (
+        !!transaction.note && (
           <View style={s.secondContainer}>
             <Text style={s.secondTitle}>Notes</Text>
             <Text style={s.regular}>{transaction.note}</Text>

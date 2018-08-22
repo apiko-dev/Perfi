@@ -2,7 +2,6 @@ import { Asset } from 'expo';
 
 const loadImages = async () => {
   await Asset.loadAsync([
-    require('../assets/icons/splash.png'),
     require('../assets/images/add-account.png'),
     require('../assets/images/sadSmile.png'),
     require('../assets/images/slide1.png'),

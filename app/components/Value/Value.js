@@ -13,7 +13,7 @@ const Value = ({
   type,
   withoutPlus,
 }) => {
-  const text = currencies.hryvnia.sign === sign ? value + sign : sign + value;
+  const text = currencies.hryvnia.sign === sign ? Math.abs(value) + sign : sign + Math.abs(value);
   const incomeText = `${withoutPlus ? '' : '+ '}${text}`;
 
   return (

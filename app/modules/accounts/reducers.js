@@ -46,14 +46,9 @@ const createAccount = (props) => {
 //      },
 
 const defaultAccounts = [
-  createAccount({ name: 'Card 1', color: chartPalette.purple500 }),
-];
-
-
-const generetedAccounts = [
-  createAccount({ name: 'Test Card', color: chartPalette.lightBlue500 }),
-  createAccount({ name: 'Test Cash', color: chartPalette.pink500 }),
-  createAccount({ name: 'Test Shares', color: chartPalette.yellow500 }),
+  createAccount({ name: 'Other', color: chartPalette.yellow500 }),
+  createAccount({ name: 'Cash', color: chartPalette.purple500 }),
+  createAccount({ name: 'Credit card', color: chartPalette.lightBlue500 }),
 ];
 
 const initialState = insertAll({}, defaultAccounts);
@@ -65,7 +60,6 @@ const accountsReducer = handleActions({
   })),
   [types.UPDATE_ACCOUNT]: (state, { payload }) => update(state, payload.id, payload),
   [types.DELETE_ACCOUNT]: (state, { payload }) => removeId(state, payload),
-  [types.GENERATE_MOCK_DATA]: (state) => insertAll(state, generetedAccounts),
   [typesSettings.RESET_DATA]: () => initialState,
 }, initialState);
 
