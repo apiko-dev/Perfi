@@ -1,9 +1,10 @@
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
-You can try Perfi:
-AppStore: https://itunes.apple.com/us/app/perfi/id1437633955?mt=8&ign-mpt=uo%3D4
-GooglePlay: https://play.google.com/store/apps/details?id=com.apikodev.perfi&hl=uz
+## You can try Perfi:
 
+[AppStore](https://itunes.apple.com/us/app/perfi/id1437633955?mt=8&ign-mpt=uo%3D4)
+
+[GooglePlay](https://play.google.com/store/apps/details?id=com.apikodev.perfi&hl=uz)
 
 ## Available Scripts
 
