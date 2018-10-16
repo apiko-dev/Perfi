@@ -24,10 +24,6 @@ npm start -- --reset-cache
 yarn start -- --reset-cache
 ```
 
-### `npm test`
-
-Runs the [jest](https://github.com/facebook/jest) test runner on your tests.
-
 ### `npm run ios`
 
 Like `npm start`, but also attempts to open the app in the iOS Simulator if you're on a Mac and have it installed.
@@ -56,4 +52,8 @@ This will start the process of "ejecting" from Create React Native App's build s
 -------------
 
 
-Made by [![Custom Software Development Company](https://s3-eu-west-1.amazonaws.com/jssolutions/github/jss_xs.png)](http://jssolutionsdev.com/?github=Perfi) - [Custom Software Development Company](http://jssolutionsdev.com/?github=Perfi)
+#### Made by Apiko - [Custom Software Development Company](https://apiko.com/)
+
+
+
+![Custom Software Development Company](https://apiko.com/img/logo-150h.jpg)
