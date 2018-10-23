@@ -1,10 +1,10 @@
+# Perfi
+### Open-source personal finance management app
+
+[![GooglePlay](https://canmorealberta.com/dist/img/google_appstore_256x256.png)](https://play.google.com/store/apps/details?id=com.apikodev.perfi&hl=uz)
+[![AppStore](http://www.mutuabcc.it/wp-content/uploads/2017/06/256x256-ap.png)](https://itunes.apple.com/us/app/perfi/id1437633955?mt=8&ign-mpt=uo%3D4)
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
-
-## You can try Perfi:
-
-[AppStore](https://itunes.apple.com/us/app/perfi/id1437633955?mt=8&ign-mpt=uo%3D4)
-
-[GooglePlay](https://play.google.com/store/apps/details?id=com.apikodev.perfi&hl=uz)
 
 ## Available Scripts
 
