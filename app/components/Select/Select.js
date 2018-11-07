@@ -95,6 +95,7 @@ const Select = (props) => {
     placeholder,
     disabledPlaceholder,
     style,
+    secondInputContainer,
     textStyle,
     containerStyle,
     defaultValue,
@@ -135,7 +136,7 @@ const Select = (props) => {
         <Input
           editable={false}
           containerStyle={style}
-          secondContainerStyle={[s.secondInputContainer, disabled && {
+          secondContainerStyle={[s.secondInputContainer, secondInputContainer, disabled && {
             backgroundColor: colors.grey,
           }, isSelected && changeStyleIsSelected && selectedSecondInputContainer]}
           style={[
@@ -178,6 +179,7 @@ Select.propTypes = {
   placeholder: T.string,
   disabledPlaceholder: T.string,
   style: ViewPropTypes.style,
+  secondInputContainer: ViewPropTypes.style,
   textStyle: T.any,
   containerStyle: ViewPropTypes.style,
   defaultValue: T.oneOfType([T.string, T.object]),

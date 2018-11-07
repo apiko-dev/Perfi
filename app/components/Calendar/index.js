@@ -25,7 +25,7 @@ const enhance = compose(
       props.onToggleCalendar();
 
       props.onSelectedDate({
-        from: props.startDate.startOf('day'),
+        from: props.startDate ? props.startDate.startOf('day') : null,
         to: props.endDate ? props.endDate.endOf('day') : null,
       });
     },

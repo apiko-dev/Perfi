@@ -19,7 +19,7 @@ const Value = ({
   return (
     <View style={[s.value, containerStyle]}>
       {{
-        other: <Text style={[s.text, s.other, style]}>{text}</Text>,
+        modal: <Text style={[s.text, s.other, style]}>{text}</Text>,
         income: <Text style={[s.text, s.income, style]}>{incomeText}</Text>,
         expense: <Text style={[s.text, s.expense, style]}>- {text}</Text>,
       }[type]}
