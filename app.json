@@ -23,11 +23,30 @@
     },
     "version": "2.0.0",
     "android": {
-      "package": "com.apikodev.perfi"
+      "package": "com.apikodev.perfi",
+      "icon": "./app/assets/images/app-icon.png",
+      "config": {
+        "googleSignIn": {
+          "apiKey": "AIzaSyByqlbaro2AiC2CZudyT0PsSxkKH9nY5MM"
+        }
+      }
     },
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.apiko.perfi"
-    }
+      "icon": "./app/assets/images/ios-app-icon.png",
+      "supportsTablet": false,
+      "buildNumber": "1.0.1",
+      "bundleIdentifier": "com.apikodev.perfi",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "49929723213-9uvt2j1dv2gmhveq85ge3q24sudmdth9.apps.googleusercontent.com"
+        }
+      }
+    },
+    "assetBundlePatterns": [
+      "app/assets/images/**",
+      "app/assets/fonts/**",
+      "node_modules/react-navigation/src/**/*.png",
+      "node_modules/@expo/vector-icons/fonts/*.ttf"
+    ]
   }
 }

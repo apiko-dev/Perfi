@@ -1,7 +1,7 @@
 
 const createTransfer = (props) => {
   const {
-    value, from, to, date = new Date(), note, isFavourite = false,
+    value, from, to, date = new Date().toString(), note = '', isFavourite = false,
   } = props;
 
   return {

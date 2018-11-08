@@ -4,10 +4,12 @@ import {
   hoistStatics,
   withState,
 } from 'recompose';
+import R from 'ramda';
 import { connect } from 'react-redux';
 import { Alert } from 'react-native';
 import SettingsScreenView from './SettingsScreenView';
 import { settingsOperations } from '../../modules/settings';
+import { synchOperations } from '../../modules/synch';
 import types from '../../modules/navigator/types';
 import { withLoading } from '../../utils/enhancers';
 
@@ -25,10 +27,15 @@ const alert = (title, text, func) => {
 
 const mapStateToProps = state => ({
   currency: state.settings.currency,
+  userName: R.pathOr('', ['synch', 'user', 'fullName'], state),
+  isAuthorized: state.synch.isAuthorized,
+  isLoadingBackup: state.synch.isLoadingBackup,
+  lastBackupDate: state.synch.lastBackupDate,
+  lastSynchDate: state.synch.lastSynchDate,
 });
 
 const enhance = compose(
-  connect(mapStateToProps, settingsOperations),
+  connect(mapStateToProps, { ...settingsOperations, ...synchOperations }),
   withState('isLoading', 'toggleLoading', false),
   withHandlers({
     action: props => (action) => {
@@ -53,6 +60,18 @@ const enhance = compose(
       alert('Reset data',
         'Do you want to return to the original state and delete all data ?',
         () => props.action(props.resetData));
+    },
+    onSingInWithGoogle: props => () => {
+      props.loginWithGoogle();
+    },
+    onLogOut: props => () => {
+      props.logOut();
+    },
+    onCreateBackup: props => () => {
+      props.createBackup();
+    },
+    onSynchronize: props => () => {
+      props.synchronizeData();
     },
   }),
   withLoading(),

@@ -1,7 +1,8 @@
 import { handleActions } from 'redux-actions';
 import types from './types';
+import { synchTypes } from '../synch';
 import { defaultCategories } from '../../constants/categories';
-import { insert, insertAll, update, removeId } from '../../utils/stateHelper';
+import { insertWithUUID, insertAll, update, removeId, synchronize } from '../../utils/stateHelper';
 
 const createCategory = ({ name, icon, type }) => ({ name, icon, type });
 
@@ -19,9 +20,11 @@ const initialState = insertAll({}, defaultCategories);
 
 
 const categoriesReducer = handleActions({
-  [types.CREATE_CATEGORY]: (state, { payload }) => insert(state, createCategory(payload)),
+  [types.CREATE_CATEGORY]: (state, { payload }) => insertWithUUID(state, createCategory(payload)),
   [types.UPDATE_CATEGORY]: (state, { payload }) => update(state, payload.id, payload),
   [types.DELETE_CATEGORY]: (state, { payload }) => removeId(state, payload),
+  [synchTypes.SYNCHRONIZATION_SUCCESS]: (state, { payload }) =>
+    synchronize(state, payload.categories),
 }, initialState);
 
 export default categoriesReducer;

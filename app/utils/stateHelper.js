@@ -1,5 +1,5 @@
 import R from 'ramda';
-import v1 from 'uuid';
+import v4 from 'uuid';
 
 export const insert = (state, item) => {
   const { byId = {}, ids = [] } = state;
@@ -16,7 +16,7 @@ export const insert = (state, item) => {
 
 export const insertWithUUID = (state, item) => {
   const { byId = {}, ids = [] } = state;
-  const id = v1();
+  const id = v4();
 
   return {
     byId: {
@@ -52,4 +52,15 @@ export const update = (state, id, props) => {
       [id]: { ...item, ...props },
     },
   } : state;
+};
+export const synchronize = (state, items) => {
+  const { byId = {}, ids = [] } = state;
+  return {
+    byId: {
+      ...byId,
+      ...R.pathOr({}, ['byId'], items),
+    },
+    ids: R.uniq(R.concat(R.pathOr([], ['ids'], items), ids)
+      ),
+  };
 };

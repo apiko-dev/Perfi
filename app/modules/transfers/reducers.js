@@ -1,6 +1,13 @@
 import { handleActions } from 'redux-actions';
 import types from './types';
-import { insertWithUUID, update, remove, insertAllWithUUID } from '../../utils/stateHelper';
+import { synchTypes } from '../synch';
+import {
+  insertWithUUID,
+  update,
+  remove,
+  insertAllWithUUID,
+  synchronize,
+} from '../../utils/stateHelper';
 import typesSettings from '../settings/types';
 import mockData from './mockData';
 
@@ -31,6 +38,8 @@ const transfersReducer = handleActions({
   [types.UPDATE_TRANSFER]: (state, { payload }) => update(state, payload.id, payload),
   [types.DELETE_TRANSFER]: (state, { payload }) => remove(state, payload),
   [types.GENERATE_MOCK_DATA]: (state) => insertAllWithUUID(state, mockData),
+  [synchTypes.SYNCHRONIZATION_SUCCESS]: (state, { payload }) =>
+    synchronize(state, payload.transfers),
   [typesSettings.RESET_DATA]: () => initialState,
 }, initialState);
 

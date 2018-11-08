@@ -6,6 +6,7 @@ import withToggleOld from './withToggleOld';
 import withToggle from './withToggle';
 import withPickParams from './withPickParams';
 import withPaschal from './withPaschal';
+import withAnimation from './withAnimation';
 
 export {
   withDataSource,
@@ -16,4 +17,5 @@ export {
   withToggle,
   withPickParams,
   withPaschal,
+  withAnimation,
 };

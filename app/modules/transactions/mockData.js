@@ -3,11 +3,11 @@ import moment from 'moment';
 
 const createTransaction = (props) => {
   const {
-    value, account, category, date = new Date(), note, isFavourite = false,
+    value, account, category, date = new Date(), note = '', isFavourite = false,
   } = props;
 
   return {
-    value, account, category, date, note, isFavourite,
+    value, account, category, date: new Date(date).toString(), note, isFavourite,
   };
 };
 
@@ -40,13 +40,13 @@ export default [
   createTransaction({ value: 250, account: '2', category: '1', date: moment().subtract(120, 'days') }),
   createTransaction({ value: 510, account: '1', category: '1', date: moment().subtract(120, 'days') }),
 
-  createTransaction({ value: -99, account: '1', category: '7', date: new Date() }),
-  createTransaction({ value: -100, account: '0', category: '3', date: new Date() }),
-  createTransaction({ value: 50, account: '0', category: '0', date: new Date() }),
+  createTransaction({ value: -99, account: '1', category: '7', date: moment() }),
+  createTransaction({ value: -100, account: '0', category: '3', date: moment() }),
+  createTransaction({ value: 50, account: '0', category: '0', date: moment() }),
   createTransaction({ value: 30, account: '2', category: '2', date: moment().subtract(1, 'days') }),
   createTransaction({ value: 56, account: '1', category: '0', date: moment().subtract(1, 'days') }),
   createTransaction({ value: -54, account: '2', category: '9', date: moment().subtract(1, 'days') }),
-  createTransaction({ value: 600, account: '0', category: '1', date: new Date() }),
-  createTransaction({ value: 760, account: '1', category: '2', date: new Date() }),
+  createTransaction({ value: 600, account: '0', category: '1', date: moment() }),
+  createTransaction({ value: 760, account: '1', category: '2', date: moment() }),
 ];
 /* eslint-enable max-len */

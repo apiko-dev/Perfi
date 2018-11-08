@@ -4,23 +4,16 @@ import { colors, fontSizes, dimensions } from '../../styles';
 
 const styles = StyleSheet.create({
   root: {
+    backgroundColor: colors.white,
+  },
+  mainContainer: {
     flex: 1,
   },
+  paddingContainer: {
+    paddingHorizontal: dimensions.indent,
+  },
   container: {
-    justifyContent: 'space-between',
-  },
-  generateButtonContainer: {
-    flexDirection: 'row',
-    paddingVertical: dimensions.indent,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  buttonContainer: {
-    height: dimensions.doubleIndent,
-    width: '45%',
-  },
-  buttonTitle: {
-    fontSize: fontSizes.small,
+    flex: 1,
   },
   subTitleContainer: {
     flexDirection: 'row',
@@ -34,8 +27,22 @@ const styles = StyleSheet.create({
   text: {
     color: colors.greyVeryDarker,
   },
-  selectTextStyle: {
+  selectText: {
     fontSize: fontSizes.medium,
+    color: colors.primaryText,
+  },
+  selector: {
+    height: 70,
+  },
+  selectSecondInputContainer: {
+    height: 70,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    borderBottomWidth: 0,
+    paddingRight: dimensions.halfIndent,
+  },
+  selectSelectedSecondInputContainer: {
+    borderColor: colors.grey,
   },
 });
 

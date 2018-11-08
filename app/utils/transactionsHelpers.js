@@ -1,4 +1,5 @@
 import R from 'ramda';
+import moment from 'moment';
 import { categoriesTypes } from '../constants/categories';
 
 export const eqAccount = accountId => R.propEq('account', accountId);
@@ -12,13 +13,7 @@ export const inDateRange = period => ({ date }) => {
   );
 };
 
-export const inPeriod = (period, date) => {
-  const dt = new Date(date).getTime();
-  const from = +period.from;
-  const to = +period.to;
-
-  return R.and(R.gte(dt, from), R.lt(dt, to));
-};
+export const inPeriod = (period, date) => moment(date).isBetween(period.from, period.to);
 
 export const filterByAccountAndDate = (transactions, accountId, period) => {
   let check = eqAccount(accountId);

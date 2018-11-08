@@ -1,7 +1,8 @@
 import { handleActions } from 'redux-actions';
 import types from './types';
+import { synchTypes } from '../synch';
 import { chartPalette } from '../../styles';
-import { insert, insertAll, update, removeId } from '../../utils/stateHelper';
+import { insertWithUUID, insertAll, update, removeId, synchronize } from '../../utils/stateHelper';
 import typesSettings from '../settings/types';
 
 
@@ -9,7 +10,7 @@ const createAccount = (props) => {
   const {
     name,
     initialBalance = 0,
-    initialDate = new Date(),
+    initialDate = new Date().toString(),
     color = chartPalette.blue500,
   } = props;
 
@@ -54,12 +55,14 @@ const defaultAccounts = [
 const initialState = insertAll({}, defaultAccounts);
 
 const accountsReducer = handleActions({
-  [types.CREATE_ACCOUNT]: (state, { payload }) => insert(state, createAccount({
+  [types.CREATE_ACCOUNT]: (state, { payload }) => insertWithUUID(state, createAccount({
     ...payload,
     balance: payload.initialBalance,
   })),
   [types.UPDATE_ACCOUNT]: (state, { payload }) => update(state, payload.id, payload),
   [types.DELETE_ACCOUNT]: (state, { payload }) => removeId(state, payload),
+  [synchTypes.SYNCHRONIZATION_SUCCESS]: (state, { payload }) =>
+    synchronize(state, payload.accounts),
   [typesSettings.RESET_DATA]: () => initialState,
 }, initialState);
 

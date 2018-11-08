@@ -7,6 +7,7 @@ import transactions from './transactions';
 import transfers from './transfers';
 import navigator from './navigator';
 import settings from './settings';
+import synch from './synch';
 
 
 const config = {
@@ -17,6 +18,7 @@ const config = {
     'categories',
     'transactions',
     'transfers',
+    'synch',
   ],
   storage: AsyncStorage,
 };
@@ -29,6 +31,7 @@ const appReducer = {
   transfers,
   navigator,
   settings,
+  synch,
 };
 
 
