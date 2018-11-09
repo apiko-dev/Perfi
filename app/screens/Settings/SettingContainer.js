@@ -4,6 +4,7 @@ import {
   hoistStatics,
   withState,
 } from 'recompose';
+import { WebBrowser } from 'expo';
 import R from 'ramda';
 import { connect } from 'react-redux';
 import { Alert } from 'react-native';
@@ -12,6 +13,7 @@ import { settingsOperations } from '../../modules/settings';
 import { synchOperations } from '../../modules/synch';
 import types from '../../modules/navigator/types';
 import { withLoading } from '../../utils/enhancers';
+
 
 const alert = (title, text, func) => {
   Alert.alert(title, text,
@@ -72,6 +74,9 @@ const enhance = compose(
     },
     onSynchronize: props => () => {
       props.synchronizeData();
+    },
+    onApiko: () => () => {
+      WebBrowser.openBrowserAsync('https://apiko.com/');
     },
   }),
   withLoading(),

@@ -26,6 +26,7 @@ const Settings = ({
   isLoadingSynch,
   lastSynchDate,
   lastBackupDate,
+  onApiko,
 }) => (
   <ScrollView style={s.root}>
 
@@ -90,6 +91,7 @@ const Settings = ({
 
     <SettingItem
       title="Made with ❤️ by Apiko"
+      onPress={onApiko}
     />
 
     {isAuthorized &&
@@ -117,6 +119,7 @@ Settings.propTypes = {
   isLoadingSynch: T.bool,
   lastSynchDate: T.any,
   lastBackupDate: T.any,
+  onApiko: T.func,
 };
 
 
